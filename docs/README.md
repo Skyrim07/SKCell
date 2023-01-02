@@ -14,7 +14,7 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   </div>
   <div class="column">
   <div align="center">
-        <img src="/SKCell Cover.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./SKCell Cover.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
