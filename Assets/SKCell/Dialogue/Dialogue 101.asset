@@ -1,0 +1,646 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7dfa7e66cbec14ab1650a76d513f50, type: 3}
+  m_Name: Dialogue 101
+  m_EditorClassIdentifier: 
+  m_name: 
+  editorNodes:
+  - name: Start
+    uid: 526419
+    rect:
+      serializedVersion: 2
+      x: 880
+      y: 870
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 4
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: c4a209005de70100b6800200
+    linkedFromNodesID: 
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Sentence 1
+    uid: 164022
+    rect:
+      serializedVersion: 2
+      x: 1080.1111
+      y: 813.8889
+      width: 100
+      height: 130
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 0
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: I was fishing with my <wave>mom</> yesterday evening. How about you?
+      speaker: Lily
+      avatar: {fileID: 2842572262472615531, guid: cee03e61815593e4c8b4384b667d71dc,
+        type: 3}
+      audio: {fileID: 0}
+    linkedNodesID: 3c2f0700f90e0200339605005dcc0200
+    linkedFromNodesID: c4a2090053080800
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Sentence 2
+    uid: 689819
+    rect:
+      serializedVersion: 2
+      x: 1473.1111
+      y: 756.8889
+      width: 100
+      height: 130
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 0
+    textType: 1
+    info:
+      content_localID: 7001
+      speaker_localID: 3007
+      content: <content>
+      speaker: Tom
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 76de0200601e0700ef540e00
+    linkedFromNodesID: f90e0200da060700
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Sentence 4
+    uid: 12201
+    rect:
+      serializedVersion: 2
+      x: 1366.1111
+      y: 929.8889
+      width: 100
+      height: 130
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 0
+    textType: 1
+    info:
+      content_localID: 7002
+      speaker_localID: 3007
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: da060700440d0a00
+    linkedFromNodesID: 33960500
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Set
+    uid: 470844
+    rect:
+      serializedVersion: 2
+      x: 1128.1112
+      y: 1105.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 5
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: b6800200
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: a
+    int_property_value: 2
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: If
+    uid: 188022
+    rect:
+      serializedVersion: 2
+      x: 1678.1111
+      y: 642.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 6
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 542c0b00
+    linkedFromNodesID: 9b860a00
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: a
+    if_property_value: 2
+    if_comparator: 1
+  - name: Sentence 7
+    uid: 732244
+    rect:
+      serializedVersion: 2
+      x: 1867.1111
+      y: 592.8889
+      width: 100
+      height: 130
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 0
+    textType: 1
+    info:
+      content_localID: 3
+      speaker_localID: 1
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 5c010100
+    linkedFromNodesID: 76de0200
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Choice 7
+    uid: 134905
+    rect:
+      serializedVersion: 2
+      x: 1306.1111
+      y: 778.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 1
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: choice 1
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 9b860a00
+    linkedFromNodesID: b6800200
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Choice 8
+    uid: 366131
+    rect:
+      serializedVersion: 2
+      x: 1223.1111
+      y: 979.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 1
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: choice 2
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: a92f0000
+    linkedFromNodesID: b6800200
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Choice 9
+    uid: 460506
+    rect:
+      serializedVersion: 2
+      x: 1577.1111
+      y: 959.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 1
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: repeat
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 282e0f009b860a00
+    linkedFromNodesID: a92f0000
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Choice 10
+    uid: 658756
+    rect:
+      serializedVersion: 2
+      x: 1561.1112
+      y: 1081.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 1
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: continue
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: ddd00700
+    linkedFromNodesID: a92f0000
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Sentence 11
+    uid: 512221
+    rect:
+      serializedVersion: 2
+      x: 1724.1111
+      y: 1138.8889
+      width: 100
+      height: 130
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 0
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: last sentence
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: c2ce0100
+    linkedFromNodesID: 440d0a00
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Set
+    uid: 994856
+    rect:
+      serializedVersion: 2
+      x: 1826.1111
+      y: 960.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 5
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: da060700
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: a
+    int_property_value: 4
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: If
+    uid: 466528
+    rect:
+      serializedVersion: 2
+      x: 1712.1112
+      y: 812.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 6
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 08bd0500
+    linkedFromNodesID: 9b860a00
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: a
+    if_property_value: 2
+    if_comparator: 0
+  - name: End
+    uid: 376072
+    rect:
+      serializedVersion: 2
+      x: 1871.1112
+      y: 815.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 7
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: 601e0700
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: End
+    uid: 65884
+    rect:
+      serializedVersion: 2
+      x: 2064.111
+      y: 609.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 7
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: 542c0b00
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Event 17
+    uid: 183389
+    rect:
+      serializedVersion: 2
+      x: 1180.1112
+      y: 652.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 3
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: b6800200
+    event_name: e1
+    event_arg0: 3
+    event_arg1: 4
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Event 18
+    uid: 939247
+    rect:
+      serializedVersion: 2
+      x: 1577.1111
+      y: 558.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 3
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: 9b860a00
+    event_name: e2
+    event_arg0: 9
+    event_arg1: -0.8
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: End
+    uid: 118466
+    rect:
+      serializedVersion: 2
+      x: 1893.1111
+      y: 1151.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 7
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: 
+    linkedFromNodesID: ddd00700
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  int_properties: []
+  event_properties: []

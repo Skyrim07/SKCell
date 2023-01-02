@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8ed0455c0679bd642ab8de50f2d18564
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Jacky_Egypt
+  fontNames:
+  - Jacky_Egypt
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1758d040d605812408897fc2eefb3beb, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
