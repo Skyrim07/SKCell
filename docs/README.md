@@ -2696,7 +2696,311 @@ SKGridLayer.directionAllowed
 The path designer component gives an easy solution to make an object move along a path. This can be used to create moving platforms, enemies, simple animations, etc.<br>
 <br>
 
-#### 11.1 Waypoints
+#### 11.1 Getting Started
+To use SKPathDesigner, <br>
+<br>
+1. Turn on <b>Gizmos</b>.
+2. Create a sprite.<br>
+3. Add SKPathDesigner component onto it.<br>
+4. Click <b>Add Waypoint</b> in the inspector.<br>
+5. Play!<br>
+<br>
+You should see your sprite move horizontally for several seconds.
+<div align="left">
+        <img src="./Path/p2.png" width="300" height="200" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+
+#### 11.2 Waypoints
+A path is comprised of multiple <b>waypoints</b>.<br>
+In SKPathDesigner, each waypoint has the following properties:<br>
+
+- ID<br>
+- Type (line or curve)<br>
+- Wait time (seconds to wait on this waypoint)<br>
+- Position <br>
+- Movement curve (animation curve to define how fast the object moves along the way)<br>
+- Bezier control points (if this waypoint corresponds to a curve, use 2 control points to make the curve)<br>
+
+For example:
+<div align="left">
+        <img src="./Path/p3.png"  alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+In this scenario, there are three waypoints:<br>
+<br>
+<b>Waypoint Start</b>: This is where the path starts.<br>
+<br>
+<b>Waypoint 0</b>: <br>
+- Type: Line <br>
+- Wait time: 2.0s <br>
+- Movement curve: Cubic Double <br>
+<br>
+<b>Waypoint 1</b>: <br>
+- Type: Curve <br>
+- Wait time: 1.0s <br>
+- Movement curve: Linear <br>
+<br>
+
+<h5>Movement Curve</h5>
+Visualize each line segment between waypoints as a segment from 0 to 1. The movement curve uses an <a href="##_31-skcurve">Animation Curve</a> to define its speed along the way. For example, <b>Cubic Double</b> represents a slow-fast-slow movement.<br>
+
+<h5>Bezier Curves</h5>
+SKPathDesigner uses <a href="##_36-bezier-curve">Bezier Curves</a> to represent curves. Each segment requires 2 control points each extending in tangent direction from a waypoint.<br>
+
+#### 11.3 SKPathDesigner
+
+<h5>Structure</h5>
+<div class="row">
+  <div class="columnTall">
+  <b>Path Player</b> 
+  <br>This allows you to preview the movement along the path in scene view.<br>
+  <br>
+  <b>Translate Mode</b> 
+  <br>There are 3 modes available:<br>
+  - One time<br>
+  - Ping pong<br>
+  - Repeat<br>
+  <br>
+  <b>Normalized Time</b> 
+  <br>Drag this to see the movement along the path. 0 is starting point, 1 is ending point.<br>
+  <br>
+  <b>Speed</b> 
+  <br>Speed of movement.<br>
+  <br>
+  <b>Bezier Segments</b> 
+  <br>Smoothness of bezier curves. More segments means smoother curves and lower efficiency.<br>
+  <br>
+  <b>On Point Threshold</b> 
+  <br>How close should the object be from waypoints to be considered "arrived"?<br>
+  <br>
+  <b>Speaker Image</b> 
+  <br><a href="##_56-skimage">SKImage</a> component that displays speaker's avatar.<br>
+  <br>
+  <b>Start on Awake</b> 
+  <br>Play the sequence on awake.<br>
+  <br>
+  <b>Waypoint Editor</b> 
+  <br>Add, delete, and modify waypoints here.<br>
+  <br>
+  </div>
+  <div class="columnTall">
+  <div align="center">
+        <img src="./Path/p1.png" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+<h5>Methods</h5>
+<b>void StartPath()</b><br>
+<i>Start movement along this path. Will restart if called during a movement.</i><br>
+<br>
+<b>void PausePath()</b><br>
+<i>Pause the ongoing movement.</i><br>
+<br>
+<b>void AddWaypoint(SKTranslatorWaypoint waypoint)</b><br>
+<i>Add a new waypoint.</i><br>
+<br>
+<b>void DeleteWaypoint(SKTranslatorWaypoint waypoint)</b><br>
+<i>Remove a waypoint.</i><br>
+<br>
+<b>Vector3 GetNormalizedWPosition(float t)</b><br>
+<i>Get position along the path. t from 0 to 1 representing the whole path.</i><br>
+<br>
+
+
+### 12. Physics & Movement 
+
+#### 12.1 SKMeasurer
+SKMeasurer is a simple editor tool to display distances between objects.<br>
+<div align="center">
+        <img src="./Physics/p1.png" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+
+<h5>How to Use</h5>
+1. Select the object from which you want to measure.<br>
+2. Add the destination objects in the inspector.<br>
+
+<h5>Measure Modes</h5>
+There are two measure modes:<br>
+- <b>Every Object.</b> In this mode, distances of all pairs of measured objects will be displayed.<br>  
+- <b>Next Object.</b> In this mode, only the distances of consecutive pairs of measured objects will be displayed.<br>  
+
+#### 12.2 SKSceneObjectResponder
+SKSceneObjectResponder is a component to recieve and send scene object mouse events:<br>
+- OnMouseOver<br>
+- OnMouseExit<br>
+- OnMouseDown<br>
+- OnMouseUp<br>
+- OnMouseEnter<br>
+- OnMouseDrag<br>
+<br>
+<h5>How to Use</h5>
+1. Add a collider and an SKSceneObjectResponder to your object.<br>
+2. Register to the events:
+
+```csharp
+SKSceneObjectResponder responder = go.GetComponent<SKSceneObjectResponder>();
+responder.onMouseOver += MyOnMouseOver;
+```
+
+You can also get the state of mouse over by:
+
+```csharp
+responder.isMouseOver
+```
+#### 12.3 SKColliderResponder
+SKColliderResponder is a component to recieve and send collision and trigger events:<br>
+- OnTriggerEnter<br>
+- OnTriggerStay<br>
+- OnTriggerExit<br>
+- OnCollisionEnter<br>
+- OnCollisionStay<br>
+- OnCollisionExit<br>
+- OnTriggerEnter2D<br>
+- OnTriggerStay2D<br>
+- OnTriggerExit2D<br>
+- OnCollisionEnter2D<br>
+- OnCollisionStay2D<br>
+- OnCollisionExit2D<br>
+<br>
+<h5>How to Use</h5>
+1. Add a collider, a rigidbody and an SKColliderResponder to your object.<br>
+2. Select which type of event you want to enable:<br>
+    - Trigger3D<br>
+    - Collision3D<br>
+    - Trigger2D<br>
+    - Collision2D<br>
+3. Register to the events:
+
+```csharp
+SKColliderResponder responder = go.GetComponent<SKColliderResponder>();
+responder.OnTriggerEnter += MyOnMouseOver;
+```
+
+You can also set the <b>max count of events sent</b> by setting in the inspector. (e.g. you only want to use this collider once) <br>
+
+```csharp
+responder.maxEventCount
+```
+A max event count of <b>-1</b> means unlimited event count.
+
+#### 12.4 SKCldResponderManager
+SKCldResponderManager gives a way to manager all the SKColliderResponders in the scene.<br>
+<br>
+
+Each responder can be given a string ID in the inspector.<br>
+On start, responders will register themselves to the responder manager.<br>
+<br>
+<h5>Methods</h5>
+<b>SKColliderResponder GetResponder(string uid)</b><br>
+<i>Get a responder by its uid.</i><br>
+<br>
+<b>SKColliderResponder GetLastResponder()</b><br>
+<i>Get the last responder which invokes a valid event.</i><br>
+<br>
+
+In this way, you don't need references to get collider events.<br>
+```csharp
+//EXAMPLE: Add event when the head collider is hit
+string CLD_TAG_HEAD = "cld_head";
+SKColliderResponder head_res = SKCldResponderManager.GetResponder(CLD_TAG_HEAD);
+head_res.OnCollisionEnter += OnHeadHit;
+```
+
+#### 12.5 SKObjectDragger
+Add SKObjectDragger to an object, you can drag it with the mouse.<br>
+
+<h5>How to Use</h5>
+1. Add a collider and an SKObjectDragger to an object.<br>
+2. Play and drag the object!<br>
+
+<h5>Translation Constraints</h5>
+You can enable/disable translation on the X and Y axes by setting in the inspector.
+
+<h5>Inertia</h5>
+You can enable/disable/edit inertia in the inspector. This allows the object to move a little further after you stop dragging.
+
+<h5>Events</h5>
+The following events are available:<br>
+- OnBeginDrag<br>
+- OnDrag<br>
+- OnEndDrag<br>
+- OnStop<br>
+
+#### 12.6 SKObjectRotater
+Add SKObjectRotater to an object, you can rotate it with the mouse.<br>
+
+<h5>How to Use</h5>
+1. Add a collider and an SKObjectRotater to an object.<br>
+2. Play and rotate the object!<br>
+
+<h5>Sensitivity</h5>
+You can adjust the mouse sensitivity in the inspector.
+
+<h5>Rotation Constraints</h5>
+You can enable/disable rotation on the X and Y axes by setting in the inspector.
+
+<h5>Inertia</h5>
+You can enable/disable/edit inertia in the inspector. This allows the object to rotate a little more after you stop dragging.
+
+<h5>Events</h5>
+The following events are available:<br>
+- OnBeginDrag<br>
+- OnDrag<br>
+- OnEndDrag<br>
+- OnStop<br>
+
+#### 12.7 SKObjectScaler
+Add SKObjectScaler to an object, you can scale it with the mouse.<br>
+
+<h5>How to Use</h5>
+1. Add a collider and an SKObjectScaler to an object.<br>
+2. Play and scale the object!<br>
+
+<h5>Sensitivity</h5>
+You can adjust the mouse sensitivity in the inspector.
+
+<h5>Scaling Constraints</h5>
+You can enable/disable scaling on the X, Y, and Z axes by setting in the inspector. There are also constraints on the min/max scales.
+
+<h5>Events</h5>
+The following events are available:<br>
+- OnBeginDrag<br>
+- OnDrag<br>
+- OnEndDrag<br>
+- OnStop<br>
+
+#### 12.8 SKRotateAnim
+SKRotateAnim lets you add simple rotation animation to an object.<br>
+
+<div align="left">
+        <img src="./Physics/p2.png" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+<b>Speed</b><br>
+<i>Speed of rotation.</i><br>
+<br>
+<b>Orientation</b><br>
+<i>Clockwise or counterclockwise.</i><br>
+<br>
+<b>Mode</b><br>
+<i>Linear or ping-pong.</i><br>
+<br>
+<b>Axes</b><br>
+<i>Rotate around the X, Y, or Z axis.</i><br>
+<br>
+<b>Speed Randomization</b><br>
+<i>Randomize rotate speed on start.</i><br>
+<br>
+<b>Orientation Randomization</b><br>
+<i>Randomize orientation on start.</i><br>
+<br>
+
+<h5>How to Use</h5>
+1. Attach SKRotateAnim to an object.<br>
+2. Play!<br>
+
+
 
 ## Dev Log
 
@@ -2706,6 +3010,7 @@ The path designer component gives an easy solution to make an object move along 
 -	Added full documentation
 -   Removed ReplaceableMonoSingleton
 -   Removed MeshToPrefabUtils
+-   Bug fixes
 
 <b>v0.10.x</b>								  
 2022.9
@@ -2715,6 +3020,9 @@ The path designer component gives an easy solution to make an object move along 
 -	Added new environment effect packs
     <br>0.10.1
     - Added SKQuitControl to Editor module
+    <br>0.10.2
+    - Added noise texture packs
+    - Bug fixes
 
 
 <b>v0.9.x</b>									  
