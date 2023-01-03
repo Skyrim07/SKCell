@@ -10,7 +10,7 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <b>LOTS of utility functions!</b> 
   <br><br>One-line tweening and timed function calls, object pools, audio and video players, FSMs, CSV spreadsheet reader, game event system, 200+ util functions and extensions, scene loader, singleton and command patterns, etc.
 
-  Head to <a href="##_1-common-utilities">Common Utilities</a> section for more details.
+  Head to <a href="##_1-common-utilities">Common Utilities</a> for more details.
   </div>
   <div class="column">
   <div align="center">
@@ -22,7 +22,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Dialogue System</b> 
   <br><br>Visualize your dialogue flow with a node editor. Multiple logic nodes are availale, such as options, random, boolean if/else, and custom events.
-
+    <br>
+    <br>
+    See: <b><a href="##_8-dialogue-system">Dialogue System</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -34,6 +36,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Text Animator</b> 
   <br><br>Quickly implement typewriter and text effects simply by labeling your texts. There are 17 built-in presets with customizable parameters.
+      <br>
+    <br>
+    See: <b><a href="##_7-text-animator">Text Animator</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -45,6 +50,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Image Effects</b> 
   <br><br>Customizable sprite and image effects including color grading, outline, shadow, blur, fading, and custom blend modes.
+    <br>
+    <br>
+    See: <b><a href="##_6-effects">Effects</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -56,6 +64,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Revamped UI Components</b>
   <br><br>Versatile and time-saving UI components including buttons, sliders, toggles, toggle groups, panels, scrollers, texts, images, and UI particle systems.
+  <br>
+    <br>
+    See: <b><a href="##_5-ui">UI</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -67,6 +78,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Localization</b> 
   <br><br>Integrated localization system with full editor window. Automatically works with SKCell UI components.
+  <br>
+    <br>
+    See: <b><a href="##_9-localization">Localization</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -79,6 +93,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Grid System</b> 
   <br><br>Powerful grid system with pathfinding. Grid values, costs, obstacles, and savable assets are also available.
+  <br>
+    <br>
+    See: <b><a href="##_10-grid-system">Grid System</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -90,7 +107,11 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Object Path Designer</b> 
   <br><br>Design a path for your Game Objects by setting multiple waypoints, wait times, movement tweening curves, and bezier curves.
+  <br>
+    <br>
+    See: <b><a href="##_11-path-designer"> Path Designer</a></b> 
   </div>
+  
   <div class="column">
   <div align="center">
         <img src="./4.png" width="400" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
@@ -101,6 +122,9 @@ SKCell is a powerful, comprehensive utility package for Unity that can greatly e
   <div class="column">
   <b>Better Editor Windows</b> 
   <br><br>Improved Unity editor windows (hierarchy, transform, project) with more accessible utilities and a better feel.
+  <br>
+    <br>
+    See: <b><a href="##_14-editor-interfaces">Editor Windows</a></b> 
   </div>
   <div class="column">
   <div align="center">
@@ -3000,6 +3024,178 @@ SKRotateAnim lets you add simple rotation animation to an object.<br>
 1. Attach SKRotateAnim to an object.<br>
 2. Play!<br>
 
+### 13. Audio & Video
+With SKCell, you can easily deploy audio and video clips in your game.<br>
+
+#### 13.1 SKAudioManager
+
+<h5>How to Use</h5>
+1. Under the <b>Assets</b> directory, create two folders: <b>Assets/Resources/AudioClip/Sound</b> and <b>Assets/Resources/AudioClip/Music</b>.<br>
+2. Put your audio clips in these folders.<br>
+3. Create a new game object and add to it the SKAudioManager component.<br>
+3. Call
+
+```csharp
+SKAudioManager.PlaySound(...);
+```
+or
+```csharp
+SKAudioManager.PlayMusic(...);
+```
+to play the audio clips!<br>
+<br>
+<i>There are no real difference between sound and music. They are just there as an indentifier.</i><br>
+
+<h5>Methods</h5>
+<b>AudioSource PlaySound(string id, Action action = null, bool loop = false, float volume = 1f, float pitch = 1f, float damp =0.5f)</b><br>
+<i>Play a sound.</i><br>
+<i>action: the action to call after playing the sound.</i><br>
+<br>
+
+```csharp
+//EXAMPLE: you have clip.wav under Assets/Resources/AudioClip/Sound
+audioManager.PlaySound("clip"); //Play the clip
+audioManager.PlaySound("clip", null, true); //Loop the clip
+```
+<b>AudioSource PlayIdentifiableSound(string fileName, string id, bool loop = false, float volume = 1, float damp = 0.5f)</b><br>
+<i>Play a sound and assign to it an ID (for stopping it).</i><br>
+<br>
+
+```csharp
+//EXAMPLE: you have clip.wav under Assets/Resources/AudioClip/Sound
+audioManager.PlayIdentifiableSound("clip","id_001"); //Play the clip
+audioManager.StopIdentifiableSound("id_001"); //Stop the clip
+```
+<b>void StopIdentifiableSound(string id, float dampTime = 0.15f)</b><br>
+<i>Stop a sound according to an ID.</i><br>
+<br>
+<b>void StopSound()</b><br>
+<i>Stop the last sound.</i><br>
+<br>
+<b>AudioSource PlayMusic(string id, bool loop = true, int type = 2, float volume = 1f)</b><br>
+<i>Play a music.</i><br>
+<br>
+<b>void ChangeSoundVolume(float volume)</b><br>
+<i>Change the overall volume of sound.</i><br>
+<br>
+<b>void ChangeMusicVolume(float volume)</b><br>
+<i>Change the overall volume of music.</i><br>
+<br>
+
+#### 13.2 SKVideoManager
+SKVideoManager allows you to play video clips by one line of code.<br>
+
+<h5>Play a video clip fullscreen</h5>
+Use the <b>VideoPlayer PlayVideo(string path, bool isLoop=false)</b> method.<br>
+<i>path: this is the resources path.</i><br>
+
+```csharp
+SKVideoManager.PlayVideo("Opening/FirstScene");
+```
+This method plays the video fullscreen.<br>
+
+<h5>Play a video clip on UI component</h5>
+You can play video clips on a <b>RawImage</b>.<br>
+Use the <b>void PlayVideoInUI(string path, RawImage rawImage)</b> method.<br>
+<i>path: this is the resources path.</i><br>
+
+```csharp
+RawImage screen;
+SKVideoManager.PlayVideo("Opening/FirstScene", screen);
+```
+
+### 14. Editor Interfaces
+SKCell brings a series of editor interface improvements to Unity.<br>
+
+#### 14.1 Hierarchy Window
+<div class="row">
+  <div class="column">
+  <b>Features</b><br>
+  <br>
+  - <b>Separators</b> (marked as blue)<br>
+    <i>End a game object name with "-" to mark it as a separator.</i><br>
+    <br>
+  - <b>Shortcut: Enabling/Disabling</b> (check box to the right)<br>
+    <i>Enable or disable a game object by selecting the check box.</i><br>
+    <br>
+  - <b>Shortcut: Rename</b> ("A" button to the right)<br>
+    <i>Rename a game object by clicking the "A" button.</i><br>
+    <br>
+  - <b>Appearance</b><br>
+    <i>Two consecutive rows have a slight color difference.</i><br>
+    <i>Colored bar to the left to indicate parent/child layers.</i><br>
+    <br>
+  </div>
+  <div class="column">
+  <div align="center">
+        <img src="./10.png" width="400" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
+<h5>Customizing Colors</h5>
+You can customize colors for the hierarchy window by selecting <b>SKCell/Hierarchy Style</b> from the menu bar.<br>
+Close the customization window to apply changes.<br>
+
+#### 14.2 Transform Component
+Select <b>Show Transform Ext</b> to view extra info.
+<div class="row">
+  <div class="column">
+  <b>Features</b><br>
+  <br>
+  - <b>Local & World Spaces</b><br>
+    <i>View transform values in both local & world spaces.</i><br>
+    <br>
+  - <b>Copy & Paste Transform Values</b><br>
+    <i>Copy & Paste transform values between game objects.</i><br>
+    <br>
+  </div>
+  <div class="column">
+  <div align="center">
+        <img src="./Editor/e1.png" width="400" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
+#### 14.3 Project Window
+Select <b>SKCell/File Details...</b> from the menu bar to see file details in the project window.<br>
+File details are only visible when the project window has the <b>min display size</b>.<br>
+ <div align="center">
+        <img src="./Editor/e2.png" width="400" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+  <b>Properties available for display</b><br>
+  <br>
+  - <b>Animation Key Count</b><br>
+    <br>
+  - <b>Animation Length</b><br>
+    <br>
+    - <b>Asset Type</b><br>
+    <br>
+    - <b>File Size</b><br>
+    <br>
+    - <b>File Suffix</b><br>
+    <br>
+    - <b>GUID</b><br>
+    <br>
+    - <b>Path</b><br>
+    <br>
+    - <b>Texture Format</b><br>
+    <br>
+    - <b>Texture Size</b><br>
+    <br>
+    - <b>Texture Wrap Mode</b><br>
+    <br>
+
+### 15. Editor Tools
+
+#### 15.1 Sprite Colorer
+The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
+<br>
+Select <b>SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
+
+#### 15.2 Texture Utils
+The texture utilities allows you to assign types, formats, and sizes for all the textures in your projects.
+<br>
+Select <b>SKCell/Tools/Texture Utils</b> to open the window. 
 
 
 ## Dev Log
@@ -3010,6 +3206,7 @@ SKRotateAnim lets you add simple rotation animation to an object.<br>
 -	Added full documentation
 -   Removed ReplaceableMonoSingleton
 -   Removed MeshToPrefabUtils
+-   Removed Native Utilities
 -   Bug fixes
 
 <b>v0.10.x</b>								  
@@ -3114,7 +3311,7 @@ SKSpriteBlur)
 
 ## License
 
-Released under [MIT](/LICENSE) by [@Alex Liu](Alex Liu).
+Released under [MIT](/LICENSE) by [@Alex Liu].
 
 - You can modify and reuse this project.
 - Please link back to the original repo somewhere in your project if you use this in any way.
