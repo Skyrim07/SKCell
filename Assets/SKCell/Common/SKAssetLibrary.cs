@@ -110,6 +110,18 @@ namespace SKCell
                 return texture_A;
             }
         }
+        private static Texture texture_Logo;
+        public static Texture Texture_Logo
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (texture_Logo == null)
+                    texture_Logo = AssetDatabase.LoadAssetAtPath<Texture>(TEXTURE_ASSET_PATH + "/SKCell_Logo.png");
+#endif
+                return texture_Logo;
+            }
+        }
         private static Texture texture_Conv_Bubble;
         public static Texture Texture_Conv_Bubble
         {
