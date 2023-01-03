@@ -7,7 +7,6 @@ namespace SKCell
     [InitializeOnLoad]
     public class SKHierarchy 
     {
-        private static Vector2 offset = new Vector2(0, 0);
         public static Color backgroundColor = new Color(1, 1, 1, .02f);
         public static Color selectionColor = new Color(.6f, .6f, 1, 1f);
         public static Color highlightColor = new Color(.2f, .2f, 1f, .15f);

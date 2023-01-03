@@ -10,6 +10,7 @@ namespace SKCell
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SKCommonTimer))]
+    [RequireComponent(typeof(SKPoolManager))]
     [AddComponentMenu("SKCell/SKCore")]
     public sealed class SKCore : MonoSingleton<SKCore>
     {

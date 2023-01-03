@@ -570,7 +570,7 @@ namespace SKCell
         /// </summary>
         /// <param name="type"></param>
         /// <param name="action"></param>
-        public void RemoveAllListener(SKButtonEventType type)
+        public void RemoveAllListeners(SKButtonEventType type)
         {
             switch (type)
             {

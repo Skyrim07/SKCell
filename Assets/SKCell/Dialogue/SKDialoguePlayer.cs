@@ -283,7 +283,7 @@ namespace SKCell
                     choiceTexts[i].UpdateLocalID(choices[i].info.content_localID);
                 }
                 int j = i;
-                choiceButtons[i].RemoveAllListener(SKButtonEventType.OnPressed);
+                choiceButtons[i].RemoveAllListeners(SKButtonEventType.OnPressed);
                 choiceButtons[i].AddListener( SKButtonEventType.OnPressed,() =>
                 {
                     OnChoiceButtonPressed(j);

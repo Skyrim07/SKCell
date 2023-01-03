@@ -447,9 +447,9 @@ namespace SKCell
         public static void Destroy(GameObject go)
         {
             if (Application.isPlaying)
-                GameObject.Destroy(go);
+                SafeDestroy(go);
             else
-                GameObject.DestroyImmediate(go);
+                SafeDestroyImmediate(go);
         }
 
         /// <summary>
@@ -525,6 +525,16 @@ namespace SKCell
             if (go == null || !go)
                 return;
             GameObject.Destroy(go);
+        }
+        /// <summary>
+        /// Destroy an object only if it exists.
+        /// </summary>
+        /// <param name="go"></param>
+        public static void SafeDestroyImmediate(GameObject go)
+        {
+            if (go == null || !go)
+                return;
+            GameObject.DestroyImmediate(go);
         }
         #endregion
 
@@ -2625,7 +2635,7 @@ namespace SKCell
         }
 
         /// <summary>
-        /// Does the layerMask contains the given layer?
+        /// Does the layerMask contain the given layer?
         /// </summary>
         /// <param name="mask"></param>
         /// <param name="layer"></param>
@@ -2678,7 +2688,7 @@ namespace SKCell
         }
 
         /// <summary>
-        /// Get the has key of a transform. (only on windows)
+        /// Get the hash key of a transform. (only on windows)
         /// </summary>
         /// <param name="transform"></param>
         /// <returns></returns>
@@ -2710,7 +2720,7 @@ namespace SKCell
         /// <param name="planeNormal">Normal direction of the plane.</param>
         /// <param name="planePoint">A point on the plane.</param>
         /// <returns></returns>
-        public static Vector3 GetIntersectWithLineAndPlane(Vector3 point, Vector3 direct, Vector3 planeNormal, Vector3 planePoint)
+        public static Vector3 LineIntersectPlane(Vector3 point, Vector3 direct, Vector3 planeNormal, Vector3 planePoint)
         {
             float d = Vector3.Dot(planePoint - point, planeNormal) / Vector3.Dot(direct.normalized, planeNormal);
             return d * direct.normalized + point;
@@ -2795,7 +2805,8 @@ namespace SKCell
             if (n <= 1)
                 return false;
             int count = 0;
-            for (int i = 2; i <= Math.Sqrt(n); ++i)
+            float sq = (float)Math.Sqrt(n);
+            for (int i = 2; i <= sq; ++i)
             {
                 if (n % i != 0)
                     continue;

@@ -1,18 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// add by ggr at 2018/07/30
-/// UI层的粒子特效，能解决的问题：
-/// 1、粒子特效在滚动列表区外裁剪
-/// 2、粒子特效层级调整，即可以在夹在任意两个UI元素之间
-/// 3、不同分辨率的适配
-/// 使用：
-/// 主要是特效的美术人员使用。
-/// 1、在粒子系统的物体上挂上这个脚本
-/// 2、此时会禁用和清空粒子系统的 renderer 模块
-/// 3、把材质球拖到脚本上的material字段上
-/// </summary>
 [ExecuteInEditMode]
 [RequireComponent(typeof(CanvasRenderer), typeof(ParticleSystem))]
 public class UIParticleSystem : MaskableGraphic

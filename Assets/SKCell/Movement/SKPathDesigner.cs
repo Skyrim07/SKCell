@@ -138,7 +138,7 @@ namespace SKCell
             }
         }
         /// <summary>
-        /// Start movement along this path. Will restart if called during a movement.
+        /// Start movement along the path. Will restart if called during a movement.
         /// </summary>
         public void StartPath()
         {

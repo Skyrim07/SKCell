@@ -10,7 +10,7 @@ namespace SKCell
         #region Properties
         [Header("General Settings")]
         [Tooltip("Do not enable this unless you want this to update dynamically.")]
-        public bool updateOnPlay = false;
+        public bool updateOnPlay = true;
 
         [Header("Blend Mode")]
         public BlendMode srcBlend = BlendMode.SrcAlpha;

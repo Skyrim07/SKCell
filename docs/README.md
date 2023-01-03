@@ -3204,6 +3204,7 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 2022.12
 -	Reorganized the project
 -	Added full documentation
+-   Removed all third-party assets
 -   Removed ReplaceableMonoSingleton
 -   Removed MeshToPrefabUtils
 -   Removed Native Utilities

@@ -48,7 +48,7 @@ namespace ProjectWindowDetail
 			}
 		}
 
-		[MenuItem("Assets/Details...")]
+		[MenuItem("SKCell/File Details...")]
 		public static void Menu()
 		{
 			//Event.current.Use();

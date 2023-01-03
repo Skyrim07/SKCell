@@ -11,7 +11,7 @@ namespace SKCell
         private static Texture2D texture;
         private static string texturePath;
 
-        [MenuItem("SKCell/Sprite Colorer")]
+        [MenuItem("SKCell/Tools/Sprite Colorer")]
         public static void Initialize()
         {
             GetWindow<SKSpriteTools>("Sprite Colorer");
@@ -27,6 +27,12 @@ namespace SKCell
             {
                 AssignColor();
             }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("1. Find and drag the sprite in.");
+            EditorGUILayout.LabelField("2. Turn 'Read/Write' on.");
+            EditorGUILayout.LabelField("3.Set format to RGBA 32 bit.");
+            EditorGUILayout.LabelField("4.Choose a color to assign.");
         }
         public static void AssignColor()
         {

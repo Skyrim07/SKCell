@@ -26,10 +26,10 @@ namespace SKCell
         static List<LocalizedTextConfig> builtTextList = new List<LocalizedTextConfig>();
         static string[] textSubpageTitles = { "General", "Scene Titles", "Consumables", "Characters", "Player", "Feathers / Artifact", "Other Items", "Firefly Frontier" };
 
-        [MenuItem("SKCell/Localization/Localization ALL_IN_ONE")]
+        [MenuItem("SKCell/Localization Center")]
         public static void Initialize()
         {
-            SKLocalizationControlWindow window = GetWindow<SKLocalizationControlWindow>("Localization ALL_IN_ONE");
+            SKLocalizationControlWindow window = GetWindow<SKLocalizationControlWindow>("Localization Center");
             window.minSize = window.maxSize = new Vector2(1400, 600);
 
             //SKAssetLibrary.LocalizationAsset = null;

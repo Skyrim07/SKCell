@@ -4,16 +4,18 @@ namespace SKCell
 {
     public class SKHierarchyEditor : EditorWindow
     {
-        [MenuItem("SKCell/Hierarchy Editor")]
+        [MenuItem("SKCell/Hierarchy Style")]
         public static void ShowWindow()
         {
-            GetWindow<SKHierarchyEditor>("HierarchyEditor");
+            GetWindow<SKHierarchyEditor>("Hierarchy Style");
         }
         private void OnGUI()
         {
             SKHierarchy.backgroundColor = EditorGUILayout.ColorField("Background Color", SKHierarchy.backgroundColor);
-            SKHierarchy.selectionColor = EditorGUILayout.ColorField("Selection Color", SKHierarchy.selectionColor);
-            SKHierarchy.normalFontColor = EditorGUILayout.ColorField("Normal Text Color", SKHierarchy.normalFontColor);
+            SKHierarchy.highlightColor = EditorGUILayout.ColorField("Separator Color", SKHierarchy.highlightColor);
+
+            EditorGUILayout.Space();    
+            EditorGUILayout.LabelField("To make a separator, end the game object with a '-'.");
         }
     }
 }
