@@ -1,6 +1,6 @@
 # SKCell
 
-v0.11.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.12.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
