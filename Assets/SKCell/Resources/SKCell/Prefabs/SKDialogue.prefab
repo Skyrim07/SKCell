@@ -92,8 +92,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: SKButton
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d58bfaa59b2714143bc5caa5cc3f468a, type: 2}
+  m_sharedMaterial: {fileID: 1061119847380887156, guid: d58bfaa59b2714143bc5caa5cc3f468a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -964,74 +965,9 @@ MonoBehaviour:
   onDialogueEnded:
     m_PersistentCalls:
       m_Calls: []
-  curNode:
-    name: 
-    uid: 0
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    oRect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    type: 0
-    textType: 0
-    info:
-      content_localID: 0
-      speaker_localID: 0
-      content: <content>
-      speaker: <speaker>
-      avatar: {fileID: 0}
-      audio: {fileID: 0}
-    linkedNodesID: 
-    linkedFromNodesID: 
-    event_name: <event name>
-    event_arg0: 0
-    event_arg1: 0
-    int_property_name: <variable>
-    int_property_value: 0
-    if_property_name: <variable>
-    if_property_value: 0
-    if_comparator: 0
-  curSentence:
-    name: 
-    uid: 0
-    rect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    oRect:
-      serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
-    type: 0
-    textType: 0
-    info:
-      content_localID: 0
-      speaker_localID: 0
-      content: <content>
-      speaker: <speaker>
-      avatar: {fileID: 0}
-      audio: {fileID: 0}
-    linkedNodesID: 
-    linkedFromNodesID: 
-    event_name: <event name>
-    event_arg0: 0
-    event_arg1: 0
-    int_property_name: <variable>
-    int_property_value: 0
-    if_property_name: <variable>
-    if_property_value: 0
-    if_comparator: 0
+  onDialogueStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3001185912482607311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,8 +1433,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: SKButton
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d58bfaa59b2714143bc5caa5cc3f468a, type: 2}
+  m_sharedMaterial: {fileID: 1061119847380887156, guid: d58bfaa59b2714143bc5caa5cc3f468a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2116,8 +2053,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: SKButton
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d58bfaa59b2714143bc5caa5cc3f468a, type: 2}
+  m_sharedMaterial: {fileID: 1061119847380887156, guid: d58bfaa59b2714143bc5caa5cc3f468a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

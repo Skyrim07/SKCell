@@ -66,6 +66,18 @@ namespace SKCell
             ApplyLocalization(SKEnvironment.curLanguage);
         }
         /// <summary>
+        /// Change the localization ID to localID only.
+        /// </summary>
+        /// <param name="localID"></param>
+        public void UpdateLocalIDRaw(int localID)
+        {
+            if (!skLocal)
+            {
+                skLocal = CommonUtils.GetComponentNonAlloc<SKLocalization>(gameObject);
+            }
+            skLocal.localID = localID;
+        }
+        /// <summary>
         /// Update text to the current game language with one dynamic argument.
         /// </summary>
         /// <typeparam name="T"></typeparam>

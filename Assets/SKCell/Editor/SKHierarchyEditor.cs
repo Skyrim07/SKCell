@@ -12,7 +12,7 @@ namespace SKCell
         private void OnGUI()
         {
             SKHierarchy.backgroundColor = EditorGUILayout.ColorField("Background Color", SKHierarchy.backgroundColor);
-            SKHierarchy.highlightColor = EditorGUILayout.ColorField("Separator Color", SKHierarchy.highlightColor);
+            //SKHierarchy.highlightColor = EditorGUILayout.ColorField("Separator Color", SKHierarchy.highlightColor);
 
             EditorGUILayout.Space();    
             EditorGUILayout.LabelField("To make a separator, end the game object with a '-'.");

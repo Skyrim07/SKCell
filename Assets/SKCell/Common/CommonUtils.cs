@@ -1139,13 +1139,14 @@ namespace SKCell
         /// <param name="action">Action called per frame.</param>
         /// <param name="onFinish">Action called at the end of the procedure.</param>
         /// <param name="allowMultipleInstances">If false, previous procedures with the same name will be terminated.</param>
-        public static void StartProcedure(SKCurve curve, float startValue, float endValue, float timeParam, Action<float> action, Action<float> onFinish = null, bool allowMultipleInstances = false, string id = "")
+        public static Coroutine StartProcedure(SKCurve curve, float startValue, float endValue, float timeParam, Action<float> action, Action<float> onFinish = null, bool allowMultipleInstances = false, string id = "")
         {
             Coroutine cr = StartCoroutine(ProcedureCR(curve, startValue, endValue, timeParam, action, onFinish), allowMultipleInstances);
             if (id.Length > 0)
             {
                 InsertOrUpdateKeyValueInDictionary(procedureDict, id, cr);
             }
+            return cr;
         }
 
         /// <summary>
@@ -1155,13 +1156,14 @@ namespace SKCell
         /// <param name="action">Action called per frame.</param>
         /// <param name="onFinish">Action called at the end of the procedure.</param>
         /// <param name="id"></param>
-        public static void StartProcedure(SKCurve curve, float time, Action<float> action, Action<float> onFinish = null, string id = "")
+        public static Coroutine StartProcedure(SKCurve curve, float time, Action<float> action, Action<float> onFinish = null, string id = "")
         {
             Coroutine cr = StartCoroutine(ProcedureCR(curve, 0, 1, time, action, onFinish), true);
             if (id.Length > 0)
             {
                 InsertOrUpdateKeyValueInDictionary(procedureDict, id, cr);
             }
+            return cr;
         }
 
         /// <summary>
@@ -1175,13 +1177,14 @@ namespace SKCell
         /// <param name="onFinish">Action called at the end of the procedure.</param>
         /// <param name="lerpThreshold">Only in Lerp mode: the threshold of lerp operation.</param>
         /// <param name="allowMultipleInstances">If false, previous procedures with the same name will be terminated.</param>
-        public static void StartProcedure(ProcedureType type, float startValue, float endValue, float timeParam, Action<float> action, Action<float> onFinish = null, float lerpThreshold = 0.05f, bool allowMultipleInstances = false, string id = "")
+        public static Coroutine StartProcedure(ProcedureType type, float startValue, float endValue, float timeParam, Action<float> action, Action<float> onFinish = null, float lerpThreshold = 0.05f, bool allowMultipleInstances = false, string id = "")
         {
             Coroutine cr = StartCoroutine(ProcedureCR(type, startValue, endValue, timeParam, action, onFinish, lerpThreshold), allowMultipleInstances);
             if (id.Length > 0)
             {
                 InsertOrUpdateKeyValueInDictionary(procedureDict, id, cr);
             }
+            return cr;
         }
 
         /// <summary>

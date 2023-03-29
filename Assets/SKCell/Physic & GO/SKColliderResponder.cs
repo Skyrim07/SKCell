@@ -29,16 +29,16 @@ namespace SKCell
         public bool collision2D = true;
         #region Events
 
-        [SerializeField] UnityAction<Collider> onTriggerEnter = new UnityAction<Collider>(EmptyAction), 
+        public UnityAction<Collider> onTriggerEnter = new UnityAction<Collider>(EmptyAction), 
             onTriggerStay = new UnityAction<Collider>(EmptyAction),
             onTriggerExit = new UnityAction<Collider>(EmptyAction);
-        [SerializeField] UnityAction<Collision> onCollisionEnter = new UnityAction<Collision>(EmptyAction), 
+        public UnityAction<Collision> onCollisionEnter = new UnityAction<Collision>(EmptyAction), 
             onCollisionStay = new UnityAction<Collision>(EmptyAction), 
             onCollisionExit = new UnityAction<Collision>(EmptyAction);
-        [SerializeField] UnityAction<Collider2D> onTriggerEnter2D = new UnityAction<Collider2D>(EmptyAction), 
+        public UnityAction<Collider2D> onTriggerEnter2D = new UnityAction<Collider2D>(EmptyAction), 
             onTriggerStay2D = new UnityAction<Collider2D>(EmptyAction), 
             onTriggerExit2D = new UnityAction<Collider2D>(EmptyAction);
-        [SerializeField] UnityAction<Collision2D> onCollisionEnter2D = new UnityAction<Collision2D>(EmptyAction),
+        public UnityAction<Collision2D> onCollisionEnter2D = new UnityAction<Collision2D>(EmptyAction),
             onCollisionStay2D = new UnityAction<Collision2D>(EmptyAction), 
             onCollisionExit2D = new UnityAction<Collision2D>(EmptyAction);
 

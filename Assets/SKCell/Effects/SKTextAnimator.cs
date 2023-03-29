@@ -110,6 +110,13 @@ namespace SKCell
         /// <param name="s"></param>
         public void UpdateText(string s)
         {
+            if (!text)
+                return;
+            if (!useTypeWriter && !useInlineEffects)
+            {
+                text.SetText(s);
+            }
+
             Color32 oColor = text.color.ToColor32();
             float oa = text.alpha;
 
@@ -118,7 +125,7 @@ namespace SKCell
 
             ParseText();
             SKTextUtils.StopAllRoutines(text);
-            CommonUtils.InvokeAction(0.1f, () =>
+            CommonUtils.InvokeAction(0.05f, () =>
             {
                 ApplyParsedText();
                 skAnim.UpdateTextDataColor(oColor);
@@ -427,7 +434,10 @@ namespace SKCell
         }
         private void ApplyEffects()
         {
-            //skAnim.UpdateTextInfo();
+            if (!useInlineEffects)
+            {
+                return;
+            }
             foreach (SKTextAnimSemantics anim in anims)
             {
                 ApplyEffect(anim);

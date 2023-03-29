@@ -3201,15 +3201,27 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 ## Dev Log
 
+<b>v0.12.x</b>								  
+2023.3
+-	Added SKSpriteEditor
+-	Added 4 tools to SKSpriteEditor: select, brush, eraser, color picker
+-   Added 5 utilities to SKSpriteEditor: brightness, saturation, contrast, color erase, gaussian blur
+-   Optimized SKHierarchy, updated appearance
+
+
 <b>v0.11.x</b>								  
 2022.12
--	Reorganized the project
+-	Reorganized project
 -	Added full documentation
 -   Removed all third-party assets
 -   Removed ReplaceableMonoSingleton
 -   Removed MeshToPrefabUtils
 -   Removed Native Utilities
 -   Bug fixes
+    <br>0.11.1
+    - Fixed issues with SKColliderResponder
+    - Added return value of Tweening functions
+    - Added API for SKPathDesigner
 
 <b>v0.10.x</b>								  
 2022.9

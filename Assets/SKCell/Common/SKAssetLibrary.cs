@@ -122,6 +122,42 @@ namespace SKCell
                 return texture_Logo;
             }
         }
+        private static Texture texture_solid_circle;
+        public static Texture Texture_Solid_Circle
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (texture_solid_circle == null)
+                    texture_solid_circle = AssetDatabase.LoadAssetAtPath<Texture>(TEXTURE_ASSET_PATH + "/solid.png");
+#endif
+                return texture_solid_circle;
+            }
+        }
+        private static Texture texture_smooth_circle;
+        public static Texture Texture_Smooth_Circle
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (texture_smooth_circle == null)
+                    texture_smooth_circle = AssetDatabase.LoadAssetAtPath<Texture>(TEXTURE_ASSET_PATH + "/smooth.png");
+#endif
+                return texture_smooth_circle;
+            }
+        }
+        private static Texture texture_alpha_circle;
+        public static Texture Texture_Alpha_Circle
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (texture_alpha_circle == null)
+                    texture_alpha_circle = AssetDatabase.LoadAssetAtPath<Texture>(TEXTURE_ASSET_PATH + "/alpha_circle.png");
+#endif
+                return texture_alpha_circle;
+            }
+        }
         private static Texture texture_Conv_Bubble;
         public static Texture Texture_Conv_Bubble
         {
@@ -182,6 +218,18 @@ namespace SKCell
                 if (envAsset == null)
                     envAsset = Resources.Load<SKEnvironmentAsset>(ENV_ASSET_PATH.Substring(ENV_ASSET_PATH.IndexOf("SKCell")));
                 return envAsset;
+            }
+        }
+        private static Material spriteEditor_mat;
+        public static Material SpriteEditorMat
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (spriteEditor_mat == null)
+                    spriteEditor_mat = AssetDatabase.LoadAssetAtPath<Material>(TEXTURE_ASSET_PATH + "/SpriteEditor.mat");
+#endif
+                return spriteEditor_mat;
             }
         }
         private static Material gridCellMat;

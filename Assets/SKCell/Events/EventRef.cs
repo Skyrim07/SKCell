@@ -37,6 +37,7 @@ namespace SKCell
         public static readonly int PLAYER_ON_DIE = 2202;
 
         //Combat Module
+        public static readonly int PLAYER_ON_DEAD = 2300;
         public static readonly int PLAYER_ON_ATTACK_FINISH = 2301;
         public static readonly int PLAYER_ON_ATTACK_MOVEMENT_START = 2302;
         public static readonly int PLAYER_ON_ATTACK_MOVEMENT_END = 2303;
@@ -49,7 +50,8 @@ namespace SKCell
 
         //~4000
         #region Combat
-
+        public static readonly int COMBAT_PLAYER_INJURED_NORMAL = 4001;
+        public static readonly int COMBAT_PLAYER_INJURED_SEVERE = 4002;
         #endregion
 
         //~5000

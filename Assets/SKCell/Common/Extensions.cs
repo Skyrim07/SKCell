@@ -328,6 +328,10 @@ namespace SKCell
         {
             return color.r * 0.2125f + color.g * 0.7154f + color.b * 0.0721f;
         }
+        public static Color Saturate(this Color color)
+        {
+            return new Color(Mathf.Clamp01(color.r), Mathf.Clamp01(color.g), Mathf.Clamp01(color.b), Mathf.Clamp01(color.a));
+        }
         #endregion
 
         #region BaseExt

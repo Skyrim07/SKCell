@@ -42,7 +42,7 @@ namespace SKCell
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="id"></param>
-        public static bool AddListener(EventHandler handler, int id, SJEvent t_event)
+        public static bool AddListener(EventHandler handler, int id, SKEvent t_event)
         {
             if (handler == null)
             {
@@ -58,7 +58,7 @@ namespace SKCell
         /// </summary>
         /// <param name="handler"></param>
         /// <param name="id"></param>
-        public static bool RemoveListener(EventHandler handler, int id, SJEvent t_event)
+        public static bool RemoveListener(EventHandler handler, int id, SKEvent t_event)
         {
             if (handler == null)
             {

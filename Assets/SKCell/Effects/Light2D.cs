@@ -6,9 +6,9 @@ using UnityEngine;
 public sealed class Light2D : MonoBehaviour
 {
     public int rayCount = 10;
-    [Range(0.2f,5f)]
+    [Range(0.2f,50f)]
     public float radius = 1;
-    [Range(0.5f, 10f)]
+    [Range(0.1f, 10f)]
     public float fadePower = 4;
     public Color color;
 

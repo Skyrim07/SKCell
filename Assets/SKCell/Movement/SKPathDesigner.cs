@@ -181,11 +181,24 @@ namespace SKCell
             UpdateDistances();
             UpdateBezier();
         }
-
+        /// <summary>
+        /// Get the world position evaluated at time t (0-1) on the path.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public Vector3 Evaluate(float t)
+        {
+            return GetNormalizedWPosition(t);
+        }
         public Vector3 GetNormalizedWPosition()
         {
             return GetNormalizedWPosition(normalizedTime);
         }
+        /// <summary>
+        /// Get the world position evaluated at time t (0-1) on the path.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
         public Vector3 GetNormalizedWPosition(float t)
         {
             if (waypoints.Count == 0)

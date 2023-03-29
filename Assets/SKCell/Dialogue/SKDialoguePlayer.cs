@@ -115,7 +115,6 @@ namespace SKCell
         }
         private void ExecuteNode(SKDialogueEditorNode node)
         {
-            //print("execute node: " + node.name);
             curNode = node;
             switch (node.type)
             {

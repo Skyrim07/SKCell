@@ -57,6 +57,9 @@ namespace SKCell {
                     return;
                 }
             }
+            if (_materal == null)
+                return;
+
             _materal.SetFloat("_Value", value);
             if(image)
             _materal.SetColor("_Color", image.color);
