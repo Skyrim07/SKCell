@@ -15,9 +15,6 @@ namespace SKCell
 
         private const string CSVPATH = "CSV";
 
-        /// <summary>
-        /// 添加CSV表.
-        /// </summary>
         public void LoadTable()
         {
             List<string> tableList = new List<string>();
@@ -34,7 +31,7 @@ namespace SKCell
                 }
             }
             CommonUtils.EditorLogNormal("CSV Table count:" + tableList.Count);
-            TableAgent.instance.Add(tableList);
+            SKCSVReader.instance.Add(tableList);
         }
     }
 }

@@ -89,13 +89,13 @@ namespace SKCell
         }
         private IEnumerator SimpleActionCoroutine(float seconds, Action callback, int repeatCount = 0, float repeatInterval = 1, bool unlimited =false, Action onFinish=null)
         {
-            yield return new WaitForSeconds(seconds);
+            yield return new WaitForSecondsRealtime(seconds);
             callback.Invoke();
             for (int i = 0; i < repeatCount; i++)
             {
                 if (unlimited)
                     i = 0;
-                yield return new WaitForSeconds(repeatInterval);
+                yield return new WaitForSecondsRealtime(repeatInterval);
                 callback.Invoke();
             }
             if (onFinish != null)

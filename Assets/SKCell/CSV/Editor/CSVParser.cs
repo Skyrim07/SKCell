@@ -23,7 +23,6 @@ namespace SKCell
 
         private static Dictionary<string, List<List<string>>> _tables = new Dictionary<string, List<List<string>>>();
 
-        private static DirectoryInfo TheFolder = new DirectoryInfo("Table/");
         private static Regex _tableNameRegex = new Regex(@"\(([^>])+\)");
 
         [MenuItem("SKCell/Build CSV Files")]

@@ -15,6 +15,11 @@ namespace SKCell
 
         public static readonly int CM_ON_SCENE_LOADED = 1100;
         public static readonly int CM_ON_SCENE_EXIT = 1101;
+        public static readonly int CM_ON_GAME_PAUSE = 1102;
+
+        //File
+        public static readonly int CM_ON_SAVE = 1201;
+        public static readonly int CM_ON_LOAD = 1202;
         #endregion
 
         //~2000
@@ -37,27 +42,59 @@ namespace SKCell
         public static readonly int PLAYER_ON_DIE = 2202;
 
         //Combat Module
-        public static readonly int PLAYER_ON_DEAD = 2300;
-        public static readonly int PLAYER_ON_ATTACK_FINISH = 2301;
-        public static readonly int PLAYER_ON_ATTACK_MOVEMENT_START = 2302;
-        public static readonly int PLAYER_ON_ATTACK_MOVEMENT_END = 2303;
+        public static readonly int PLAYER_ON_HEALTH_DEPLETED = 2300;
+        public static readonly int PLAYER_ON_SANITY_DEPLETED = 2301;
+        public static readonly int PLAYER_ON_ATTACK_FINISH = 2302;
+        public static readonly int PLAYER_ON_ATTACK_MOVEMENT_START = 2303;
+
+
+        public static readonly int PLAYER_ON_ATTACK_MOVEMENT_END = 2310;
+
+
+
         #endregion
 
         //~3000
         #region Item
+        public static readonly int PLAYER_ON_USE_ITEM = 3000;
+        public static readonly int FEATHER_ON_EQUIP = 3100;
+        public static readonly int FEATHER_ON_UNEQUIP = 3101;
+        public static readonly int FEATHER_MAIN_ON_REPLENISH = 3102;
 
+        public static readonly int SANITY_CARD_ON_ACTIVATE = 3200;
+        public static readonly int SANITY_CARD_ON_ACQUIRE = 3201;
+        public static readonly int SANITY_CARD_ON_EQUIP = 3202;
+        public static readonly int SANITY_CARD_ON_UNEQUIP = 3203;
+        public static readonly int SANITY_CARD_ON_PROGRESS_CHANGE = 3205;
         #endregion
 
         //~4000
         #region Combat
         public static readonly int COMBAT_PLAYER_INJURED_NORMAL = 4001;
         public static readonly int COMBAT_PLAYER_INJURED_SEVERE = 4002;
+        public static readonly int COMBAT_PLAYER_HEALED = 4003;
+        public static readonly int COMBAT_PLAYER_SAN_INJURED_NORMAL = 4004;
+        public static readonly int COMBAT_PLAYER_SAN_HEALED = 4006;
+
+
+        public static readonly int COMBAT_FEATHER_SKILL_USED = 4100;
+        public static readonly int COMBAT_FEATHER_SKILL_ON_FAIL = 4101;
+
+        public static readonly int COMBAT_ON_ENEMY_DEFEATED = 4200;
+        public static readonly int COMBAT_ON_ENEMY_SAN_ZERO = 4201;
         #endregion
 
         //~5000
         #region UI
+        public static readonly int UI_ON_MAIN_PANEL_OPEN = 5000;
+        public static readonly int UI_ON_MAIN_PANEL_CLOSE = 5001;
+
+
         public static readonly int UI_CONV_ON_NEXT_SENTENCE = 5100;
         public static readonly int UI_CONV_ON_SELECT_OPTION = 5101;
+
+        public static readonly int UI_ON_RESTPOINT_OPEN = 5110;
+        public static readonly int UI_ON_RESTPOINT_CLOSE = 5111;
         #endregion
 
         //~6000
@@ -76,6 +113,7 @@ namespace SKCell
         public static readonly int CONSOLE_ON_CLOSE = 9002;
 
         #endregion
+
     }
 }
 

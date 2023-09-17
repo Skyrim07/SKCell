@@ -10,6 +10,8 @@ namespace SKCell
         public static Dictionary<TMP_Text, List<string>> CRids = new Dictionary<TMP_Text, List<string>>(); // all coroutine id's
         public static Dictionary<TMP_Text, List<string>> PRids = new Dictionary<TMP_Text, List<string>>(); // all procedure id's
         public static Dictionary<TMP_Text, List<string>> ARids = new Dictionary<TMP_Text, List<string>>(); // all plain coroutine id's
+
+        public static float WAVE_AMPLITUDE = 13.0f;
         private static string GetAndAddCRID(TMP_Text text)
         {
             int r = Random.Range(0, 999999);
@@ -225,7 +227,7 @@ namespace SKCell
             {
                 if (start + index > end)
                     return;
-                Anim_Translation_Ping_Pong(text, data, start+index, start + index, Vector3.up*amplitude*13, timePerChar*2, SKCurve.LinearIn);
+                Anim_Translation_Ping_Pong(text, data, start+index, start + index, Vector3.up*amplitude* WAVE_AMPLITUDE, timePerChar*2, SKCurve.LinearIn);
                 index++;
             }, data.charData.Length - 1, timePerChar * interval, GetAndAddCRID(text));
         }
@@ -240,7 +242,7 @@ namespace SKCell
                 {
                     if (start + index > end)
                         return;
-                    Anim_Translation_Ping_Pong(text, data, start + index, start + index, Vector3.up * amplitude * 13, timePerChar * 2, SKCurve.LinearIn);
+                    Anim_Translation_Ping_Pong(text, data, start + index, start + index, Vector3.up * amplitude * WAVE_AMPLITUDE, timePerChar * 2, SKCurve.LinearIn);
                     index++;
                 }, data.charData.Length - 1, timePerChar * interval, GetAndAddCRID(text));
             }, timePerChar*5, GetAndAddCRID(text));
@@ -294,7 +296,7 @@ namespace SKCell
                 for (int i = 0; i < 4; i++)
                 {
                     int index = i;
-                    CommonUtils.StartProcedure(curve, interval, (f) =>
+                    CommonUtils.StartProcedureUnscaled(curve, interval, (f) =>
                     {
                         data.shake_translation = Vector3.Lerp(data.vertices[index], diff + data.oVertices[index], 0.2f) - data.oVertices[index];
                         UpdateCharVertexPos(data);
@@ -310,7 +312,7 @@ namespace SKCell
                 for (int i = 0; i < 4; i++)
                 {
                     int index = i;
-                    CommonUtils.StartProcedure(curve, time, (f) =>
+                    CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
                     {
                         data.shake_translation = Vector3.Lerp(data.translation, Vector3.zero, 0.2f);
                         UpdateCharVertexPos(data);
@@ -363,7 +365,7 @@ namespace SKCell
             //fade in
             CommonUtils.InvokeActionUnlimited(0, () =>
             {
-                CommonUtils.StartProcedure(curve, interval, (f) =>
+                CommonUtils.StartProcedureUnscaled(curve, interval, (f) =>
                 {
                     for (int i = 0; i < 4; i++)
                     {
@@ -374,7 +376,7 @@ namespace SKCell
                 }, (f) =>
                 {
                     //fade in
-                    CommonUtils.StartProcedure(curve, interval, (f) =>
+                    CommonUtils.StartProcedureUnscaled(curve, interval, (f) =>
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -513,7 +515,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Rotation_Char(TMP_Text text, SKTextCharData data, float angle, float time, SKCurve curve, Vector3 center)
         {
-            CommonUtils.StartProcedure(curve, time, (f) =>
+            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 RotateCharVertices(data, angle * f, center);
                 UpdateCharData(data, text);
@@ -531,6 +533,7 @@ namespace SKCell
         {
             for (int i = 0; i < 4; i++)
             {
+                if (data == null) return;
                 data.translation = delta;
             }
             UpdateCharVertexPos(data);
@@ -570,6 +573,8 @@ namespace SKCell
             SKTextCharData[] chars = new SKTextCharData[len];
             for (int i = 0; i < len; i++)
             {
+                if (start + i >= data.charData.Length || i>=chars.Length || i< 0 ||start+i<0)
+                    continue;
                 chars[i] = data.charData[start + i];
             }
             int index = 0;
@@ -587,7 +592,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Translation_Char(TMP_Text text, SKTextCharData data, Vector3 delta, float time, SKCurve curve)
         {
-            CommonUtils.StartProcedure(curve, time, (f) =>
+            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 TranslateCharVertices(data, delta * f);
                 UpdateCharData(data, text);
@@ -681,7 +686,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Color_Char(TMP_Text text, SKTextCharData data, Color32 color, float time, SKCurve curve, bool typewriter = false, SKTextAnimation anim=null, SKTextData textData=null)
         {
-            CommonUtils.StartProcedure(curve, time, (f) =>
+            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 AlphaCharVertices(data, Color32.Lerp(data.oColors32[0], color, f), typewriter);
                 UpdateCharData(data, text);
@@ -791,7 +796,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Scaling_Char(TMP_Text text, SKTextCharData data, float scale, float time, SKCurve curve)
         {
-            CommonUtils.StartProcedure(curve, time, (f) =>
+            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 ScaleCharVertices(data, 1 + (scale - 1) * f);
                 UpdateCharData(data, text);

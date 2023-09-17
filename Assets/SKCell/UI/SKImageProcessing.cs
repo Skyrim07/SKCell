@@ -24,6 +24,9 @@ namespace SKCell
         [Range(-2, 0)]
         public float alphaSmooth = 0;
 
+        [Header("Alpha Mask")]
+        public Texture2D alphaMask;
+
         [Header("Color Properties")]
         [Range(0, 1)]
         public float colorShift = 1;
@@ -89,6 +92,8 @@ namespace SKCell
             _Material.SetFloat("_Saturation", saturation);
             _Material.SetFloat("_Contrast", contrast);
             _Material.SetFloat("_Hue", colorShift);
+
+            _Material.SetTexture("_AlphaMask", alphaMask);
 
             _Material.SetInt("_ShowOutline", CommonUtils.BoolToInt(active));
             _Material.SetFloat("_EdgeAlphaThreshold", rimAlphaThreshold);

@@ -12,6 +12,7 @@ Shader "SKCell/ImageEffects"
         Tags { "RenderType"="Transparent" "Queue"="Transparent"}
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
+        Cull Off
 
         Pass
         {

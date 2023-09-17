@@ -12,7 +12,7 @@ namespace SKCell
         public static Color BEZIER_CONTROL_COLOR = new Color(0.6f, 1f, 7f, 0.6f);
 
         public static float BUTTON_DROPDOWN_DIST = 2;
-        SKPathDesigner translator;
+        static SKPathDesigner translator;
 
         public static GUIStyle timeguiStyle = new GUIStyle();
         public static GUIStyle normalguiStyle = new GUIStyle();
@@ -96,6 +96,7 @@ namespace SKCell
                 wp.bezier.p1 = wp.localPosition + Vector3.right;
                 wp.bezier.p2 = wp.localPosition + Vector3.right*2;
                 translator.AddWaypoint(wp);
+                EditorUtility.SetDirty(translator);
                 SKTranslatorPreview.NewPreview(translator);
             }
             GUI.contentColor = Color.white;
@@ -140,6 +141,7 @@ namespace SKCell
             if (delete >= 0)
             {
                 translator.DeleteWaypoint(delete);
+                EditorUtility.SetDirty(translator);
                 SKTranslatorPreview.NewPreview(translator);
                 delete = -1;
             }
@@ -238,10 +240,10 @@ namespace SKCell
                     translator.UpdateDistances();
                     translator.UpdateBezier();
                 }
-
                 SKTranslatorPreview.preview[i].transform.position = newWPos;
                 Handles.Label(newWPos, $"{i}, wait {translator.waypoints[i].stayTime.ToString("f1")} s", normalguiStyle);
             }
+            EditorUtility.SetDirty(translator);
             Handles.Label(translator.transform.position+Vector3.down, $"wait {translator.selfWaitTime.ToString("f1")} s", normalguiStyle);
             Vector3 normPos = translator.GetNormalizedWPosition();
             if(SKTranslatorPreview.timePreview)

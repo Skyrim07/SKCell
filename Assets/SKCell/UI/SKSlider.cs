@@ -188,8 +188,9 @@ namespace SKCell
                     else
                         progressText.UpdateTextDirectly($"{(fill.fillAmount * totalValue).ToString("f0")} / {totalValue}");
                     UpdateTextColor();
-                    UpdateFillColor();
+
                 }
+                UpdateFillColor();
                 yield return new WaitForFixedUpdate();
             }
             fill.fillAmount = value;
@@ -197,8 +198,9 @@ namespace SKCell
             {
                 SyncText(value);
                 UpdateTextColor();
-                UpdateFillColor();
+
             }
+            UpdateFillColor();
         }
         private IEnumerator LerpLatentFill(float lerpSpeed, float threshold)
         {

@@ -4,6 +4,7 @@ Shader "SKCell/ImageProcessing"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_AlphaMask ("AlphaMask", 2D) = "white" {}
 		_Color ("Color", color) =(1,1,1,1)
 		_AlphaLX("RangeAlphaLX",Range(0,2)) = 0
 		_AlphaRX("RangeAlphaRX",Range(-1,1)) = 1
@@ -54,6 +55,7 @@ Shader "SKCell/ImageProcessing"
 			};
 
 			sampler2D _MainTex;
+			sampler2D _AlphaMask;
 			float4 _MainTex_ST;
 			float4 _MainTex_TexelSize;
 			fixed4 _Color;
@@ -148,7 +150,7 @@ Shader "SKCell/ImageProcessing"
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 col = SampleSpriteTexture(i.uv) * i.color ;
+				float4 col = SampleSpriteTexture(i.uv) * i.color ;
 
 				//Hue
 				fixed3 hsv = rgb2hsv(col.rgb);
@@ -167,7 +169,7 @@ Shader "SKCell/ImageProcessing"
 			    col = fixed4(lerp(grey, col.rgb, _Contrast), col.a);
 
 				//Brightness
-				col= fixed4(col.rgb*_Brightness, col.a);
+				col= float4(col.rgb*_Brightness, col.a);
 
 				//Outline
 				if(_ShowOutline==1){
@@ -176,9 +178,9 @@ Shader "SKCell/ImageProcessing"
 					float damp = saturate((alphaSum - _EdgeAlphaThreshold) * _EdgeDampRate);
 
 					float isOrigon = col.a > _BaseAlphaThreshold;
-					fixed3 finalColor = lerp(_EdgeColor.rgb, col.rgb, isOrigon);
+					float3 finalColor = lerp(_EdgeColor.rgb, col.rgb, isOrigon);
  
-					col= fixed4(finalColor.rgb, isNeedShow * damp);
+					col= float4(finalColor.rgb, isNeedShow * damp);
 					}
 			    //Alpha Fade
 				fixed alphalx = col.a * lerp(1,_AlphaPower,(_AlphaLX-i.uv.x));
@@ -193,7 +195,13 @@ Shader "SKCell/ImageProcessing"
 				fixed alphaty = col.a * lerp(1,_AlphaPower,(i.uv.y-_AlphaTY));
 				col.a = saturate(lerp(col.a,alphaty,step(_AlphaTY,i.uv.y)));
 
-				fixed4 resColor= col;
+				//Alpha Mask
+				fixed ma = tex2D(_AlphaMask, i.uv).a;
+				col.a *= ma;
+
+				float4 resColor= col;
+
+
 
 				return resColor;
 			}

@@ -491,11 +491,14 @@ namespace SKCell
         }
         public void UpdateTextInfo(string s)
         {
+            if(text)
             textInfo = text.GetTextInfo(s);
             InitializeData();
         }
         public void UpdateTextDataColor(Color32 c)
         {
+            if (textData == null)
+                return;
             for (int i = 0; i < textData.charData.Length; i++)
             {
                 for (int x = 0; x < 4; x++)

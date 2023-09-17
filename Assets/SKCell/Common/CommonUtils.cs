@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
 // SKCell - Unity Framework & Utilitiies
-// Copyright © 2019-2022 Pincun (Alex) Liu. All rights reserved.
+// Copyright © 2019-2023 Pincun (Alex) Liu. All rights reserved.
 //------------------------------------------------------------
 
 using System;
@@ -1071,7 +1071,7 @@ namespace SKCell
 
         #region CoroutineUtils
         /// <summary>
-        /// Invokes an action after time seconds, then repeatedly every repeatInterval seconds, stopping at repeatCount times.
+        /// Invokes an action after time seconds, then repeatedly every repeatInterval seconds, stopping at repeatCount times. Using unscaled time.
         /// </summary>
         /// <param name="seconds"></param>
         /// <param name="callback"></param>
@@ -1165,7 +1165,22 @@ namespace SKCell
             }
             return cr;
         }
-
+        /// <summary>
+        /// Starts a continuous procedure where a variable changes from 0 to 1 over time. Tweening.
+        /// </summary>
+        /// <param name="curve">Curve of the procedure.</param>
+        /// <param name="action">Action called per frame.</param>
+        /// <param name="onFinish">Action called at the end of the procedure.</param>
+        /// <param name="id"></param>
+        public static Coroutine StartProcedureUnscaled(SKCurve curve, float time, Action<float> action, Action<float> onFinish = null, string id = "")
+        {
+            Coroutine cr = StartCoroutine(ProcedureCRUnscaled(curve, 0, 1, time, action, onFinish), true);
+            if (id.Length > 0)
+            {
+                InsertOrUpdateKeyValueInDictionary(procedureDict, id, cr);
+            }
+            return cr;
+        }
         /// <summary>
         /// [Legacy] Starts a continuous procedure where a variable changes over time. Tweening.
         /// </summary>
@@ -1230,26 +1245,41 @@ namespace SKCell
             if (onFinish != null)
                 onFinish.Invoke(variable);
         }
+
+        static WaitForFixedUpdate waitFixedUpdate = new WaitForFixedUpdate();
         private static IEnumerator ProcedureCR(SKCurve curve, float startValue, float endValue, float timeParam, Action<float> action, Action<float> onFinish)
         {
             float step = timeParam / Time.fixedDeltaTime;
             float diff = endValue - startValue;
             float variable;
-            for (int i = 0; i <= step; i++)
+            for (int i = 0; i < step; i++)
             {
                 variable = startValue + (SKCurveSampler.SampleCurve(curve, i / step)) * diff;
-                if (action != null)
-                    action.Invoke(variable);
+                action?.Invoke(variable);
 
-                yield return new WaitForFixedUpdate();
+                yield return waitFixedUpdate;
             }
-            variable = curve.curveDir==CurveDir.In? endValue:startValue;
-            if (action != null)
-                action.Invoke(variable);
-            if (onFinish != null)
-                onFinish.Invoke(variable);
+            variable = curve.curveDir == CurveDir.In ? endValue : startValue;
+            action?.Invoke(variable);
+            onFinish?.Invoke(variable);
         }
+        static WaitForSecondsRealtime waitTick = new WaitForSecondsRealtime(0.015f);
+        private static IEnumerator ProcedureCRUnscaled(SKCurve curve, float startValue, float endValue, float timeParam, Action<float> action, Action<float> onFinish)
+        {
+            float step = timeParam / 0.015f;
+            float diff = endValue - startValue;
+            float variable;
+            for (int i = 0; i < step; i++)
+            {
+                variable = startValue + (SKCurveSampler.SampleCurve(curve, i / step)) * diff;
+                action?.Invoke(variable);
 
+                yield return new WaitForSecondsRealtime(0.015f); ;
+            }
+            variable = curve.curveDir == CurveDir.In ? endValue : startValue;
+            action?.Invoke(variable);
+            onFinish?.Invoke(variable);
+        }
         /// <summary>
         /// Starts a coroutine.
         /// </summary>
@@ -1267,8 +1297,8 @@ namespace SKCell
                 }
                 InsertOrUpdateKeyValueInDictionary(crDict, nameof(cr), cr);
             }
-            if(id.Length>0)
-            InsertOrUpdateKeyValueInDictionary(crDict, id, cr);
+            if (id.Length > 0)
+                InsertOrUpdateKeyValueInDictionary(crDict, id, cr);
             return SKCommonTimer.instance.StartCoroutine(cr);
         }
 
@@ -1341,7 +1371,7 @@ namespace SKCell
         /// <returns></returns>
         public static T[] Serialize2DArray<T>(T[,] arr)
         {
-           
+
             int length1 = arr.GetLength(0);
             int length2 = arr.GetLength(1);
             T[] res = new T[length1 * length2];
@@ -1393,7 +1423,7 @@ namespace SKCell
             }
             return res;
         }
-        
+
         /// <summary>
         /// Modify the length of an array. Existing data will be preserved.
         /// </summary>
@@ -1981,7 +2011,7 @@ namespace SKCell
                 {
                     if (list[j] > list[j + 1])
                     {
-                        SwapValueInArray(list, j, j+1);
+                        SwapValueInArray(list, j, j + 1);
                         flag = false;
                     }
                 }
@@ -2911,7 +2941,7 @@ namespace SKCell
         {
             return c.r * 0.2125f + c.g * 0.7154f + c.b * 0.0721f;
         }
-        
+
         #endregion
     }
 

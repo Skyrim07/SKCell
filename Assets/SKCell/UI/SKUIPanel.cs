@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
@@ -26,11 +27,14 @@ namespace SKCell
         [Range(0f,2f)]
         public float leafActivationLag = 0f;
 
+        public Action<bool> onStateChanged;
+
         private Dictionary<int, SKUIPanel> leafPanelDict = new Dictionary<int, SKUIPanel>();
         private SKUIAnimation anim;
 
         private void Awake()
         {
+            onStateChanged += (b) => { };
             anim = CommonUtils.GetComponentNonAlloc<SKUIAnimation>(gameObject);
             if (rootPanel != null)
             {
@@ -38,8 +42,6 @@ namespace SKCell
             }
             InitializeDictionary();
             InitializeState();
-          //  Invoke("InitializeDictionary", 0.1f);
-         //   Invoke("InitializeState", 0.2f);
         }
        
         #region Methods
@@ -58,7 +60,17 @@ namespace SKCell
                 OnPanelDeactivated();
             }
         }
-
+        public void SetState(bool appear)
+        {
+            if (appear)
+            {
+                OnPanelActivated();
+            }
+            else
+            {
+                OnPanelDeactivated();
+            }
+        }
         /// <summary>
         /// Activate the given leaf panel.
         /// </summary>
@@ -117,15 +129,23 @@ namespace SKCell
         #region Virtual Events
         public virtual void OnPanelActivated()
         {
+            if (active)
+                return;
+
             active = true;
             if(anim)
             anim.SetState(true);
+            onStateChanged(true);
         }
         public virtual void OnPanelDeactivated()
         {
+            if (!active)
+                return;
+
             active = false;
             if (anim)
                 anim.SetState(false);
+            onStateChanged(false);
         }
         /// <summary>
         /// Called by SKUIPanelManager when instantiated

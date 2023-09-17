@@ -65,13 +65,13 @@ public class UIParticleSystem : MaskableGraphic
             }
 
             currentMaterial = material;
-            if (currentMaterial && currentMaterial.HasProperty("_MainTex"))
-            {
-                currentTexture = currentMaterial.mainTexture;
-                if (currentTexture == null)
-                    currentTexture = Texture2D.whiteTexture;
-            }
-            material = currentMaterial;
+            //if (currentMaterial && currentMaterial.HasProperty("_MainTex"))
+            //{
+            //    currentTexture = currentMaterial.mainTexture;
+            //    if (currentTexture == null)
+            //        currentTexture = Texture2D.whiteTexture;
+            //}
+            //material = currentMaterial;
             // automatically set scaling
             mainModule.scalingMode = ParticleSystemScalingMode.Hierarchy;
 
@@ -278,7 +278,7 @@ public class UIParticleSystem : MaskableGraphic
         {
             if (fixedTime)
             {
-                pSystem.Simulate(Time.unscaledDeltaTime, false, false, true);
+                pSystem.Simulate(Time.unscaledDeltaTime, false, false, false);
                 SetAllDirty();
                 if ((currentMaterial != null && currentTexture != currentMaterial.mainTexture) ||
                     (material != null && currentMaterial != null && material.shader != currentMaterial.shader))

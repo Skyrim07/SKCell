@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5aab6502f5aa6469209ff91b9e79f2, type: 3}
   m_Name: SKFontAsset
   m_EditorClassIdentifier: 
-  fontList: []
+  fontList:
+  - {fileID: 11400000, guid: e741a0d959f7af54d9c12f3e0e841177, type: 2}
+  - {fileID: 11400000, guid: 55f9b011830c73047872129c0d304fed, type: 2}

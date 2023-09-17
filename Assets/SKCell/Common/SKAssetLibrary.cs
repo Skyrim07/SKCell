@@ -76,14 +76,16 @@ namespace SKCell
         {
             get
             {
+                //if (fontAsset == null)
+                fontAsset = Resources.Load<SKFontAsset>("SKCell/SKFontAsset");
+                if(fontAsset!=null)
+                    return fontAsset;
 #if UNITY_EDITOR
                 if (fontAsset == null)
                     fontAsset = AssetDatabase.LoadAssetAtPath<SKFontAsset>(FONT_ASSET_PATH);
-#endif
-
-                if (fontAsset == null)
-                    fontAsset = Resources.Load<SKFontAsset>(FONT_ASSET_PATH.Substring(FONT_ASSET_PATH.IndexOf("SKCell")));
                 return fontAsset;
+#endif
+                return null;
             }
         }
         private static Font defaultFont;

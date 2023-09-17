@@ -13,7 +13,7 @@ namespace SKCell
         public Color additiveColor = Color.black;
         public Color multiplicativeColor = Color.white;
 
-        [Range(0, 30)]
+        [Range(0, 20)]
         public float blur = 5;
 
         #endregion

@@ -71,7 +71,8 @@ namespace SKCell
         {
             if (dict.ContainsKey(id))
             {
-                dict[id].action -= t_event.action;
+                if(dict[id].action!=null)
+                    dict[id].action -= t_event.action;
                 return true;
             }
             else

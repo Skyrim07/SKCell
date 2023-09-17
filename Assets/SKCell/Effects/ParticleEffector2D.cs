@@ -6,30 +6,95 @@ namespace SKCell {
     [RequireComponent(typeof(Collider2D))]
     public sealed class ParticleEffector2D : MonoBehaviour
     {
+        public ParticleEffector2DMode mode = ParticleEffector2DMode.SpawnRelease;
         public string colliderTag;
-        public GameObject fx_Prefab;
-        public Vector3 offset;
 
+        [Header("Spawn & Release")]
+        public GameObject fx_Prefab;
+        public bool triggerEnter = true, triggerStay = false;
+
+        public bool spawnAtSelfPosition;
+        public Vector3 offset;
         public string soundFileName;
         public float releaseTime = 2f;
 
+        [Header("Play & Stop")]
+        public ParticleSystem fx_Particle;
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!triggerEnter)
+                return;
             if (collision.tag.Equals(colliderTag)){
-                GameObject go = CommonUtils.SpawnObject(fx_Prefab);
-                if (go == null || collision == null)
-                    return;
 
-                go.transform.position = collision.transform.position+ offset;
-                if (soundFileName.Length > 0)
+                if (mode == ParticleEffector2DMode.SpawnRelease)
                 {
-                    CommonUtils.PlaySound(soundFileName);
+                    GameObject go = CommonUtils.SpawnObject(fx_Prefab);
+                    if (go == null || collision == null)
+                        return;
+
+                    if (spawnAtSelfPosition)
+                        go.transform.position = transform.position+offset;
+                    else
+                        go.transform.position = collision.transform.position + offset;
+                    if (soundFileName.Length > 0)
+                    {
+                        CommonUtils.PlaySound(soundFileName);
+                    }
+                    CommonUtils.InvokeAction(releaseTime, () =>
+                    {
+                        CommonUtils.ReleaseObject(go);
+                    });
                 }
-                CommonUtils.InvokeAction(releaseTime, () =>
+                else if (mode == ParticleEffector2DMode.PlayStop)
                 {
-                    CommonUtils.ReleaseObject(go);
-                });
+                    fx_Particle.Play();
+                }
             }
         }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (!triggerEnter)
+                return;
+            if (collision.tag.Equals(colliderTag))
+            {
+
+                if (mode == ParticleEffector2DMode.PlayStop)
+                {
+                    fx_Particle.Stop();
+                }
+            }
+        }
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            if (!triggerStay)
+                return;
+
+            if (collision.tag.Equals(colliderTag))
+            {
+                if (mode == ParticleEffector2DMode.SpawnRelease)
+                {
+                    GameObject go = CommonUtils.SpawnObject(fx_Prefab);
+                    if (go == null || collision == null)
+                        return;
+
+                    go.transform.position = collision.transform.position + offset;
+                    if (soundFileName.Length > 0)
+                    {
+                        CommonUtils.PlaySound(soundFileName);
+                    }
+                    CommonUtils.InvokeAction(releaseTime, () =>
+                    {
+                        CommonUtils.ReleaseObject(go);
+                    });
+                }
+            }
+        }
+    }
+
+    public enum ParticleEffector2DMode
+    {
+        SpawnRelease,
+        PlayStop
     }
 }

@@ -6,6 +6,7 @@ using UnityEditor;
 namespace SKCell
 {
     [CustomEditor(typeof(SKTextAnimator))]
+    [CanEditMultipleObjects]
     public class SKTextAnimatorEditor : Editor
     {
         public SKTextAnimator anim;

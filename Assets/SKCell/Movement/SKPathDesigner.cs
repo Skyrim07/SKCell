@@ -19,7 +19,7 @@ namespace SKCell
         public float speed = 1.0f;
         [Range(3, 20)] [Tooltip("Segment count of each bezier curve. Default is 8.")]
         public int bezierSegments = 8;
-        [Range(0.01f, 2f)] [Tooltip("SqrMagnitude of distance from object to waypoint to be judged as 'reached the point'.")]
+        [Range(0.001f, 2f)] [Tooltip("SqrMagnitude of distance from object to waypoint to be judged as 'reached the point'.")]
         public float onPointThreshold = 0.5f;
         public bool startOnAwake = true;
 
@@ -33,12 +33,13 @@ namespace SKCell
         private bool isPlaying = false, isWaiting = false;
         private float waitTimer;
         private int moveDir = 1;
-        private int curWaypoint = -1, nextWaypoint = -1;
+        [HideInInspector]
+        public int curWaypoint = -1, nextWaypoint = -1;
         #endregion
         private void Start()
         {
             oPos = transform.position;
-           UpdateDistances();
+            UpdateDistances();
             UpdateBezier();
             if (startOnAwake)
             {
@@ -158,7 +159,13 @@ namespace SKCell
         {
             isPlaying = false;
         }
-
+        /// <summary>
+        /// Resume the ongoing movement.
+        /// </summary>
+        public void ResumePath()
+        {
+            isPlaying = true;
+        }
         public SKTranslatorWaypoint GetLastWayPoint()
         {
             return waypoints.Count > 0 ? waypoints[waypoints.Count-1] : null;
@@ -181,6 +188,24 @@ namespace SKCell
             UpdateDistances();
             UpdateBezier();
         }
+
+        /// <summary>
+        /// Get the world position of a waypoint given an index;
+        /// </summary>
+        /// <param name="waypoint"></param>
+        /// <returns></returns>
+        public Vector3 GetWaypointWPos(int waypointIndex, bool includeInitialWaypoint)
+        {
+            if(!includeInitialWaypoint)
+                return oPos + waypoints[waypointIndex].localPosition;
+            else
+            {
+                if (waypointIndex == 0) return oPos;
+                else
+                    return oPos+ waypoints[waypointIndex-1].localPosition;
+            }
+        }
+
         /// <summary>
         /// Get the world position evaluated at time t (0-1) on the path.
         /// </summary>

@@ -118,7 +118,7 @@ namespace SKCell
         /// <param name="lang"></param>
         public void ApplyLocalization(LanguageSupport lang)
         {
-            if (skLocal.localID == -1)
+            if (skLocal==null || skLocal.localID == -1)
                 return;
             if (intArgs != null)
             {

@@ -4,19 +4,12 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 namespace SKCell
 {
-    /// <summary>
-    /// 配置表代理
-    /// </summary>
-    public class TableAgent : Singleton<TableAgent>
+    public class SKCSVReader : Singleton<SKCSVReader>
     {
         private Dictionary<string, Dictionary<TableKey, string>> _tableAgent;
 
         private Dictionary<string, List<string>> _keys;
 
-        /// <summary>
-        /// 加载多个CSV文件
-        /// </summary>
-        /// <param name="tables">The tables.</param>
         public void Add(List<string> tables)
         {
             if (_tableAgent == null)
@@ -43,14 +36,6 @@ namespace SKCell
             }
         }
 
-        /// <summary>
-        /// 添加单个条目
-        /// </summary>
-        /// <typeparam name="T">添加的值类型</typeparam>
-        /// <param name="name">表名称.</param>
-        /// <param name="key1">键1.</param>
-        /// <param name="key2">键2</param>
-        /// <param name="value">值</param>
         public void Add<T>(string name, string key1, string key2, T value)
         {
             if (_tableAgent == null)
@@ -74,11 +59,11 @@ namespace SKCell
         }
 
         /// <summary>
-        /// 获取字符串值
+        /// Get a string value from csv file
         /// </summary>
-        /// <param name="name">The index.</param>
-        /// <param name="key1">The horizontal key.</param>
-        /// <param name="key2">The vertical key.</param>
+        /// <param name="name">The index. (upper-left corner)</param>
+        /// <param name="key1">The row key.</param>
+        /// <param name="key2">The column key.</param>
         /// <returns></returns>
         public string GetString(string name, string key1, string key2)
         {
@@ -93,23 +78,40 @@ namespace SKCell
         }
 
         /// <summary>
-        /// 获取浮点值
+        /// Get a float value from csv file
         /// </summary>
-        /// <param name="name">The index.</param>
-        /// <param name="key1">The horizontal key.</param>
-        /// <param name="key2">The vertical key.</param>
+        /// <param name="name">The index. (upper-left corner)</param>
+        /// <param name="key1">The row key.</param>
+        /// <param name="key2">The column key.</param>
         /// <returns></returns>
         public float GetFloat(string name, string key1, string key2)
         {
             return float.Parse(_tableAgent[name][new TableKey(key1, key2)]);
         }
+        /// <summary>
+        /// Get floats separated by '|'
+        /// </summary>
+        /// <param name="name">The index. (upper-left corner)</param>
+        /// <param name="key1">The row key.</param>
+        /// <param name="key2">The column key.</param>
+        /// <returns></returns>
+        public float[] GetFloats(string name, string key1, string key2)
+        {
+            string[] strs = _tableAgent[name][new TableKey(key1, key2)].Split('|');
+            float[] result = new float[strs.Length];
+            for (int i = 0; i < strs.Length; i++)
+            {
+                result[i] = float.Parse(strs[i]);
+            }
+            return result;
+        }
 
         /// <summary>
-        /// 获取整数值
+        /// Get a int value from csv file
         /// </summary>
-        /// <param name="name">The index.</param>
-        /// <param name="key1">The key1.</param>
-        /// <param name="key2">The key2.</param>
+        /// <param name="name">The index. (upper-left corner)</param>
+        /// <param name="key1">The row key.</param>
+        /// <param name="key2">The column key.</param>
         /// <returns></returns>
         public int GetInt(string name, string key1, string key2)
         {
@@ -128,11 +130,29 @@ namespace SKCell
         }
 
         /// <summary>
-        /// 获取分隔字符串
+        /// Get ints separated by '|'
         /// </summary>
-        /// <param name="name">The index.</param>
-        /// <param name="key1">The key1.</param>
-        /// <param name="key2">The key2.</param>
+        /// <param name="name">The index. (upper-left corner)</param>
+        /// <param name="key1">The row key.</param>
+        /// <param name="key2">The column key.</param>
+        /// <returns></returns>
+        public int[] GetInts(string name, string key1, string key2)
+        {
+            string[] strs = _tableAgent[name][new TableKey(key1, key2)].Split('|');
+            int[] result = new int[strs.Length];
+            for (int i = 0; i < strs.Length; i++)
+            {
+                result[i] = int.Parse(strs[i]);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Get string values splitted by '|' from csv file
+        /// </summary>
+        /// <param name="name">The index. (upper-left corner)</param>
+        /// <param name="key1">The row key.</param>
+        /// <param name="key2">The column key.</param>
         /// <returns></returns>
         public string[] GetStrings(string name, string key1, string key2)
         {
@@ -140,9 +160,9 @@ namespace SKCell
         }
 
         /// <summary>
-        /// 获取所有Key1值
+        /// Get all row keys from csv file
         /// </summary>
-        /// <param name="name">The name.</param>
+        /// <param name="name">The index. (upper-left corner)</param>
         /// <returns></returns>
         public List<string> CollectKey1(string name)
         {
@@ -159,14 +179,11 @@ namespace SKCell
         /// <returns>转换后的字符串</returns>
         public static string TransformString(string des, Func<string, string> trs)
         {
-            //第一个不是<<>>
             List<string> secList = SecStrings(des);
             if (secList == null)
             {
                 return des;
             }
-
-            //替换所有下标为单数的.
             for (int i = 1; i < secList.Count; i += 2)
             {
                 secList[i] = trs(secList[i]);
@@ -195,9 +212,9 @@ namespace SKCell
                 return null;
             }
 
-            string str1 = des.Substring(0, match.Index); //第一段.
-            string str3 = des.Substring(match.Index + match.Length); //第三段
-            string str2 = des.Substring(match.Index + 2, match.Length - 4); //第二段
+            string str1 = des.Substring(0, match.Index);
+            string str3 = des.Substring(match.Index + match.Length);
+            string str2 = des.Substring(match.Index + 2, match.Length - 4); 
             secList.Add(str1);
             secList.Add(str2);
             List<string> subList = SecStrings(str3);
@@ -219,18 +236,12 @@ namespace SKCell
             return secList;
         }
 
-        /// <summary>
-        /// 清除操作，用于测试
-        /// </summary>
         public void Clear()
         {
             _tableAgent.Clear();
         }
     }
 
-    /// <summary>
-    /// 表格键值对结构
-    /// </summary>
     public struct TableKey
     {
         public string Key1;

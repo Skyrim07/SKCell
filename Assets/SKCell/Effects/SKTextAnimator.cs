@@ -52,8 +52,11 @@ namespace SKCell
         {
             CommonUtils.InvokeAction(0.1f, () =>
             {
-                ParseText();
-                ApplyParsedText();
+                if (useInlineEffects)
+                {
+                    ParseText();
+                    ApplyParsedText();
+                }
                 CommonUtils.InvokeAction(0.1f, () =>
                 {
                     if (startOnEnable)
@@ -114,7 +117,8 @@ namespace SKCell
                 return;
             if (!useTypeWriter && !useInlineEffects)
             {
-                text.SetText(s);
+                text.text=s;
+                return;
             }
 
             Color32 oColor = text.color.ToColor32();
@@ -147,7 +151,7 @@ namespace SKCell
         public void TypewriterFastForward()
         {
             CommonUtils.CancelInvoke(curTypewriterCRID);
-            skAnim.Alpha(100000, 1, 0, 10000);
+            skAnim.Alpha(10000000, 1, 0, 1000);
 
             typewriterPlaying = false;
             while (curTypewriterEffect < anims.Count)
@@ -155,6 +159,23 @@ namespace SKCell
                 ApplyEffect(anims[curTypewriterEffect++]);
             }
         }
+
+        /// <summary>
+        /// Stop the typewriter and display whole text.
+        /// </summary>
+        public void TypewriteFastForwardComplete(string content)
+        {
+            CommonUtils.CancelInvoke(curTypewriterCRID);
+            int len = text.textInfo.meshInfo[0].colors32.Length;
+            for (int i = 0; i < len; i++)
+            {
+                Color32 c = text.textInfo.meshInfo[0].colors32[i];
+                text.textInfo.meshInfo[0].colors32[i] = new Color32(c.r, c.g, c.b, 255);
+            }
+
+            text.text=content;
+        }
+
         private void UpdateTypeWriterEffect()
         {
             if (anims==null || anims.Count == 0)
@@ -180,8 +201,19 @@ namespace SKCell
         }
         private void ParseText()
         {
+            oStr = oStr.Replace(@"\r", "\r");
+            oStr = oStr.Replace(@"\n", "\n");
+
+            if (!useInlineEffects)
+            {
+                pStr = oStr;
+                return;
+            }
+
+
             anims = new List<SKTextAnimSemantics>();
             SKTextAnimSemantics curAnim = new SKTextAnimSemantics();
+            if (!text) return;
             TMP_LineInfo[] lineInfos = text.GetTextInfo(oStr).lineInfo;
             if (lineInfos == null || lineInfos.Length == 0)
                 return;
@@ -446,6 +478,8 @@ namespace SKCell
 
         private void ApplyParsedText()
         {
+            if (!text)
+                return;
             text.SetText(pStr);
             text.ForceMeshUpdate(true, true);
             skAnim.UpdateTextInfo(pStr);

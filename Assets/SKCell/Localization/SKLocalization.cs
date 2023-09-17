@@ -16,7 +16,7 @@ namespace SKCell
     [ExecuteInEditMode]
     public class SKLocalization : MonoBehaviour
     {
-        private static SKLocalizationAsset asset;
+        public static SKLocalizationAsset asset;
         private static bool initialized;
 
         [SerializeField] int _localID = -1;
@@ -72,10 +72,19 @@ namespace SKCell
                     }
                     if (!info.localText.Equals(string.Empty))
                         text.textAnimator.UpdateText(info.localText);
+
+                    SKFontAsset asset = SKAssetLibrary.FontAsset;
+
                     if (info.fontOverride >= 0)
                     {
-                        SKFontAsset asset = SKAssetLibrary.FontAsset;
                         text.font = asset.fontList[info.fontOverride];
+                    }
+                    else
+                    {
+                        int font = SKLocalization.asset.languageFonts[(int)SKEnvironment.curLanguage];
+
+                        if (font>=0 && font<asset.fontList.Count)
+                            text.font =asset.fontList[font];
                     }
                     break;
             }
@@ -120,10 +129,16 @@ namespace SKCell
                     {
                         text.textAnimator.UpdateText(string.Format(info.localText,arg0));
                     }
+                    SKFontAsset asset = SKAssetLibrary.FontAsset;
                     if (info.fontOverride >= 0)
                     {
-                        SKFontAsset asset = SKAssetLibrary.FontAsset;
                         text.font = asset.fontList[info.fontOverride];
+                    }
+                    else
+                    {
+                        int font = SKLocalization.asset.languageFonts[(int)SKEnvironment.curLanguage];
+                       if(font>=0 && font<asset.fontList.Count)
+                            text.font = asset.fontList[font];
                     }
                     break;
             }
@@ -161,10 +176,16 @@ namespace SKCell
                     {
                         text.textAnimator.UpdateText(string.Format(info.localText, arg0, arg1));
                     }
+                    SKFontAsset asset = SKAssetLibrary.FontAsset;
                     if (info.fontOverride >= 0)
                     {
-                        SKFontAsset asset = SKAssetLibrary.FontAsset;
                         text.font = asset.fontList[info.fontOverride];
+                    }
+                    else
+                    {
+                        int font = SKLocalization.asset.languageFonts[(int)SKEnvironment.curLanguage];
+                       if(font>=0 && font<asset.fontList.Count)
+                            text.font = asset.fontList[font];
                     }
                     break;
             }
@@ -202,10 +223,16 @@ namespace SKCell
                     {
                         text.textAnimator.UpdateText(string.Format(info.localText, arg0, arg1, arg2));
                     }
+                    SKFontAsset asset = SKAssetLibrary.FontAsset;
                     if (info.fontOverride >= 0)
                     {
-                        SKFontAsset asset = SKAssetLibrary.FontAsset;
                         text.font = asset.fontList[info.fontOverride];
+                    }
+                    else
+                    {
+                        int font = SKLocalization.asset.languageFonts[(int)SKEnvironment.curLanguage];
+                       if(font>=0 && font<asset.fontList.Count)
+                            text.font = asset.fontList[font];
                     }
                     break;
             }

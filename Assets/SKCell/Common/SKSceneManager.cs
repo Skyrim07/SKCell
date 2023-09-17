@@ -43,9 +43,12 @@ namespace SKCell
         /// Go to a loading scene and then the next scene.
         /// </summary>
         /// <param name="sceneName"></param>
-        public void LoadSceneAsync(string loadingSceneName, string sceneName)
+        public bool LoadSceneAsync(string loadingSceneName, string sceneName)
         {
+            if (async != null)
+                return false;
             StartCoroutine(LoadSceneAsyncCR(loadingSceneName, sceneName));
+            return true;
         }
         /// <summary>
         /// Start an async process with the given slider and text presented as load progress. (e.g. Text is displayed as "99.99%" if with a precision of 2.")
@@ -53,9 +56,12 @@ namespace SKCell
         /// <param name="loadingSceneName"></param>
         /// <param name="sceneName"></param>
         /// <param name=""></param>
-        public void LoadSceneAsync(string loadingSceneName, string sceneName, SKSlider loadBar=null)
+        public bool LoadSceneAsync(string loadingSceneName, string sceneName, SKSlider loadBar=null)
         {
+            if (async != null)
+                return false;
             StartCoroutine(LoadSceneAsyncCR(loadingSceneName, sceneName,loadBar));
+            return true;
         }
 
         private IEnumerator LoadSceneAsyncCR(string loadingSceneName, string sceneName, SKSlider loadBar=null)
@@ -69,7 +75,7 @@ namespace SKCell
             async = SceneManager.LoadSceneAsync(loadingSceneName);
             while (!async.isDone)
             {
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSecondsRealtime(0.02f);
             }
             onLoadingSceneLoaded.Invoke();
 
@@ -84,7 +90,7 @@ namespace SKCell
             {
                 actualAsyncProgress = (async.progress / 0.9f)* randomThreshold;
                 UpdateDisplay(loadBar);
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSecondsRealtime(0.02f);
             }
 
             //Process load lag

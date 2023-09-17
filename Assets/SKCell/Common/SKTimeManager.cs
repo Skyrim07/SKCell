@@ -7,6 +7,7 @@ namespace SKCell
 {
     public class SKTimeManager : MonoSingleton<SKTimeManager>
     {
+        public static bool locked = false;
         private float _fixedDeltaTime;
         private const float _defaultRestoreSpeed = 1f;
         private float _restoreSpeed;
@@ -21,6 +22,9 @@ namespace SKCell
 
         void Update()
         {
+            if (locked)
+                return;
+
             if (_restore)
             {
                 if (Time.timeScale < 1f)

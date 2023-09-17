@@ -42,14 +42,14 @@ namespace SKCell
 
         protected void Start()
         {
-            if (PlayerPrefs.HasKey(musicVolumePrefs))
-            {
-                musicVolume = PlayerPrefs.GetFloat(musicVolumePrefs);
-            }
-            if (PlayerPrefs.HasKey(soundVolumePrefs))
-            {
-                musicVolume = PlayerPrefs.GetFloat(soundVolumePrefs);
-            }
+            //if (PlayerPrefs.HasKey(musicVolumePrefs))
+            //{
+            //    musicVolume = PlayerPrefs.GetFloat(musicVolumePrefs);
+            //}
+            //if (PlayerPrefs.HasKey(soundVolumePrefs))
+            //{
+            //    musicVolume = PlayerPrefs.GetFloat(soundVolumePrefs);
+            //}
         }
 
         public void Initialize()
@@ -105,14 +105,19 @@ namespace SKCell
                 audioSource.clip.LoadAudioData();
                 audioSource.loop = loop;
                 audioSource.pitch = pitch;
+            audioSource.velocityUpdateMode = AudioVelocityUpdateMode.Dynamic;
             if(damp > 0f)
-                CommonUtils.StartProcedure(SKCurve.LinearIn, damp, (f) =>
+                CommonUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
                 {
                     audioSource.volume = f * soundVolume * volume;
                 });
             else
                 audioSource.volume = soundVolume * volume;
+
+            float oTimeScale = Time.timeScale;
+            Time.timeScale = 1;
             audioSource.Play();
+            Time.timeScale = oTimeScale;
             return audioSource;
         }
 
@@ -132,12 +137,15 @@ namespace SKCell
             audioSource.clip.LoadAudioData();
             audioSource.loop = loop;
             audioSource.volume = soundVolume * volume;
-            CommonUtils.StartProcedure(SKCurve.LinearIn, damp, (f) =>
+            CommonUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
             {
                 audioSource.volume = f * soundVolume * volume;
             });
             audioSource.Play();
-
+            float oTimeScale = Time.timeScale;
+            Time.timeScale = 1;
+            audioSource.Play();
+            Time.timeScale = oTimeScale;
             return audioSource;
         }
 
@@ -176,7 +184,7 @@ namespace SKCell
                         break;
                 }
                 AudioClip ac = Resources.Load(path + id) as AudioClip;
-               // CommonUtils.EditorLogNormal("Loadmusic:" + id);
+
                 if (ac == null)
                 {
                     CommonUtils.EditorLogError(path + id + "Load audio clip failed!");
@@ -188,10 +196,10 @@ namespace SKCell
 
         private void LoadClips()
         {
-            var keys = TableAgent.instance.CollectKey1("AudioClip");
+            var keys = SKCSVReader.instance.CollectKey1("AudioClip");
             foreach (var key in keys)
             {
-                int type = TableAgent.instance.GetInt("AudioClip", key.ToString(), "Type");
+                int type = SKCSVReader.instance.GetInt("AudioClip", key.ToString(), "Type");
                 if (type == 2)
                 {
                     GetAudioClip(key, type);
@@ -210,7 +218,7 @@ namespace SKCell
             List<string> music_list = new List<string>();
             foreach (var key in keys)
             {
-                int type = TableAgent.instance.GetInt("AudioClip", key.ToString(), "Type");
+                int type = SKCSVReader.instance.GetInt("AudioClip", key.ToString(), "Type");
                 if (type == 0)
                 {
                     music_list.Add(key);

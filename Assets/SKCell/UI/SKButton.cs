@@ -342,8 +342,8 @@ namespace SKCell
                 if (canClick)
                 {
                     onPress.Invoke();
-                    CancelInvoke("ResetClickCD");
-                    Invoke("ResetClickCD", spamCooldown);
+                    CommonUtils.CancelInvoke("ResetClickCD");
+                    CommonUtils.InvokeAction(spamCooldown, ResetClickCD, 0, 0, "ResetClickCD");
                     canClick = false;
                 }
             }

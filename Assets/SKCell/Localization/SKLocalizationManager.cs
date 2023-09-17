@@ -98,7 +98,7 @@ namespace SKCell
         /// </summary>
         private static void UpdateAllLocalizationComponents()
         {
-            texts = new List<SKText>(GameObject.FindObjectsOfType<SKText>());
+            texts = new List<SKText>(GameObject.FindObjectsOfType<SKText>(true));
             images = new List<SKImage>(GameObject.FindObjectsOfType<SKImage>());
         }
 

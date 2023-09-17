@@ -24,7 +24,7 @@ namespace SKCell
         static Vector2 scrollPos = Vector2.zero;
         static int subPage = 0;
         static List<LocalizedTextConfig> builtTextList = new List<LocalizedTextConfig>();
-        static string[] textSubpageTitles = { "General", "Scene Titles", "Consumables", "Characters", "Player", "Feathers / Artifact", "Other Items", "Firefly Frontier" };
+        static string[] textSubpageTitles = { "General", "Scene Titles", "Consumables", "Characters", "Player", "Feathers", "Other Items", "Firefly Frontier", "Relics", "Restpoints" };
 
         [MenuItem("SKCell/Localization Center")]
         public static void Initialize()
@@ -190,6 +190,9 @@ namespace SKCell
                             DeleteLanguageSupport(i);
                         }
                     }
+                    EditorGUILayout.LabelField("", GUILayout.Width(300));
+                    EditorGUILayout.LabelField("Font: ");
+                    asset.languageFonts[i] = EditorGUILayout.IntField(asset.languageFonts[i]);
 
                     EditorGUILayout.EndHorizontal();
                     EditorGUILayout.Space(30);
@@ -472,11 +475,13 @@ namespace SKCell
         public List<LocalizedTextConfig> textConfigs;
         public List<LocalizedImageConfig> imageConfigs;
         public List<LanguageSupport> languageSupports;
+        public int[] languageFonts;
         public SKLocalizationAssetJson(SKLocalizationAsset data)
         {
             this.textConfigs = data.textConfigs;
             this.imageConfigs = data.imageConfigs;
             this.languageSupports = data.languageSupports;
+            this.languageFonts = data.languageFonts;
         }
     }
     public enum LocalizationMethod

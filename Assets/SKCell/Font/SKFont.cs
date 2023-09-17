@@ -20,10 +20,16 @@ namespace SKCell
         public static void Initialize()
         {
             SKFontWindow window = GetWindow<SKFontWindow>("FontChart");
-            window.minSize = window.maxSize= new Vector2(600, 800);
+            window.minSize = window.maxSize = new Vector2(600, 800);
+            InitializeData();
+        }
+
+        public static void InitializeData()
+        {
             UpdateAssetFile();
             LoadAsset();
         }
+
         private void OnGUI()
         {
             DrawTopBar();
@@ -110,14 +116,15 @@ namespace SKCell
             asset.fontList.Clear();
             for (int i = 0; i < j_asset.fontIDs.Length; i++)
             {
-                asset.fontList.Add(AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Resources/Font/" + j_asset.fontIDs[i] + ".asset"));
+                asset.fontList.Add(Resources.Load<TMP_FontAsset>("Font/" + j_asset.fontIDs[i] ));
             }
         }
     }
 
+
+#endif
     public class SKFontAssetJson
     {
         public string[] fontIDs;
     }
-#endif
 }
