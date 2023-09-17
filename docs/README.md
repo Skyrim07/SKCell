@@ -1,6 +1,6 @@
 # SKCell
 
-v0.12.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.12.1 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3207,6 +3207,8 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 -	Added 4 tools to SKSpriteEditor: select, brush, eraser, color picker
 -   Added 5 utilities to SKSpriteEditor: brightness, saturation, contrast, color erase, gaussian blur
 -   Optimized SKHierarchy, updated appearance
+    <br>0.12.1 (2023.9)
+    - Various bug fixes
 
 
 <b>v0.11.x</b>								  
