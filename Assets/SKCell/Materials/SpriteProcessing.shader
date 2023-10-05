@@ -30,6 +30,7 @@
 	{
 		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
 		Cull Off
+		ZWrite Off
 		Blend [_SrcBlendMode] [_DstBlendMode]
 		Pass
 		{

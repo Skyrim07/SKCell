@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class SKQuitControl
 {
@@ -12,8 +13,10 @@ public class SKQuitControl
 
     static bool Quit()
     {
-        float t = Time.realtimeSinceStartup;
-        if (EditorUtility.DisplayDialog("Are you sure to exit?", $"Take a break!\nCurrent session time: {(int)t / 3600}h {(int)(t%3600)/60}m {(int)t%60}s", "Exit", "Cancel")){
+        DateTime now = DateTime.Now;
+        if (EditorUtility.DisplayDialog("Are you sure to exit?", $"Take a break!\n" +
+            $"Current time: {now.Hour.ToString("d2")} : {now.Minute.ToString("d2")} : {now.Second.ToString("d2")}",
+            "Quit Unity", "Cancel")){
             return true;
         }
         return false;

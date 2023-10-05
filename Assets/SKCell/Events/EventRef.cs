@@ -82,6 +82,12 @@ namespace SKCell
 
         public static readonly int COMBAT_ON_ENEMY_DEFEATED = 4200;
         public static readonly int COMBAT_ON_ENEMY_SAN_ZERO = 4201;
+
+
+        public static readonly int ON_ENTER_MEDITATION = 4501;
+        public static readonly int ON_EXIT_MEDITATION = 4502;
+        public static readonly int ON_ENTER_SINGING = 4503;
+        public static readonly int ON_EXIT_SINGING = 4504;
         #endregion
 
         //~5000
