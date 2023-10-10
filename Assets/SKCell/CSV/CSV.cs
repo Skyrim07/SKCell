@@ -51,8 +51,8 @@ namespace SKCell
             List<List<string>> result = new List<List<string>>();
             List<string> line = new List<string>();
             string field = "";
-            bool isInQuotation = false;//字符串模式  
-            bool isInField = true;//是否在读取Field，用来表示空Field  
+            bool isInQuotation = false;
+            bool isInField = true;
             int i = 0;
             while (i < text.Length)
             {
@@ -61,7 +61,7 @@ namespace SKCell
                 {
                     if (ch == '"')
                     {
-                        if (i < text.Length - 1 && text[i + 1] == '"')//重复"只算一个，切不结束字符串模式  
+                        if (i < text.Length - 1 && text[i + 1] == '"')
                         {
                             field += '"';
                             i++;
@@ -73,7 +73,7 @@ namespace SKCell
                     }
                     else
                     {
-                        field += ch;//字符串模式中所有字符都要加入  
+                        field += ch;
                     }
                 }
                 else
@@ -87,7 +87,7 @@ namespace SKCell
                             break;
                         case '"':
                             if (isInField)
-                                isInQuotation = true;//进入字符串模式  
+                                isInQuotation = true;
                             else
                                 field += ch;
                             break;
@@ -100,8 +100,8 @@ namespace SKCell
                             }
                             result.Add(line);
                             line = new List<string>();
-                            isInField = true;//下一行首先应该是数据  
-                            if (i < text.Length - 1 && text[i + 1] == '\n')//跳过\r\n  
+                            isInField = true;
+                            if (i < text.Length - 1 && text[i + 1] == '\n')
                                 i++;
                             break;
                         default:
@@ -112,8 +112,8 @@ namespace SKCell
                 }
                 i++;
             }
-            //收尾工作  
-            if (field.Length > 0 || isInField && line.Count > 0)//如果是isInField标记的单元格，则要保证这行有其他数据，否则单独一个空单元格的行是没有意义的  
+           
+            if (field.Length > 0 || isInField && line.Count > 0)
                 line.Add(field);
 
             if (line.Count > 0)

@@ -39,7 +39,7 @@ public class ProjectBuild : Editor {
 
     static void BuildForAndroid()
     {
-        string[] levels = GetBuildScenes();//{"Assets/Scenes/Main.unity"};
+        string[] levels = GetBuildScenes();
         string path= GetExportPath(BuildTarget.Android);
         PlayerSettings.defaultInterfaceOrientation = UIOrientation.AutoRotation;
         PlayerSettings.allowedAutorotateToPortrait = false;
@@ -62,7 +62,6 @@ public class ProjectBuild : Editor {
        
     private static string GetExportPath(BuildTarget target)
     {
-        //var s = System.Environment.GetCommandLineArgs();
         string path = s[s.Length - 2];
         string name = string.Empty;
         if (target == BuildTarget.Android)

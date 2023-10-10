@@ -10,6 +10,9 @@
 	{
 		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
 		Blend SrcAlpha OneMinusSrcAlpha
+       Cull Off ZWrite Off ZTest Always 
+
+
 		Pass
 		{
 			CGPROGRAM
@@ -60,7 +63,7 @@
 				fixed4 col = fixed4(0,0,0,1);
 
 				float a = rand21(i.uv) * 6.28;
-				float4 scol = float4(0, 0, 0, 1);
+				float4 scol = float4(0, 0, 0, 0);
 
 				float blur = _Blur * .2;
 
@@ -70,7 +73,6 @@
 					a++;
 				}
 				col = scol / _SampleCount;
-
 				return col;
 			}
 			ENDCG

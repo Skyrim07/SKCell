@@ -56,10 +56,10 @@
 
             fixed4 frag(v2f i) : SV_Target
             {
-                fixed4 col = fixed4(0,0,0,1);
+                fixed4 col = fixed4(0,0,0,0);
                 
                 float a = rand21(i.uv) * 6.28;
-                float4 scol = float4(0, 0, 0, 1);
+                float4 scol = float4(0, 0, 0, 0);
 
                 float blur = _Blur*.2;
 
@@ -71,6 +71,7 @@
                 col = scol / _SampleCount;
 
                 col *= _Color;
+                col.a=.00;
                 return col;
             }
             ENDCG

@@ -41,6 +41,7 @@ namespace SKCell
         }
         public void UpdateInfo(SKLocalizationAssetJson data)
         {
+            if (data == null) return;
             this.textConfigs = new List<LocalizedTextConfig>(data.textConfigs);
             this.imageConfigs = new List<LocalizedImageConfig>(data.imageConfigs);
             this.languageSupports = new List<LanguageSupport>(data.languageSupports);

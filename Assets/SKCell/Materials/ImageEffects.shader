@@ -65,7 +65,9 @@ Shader "SKCell/ImageEffects"
                 float ds = _Value * 1.4 - 0.2;
                 ds =lerp(ds, ds* (1 - max(abs(cuv.x),abs(cuv.y))), 1-saturate(_Value));
                 col.a *= saturate(smoothstep(ncol-.2, ncol+.2, ds-length(cuv)));
-              
+                
+                float r = 0.5 * (_Value);
+                col.rgb+=smoothstep(r-.1,r+.1,ncol.r)  *.2;
 
                 return col;
             }

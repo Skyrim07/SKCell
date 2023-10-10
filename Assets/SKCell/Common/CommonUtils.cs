@@ -2334,6 +2334,8 @@ namespace SKCell
         public static T SKLoadObjectFromJson<T>(string fileName)
         {
             string path = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath) + SKAssetLibrary.JSON_PATH_SUFFIX + fileName;
+            if (!File.Exists(path))
+                return default(T);
             return JsonUtility.FromJson<T>(File.ReadAllText(path));
         }
         public static void SaveObjectToJson(object obj, string fileName)
@@ -2478,9 +2480,9 @@ namespace SKCell
                 Vector3 ptStart1, Vector3 ptEnd1,
                 bool firstIsSegment, bool secondIsSegment)
         {
-            float d = (ptEnd0.x - ptStart0.x) * (ptStart1.z - ptEnd1.z) - (ptStart1.x - ptEnd1.x) * (ptEnd0.z - ptStart0.z);
-            float d0 = (ptStart1.x - ptStart0.x) * (ptStart1.z - ptEnd1.z) - (ptStart1.x - ptEnd1.x) * (ptStart1.z - ptStart0.z);
-            float d1 = (ptEnd0.x - ptStart0.x) * (ptStart1.z - ptStart0.z) - (ptStart1.x - ptStart0.x) * (ptEnd0.z - ptStart0.z);
+            float d = (ptEnd0.x - ptStart0.x) * (ptStart1.y - ptEnd1.y) - (ptStart1.x - ptEnd1.x) * (ptEnd0.y - ptStart0.y);
+            float d0 = (ptStart1.x - ptStart0.x) * (ptStart1.y - ptEnd1.y) - (ptStart1.x - ptEnd1.x) * (ptStart1.y - ptStart0.y);
+            float d1 = (ptEnd0.x - ptStart0.x) * (ptStart1.y - ptStart0.y) - (ptStart1.x - ptStart0.x) * (ptEnd0.y - ptStart0.y);
             float kOneOverD = 1 / d;
             float t0 = d0 * kOneOverD;
             float t1 = d1 * kOneOverD;
@@ -2508,9 +2510,9 @@ namespace SKCell
                 bool firstIsSegment, bool secondIsSegment,
                 ref Vector3 pIntersectionPt)
         {
-            float d = (ptEnd0.x - ptStart0.x) * (ptStart1.z - ptEnd1.z) - (ptStart1.x - ptEnd1.x) * (ptEnd0.z - ptStart0.z);
-            float d0 = (ptStart1.x - ptStart0.x) * (ptStart1.z - ptEnd1.z) - (ptStart1.x - ptEnd1.x) * (ptStart1.z - ptStart0.z);
-            float d1 = (ptEnd0.x - ptStart0.x) * (ptStart1.z - ptStart0.z) - (ptStart1.x - ptStart0.x) * (ptEnd0.z - ptStart0.z);
+            float d = (ptEnd0.x - ptStart0.x) * (ptStart1.y - ptEnd1.y) - (ptStart1.x - ptEnd1.x) * (ptEnd0.y - ptStart0.y);
+            float d0 = (ptStart1.x - ptStart0.x) * (ptStart1.y - ptEnd1.y) - (ptStart1.x - ptEnd1.x) * (ptStart1.y - ptStart0.y);
+            float d1 = (ptEnd0.x - ptStart0.x) * (ptStart1.y - ptStart0.y) - (ptStart1.x - ptStart0.x) * (ptEnd0.y - ptStart0.y);
             float kOneOverD = 1 / d;
             float t0 = d0 * kOneOverD;
             float t1 = d1 * kOneOverD;
