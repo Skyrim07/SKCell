@@ -13,7 +13,7 @@ namespace SKCell {
         [Range(-2f, 2f)]
         public float value = .5f;
 
-        [Header("Dissolve")]
+        [SKFolder("Dissolve")]
         public Texture dissolve_NoiseTex;
         public Vector4 dissolve_st = new Vector4(1,1,0,0);
 

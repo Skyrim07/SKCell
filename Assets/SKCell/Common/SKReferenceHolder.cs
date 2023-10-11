@@ -8,20 +8,20 @@ namespace SKCell {
     [AddComponentMenu("SKCell/SKReferenceHolder")]
     public class SKReferenceHolder : MonoBehaviour
     {
-        [Header("Basic")]
+        [SKFolder("Basic")]
         public int intValue;
         public float floatValue;
         public bool boolValue;
         public string stringValue;
         public char charValue;
 
-        [Header("Unity Basic")]
+        [SKFolder("Unity Basic")]
         public GameObject gameObjectValue;
         public Transform transformValue;
         public ParticleSystem particleSystemValue;
         
 
-        [Header("Unity UI")]
+        [SKFolder("Unity UI")]
         public Text textValue;
         public Image imageValue;
         public Canvas canvasValue;
@@ -29,7 +29,7 @@ namespace SKCell {
         public ScrollRect scrollRectValue;
         public Scrollbar scrollBarValue;
 
-        [Header("SKCell")]
+        [SKFolder("SKCell")]
         public SKText skTextValue;
         public SKImage skImageValue;
         public SKSlider skSliderValue;
@@ -38,7 +38,7 @@ namespace SKCell {
         public SKDragSpawner skDragSpawnerValue;
         public SKDragSticker skDragStickerValue;
 
-        [Header("TMPro")]
+        [SKFolder("TMPro")]
         public TMP_Text tmpTextValue;
         public TMP_InputField tmpInputFieldValue;
     }

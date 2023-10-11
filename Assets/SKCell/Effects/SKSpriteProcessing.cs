@@ -8,17 +8,16 @@ namespace SKCell
     public class SKSpriteProcessing : PostEffectsBase
     {
         #region Properties
-        [Header("General Settings")]
         [Tooltip("Do not enable this unless you want this to update dynamically.")]
         public bool updateOnPlay = true;
 
-        [Header("Blend Mode")]
+        [SKFolder("Blend Mode")]
         public BlendMode srcBlend = BlendMode.SrcAlpha;
         public BlendMode dstBlend = BlendMode.OneMinusSrcAlpha;
 
      
 
-        [Header("Alpha Fade")]
+        [SKFolder("Alpha Fade")]
         [Range(0, 1)]
         public float leftX = 0;
         [Range(0, 1)]
@@ -30,7 +29,7 @@ namespace SKCell
         [Range(-2, 0)]
         public float alphaSmooth = 0;
 
-        [Header("Color Properties")]
+        [SKFolder("Color Properties")]
         [Range(0, 1)]
         public float colorShift = 1;
         [Range(0, 5)]
@@ -40,7 +39,7 @@ namespace SKCell
         [Range(0, 5)]
         public float contrast = 1;
 
-        [Header("Outline and Rim Light")]
+        [SKFolder("Outline and Rim Light")]
         public bool active = false;
 
         public Color rimColor = Color.white;

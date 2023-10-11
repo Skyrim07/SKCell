@@ -28,6 +28,7 @@ namespace SKCell
 
         public static GUIContent srContent, cldContent;
         public static GUIContent crossContent, resetContent;
+        public static Texture folderTexture;
 
         static SKHierarchy()
         {
@@ -35,6 +36,7 @@ namespace SKCell
 
             srContent = new GUIContent(SKAssetLibrary.LoadTexture($"ObjectIcons/obj_icon_7"));
             cldContent = new GUIContent(SKAssetLibrary.LoadTexture($"ObjectIcons/obj_icon_11"));
+            folderTexture = SKAssetLibrary.LoadTexture($"ObjectIcons/obj_icon_1");
             crossContent = new GUIContent(SKAssetLibrary.LoadTexture($"cross_1"));
             resetContent = new GUIContent(SKAssetLibrary.LoadTexture($"return"));
 
@@ -74,8 +76,6 @@ namespace SKCell
    
         private static void HandleHierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
         {
-
-            FontStyle styleFont = FontStyle.Normal;
             GameObject _object = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             GameObject obj = _object as GameObject;
             //separators
@@ -163,18 +163,25 @@ namespace SKCell
             Rect iconRect = new Rect(selectionRect);
             iconRect.xMin -= 0;
             iconRect.xMax = iconRect.xMin + 16;
-            col = new Color(.25f,.25f,.25f);
+            col = Selection.activeObject == obj?new Color(.17f,.35f,.6f): new Color(.25f,.25f,.25f);
             EditorGUI.DrawRect(iconRect, col);
-            GUI.DrawTexture(iconRect, GetHierarchyIcon(obj));
-        
-            if(GUI.Button(iconRect,"", transparentButtonStyle))
+            if (!isSeparator)
             {
-                Vector2 screenMousePosition = GUIUtility.GUIToScreenPoint(Event.current.mousePosition);
-                float differenceY = screenMousePosition.y - Event.current.mousePosition.y;
-                float iconScreenY = iconRect.y + differenceY;
-                Vector2 windowPosition = new Vector2(iconRect.x + 30, iconScreenY + 16);
-                ObjectIconPopup.ShowWindow(windowPosition, obj);
+                GUI.DrawTexture(iconRect, GetHierarchyIcon(obj));
 
+                if (GUI.Button(iconRect, "", transparentButtonStyle))
+                {
+                    Vector2 screenMousePosition = GUIUtility.GUIToScreenPoint(Event.current.mousePosition);
+                    float differenceY = screenMousePosition.y - Event.current.mousePosition.y;
+                    float iconScreenY = iconRect.y + differenceY;
+                    Vector2 windowPosition = new Vector2(iconRect.x + 30, iconScreenY + 16);
+                    ObjectIconPopup.ShowWindow(windowPosition, obj);
+
+                }
+            }
+            else
+            {
+                GUI.DrawTexture(iconRect, folderTexture);
             }
           
         }

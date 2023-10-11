@@ -1,6 +1,6 @@
 # SKCell
 
-v0.13.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.13.2 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3208,7 +3208,14 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 -   Added inspector attributes: SKFolder, SKEndFolder, SKConditionalField, SKResettable, SKInspectorButton, SKInspectorText
 -   Enhanced SKHierarchy
 -   Added new editor icons
-
+    <br>0.13.1
+    - Added project folder colors and button styles
+    - Optimized project editor performance
+    <br>0.13.2
+    - Added ActiveOnAwake.
+    - Added more supported types for project folder colors
+    - Changed hierarchy separator visuals
+    - Changed SKCore inspector visuals
 
 
 <b>v0.12.x</b>								  

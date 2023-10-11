@@ -3,6 +3,8 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Reflection;
+using System;
 
 namespace SKCell
 {
@@ -12,6 +14,17 @@ namespace SKCell
         private static Dictionary<string, string> folderTypeCache = new Dictionary<string, string>();
         private static Dictionary<string, int> fileTypeCounts = new Dictionary<string, int>();
 
+        private static Dictionary<string, Color> folderColors = new Dictionary<string, Color>()
+        {
+            {"SKCell", new Color(1.0f, 0.9f,0.7f, 1f)},
+            {"Editor", new Color(0.3f, 0.65f,1.0f, 1f)},
+            {"Prefabs", new Color(0.6f, 0.95f,1.0f, 1f)},
+            {"Prefab", new Color(0.6f, 0.95f,1.0f, 1f)},
+            {"Resources", new Color(0.3f, 0.95f,0.4f, 1f)},
+            {"Scenes", new Color(0.83f, 0.72f,0.61f, 1f)},
+            {"TextMesh Pro", new Color(0.93f, 0.42f,0.41f, 1f)},
+            {"StreamingAssets", new Color(0.92f, 0.63f,0.96f, 1f)},
+        };
         static SKFolderIconEditor()
         {
             EditorApplication.projectWindowItemOnGUI += OnProjectWindowItemGUI;
@@ -24,10 +37,37 @@ namespace SKCell
             if (string.IsNullOrEmpty(path) || !AssetDatabase.IsValidFolder(path))
                 return;
 
+            int fileCount = 0;
             if (!folderTypeCache.TryGetValue(path, out string dominantType))
             {
-                dominantType = DetermineDominantFileType(path);
+                dominantType = DetermineDominantFileType(path, out fileCount);
                 folderTypeCache[path] = dominantType;
+            }
+
+            Rect folderRect = new Rect(selectionRect);
+            string iconPath = "FolderIcons/folder";
+            if (selectionRect.width < 100)
+            {
+                folderRect.y -= 2;
+                folderRect.height -= 10;
+                foreach (var item in folderColors.Keys)
+                {
+                    int index = Mathf.Max(0, path.LastIndexOf('/') + 1);
+                    if (path.Substring(index) == item)
+                    {
+                        GUI.DrawTexture(folderRect, SKAssetLibrary.LoadTexture(iconPath), ScaleMode.ScaleToFit, true, 0, folderColors[item], 0, 0);
+                    }
+                }
+                folderRect = new Rect(selectionRect);
+                Vector2 ocenter = folderRect.center;
+                folderRect.width *= 1.2f;
+                folderRect.height *= 1.0f;
+                folderRect.center = ocenter;
+                folderRect.y += folderRect.width * .08f;
+
+                bool isSelected = Selection.assetGUIDs.Contains(guid);
+                Color col = isSelected ? new Color(1, 1, 1, .06f) : new Color(0, 0, 0, .00f);
+                GUI.DrawTexture(folderRect, SKAssetLibrary.LoadTexture("sq"), ScaleMode.ScaleToFit, true, 0, col, 0, 5);
             }
 
             Texture iconTexture = dominantType == "other" ? null : SKAssetLibrary.LoadTexture($"FolderIcons/{dominantType}");
@@ -42,13 +82,21 @@ namespace SKCell
             }
         }
 
-        private static string DetermineDominantFileType(string folderPath)
+        private static string DetermineDominantFileType(string folderPath, out int fileCount)
         {
             fileTypeCounts.Clear();
-            int count = 0;
+            fileCount = 0;
+            if (folderPath.EndsWith("Editor"))
+            {
+                return "settings";
+            }
+            if (folderPath.EndsWith("Assets"))
+            {
+                return "other";
+            }
             foreach (var file in Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories))
             {
-                count++;
+                fileCount++;
                 string ext = Path.GetExtension(file).ToLower();
                 switch (ext)
                 {
@@ -88,6 +136,7 @@ namespace SKCell
                         IncrementFileType("font");
                         break;
                     case ".shader":
+                    case ".cginc":
                         IncrementFileType("shader");
                         break;
                     case ".renderTexture":
@@ -110,7 +159,6 @@ namespace SKCell
                 }
             }
             var dominantEntry = fileTypeCounts.OrderByDescending(kvp => kvp.Value).FirstOrDefault();
-            // int halfCount = count / 4 - 1;
             return dominantEntry.Key ?? "other";
         }
 
@@ -125,11 +173,12 @@ namespace SKCell
 
         [MenuItem("SKCell/Tools/Update Folder Icons Cache")]
         public static void UpdateFolderCache() 
-        {
+        { 
+            int count=0;
             folderTypeCache.Clear();
             foreach (var folder in Directory.GetDirectories("Assets", "*", SearchOption.AllDirectories))
             {
-                folderTypeCache[folder] = DetermineDominantFileType(folder);
+                folderTypeCache[folder] = DetermineDominantFileType(folder,out count );
             }
         }
     }

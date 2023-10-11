@@ -14,12 +14,12 @@ namespace SKCell
         private static AsyncOperation async = null;
         private static float actualAsyncProgress = 0;
 
-        [Header("Async Settings")]
+        [SKFolder("Async Settings")]
         public float asyncLoadLag = 3f;
         public float asyncAfterFullLag = 1.5f;
         public float asyncLagLowerThreshold = 0.5f, asyncLagUpperThreshold = 0.8f;
 
-        [Header("Async Events")]
+        [SKFolder("Async Events")]
         public UnityEvent onStartLoad;
         public UnityEvent onLoadingSceneLoaded,onNextSceneLoaded, onLoadingBarFull, onAwake;
 

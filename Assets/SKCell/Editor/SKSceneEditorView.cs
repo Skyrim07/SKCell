@@ -29,6 +29,7 @@ namespace SKCell {
             {
                 ToggleObjectCount();
             }
+
             EditorGUILayout.EndHorizontal();
             GUI.skin.label.fontSize = 14;
             GUI.skin.label.alignment = TextAnchor.UpperLeft;

@@ -10,10 +10,17 @@ namespace SKCell
     {
         public override void OnInspectorGUI()
         {
-            GUI.DrawTexture(new Rect(new Vector2(10, 0), new Vector2(128, 64)), SKAssetLibrary.Texture_Logo);
+            GUI.skin.label.fontSize = 12;
+            Rect entireRect = EditorGUILayout.GetControlRect();
+            entireRect.x -= 20;
+            entireRect.y -= 5;
+            entireRect.width = 1000;
+            entireRect.height = 70;
+            EditorGUI.DrawRect(entireRect, new Color(.15f, .15f, .15f));
+            GUI.DrawTexture(new Rect(new Vector2(10, 0), new Vector2(450, 64)), SKAssetLibrary.Texture_Logo);
             GUILayout.Space(57);
             EditorGUILayout.BeginHorizontal();
-            GUILayout.Label("Utility Set    "+SKCore.SKCELL_VERSION);
+            GUILayout.Label(""+SKCore.SKCELL_VERSION);
             if (GUILayout.Button("Github"))
             {
                 Application.OpenURL("https://github.com/Skyrim07/SKCell");
@@ -24,7 +31,7 @@ namespace SKCell
             }
             EditorGUILayout.EndHorizontal();
             GUILayout.Label("by Alex Liu");
-            GUILayout.Space(20);
+            GUILayout.Space(5);
             base.OnInspectorGUI();
         }
     }

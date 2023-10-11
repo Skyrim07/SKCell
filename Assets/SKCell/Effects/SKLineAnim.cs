@@ -8,9 +8,12 @@ namespace SKCell
     [ExecuteInEditMode]
     public class SKLineAnim : PostEffectsBase
     {
-        public float _Speed = 1.0f, _Amplitude = 1.0f, _Frequency = 1.0f, _Thickness = 0.2f, _Phase, _Length = 1.0f;
-
-        public Color _BaseColor = Color.white, _TipColor = Color.white, _Color = Color.white;
+        [SKFolder("Attributes")]
+        public float _Speed = 1.0f;
+        public float _Amplitude = 1.0f, _Frequency = 1.0f, _Thickness = 0.2f, _Phase, _Length = 1.0f;
+        [SKFolder("Colors")]
+        public Color _BaseColor = Color.white;
+        public Color _TipColor = Color.white, _Color = Color.white;
 
         #region References
         private SpriteRenderer sr;
