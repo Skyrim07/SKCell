@@ -133,11 +133,11 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
     </a>
 </div></div></div>
 
-## Get Started
+## Getting Started
 SKCell is compatible with <b>Unity 2017.x</b> and newer.
 <br>
 <h5><b>Install</b><br></h5>
-To integrate SKCell into your project, simply download a release (unity package). The latest version is v0.11.0.
+To integrate SKCell into your project, simply download the latest release (unity package). Published releases can be found on the right side of the github repo page.
 Then, import the package into your project resource folder.<br>
 Notice a folder named <b>SKCell</b> will appear under the Assets directory.<br>
 
