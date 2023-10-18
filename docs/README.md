@@ -157,6 +157,9 @@ Congratulations! You have now set up SKCell. Please check the documentation to s
 
 ## Documentation
 
+(Currently, this documentation page does not contain features from v0.12.0 and above. I will update this as soon as possible.)
+
+
 ### 1. Common Utilities
 SKCell provides an abundency of useful utility functions, mostly in the static class <b>CommonUtils</b>.
 #### 1.1 Logging
