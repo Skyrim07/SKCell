@@ -59,6 +59,11 @@ namespace SKCell
     {
     }
 
+    [AttributeUsage(AttributeTargets.Field)]
+    public class SKSeparatorAttribute : PropertyAttribute
+    {
+    }
+
     /// <summary>
     /// Instead of the field name, display the specidied text in the inspector.
     /// </summary>

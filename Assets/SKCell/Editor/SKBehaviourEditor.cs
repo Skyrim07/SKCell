@@ -60,7 +60,8 @@ namespace SKCell
                 FieldInfo fieldInfo = iterator.serializedObject.targetObject.GetType().GetField(iterator.name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 SKFolderAttribute folderAttr = fieldInfo != null ? Attribute.GetCustomAttribute(fieldInfo, typeof(SKFolderAttribute)) as SKFolderAttribute : null;
                 SKEndFolderAttribute endFolderAttr = fieldInfo != null ? Attribute.GetCustomAttribute(fieldInfo, typeof(SKEndFolderAttribute)) as SKEndFolderAttribute : null;
-                SKInspectorButtonAttribute buttonAttr = fieldInfo != null ? Attribute.GetCustomAttribute(fieldInfo, typeof(SKInspectorButtonAttribute)) as SKInspectorButtonAttribute : null;
+                SKSeparatorAttribute separatorAttr = fieldInfo != null ? Attribute.GetCustomAttribute(fieldInfo, typeof(SKSeparatorAttribute)) as SKSeparatorAttribute : null;
+
 
 
                 if (endFolderAttr != null)
@@ -101,21 +102,50 @@ namespace SKCell
 
                     foldoutStack.Push(foldoutStates[folderAttr.name]);
                 }
+
+                if (separatorAttr != null)
+                {
+                    EditorGUILayout.Space(5);
+                    Rect rect = EditorGUILayout.GetControlRect();
+                    rect.height = 1.5f;
+                    rect.x -= 20;
+                    rect.width += 200;
+
+                    EditorGUI.DrawRect(rect, new Color(.9f, .8f, .7f, .2f));
+                    EditorGUILayout.Space(-10);
+                }
+
+
                 if (foldoutStack.Count == 0 || foldoutStack.Peek())
                 {
                     if((foldoutStack.Count > 0) && foldoutStack.Peek())
                         EditorGUI.indentLevel = 1;
                     EditorGUILayout.PropertyField(iterator, true);
+
+                    //Skip over child properties when displaying collections, events, etc.
+                    int childrenCount = GetChildrenCount(iterator);
+                    childrenCount--;
+                    for (int i = 0; i < childrenCount; i++)
+                    {
+                        iterator.NextVisible(true);
+                    }
                 }
                 EditorGUI.indentLevel = 0;
             }
             serializedObject.ApplyModifiedProperties();
-
-
-
-
         }
-
+        internal static int GetChildrenCount(SerializedProperty property)
+        {
+            int count = 0;
+            SerializedProperty iterator = property.Copy();
+            var end = iterator.GetEndProperty();
+            while (!SerializedProperty.EqualContents(iterator, end))
+            {
+                count++;
+                iterator.NextVisible(true);
+            }
+            return count;
+        }
         private void InitializeGUIStyles()
         {
             boldFoldoutStyle = new GUIStyle(EditorStyles.foldout);

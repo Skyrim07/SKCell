@@ -28,7 +28,6 @@ namespace SKCell
         [MenuItem("SKCell/Build CSV Files")]
         public static void BuildCSVFile()
         {
-            //For Test
             LoadConfig();
 
             MakeCsv(SourcePath);

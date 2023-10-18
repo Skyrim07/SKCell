@@ -31,6 +31,7 @@ Shader "SKCell/ImageProcessing"
 	{
 		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
 		Blend SrcAlpha OneMinusSrcAlpha
+		ZWrite Off
 		Cull Off
 		Pass
 		{
@@ -172,16 +173,16 @@ Shader "SKCell/ImageProcessing"
 				col= float4(col.rgb*_Brightness, col.a);
 
 				//Outline
-				if(_ShowOutline==1){
+				if(_ShowOutline == 1)
+				{
 					half alphaSum = CalculateAlphaSumAround(i);
-					float isNeedShow = alphaSum > _EdgeAlphaThreshold;
+					float isEdgePixel = alphaSum > _EdgeAlphaThreshold ? 1.0 : 0.0;
 					float damp = saturate((alphaSum - _EdgeAlphaThreshold) * _EdgeDampRate);
+					float isOriginalPixel = col.a > _BaseAlphaThreshold ? 1.0 : 0.0;
+					float3 finalColor = lerp(_EdgeColor.rgb, col.rgb, isOriginalPixel);
 
-					float isOrigon = col.a > _BaseAlphaThreshold;
-					float3 finalColor = lerp(_EdgeColor.rgb, col.rgb, isOrigon);
- 
-					col= float4(finalColor.rgb, isNeedShow * damp);
-					}
+					col = float4(finalColor.rgb, isEdgePixel * damp);
+				}
 			    //Alpha Fade
 				fixed alphalx = col.a * lerp(1,_AlphaPower,(_AlphaLX-i.uv.x));
 				col.a = saturate(lerp(alphalx,col.a,step(_AlphaLX,i.uv.x)));

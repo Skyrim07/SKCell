@@ -190,7 +190,7 @@ MonoBehaviour:
   typewriterType: 0
   typeSpeed: 1
   startOnEnable: 1
-  useInlineEffects: 1
+  useInlineEffects: 0
   skAnim: {fileID: 0}
   text: {fileID: 0}
   curTypewriterChar: -1
@@ -1295,6 +1295,7 @@ MonoBehaviour:
   topY: 0.526
   bottomY: 0
   alphaSmooth: 0
+  alphaMask: {fileID: 0}
   colorShift: 1
   brightness: 1
   saturation: 1
@@ -1531,7 +1532,7 @@ MonoBehaviour:
   typewriterType: 0
   typeSpeed: 1
   startOnEnable: 1
-  useInlineEffects: 1
+  useInlineEffects: 0
   skAnim: {fileID: 0}
   text: {fileID: 0}
   curTypewriterChar: -1
@@ -2151,7 +2152,7 @@ MonoBehaviour:
   typewriterType: 0
   typeSpeed: 1
   startOnEnable: 1
-  useInlineEffects: 1
+  useInlineEffects: 0
   skAnim: {fileID: 0}
   text: {fileID: 0}
   curTypewriterChar: -1

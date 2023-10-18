@@ -16,7 +16,7 @@ namespace SKCell
             entireRect.y -= 5;
             entireRect.width = 1000;
             entireRect.height = 70;
-            EditorGUI.DrawRect(entireRect, new Color(.15f, .15f, .15f));
+           // EditorGUI.DrawRect(entireRect, new Color(.15f, .15f, .15f));
             GUI.DrawTexture(new Rect(new Vector2(10, 0), new Vector2(450, 64)), SKAssetLibrary.Texture_Logo);
             GUILayout.Space(57);
             EditorGUILayout.BeginHorizontal();

@@ -377,7 +377,7 @@ MonoBehaviour:
   typewriterType: 0
   typeSpeed: 1
   startOnEnable: 1
-  useInlineEffects: 1
+  useInlineEffects: 0
   skAnim: {fileID: 0}
   text: {fileID: 0}
   curTypewriterChar: -1

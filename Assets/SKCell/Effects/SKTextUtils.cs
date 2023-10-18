@@ -115,8 +115,10 @@ namespace SKCell
             int index = 0;
             string crid = GetAndAddCRID(text);
             anim.animator.curTypewriterCRID = crid;
-            CommonUtils.InvokeAction(0, () =>
+
+            CommonUtils.InvokeAction(0.05f, () =>
             {
+    
                 for (int i = 0; i < effects.Length; i++)
                 {
                     effects[i].startIndex = Mathf.Clamp(index, 0, data.charData.Length-1);

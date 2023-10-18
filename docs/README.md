@@ -1,6 +1,6 @@
 # SKCell
 
-v0.13.2 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.13.4 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3216,6 +3216,13 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
     - Added more supported types for project folder colors
     - Changed hierarchy separator visuals
     - Changed SKCore inspector visuals
+    <br>0.13.3
+    - Added SKUIScene for demo purposes
+    - Fixed bugs associated with SKTextAnimator
+    <br>0.13.4
+    - Added SKInspectorScene for demo purposes
+    - Added inspector attribute: SKSeparator
+    - Fixed bugs associated with SKBehaviourEditor, SKFolderIconSetter, SKSpriteProcessing, and SKImageProcessing
 
 
 <b>v0.12.x</b>								  

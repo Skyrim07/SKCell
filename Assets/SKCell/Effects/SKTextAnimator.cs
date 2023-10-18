@@ -23,7 +23,7 @@ namespace SKCell
         public bool startOnEnable = true; //deprecated
 
         [Header("Inline Effects")]
-        public bool useInlineEffects = true;
+        public bool useInlineEffects = false;
 
         private string oStr; //original string
         private string pStr; //parsed string
@@ -61,7 +61,7 @@ namespace SKCell
                 {
                     if (startOnEnable)
                     {
-                        PlayTypeWriter();
+                        PlayTypeWriterInternal();
                     }
                     if(!startOnEnable || !useTypeWriter)
                     {
@@ -70,11 +70,19 @@ namespace SKCell
                 });
             });
         }
+        /// <summary>
+        /// Replay the typewriter effect associated to this object.
+        /// </summary>
         public void PlayTypeWriter()
+        {
+            UpdateText(text.text);
+        }
+        private void PlayTypeWriterInternal()
         {
             if (!useTypeWriter)
                 return;
 
+            skAnim.UpdateTextInfo();
             typewriterPlaying = true;
             curTypewriterEffect = 0;
             curTypewriterChar = -1;
@@ -138,7 +146,7 @@ namespace SKCell
                     text.alpha = oa;
                     if (useTypeWriter)
                     {
-                        PlayTypeWriter();
+                        PlayTypeWriterInternal();
                     }
                     else
                     {

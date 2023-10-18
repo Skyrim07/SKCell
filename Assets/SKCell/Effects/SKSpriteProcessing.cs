@@ -80,6 +80,11 @@ namespace SKCell
         protected override void Start()
         {
             base.Start();
+            UpdateFields();
+        }
+
+        private void UpdateFields()
+        {
             _Material.SetInt("_SrcBlendMode", (int)srcBlend);
             _Material.SetInt("_DstBlendMode", (int)dstBlend);
 
@@ -99,33 +104,16 @@ namespace SKCell
             _Material.SetFloat("_EdgeDampRate", dampRate);
             _Material.SetColor("_EdgeColor", rimColor);
         }
+
         void Update()
         {
-
-                if (!updateOnPlay)
-                {
-                    return;
-                }
+            if (!updateOnPlay)
+            {
+                return;
+            }
             else
             {
-                _Material.SetInt("_SrcBlendMode", (int)srcBlend);
-                _Material.SetInt("_DstBlendMode", (int)dstBlend);
-
-                _Material.SetFloat("_AlphaLX", leftX * 2);
-                _Material.SetFloat("_AlphaRX", ((1 - rightX) - 0.5f) * 2);
-                _Material.SetFloat("_AlphaTY", ((1 - topY) - 0.5f) * 2);
-                _Material.SetFloat("_AlphaBY", bottomY * 2);
-                _Material.SetFloat("_AlphaPower", alphaSmooth);
-                _Material.SetFloat("_Brightness", brightness);
-                _Material.SetFloat("_Saturation", saturation);
-                _Material.SetFloat("_Contrast", contrast);
-                _Material.SetFloat("_Hue", colorShift);
-
-                _Material.SetInt("_ShowOutline", CommonUtils.BoolToInt(active));
-                _Material.SetFloat("_EdgeAlphaThreshold", rimAlphaThreshold);
-                _Material.SetFloat("_BaseAlphaThreshold", baseAlphaThreshold);
-                _Material.SetFloat("_EdgeDampRate", dampRate);
-                _Material.SetColor("_EdgeColor", rimColor);
+                UpdateFields();
             }
         }
     }

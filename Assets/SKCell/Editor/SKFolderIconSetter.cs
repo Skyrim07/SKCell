@@ -34,8 +34,12 @@ namespace SKCell
         private static void OnProjectWindowItemGUI(string guid, Rect selectionRect)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
-            if (string.IsNullOrEmpty(path) || !AssetDatabase.IsValidFolder(path))
+            if(string.IsNullOrEmpty(path))
                 return;
+            if (!AssetDatabase.IsValidFolder(path))
+                return;
+            bool isSelected = Selection.assetGUIDs.Contains(guid);
+            Rect folderRect = new Rect(selectionRect);
 
             int fileCount = 0;
             if (!folderTypeCache.TryGetValue(path, out string dominantType))
@@ -44,9 +48,9 @@ namespace SKCell
                 folderTypeCache[path] = dominantType;
             }
 
-            Rect folderRect = new Rect(selectionRect);
             string iconPath = "FolderIcons/folder";
-            if (selectionRect.width < 100)
+            float aspect = selectionRect.width / selectionRect.height;
+            if (aspect<=1.0f)
             {
                 folderRect.y -= 2;
                 folderRect.height -= 10;
@@ -65,7 +69,6 @@ namespace SKCell
                 folderRect.center = ocenter;
                 folderRect.y += folderRect.width * .08f;
 
-                bool isSelected = Selection.assetGUIDs.Contains(guid);
                 Color col = isSelected ? new Color(1, 1, 1, .06f) : new Color(0, 0, 0, .00f);
                 GUI.DrawTexture(folderRect, SKAssetLibrary.LoadTexture("sq"), ScaleMode.ScaleToFit, true, 0, col, 0, 5);
             }
@@ -74,12 +77,14 @@ namespace SKCell
             if (iconTexture)
             {
                 float size = selectionRect.width / 2.5f;
-                Rect iconRect = (selectionRect.width < 100)
+                Rect iconRect = (aspect<=1.0f)
                     ? new Rect(selectionRect.xMax - selectionRect.width / 2.5f, selectionRect.y + selectionRect.width / 1.6f, size, size)
                     : new Rect(selectionRect.xMax - 20, selectionRect.y, 15, 15);
 
                 GUI.DrawTexture(iconRect, iconTexture);
             }
+
+
         }
 
         private static string DetermineDominantFileType(string folderPath, out int fileCount)

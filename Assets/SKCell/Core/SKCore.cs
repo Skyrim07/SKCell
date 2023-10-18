@@ -14,7 +14,7 @@ namespace SKCell
     [AddComponentMenu("SKCell/SKCore")]
     public sealed class SKCore : MonoSingleton<SKCore>
     {
-        public const string SKCELL_VERSION = "v0.13.2";
+        public const string SKCELL_VERSION = "v0.13.4";
 
         public static Action Awake000 = new Action(EmptyAction), Awake100 = new Action(EmptyAction),
                               Start000 = new Action(EmptyAction), Start100 = new Action(EmptyAction), Start200 = new Action(EmptyAction),

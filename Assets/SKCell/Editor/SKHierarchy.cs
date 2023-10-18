@@ -163,7 +163,8 @@ namespace SKCell
             Rect iconRect = new Rect(selectionRect);
             iconRect.xMin -= 0;
             iconRect.xMax = iconRect.xMin + 16;
-            col = Selection.activeObject == obj?new Color(.17f,.35f,.6f): new Color(.25f,.25f,.25f);
+            //col = Selection.activeObject == obj?new Color(.17f,.35f,.6f): new Color(.25f,.25f,.25f);
+            col =new Color(.25f,.25f,.25f);
             EditorGUI.DrawRect(iconRect, col);
             if (!isSeparator)
             {
