@@ -32,6 +32,8 @@ namespace SKCell
 
         static SKHierarchy()
         {
+            SKAssetLibrary.ClearTextureCache();
+
             EditorApplication.hierarchyWindowItemOnGUI += HandleHierarchyWindowItemOnGUI;
 
             srContent = new GUIContent(SKAssetLibrary.LoadTexture($"ObjectIcons/obj_icon_7"));

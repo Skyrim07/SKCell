@@ -157,7 +157,7 @@ Congratulations! You have now set up SKCell. Please check the documentation to s
 
 ## Documentation
 
-(Currently, this documentation page does not contain features from v0.12.0 and above. I will update this as soon as possible.)
+(This documentation is up to date for v0.13.4)
 
 
 ### 1. Common Utilities
@@ -194,8 +194,7 @@ CommonUtils.EditorLogError("Error message: item ID is -1!");
 CommonUtils.DebugDrawText($"Position: {pos}",pos, Color.Red, 25.0f, 10.0f);
 ```
 #### 1.3 Coroutines 
-You can find more about this here: <a href="https://www.alexliugames.com/post/unity-coding-designs-02-delayed-function-calls">unity-coding-designs-02-delayed-function-calls</a><br>
-<br>
+
 <b>void InvokeAction(float seconds, Action callback, int repeatCount = 0, float repeatInterval = 1, string id = "", Action onFinish = null)</b><br>
 <i>Invokes an action after <b>time</b> seconds, then repeatedly every <b>repeatInterval</b> seconds, stopping at <b>repeatCount</b> times.</i><br>
 <i>callback: The function you want to call.</i><br>
@@ -244,9 +243,10 @@ CommonUtils.CancelInvoke("action_07");
 ```
 
 #### 1.4 Tweening 
-Make animation tweening effects with just a few lines of code! You can find more about this here: <a href="https://www.alexliugames.com/post/unity-coding-designs-04-tweening">unity-coding-designs-04-tweening</a><br>
+Make animation tweening effects with just a few lines of code!
 <br>
-<b>void StartProcedure(SKCurve curve, float time, Action<float> action, Action<float> onFinish = null, string id = "")</b><br>
+<br>
+<b>void StartProcedure(SKCurve curve, float time, Action &lt;float&gt; action, Action&lt;float&gt; onFinish = null, string id = "")</b><br>
 <i>Starts a continuous procedure where a variable changes from 0 to 1 over time.</i><br>
 <i>curve: The animation curve of this procedure.</i> See <a href="#?id=_31-skcurve">SKCurve.</a><br>
 <i>time: Total time of this procedure.</i><br>
@@ -1843,6 +1843,22 @@ SKAnimationRandomizer randomizes the start time of an animation clip on play. A 
 2. Play!<br>
 <br>
 
+#### 6.8 SKUIShadow
+SKUIShadow lets you add drop shadow effects to your UI elements.<br>
+
+<h5>Using SKUIShadow</h5>
+1. Add the SKUIShadow component to your UI object.<br>
+2. Adjust the color, spread, iterations, etc. to fit your needs.<br>
+<br>
+
+#### 6.9 SKLineAnim
+SKLineAnim is an interesting example of how you can make a animated curve.<br>
+
+<h5>Using SKLineAnim</h5>
+1. Go to SKCell/Effects and place the LineAnim prefab into your scene.<br>
+2. Observe!<br>
+<br>
+
 ### 7. Text Animator
 SKCell offers a dynamic inline text animator which allows you to implement text effects just by marking the texts.<br>
 It also comes with built-in typewriter effects.<br>
@@ -3140,7 +3156,131 @@ SKCell brings a series of editor interface improvements to Unity.<br>
 You can customize colors for the hierarchy window by selecting <b>SKCell/Hierarchy Style</b> from the menu bar.<br>
 Close the customization window to apply changes.<br>
 
-#### 14.2 Transform Component
+#### 14.2 Project Folder Features
+SKCell brings an upgrade to your project window. There will be an icon for each folder that indicates the <b>predominant file type </b> inside that folder.<br>
+The icon updates in real time.
+ <div align="center">
+        <img src="./Editor/e4.png" width="1500" height="220" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+There are also special colors for designated folders.<br>
+The following code shows you the types and colors supported. (updated v0.13)
+
+```csharp
+    {"SKCell", new Color(1.0f, 0.9f,0.7f, 1f)},
+    {"Editor", new Color(0.3f, 0.65f,1.0f, 1f)},
+    {"Prefabs", new Color(0.6f, 0.95f,1.0f, 1f)},
+    {"Prefab", new Color(0.6f, 0.95f,1.0f, 1f)},
+    {"Resources", new Color(0.3f, 0.95f,0.4f, 1f)},
+    {"Scenes", new Color(0.83f, 0.72f,0.61f, 1f)},
+    {"TextMesh Pro", new Color(0.93f, 0.42f,0.41f, 1f)},
+    {"StreamingAssets", new Color(0.92f, 0.63f,0.96f, 1f)},
+```
+
+
+#### 14.3 Inspector Attributes
+SKCell offers a wide range of inspector attributes that allows you to make custom inspector for your scripts easily.
+ <div align="center">
+        <img src="./Editor/e5.png" width="400" height="300" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+<br>
+For example, the following code makes the inspector above.<br>
+
+```csharp
+ public float transitionTime = 0.5f;
+
+ [SKFolder("Target Camera Parameters")]
+ public bool useOrthographicSize;
+ [SKConditionalField("useOrthographicSize", true)]
+ public float orthographicSize;
+ public bool useScreenX;
+ [SKConditionalField("useScreenX", true)]
+ public float screenX;
+ public bool useScreenY;
+ [SKConditionalField("useScreenY", true)]
+ public float screenY;
+ public bool useDisableDeadzone;
+
+ [SKFolder("Interaction with ConvStarter")]
+ public ConvStarter convStarter;
+ [HideInInspector]
+ public CinemachineVirtualCamera cam;
+ [HideInInspector]
+ public CinemachineFramingTransposer transposer;
+
+ private float oOrthoSize, oScreenX, oScreenY;
+
+ [SKInspectorButton("Print 1")]
+ public void Print1()
+ {
+     print(1);
+ }
+ [SKInspectorButton("Print 2")]
+ public void Print2()
+ {
+     print(2);
+ }
+ ``` 
+
+
+<b>Supported Attributes</b><br>
+
+<b>[SKFolder]</b>: Makes a folder (foldout) containing the fields underneath.<br>
+```csharp
+[SKFolder("Folder Name")]
+public int a;
+public string b;
+public GameObject c;
+ ``` 
+<br>
+<b>[SKEndFolder]</b>: Marks the end of an SKFolder<br>
+
+```csharp
+[SKEndFolder]
+ ``` 
+<br>
+<b>[SKInspectorButton]</b>: Makes a button in the inspector. Will execute a function when pressed.<br>
+
+```csharp
+[SKInspectorButton("Print 1")]
+public void Print1()
+{
+    print(1);
+}
+ ``` 
+<br>
+<b>[SKConditionalField]</b>: Makes a field ONLY appear when some other conditions are met.<br>
+
+```csharp
+public bool useOrthographicSize;
+[SKConditionalField("useOrthographicSize", true)]
+public float orthographicSize;
+ ``` 
+<br>
+<b>[SKFieldAlias]</b>: Set an alias for a field. The alias will be displayed in the inspector instead of the field name.<br>
+
+```csharp
+[SKFieldAlias("Player Speed")]
+public float spd;
+ ``` 
+<br>
+<b>[SKSeparator]</b>: Makes a separator line.<br>
+
+```csharp
+public int a;
+[SKSeparator]
+public float b;
+ ``` 
+<br>
+<b>[SKResettable]</b>: Makes a field resettable to its default value by clicking a reset button in the inspector.<br>
+
+```csharp
+[SKResettable]
+public float bounciness = 5.0f;
+ ``` 
+
+#### 14.4 Transform Component
 Select <b>Show Transform Ext</b> to view extra info.
 <div class="row">
   <div class="column">
@@ -3159,11 +3299,11 @@ Select <b>Show Transform Ext</b> to view extra info.
     </a>
 </div></div></div>
 
-#### 14.3 Project Window
+#### 14.5 File Details
 Select <b>SKCell/File Details...</b> from the menu bar to see file details in the project window.<br>
 File details are only visible when the project window has the <b>min display size</b>.<br>
  <div align="center">
-        <img src="./Editor/e2.png" width="400" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./Editor/e2.png" width="800" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div>
   <b>Properties available for display</b><br>
@@ -3189,14 +3329,60 @@ File details are only visible when the project window has the <b>min display siz
     - <b>Texture Wrap Mode</b><br>
     <br>
 
+
+
 ### 15. Editor Tools
 
-#### 15.1 Sprite Colorer
+#### 15.1 Sprite Editor
+The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the Unity Editor.
+ <div align="center">
+        <img src="./Editor/e3.png" width="850" height="480" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+  <b>Open the SK Sprite Editor</b><br>
+  <br>
+  Select <b>SKCell/Sprite Editor</b> from the Unity Editor toolbar to open the editor.<br>
+  <br>
+  <b>Loading a file to the sprite editor</b><br>
+  <br>
+  You can assign the texture you want to edit by clicking on the <b>Texture</b> box on the left.<br>
+  <br>
+  <b>Saving an edited file</b><br>
+  <br>
+  You can save the changes to the CURRENT image by clicking the <b> Apply Changes </b> button on the top right corner. In this way, the original texture will be replaced.<br>
+  You can also save the edited file to a new file by clicking the <b> Save As... </b> button on the left.
+  <br>
+  <br>
+  <b>Editor Features</b><br>
+  <br>
+  The sprite editor inspector is located on the right of the screen. You can select tools, adjust image colors, and apply image effects to the texture. 
+  <br>
+  <br>
+  - The <b> Select </b> tool allows you to select a rectangular area on the texture. All later modifications will be restricted to this area.
+  <br><br>
+  - The <b> Paint Brush </b> tool allows you to draw on the texture. You can specify a shape (smooth or solid), select a color, and adjust the size for the brush.<br><br>
+  - The <b> Eraser </b> tool allows you to erase colors on the texture. Still, the brush settings apply.<br><br>
+  - The <b> Color Picker </b> tool allows you to pick colors from the texture. You can also access the color picker ANYTIME by holding the right mouse button.<br><br>
+
+  <b>Color Adjustment</b><br>
+  You can adjust the saturation, contrast, and brightness of the texture using the sliders on the right.
+  
+  <b>Erase Color</b><br>
+  You can erase all colors that are within the tolerance of your specified color by clicking the </b> Erase </b> button on the right.
+   
+  <b>Gaussian Blur</b><br>
+  You can apply Gaussian Blur to the image by specifying the blur radius and clicking <b> Blur </b>.
+  * Due to CPU limitations, this operation might take a long time for high-resolution textures.
+
+
+
+
+#### 15.2 Sprite Colorer
 The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
 <br>
 Select <b>SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
 
-#### 15.2 Texture Utils
+#### 15.3 Texture Utils
 The texture utilities allows you to assign types, formats, and sizes for all the textures in your projects.
 <br>
 Select <b>SKCell/Tools/Texture Utils</b> to open the window. 
@@ -3208,7 +3394,7 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 2023.10
 -   Custom editor update! New features include: custom object icons, automatic project folder icons, inline inspector attributes, etc.
 -	Added SKFolderIconSetter, SKFolderChangeProcessor, SKAttributeDrawer, SKBehaviourEditor, SKMonoAttribute, etc.
--   Added inspector attributes: SKFolder, SKEndFolder, SKConditionalField, SKResettable, SKInspectorButton, SKInspectorText
+-   Added inspector attributes: SKFolder, SKEndFolder, SKConditionalField, SKResettable, SKInspectorButton, SKFieldAlias
 -   Enhanced SKHierarchy
 -   Added new editor icons
     <br>0.13.1

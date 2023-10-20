@@ -114,12 +114,12 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
     }
 
 
-    [CustomPropertyDrawer(typeof(SKInspectorTextAttribute))]
+    [CustomPropertyDrawer(typeof(SKFieldAliasAttribute))]
     public class SKInspectorTextDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SKInspectorTextAttribute textAttribute = (SKInspectorTextAttribute)attribute;
+            SKFieldAliasAttribute textAttribute = (SKFieldAliasAttribute)attribute;
 
             EditorGUI.LabelField(position, textAttribute.Message);
             EditorGUI.PropertyField(position, property,true);

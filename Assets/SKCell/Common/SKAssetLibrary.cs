@@ -33,6 +33,11 @@ namespace SKCell
 
         private static Dictionary<string, Texture> textureCache = new Dictionary<string, Texture>();
 
+        public static void ClearTextureCache()
+        {
+            textureCache.Clear();
+        }
+
         public static void SaveJsonFile(object obj, string fileName)
         {
             string js = JsonUtility.ToJson(obj);

@@ -68,11 +68,11 @@ namespace SKCell
     /// Instead of the field name, display the specidied text in the inspector.
     /// </summary>
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Class, AllowMultiple = true)]
-    public class SKInspectorTextAttribute : PropertyAttribute
+    public class SKFieldAliasAttribute : PropertyAttribute
     {
         public string Message { get; }
 
-        public SKInspectorTextAttribute(string message)
+        public SKFieldAliasAttribute(string message)
         {
             Message = message;
         }
