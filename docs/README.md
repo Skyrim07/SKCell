@@ -3548,9 +3548,3 @@ SKSpriteBlur)
 ## License
 
 Released under [MIT](/LICENSE) by [@Alex Liu].
-
-- You can modify and reuse this project.
-- Please link back to the original repo somewhere in your project if you use this in any way.
-- Including an original license copy.
-    - If you add content from [docs](/docs/) to your repo (or click _Use this template_) and then modify for your own needs so your copy is no longer a template, then you don't need to include a license.
-    - If you do fork this repo then use it as your own _template_, then this project's license and copyright notice must be **included** with the software. [source](https://choosealicense.com/licenses/#mit). Copy `LICENSE` to `LICENSE-source` and then update your copy of `LICENSE` with your own details.
