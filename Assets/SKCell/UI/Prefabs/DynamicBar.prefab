@@ -5657,7 +5657,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -7.4, y: -2}
+  m_AnchoredPosition: {x: -7.4000244, y: -2}
   m_SizeDelta: {x: 3840, y: 2160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8086165071833817833
@@ -5703,7 +5703,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8086165071833817835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5735,6 +5735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value: 0.5
   fill: {fileID: 8086165071646529450}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8086165071879889926
 GameObject:
   m_ObjectHideFlags: 0

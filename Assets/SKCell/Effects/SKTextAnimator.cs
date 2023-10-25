@@ -209,6 +209,9 @@ namespace SKCell
         }
         private void ParseText()
         {
+            if (oStr == null)
+                return;
+
             oStr = oStr.Replace(@"\r", "\r");
             oStr = oStr.Replace(@"\n", "\n");
 

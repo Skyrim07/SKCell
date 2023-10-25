@@ -72,11 +72,9 @@ namespace SKCell
 
             onStartLoad.Invoke();
             //Load the loading scene first
-            async = SceneManager.LoadSceneAsync(loadingSceneName);
-            while (!async.isDone)
-            {
-                yield return new WaitForSecondsRealtime(0.02f);
-            }
+
+            SceneManager.LoadScene(loadingSceneName);
+            yield return new WaitForSeconds(0.05f);
             onLoadingSceneLoaded.Invoke();
 
             loadFader.SetState(SKUIPanelState.Inactive);
@@ -113,7 +111,7 @@ namespace SKCell
 
             //Cast fader
             loadFader.SetState(SKUIPanelState.Active);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.18f);
             //Load complete
             async.allowSceneActivation = true;
             onNextSceneLoaded.Invoke();

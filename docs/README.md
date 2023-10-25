@@ -1,6 +1,6 @@
 # SKCell
 
-v0.13.4 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.14.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3389,6 +3389,16 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 
 ## Dev Log
+
+<b>v0.14.x</b>								  
+2023.11
+-   Shader & Effects update! 
+-   Added effects: SKDissolveEffect, SKOuterGlowEffect, SKCartoonGrass, SKToonMaterial, SKGlitchEffect, SKWireframeEffect, SKDitherAlpha, SKEdgeOutlineEffect, SKLightCastEffect 
+-   Added SKShaderScene
+-   Added SKColor, SKColorPalette
+-   Added SKVariableMonitor
+-   Fixed issues with SKTextAnimator 
+-   Fixed issues with SKQuitControl
 
 <b>v0.13.x</b>								  
 2023.10

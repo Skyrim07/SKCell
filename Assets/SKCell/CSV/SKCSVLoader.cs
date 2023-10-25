@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    [AddComponentMenu("SKCell/CSVLoader")]
+    [AddComponentMenu("SKCell/SKCSVLoader")]
     public class SKCSVLoader : MonoSingleton<SKCSVLoader>
     {
         protected override void Awake()
