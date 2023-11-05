@@ -45,7 +45,11 @@ namespace SKCell {
         {
             Init();
         }
-        
+
+        private void OnBecameVisible()
+        {
+            InitializeGUIStyles();
+        }
 
         private void OnLostFocus()
         {
@@ -162,7 +166,7 @@ namespace SKCell {
             inspector_buttonStyle.normal.textColor = COL_TITLE;
             inspector_buttonStyle.hover.background = MakeTex(2, 2, new Color(.3f, .3f, .3f, 0.9f));
             inspector_buttonStyle.hover.textColor = new Color(1f, .95f, .5f, 0.6f);
-        }
+        } 
 
         public void SaveAsset()
         {
@@ -170,7 +174,6 @@ namespace SKCell {
         }
         public void LoadAsset(SKDialogueAsset asset)
         {
-            InitializeGUIStyles();
             if (asset == null)
             {
                 this.asset = null;
@@ -391,6 +394,9 @@ namespace SKCell {
         }
         void DrawNode(SKDialogueEditorNode node, int id)
         {
+            if (node == null)
+                return;
+
             node.rect = GUI.Window(id, node.rect, DrawNodeWindow,node.name);
 
             Rect iconRect = new Rect(node.rect.x-20, node.rect.y-20,  25, 25);

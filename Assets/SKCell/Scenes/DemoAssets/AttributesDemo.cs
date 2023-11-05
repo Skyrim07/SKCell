@@ -6,6 +6,10 @@ namespace SKCell.Test
 {
     public class AttributesDemo : MonoBehaviour
     {
+        [SKInspectorText("Set the value of the magic number below,\nand use the button above to print it out!")]
+        [SerializeField]
+        private byte a;
+
         public int magicNumber = 42;
         [SKFolder("Integer Fields")]
         public int number1;

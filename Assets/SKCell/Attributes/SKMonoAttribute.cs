@@ -77,4 +77,15 @@ namespace SKCell
             Message = message;
         }
     }
+
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+    public class SKInspectorTextAttribute : PropertyAttribute
+    {
+        public string Message { get; }
+
+        public SKInspectorTextAttribute(string message)
+        {
+            Message = message;
+        }
+    }
 }

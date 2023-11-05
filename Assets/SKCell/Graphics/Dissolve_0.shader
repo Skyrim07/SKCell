@@ -7,7 +7,7 @@
         _MainTex ("Texture", 2D) = "white" {}
         _Noise ("Noise", 2D) = "white" {}
         _Threshold ("Threshold", range(0,1)) = 0.5        
-        _HighlightThreshold ("Highlight Threshold", float) =1
+        _HighlightThreshold ("Highlight Threshold", float) = 0.1
     }
     SubShader
     {
