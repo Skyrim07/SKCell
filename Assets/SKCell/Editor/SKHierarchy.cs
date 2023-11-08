@@ -95,6 +95,7 @@ namespace SKCell
                 Rect offsetRect = new Rect(selectionRect.position + OFFSET, selectionRect.size);
 
                 Color bgColor = highlightColorSolid;
+                bgColor = new Color(.18f, .18f, .18f); //Updated color
                 if (Selection.activeGameObject?.GetInstanceID() == instanceID)
                 {
                     bgColor = selectionColorDefault;
@@ -107,7 +108,9 @@ namespace SKCell
                 EditorGUI.LabelField(offsetRect, obj.name, new GUIStyle()
                 {
                     normal = new GUIStyleState() { textColor = Color.white * (obj.activeSelf ? .9f : .5f) },
-                    fontStyle = FontStyle.Bold,
+                   // fontStyle = FontStyle.Bold,
+                    font = SKAssetLibrary.DefaultFont,
+                    fontSize = 12,
                     alignment = TextAnchor.MiddleCenter,
                 });
             }

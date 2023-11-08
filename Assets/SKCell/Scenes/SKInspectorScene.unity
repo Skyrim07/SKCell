@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789ea197ee8314f4fb2b28c08550131a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: 0
   magicNumber: 42
   number1: 2
   number2: 33
