@@ -54,7 +54,7 @@ namespace SKCell
 
             string iconPath = "FolderIcons/folder";
             float aspect = selectionRect.width / selectionRect.height;
-
+            ScaleMode scaleMode = ScaleMode.ScaleToFit;
             if (aspect <= 1.0f) //For big icons
             {
                 folderRect.y -= 2;
@@ -63,16 +63,19 @@ namespace SKCell
             else //For list-view icons
             {
                 iconPath = "FolderIcons/circle";
-                folderRect.height -= 10;
-                folderRect.y += 5;
-                folderRect.x -=120;
+                folderRect.height = 7;
+                folderRect.width = 7;
+                folderRect.y +=4;
+                folderRect.xMax = 14;
+                folderRect.xMin = 7;
+                scaleMode = ScaleMode.StretchToFill;
             }
             foreach (var item in folderColors.Keys)
             {
                 int index = Mathf.Max(0, path.LastIndexOf('/') + 1);
                 if (path.Substring(index) == item)
                 {
-                    GUI.DrawTexture(folderRect, SKAssetLibrary.LoadTexture(iconPath), ScaleMode.ScaleToFit, true, 0, folderColors[item], 0, 0);
+                    GUI.DrawTexture(folderRect, SKAssetLibrary.LoadTexture(iconPath), scaleMode, true, 0, folderColors[item], 0, 0);
                 }
             }
             if (aspect <= 1.0f) //For big icons
