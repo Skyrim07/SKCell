@@ -38,12 +38,9 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
         {
             return sourcePropertyValue.boolValue != (bool)hideAttribute.ConditionalValue;
         }
-        // Handle other types as needed (e.g., SerializedPropertyType.Int, SerializedPropertyType.String, etc.)
-
-        // Default
         return false;
     }
-
+}
 
     [CustomPropertyDrawer(typeof(SKResettableAttribute))]
     public class ResettablePropertyDrawer : PropertyDrawer
@@ -143,4 +140,3 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
             return base.GetPropertyHeight(property, label);
         }
     }
-}

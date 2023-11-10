@@ -10,6 +10,7 @@ using UnityEditor.Animations;
 namespace SKCell
 {
     [CustomEditor(typeof(SKToggle))]
+    [CanEditMultipleObjects]
     public class SKToggleEditor : Editor
     {
         static SKToggle skToggle;

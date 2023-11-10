@@ -10,6 +10,7 @@ namespace SKCell
 {
 #if UNITY_EDITOR
     [CustomEditor(typeof(SKSlider))]
+    [CanEditMultipleObjects]
     public class SKSliderEditor : Editor
     {
         static SKSlider skSlider;

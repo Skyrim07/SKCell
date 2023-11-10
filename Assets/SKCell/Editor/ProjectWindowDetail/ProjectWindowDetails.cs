@@ -7,8 +7,6 @@ using UnityEngine;
 
 namespace ProjectWindowDetail
 {
-
-	// Do not run this on the server because it could slow down tests and builds:
 	#if !CONTINUOUS_INTEGRATION
 
 
@@ -36,7 +34,6 @@ namespace ProjectWindowDetail
 
 		public static IEnumerable<Type> GetAllDetailTypes()
 		{
-			// Get all classes that inherit from ProjectViewDetailBase:
 			var types = Assembly.GetExecutingAssembly().GetTypes();
 			foreach (var type in types)
 			{
@@ -51,7 +48,6 @@ namespace ProjectWindowDetail
 		[MenuItem("SKCell/File Details...")]
 		public static void Menu()
 		{
-			//Event.current.Use();
 			ShowContextMenu();
 		}
 
@@ -82,7 +78,6 @@ namespace ProjectWindowDetail
 
 			var isSelected = Array.IndexOf(Selection.assetGUIDs, guid) >= 0;
 
-			// Right align label and leave some space for the menu icon:
 			rect.x += rect.width;
 			rect.x -= MenuIconWidth;
 			rect.width = MenuIconWidth;
@@ -123,8 +118,6 @@ namespace ProjectWindowDetail
 		private static void DrawMenuIcon(Rect rect)
 		{
 			rect.y += 4;
-			//var icon = EditorGUIUtility.IconContent("d_LookDevPaneOption");
-			//EditorGUI.LabelField(rect, icon);
 		}
 
 		private static GUIStyle GetStyle(TextAlignment alignment)
@@ -174,13 +167,10 @@ namespace ProjectWindowDetail
 
 		private static bool IsMainListAsset(Rect rect)
 		{
-			// Don't draw details if project view shows large preview icons:
 			if (rect.height > 20)
 			{
 				return false;
 			}
-
-			// Don't draw details if this asset is a sub asset:
 			if (rect.x > 16)
 			{
 				return false;

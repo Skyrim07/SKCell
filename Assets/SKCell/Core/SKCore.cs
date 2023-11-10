@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿//------------------------------------------------------------
+// SKCell - Comprehensive Unity Utility Package
+// Copyright © 2019-2024 Alex Liu. All rights reserved.
+//------------------------------------------------------------
+
+
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 /// <summary>
 /// Base level flow control
 /// </summary>
@@ -14,7 +18,7 @@ namespace SKCell
     [AddComponentMenu("SKCell/SKCore")]
     public sealed class SKCore : MonoSingleton<SKCore>
     {
-        public const string SKCELL_VERSION = "v0.14.2";
+        public const string SKCELL_VERSION = "v0.14.3";
 
         public static Action Awake000 = new Action(EmptyAction), Awake100 = new Action(EmptyAction),
                               Start000 = new Action(EmptyAction), Start100 = new Action(EmptyAction), Start200 = new Action(EmptyAction),

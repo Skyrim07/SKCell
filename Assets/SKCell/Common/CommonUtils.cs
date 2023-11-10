@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------
-// SKCell - Unity Framework & Utilitiies
-// Copyright © 2019-2023 Pincun (Alex) Liu. All rights reserved.
+// SKCell - Comprehensive Unity Utility Package
+// Copyright © 2019-2024 Alex Liu. All rights reserved.
 //------------------------------------------------------------
 
 using System;

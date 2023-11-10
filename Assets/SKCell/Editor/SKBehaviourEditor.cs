@@ -11,6 +11,7 @@ namespace SKCell
     /// Custom MonoBehaviour inspector.
     /// </summary>
     [CustomEditor(typeof(MonoBehaviour), true, isFallback = true)]
+    [CanEditMultipleObjects]
     public class SKMonoBehaviourEditor : Editor
     {
         private Dictionary<string, bool> foldoutStates = new Dictionary<string, bool>();

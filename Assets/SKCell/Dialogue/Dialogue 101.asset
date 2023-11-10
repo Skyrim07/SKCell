@@ -316,8 +316,8 @@ MonoBehaviour:
     uid: 460506
     rect:
       serializedVersion: 2
-      x: 1577.1111
-      y: 959.8889
+      x: 1578.1111
+      y: 990.8889
       width: 100
       height: 80
     oRect:
@@ -349,8 +349,8 @@ MonoBehaviour:
     uid: 658756
     rect:
       serializedVersion: 2
-      x: 1561.1112
-      y: 1081.8889
+      x: 1503.1112
+      y: 1128.8889
       width: 100
       height: 80
     oRect:
@@ -402,7 +402,7 @@ MonoBehaviour:
       avatar: {fileID: 0}
       audio: {fileID: 0}
     linkedNodesID: c2ce0100
-    linkedFromNodesID: 440d0a00
+    linkedFromNodesID: 440d0a00f4bf0900
     event_name: <event name>
     event_arg0: 0
     event_arg1: 0
@@ -415,8 +415,8 @@ MonoBehaviour:
     uid: 994856
     rect:
       serializedVersion: 2
-      x: 1826.1111
-      y: 960.8889
+      x: 1888.1111
+      y: 977.8889
       width: 100
       height: 80
     oRect:
@@ -634,6 +634,105 @@ MonoBehaviour:
       audio: {fileID: 0}
     linkedNodesID: 
     linkedFromNodesID: ddd00700
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Sentence 19
+    uid: 573320
+    rect:
+      serializedVersion: 2
+      x: 935.11115
+      y: 1475.8889
+      width: 100
+      height: 130
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 0
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: d8570900
+    linkedFromNodesID: 
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Choice 20
+    uid: 612312
+    rect:
+      serializedVersion: 2
+      x: 1186.1111
+      y: 1358.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 1
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: f4bf0900
+    linkedFromNodesID: 88bf0800
+    event_name: <event name>
+    event_arg0: 0
+    event_arg1: 0
+    int_property_name: <variable>
+    int_property_value: 0
+    if_property_name: <variable>
+    if_property_value: 0
+    if_comparator: 0
+  - name: Random
+    uid: 638964
+    rect:
+      serializedVersion: 2
+      x: 1306.1111
+      y: 1495.8889
+      width: 100
+      height: 80
+    oRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    type: 2
+    textType: 0
+    info:
+      content_localID: 0
+      speaker_localID: 0
+      content: <content>
+      speaker: <speaker>
+      avatar: {fileID: 0}
+      audio: {fileID: 0}
+    linkedNodesID: ddd00700
+    linkedFromNodesID: d8570900
     event_name: <event name>
     event_arg0: 0
     event_arg1: 0

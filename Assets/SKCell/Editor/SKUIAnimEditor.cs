@@ -10,6 +10,7 @@ namespace SKCell
 {
 #if UNITY_EDITOR
     [CustomEditor(typeof(SKUIAnimation))]
+    [CanEditMultipleObjects]
     public class SKUIAnimEditor : Editor
     {
         static SKUIAnimation skAnim;

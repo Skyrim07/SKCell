@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace SKCell {
+namespace SKCell 
+{
     [CustomEditor(typeof(SKMeasurer))]
     public class SKMeasurerEditor : Editor
     {

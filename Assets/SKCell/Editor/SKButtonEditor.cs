@@ -12,6 +12,7 @@ namespace SKCell
 {
 #if UNITY_EDITOR
     [CustomEditor(typeof(SKButton))]
+    [CanEditMultipleObjects]
     public class SKButtonEditor : Editor
     {
         static SKButton skButton;

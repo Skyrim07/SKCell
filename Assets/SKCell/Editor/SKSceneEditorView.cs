@@ -5,7 +5,8 @@ using UnityEngine.UI;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
-namespace SKCell {
+namespace SKCell 
+{
     [InitializeOnLoad]
     public class SKSceneEditorView
     {

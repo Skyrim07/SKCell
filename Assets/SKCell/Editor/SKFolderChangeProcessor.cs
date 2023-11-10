@@ -9,7 +9,7 @@ namespace SKCell
     public class SKFolderChangeProcessor : AssetPostprocessor
     {
         private static double lastChangeTime = 0;
-        private static readonly double debounceTime = 0.5; // 500ms debounce time
+        private static readonly double debounceTime = 0.5; 
 
         private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
