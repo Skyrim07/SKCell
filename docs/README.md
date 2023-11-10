@@ -1,6 +1,6 @@
 # SKCell
 
-v0.14.3 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.15.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3358,7 +3358,8 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
   The sprite editor inspector is located on the right of the screen. You can select tools, adjust image colors, and apply image effects to the texture. 
   <br>
   <br>
-  - The <b> Select </b> tool allows you to select a rectangular area on the texture. All later modifications will be restricted to this area.
+  - The <b> Select </b> tool allows you to select a rectangular area on the texture. All later modifications will be restricted to this area.<br>
+  You can also <b>crop the image</b> by clicking "Save Selected Area As..." on the left. (starting v0.15.0)
   <br><br>
   - The <b> Paint Brush </b> tool allows you to draw on the texture. You can specify a shape (smooth or solid), select a color, and adjust the size for the brush.<br><br>
   - The <b> Eraser </b> tool allows you to erase colors on the texture. Still, the brush settings apply.<br><br>
@@ -3377,6 +3378,7 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
 
 
 
+
 #### 15.2 Sprite Colorer
 The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
 <br>
@@ -3389,6 +3391,13 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 
 ## Dev Log
+
+<b>v0.15.x</b>								  
+2023.11
+-   Added SKUIModelViewer
+-   Added Crop function to SKSpriteEditor
+-   Fixed issues with SKBehaviourEditor
+-   Removed Gizmos folder (unused)
 
 <b>v0.14.x</b>								  
 2023.11
