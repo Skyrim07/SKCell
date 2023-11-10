@@ -3408,6 +3408,14 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
     - Added folder color dots for project window list-views
     - Updated SKHierarchy separator appearance
     - Removed TextureUtils
+    <br>0.14.3
+    - Added SKSceneStarter
+    - Added multi-edit support for most SK components
+    - Fixed issues with SKHierarchy in some editor versions
+    - Fixed issues with SKFolderIconSetter
+    - Reorganized folder structure
+    - Removed TextureUtils
+
 
 <b>v0.13.x</b>								  
 2023.10
