@@ -58,6 +58,8 @@ namespace SKCell
 
             while (iterator.NextVisible(true))
             {
+                if (iterator.serializedObject == null || iterator.serializedObject.targetObject == null)
+                    return;
                 FieldInfo fieldInfo = iterator.serializedObject.targetObject.GetType().GetField(iterator.name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                 SKFolderAttribute folderAttr = fieldInfo != null ? Attribute.GetCustomAttribute(fieldInfo, typeof(SKFolderAttribute)) as SKFolderAttribute : null;
                 SKEndFolderAttribute endFolderAttr = fieldInfo != null ? Attribute.GetCustomAttribute(fieldInfo, typeof(SKEndFolderAttribute)) as SKEndFolderAttribute : null;

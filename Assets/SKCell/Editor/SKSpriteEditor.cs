@@ -2,6 +2,7 @@ using System.IO;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEditor;
+using static log4net.Appender.ColoredConsoleAppender;
 
 namespace SKCell {
     public class TexturePostProcessor : AssetPostprocessor
@@ -48,6 +49,9 @@ namespace SKCell {
         private static EditMode oMode;
 
         private static LinearBlur linearBlur;
+
+        private Vector2Int newImageSize = new Vector2Int(128,128);
+        private Color newImageColor;
 
         [MenuItem("SKCell/Sprite Editor")]
         static void Init()
@@ -286,6 +290,8 @@ namespace SKCell {
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Texture: ");
             otex = EditorGUILayout.ObjectField(otex, typeof(Texture2D), GUILayout.Width(50), GUILayout.Height(50)) as Texture2D;
+            if (otex == null)
+                texture = null;
 
             if (otex != prevTetxure)
             {
@@ -296,7 +302,7 @@ namespace SKCell {
             BoldSubtitle();
             GUILayout.Label("Info");
             NormalSubtitle();
-            if (!texture)
+            if (!texture || !otex)
             {
                 GUILayout.Label("No texture selected.");
             }
@@ -305,7 +311,7 @@ namespace SKCell {
                 GUILayout.Label($"{otex.name}\n{texture.graphicsFormat} \n{texture.width} x {texture.height}");
             }
             EditorGUILayout.Separator();
-            if (GUILayout.Button("Save As..."))
+            if (GUILayout.Button("Save As...") && texture!=null)
             {
                 string path = EditorUtility.SaveFilePanel("Save As...", texturePath.Substring(0,texturePath.LastIndexOf("/")), texture.name, "png");
                 if (path.IndexOf("Assets") > 0)
@@ -322,8 +328,67 @@ namespace SKCell {
                 }
             }
 
+            if (GUILayout.Button("Save Selected Area As...") && areaSelected)
+            {
+                string path = EditorUtility.SaveFilePanel("Save Selected Area As...", texturePath.Substring(0, texturePath.LastIndexOf("/")), texture.name, "png");
+                if (path.IndexOf("Assets") > 0)
+                {
+                    Texture2D t = new Texture2D((int)selectedPixels.width, (int)selectedPixels.height);
+                    t.SetPixels( texture.GetPixels((int)selectedPixels.x, (int)selectedPixels.y, (int)selectedPixels.width, (int)selectedPixels.height));
+                    t.Apply();
+                    byte[] itemBGBytes = t.EncodeToPNG();
+                    File.WriteAllBytes(path, itemBGBytes);
+                    AssetDatabase.ImportAsset(path);
+                    AssetDatabase.Refresh();
+                    texture = t;
+                    texturePath = path;
+
+                    areaSelected = false;
+                }
+            }
+
+            EditorGUILayout.Space(105);
+            BoldTitle();
+            GUILayout.Label("Create");
+            NormalTitle();
+            EditorGUI.DrawRect(new Rect(new Vector2(0, 320+25 * (texture==null?0:1)), new Vector2(LEFT_COL_WIDTH, 2)), new Color(.8f, .7f, .9f));
+            EditorGUILayout.Separator();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Width: ", GUILayout.Width(60));
+            newImageSize.x = EditorGUILayout.IntField(newImageSize.x);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Height: ", GUILayout.Width(60));
+            newImageSize.y = EditorGUILayout.IntField(newImageSize.y);
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndVertical();
 
+            EditorGUILayout.LabelField("Background Color: ", GUILayout.Width(150));
+            newImageColor = EditorGUILayout.ColorField(newImageColor);
+
+            EditorGUILayout.Separator();
+            if (GUILayout.Button("Create New Image..."))
+            {
+                string folderPath = "Assets/";
+                if (texture != null)
+                    folderPath = texturePath.Substring(0, texturePath.LastIndexOf("/"));
+                string path = EditorUtility.SaveFilePanel("Create New Image...", folderPath, $"NewImage{newImageSize.x}x{newImageSize.y}", "png");
+                if (path.IndexOf("Assets") > 0)
+                {
+                    Texture2D t = new Texture2D(newImageSize.x, newImageSize.y);
+                    t.SetColor(newImageColor);
+                    t.Apply();
+                    byte[] itemBGBytes = t.EncodeToPNG();
+                    File.WriteAllBytes(path, itemBGBytes);
+                    AssetDatabase.ImportAsset(path);
+                    AssetDatabase.Refresh();
+                    texture = t;
+                    otex = AssetDatabase.LoadAssetAtPath(path.Substring(path.IndexOf("Assets")), typeof(Texture2D)) as Texture2D;
+                    texturePath = path;
+                    OnTextureLoaded();
+     
+                }
+            }
             GUILayout.EndArea();
         }
         void DrawRightColumn()

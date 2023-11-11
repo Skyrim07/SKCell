@@ -9,7 +9,6 @@ namespace SKCell
     /// <summary>
     /// Plays custom effects on text components.
     /// </summary>
-    [RequireComponent(typeof(TMP_Text))]
     [RequireComponent(typeof(SKTextAnimation))]
     [DisallowMultipleComponent]
 

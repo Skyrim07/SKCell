@@ -1,6 +1,6 @@
 # SKCell
 
-v0.14.3 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.15.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3394,14 +3394,19 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 <b>v0.15.x</b>								  
 2023.11
--   Added SKUIModelViewer
--   Added Crop function to SKSpriteEditor
+-   The Console update!
+-   Added SKConsole: A powerful, easy to use, fully extendable in-game console system.
+-   Added SKConsoleTip, SKConsoleCommand
+-   Added SKUIModelViewer: View and rotate 3d model in Unity UI!
+-   Added *create new image* function to SKSpriteEditor
+-   Added *crop image* function to SKSpriteEditor
 -   Fixed issues with SKBehaviourEditor
 -   Removed Gizmos folder (unused)
+-   Added Consolas font
 
 <b>v0.14.x</b>								  
 2023.11
--   Shader & Effects update! 
+-   The Shader & Effects update! 
 -   Added effects: SKDissolveEffect, SKOuterGlowEffect, SKCartoonGrass, SKToonMaterial, SKGlitchEffect, SKWireframeEffect, SKDitherAlpha, SKEdgeOutlineEffect, SKLightCastEffect 
 -   Added SKShaderScene
 -   Added SKColor, SKColorPalette
@@ -3428,7 +3433,7 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 <b>v0.13.x</b>								  
 2023.10
--   Custom editor update! New features include: custom object icons, automatic project folder icons, inline inspector attributes, etc.
+-   The Custom editor update! New features include: custom object icons, automatic project folder icons, inline inspector attributes, etc.
 -	Added SKFolderIconSetter, SKFolderChangeProcessor, SKAttributeDrawer, SKBehaviourEditor, SKMonoAttribute, etc.
 -   Added inspector attributes: SKFolder, SKEndFolder, SKConditionalField, SKResettable, SKInspectorButton, SKFieldAlias
 -   Enhanced SKHierarchy
