@@ -1327,6 +1327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descrip_text: 0
+  activeOnAwake: 0
   inputField: {fileID: 722210843}
   consoleTipContainer: {fileID: 1921505914}
   consoleTipPF: {fileID: 699295853202130427, guid: 86003d3b26131b549afc0bd3eba58797,

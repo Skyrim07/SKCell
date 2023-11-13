@@ -1,6 +1,6 @@
 # SKCell
 
-v0.15.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v0.15.1 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -121,15 +121,30 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
 
 <div class="row">
   <div class="column">
+  <b>In-game Console</b> 
+  <br><br>Build your own in-game console within seconds! SKCell offers a powerful, extendable console system.
+  <br>
+    <br>
+    See: <b><a href="##_14-in-game-console"> In-game Console</a></b> 
+  </div>
+  
+  <div class="column">
+  <div align="center">
+        <img src="./13.png" width="400" height="100" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
+<div class="row">
+  <div class="column">
   <b>Better Editor Windows</b> 
   <br><br>Improved Unity editor windows (hierarchy, transform, project) with more accessible utilities and a better feel.
   <br>
     <br>
-    See: <b><a href="##_14-editor-interfaces">Editor Windows</a></b> 
+    See: <b><a href="##_15-editor-interfaces">Editor Windows</a></b> 
   </div>
   <div class="column">
   <div align="center">
-        <img src="./10.png" width="400" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./10.png" width="330" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -157,7 +172,7 @@ Congratulations! You have now set up SKCell. Please check the documentation to s
 
 ## Documentation
 
-(This documentation is up to date for v0.13.4)
+(This documentation is up to date for v0.15.0)
 
 
 ### 1. Common Utilities
@@ -908,6 +923,22 @@ void OnSceneLoaded()
 ```
 Everything registered onto the event will be executed.<br>
 
+#### 4.3 Variable Monitor
+The <b>SKVariableMonitor</b> object can monitor a variable and tell you when it changes.<br>
+```csharp
+//EXAMPLE
+float speed;
+
+SKVariableMonitor<float> speedMonitor = new SKVariableMonitor<float>(()=>{
+    return speed; //Here is to provide a access point of your monitered variable.
+});
+speedMonitor.onValueChanged += OnSpeedChange;
+
+private void OnSpeedChange(float spd){
+//Do something when speed changes
+}
+```
+
 ### 5. UI
 SKCell has a powerful UI system built upon Unity's UGUI.
 #### 5.1 SKButton
@@ -1641,6 +1672,8 @@ Common usage include a translatable fill image inside a mask.<br>
  <br>Value of slider. (0-1)<br>
  <br>
 
+#### 5.15 Example Scene
+<b>You can see more examples in the SKUIScene.</b><br>
 ### 6. Effects
 
 #### 6.1 SKImageProcessing
@@ -1858,6 +1891,24 @@ SKLineAnim is an interesting example of how you can make a animated curve.<br>
 1. Go to SKCell/Effects and place the LineAnim prefab into your scene.<br>
 2. Observe!<br>
 <br>
+
+
+
+#### 6.10 Many More Shader Effects!
+
+<div class="row">
+  <div class="columnlong">
+  </div>
+<div class="columnlong">
+  <div align="left">
+        <img src="./Effects/s12.png" width="500" height="400" alt="Sample screenshot" alt="Go to website" width="300" />
+    </a>
+</div></div></div>
+
+There are many more effects which include: SKDissolveEffect, SKOuterGlowEffect, SKCartoonGrass, SKToonMaterial, SKGlitchEffect, SKWireframeEffect, SKDitherAlpha, SKEdgeOutlineEffect, SKLightCastEffect, etc. <br>
+You can find then in the <b>SKShaderScene</b>.
+
+
 
 ### 7. Text Animator
 SKCell offers a dynamic inline text animator which allows you to implement text effects just by marking the texts.<br>
@@ -2335,6 +2386,9 @@ player.AddListenerToEvent("On Trade Complete", (id,count)=>
     AddItem(id, count);
 });
 ```
+
+#### 8.5 Example Scene
+<b>You can see more examples in the SKDialogueScene.</b><br>
 
 ### 9. Localization
 SKCell has a easy-to-use localization system for texts and images.<br>
@@ -3124,10 +3178,110 @@ RawImage screen;
 SKVideoManager.PlayVideo("Opening/FirstScene", screen);
 ```
 
-### 14. Editor Interfaces
+
+
+### 14. In-game Console
+SKCell offers a powerful and fully extendable in-game console system.<br>
+<div align="center">
+        <img src="./13.png" width="500" height="120" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+
+<br>
+<br>
+
+#### 14.1 Gettig Started
+<div class="row">
+  <div class="column">
+  <b>To setup SKConsole for your project:</b><br>
+  <br>
+    1. Create a new game object.<br>
+    2. Attach the <b>SKConsole</b> component to it.<br>
+    3. Click the <b>Generate Structure</b> button.<br>
+    <br>
+    Now you have it!
+  </div>
+  <div class="column">
+  <div align="center">
+        <img src="./Console/1.png" width="380" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
+
+#### 14.2 Open/Close the Console
+<div class="row">
+  <div class="column">
+  <br>
+  - You can use the following methods to open/close the console once setup.
+
+```csharp
+SKConsole.Open();
+SKConsole.Close();
+SKConsole.Toggle(); //Open console when closed, and vice versa.
+``` 
+
+  </div></div></div>
+
+
+#### 14.3 Adding and Executing Commands
+<div class="row">
+  <div class="columnTall3">
+ 
+  <b>Adding a direct command to the console</b><br>
+  - To add a direct command (that is, in the top-level hierarchy), do this:
+
+```csharp
+//Add a command that does nothing. (can be used to build hierarchical commands)
+SKConsole.AddCommand("CmdName", "Description");
+
+//Add a command that executes an action with no parameters.
+SKConsole.AddCommand("CmdName", "Description", ()=>{
+    //...
+});
+
+//Add a command that executes an action with 1 float parameter.
+SKConsole.AddCommand("CmdName", "Description", (x)=>{
+    //...
+});
+
+//Add a command that executes an action with 2 float parameters.
+SKConsole.AddCommand("CmdName", "Description", (x,y)=>{
+    //...
+});
+
+//Add a command that executes an action with 3 float parameters.
+SKConsole.AddCommand("CmdName", "Description", (x,y,z)=>{
+    //...
+});
+``` 
+  <b>Adding sub-commands to the console</b><br>
+  - To add a sub-command (that is, not in the top-level hierarchy), do this:
+  
+```csharp
+//Add a root command that does nothing. (serves as a menu)
+SKConsoleCommand cmd = SKConsole.AddCommand("RootCmdName", "Description");
+//Add a sub-command that executes an action.
+cmd.AddCommand("SubCmdName", "Description", ()=>{
+    //...
+})
+``` 
+<br>
+We can then execute this sub-command by typing<br>
+<b>RootCmdName SubCmdName</b> in the console. 
+
+<b>Executing a command</b><br>
+  - To execute a direct command, simply type out the command in the console and <b>hit enter</b>.
+  </div>
+</div>
+
+#### 14.4 Example Scene
+<b>You can see more examples in the SKConsoleScene.</b><br>
+
+
+### 15. Editor Interfaces
 SKCell brings a series of editor interface improvements to Unity.<br>
 
-#### 14.1 Hierarchy Window
+#### 15.1 Hierarchy Window
 <div class="row">
   <div class="column">
   <b>Features</b><br>
@@ -3138,8 +3292,8 @@ SKCell brings a series of editor interface improvements to Unity.<br>
   - <b>Shortcut: Enabling/Disabling</b> (check box to the right)<br>
     <i>Enable or disable a game object by selecting the check box.</i><br>
     <br>
-  - <b>Shortcut: Rename</b> ("A" button to the right)<br>
-    <i>Rename a game object by clicking the "A" button.</i><br>
+  - <b>Customizable Icons</b><br>
+    <i>Change the icon for a game object by clicking on the icon to the left of the object.</i><br>
     <br>
   - <b>Appearance</b><br>
     <i>Two consecutive rows have a slight color difference.</i><br>
@@ -3148,7 +3302,7 @@ SKCell brings a series of editor interface improvements to Unity.<br>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./10.png" width="400" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./10.png" width="330" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -3156,7 +3310,7 @@ SKCell brings a series of editor interface improvements to Unity.<br>
 You can customize colors for the hierarchy window by selecting <b>SKCell/Hierarchy Style</b> from the menu bar.<br>
 Close the customization window to apply changes.<br>
 
-#### 14.2 Project Folder Features
+#### 15.2 Project Folder Features
 SKCell brings an upgrade to your project window. There will be an icon for each folder that indicates the <b>predominant file type </b> inside that folder.<br>
 The icon updates in real time.
  <div align="center">
@@ -3178,7 +3332,7 @@ The following code shows you the types and colors supported. (updated v0.13)
 ```
 
 
-#### 14.3 Inspector Attributes
+#### 15.3 Inspector Attributes
 SKCell offers a wide range of inspector attributes that allows you to make custom inspector for your scripts easily.
  <div align="center">
         <img src="./Editor/e5.png" width="400" height="300" alt="Sample screenshot" alt="Go to website" width="500" />
@@ -3280,7 +3434,7 @@ public float b;
 public float bounciness = 5.0f;
  ``` 
 
-#### 14.4 Transform Component
+#### 15.4 Transform Component
 Select <b>Show Transform Ext</b> to view extra info.
 <div class="row">
   <div class="column">
@@ -3299,7 +3453,7 @@ Select <b>Show Transform Ext</b> to view extra info.
     </a>
 </div></div></div>
 
-#### 14.5 File Details
+#### 15.5 File Details
 Select <b>SKCell/File Details...</b> from the menu bar to see file details in the project window.<br>
 File details are only visible when the project window has the <b>min display size</b>.<br>
  <div align="center">
@@ -3329,34 +3483,39 @@ File details are only visible when the project window has the <b>min display siz
     - <b>Texture Wrap Mode</b><br>
     <br>
 
+#### 15.6 Example Scene
+<b>You can see more examples in SKHierarchyScene and SKInspectorScene.</b><br>
 
+### 16. Editor Tools
 
-### 15. Editor Tools
-
-#### 15.1 Sprite Editor
+#### 16.1 Sprite Editor
 The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the Unity Editor.
  <div align="center">
         <img src="./Editor/e3.png" width="850" height="480" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div>
+
+##### 16.1.1 File I/O
   <b>Open the SK Sprite Editor</b><br>
   <br>
   Select <b>SKCell/Sprite Editor</b> from the Unity Editor toolbar to open the editor.<br>
-  <br>
+  <br> 
+  <b>Creating a new image</b><br>
+  <br> 
+  You can create a new PNG image by clicking on the <b>Create New Image...</b> box on the left.<br>
+
   <b>Loading a file to the sprite editor</b><br>
-  <br>
+  <br> 
   You can assign the texture you want to edit by clicking on the <b>Texture</b> box on the left.<br>
-  <br>
+  <br> 
   <b>Saving an edited file</b><br>
   <br>
   You can save the changes to the CURRENT image by clicking the <b> Apply Changes </b> button on the top right corner. In this way, the original texture will be replaced.<br>
   You can also save the edited file to a new file by clicking the <b> Save As... </b> button on the left.
-  <br>
-  <br>
-  <b>Editor Features</b><br>
-  <br>
+  <br> 
+
+##### 16.1.2 Sprite Editor Tools
   The sprite editor inspector is located on the right of the screen. You can select tools, adjust image colors, and apply image effects to the texture. 
-  <br>
   <br>
   - The <b> Select </b> tool allows you to select a rectangular area on the texture. All later modifications will be restricted to this area.<br>
   You can also <b>crop the image</b> by clicking "Save Selected Area As..." on the left. (starting v0.15.0)
@@ -3379,12 +3538,14 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
 
 
 
-#### 15.2 Sprite Colorer
+#### 16.2 Sprite Colorer
 The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
 <br>
 Select <b>SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
 
-#### 15.3 Texture Utils
+#### 16.3 Texture Utils
+<i>*Deprecated from v0.14.3</i>
+<br>
 The texture utilities allows you to assign types, formats, and sizes for all the textures in your projects.
 <br>
 Select <b>SKCell/Tools/Texture Utils</b> to open the window. 
@@ -3403,6 +3564,10 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 -   Fixed issues with SKBehaviourEditor
 -   Removed Gizmos folder (unused)
 -   Added Consolas font
+    <br>0.15.1
+    - Added start on awake function to SKConsole
+    - Fixed potential problem with SKUIModelViewer
+    - Added SKHierarchyScene
 
 <b>v0.14.x</b>								  
 2023.11

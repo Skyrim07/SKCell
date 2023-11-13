@@ -40,6 +40,8 @@ namespace SKCell
 
         private void Start()
         {
+            if(rectTransform==null)
+                rectTransform = GetComponent<RectTransform>();
             ReloadRT();
             sizeMonitor = new SKVariableMonitor<Vector2>(() =>
             {
