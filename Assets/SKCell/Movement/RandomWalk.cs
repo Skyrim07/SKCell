@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
+    [AddComponentMenu("SKCell/Movement/RandomWalk")]
     public sealed class RandomWalk : MonoBehaviour
     {
         public float speed;

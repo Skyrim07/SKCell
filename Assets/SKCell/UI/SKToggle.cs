@@ -12,7 +12,7 @@ using UnityEditor.Animations;
 namespace SKCell
 {
     [RequireComponent(typeof(CanvasGroup))]
-    [AddComponentMenu("SKCell/SKToggle")]
+    [AddComponentMenu("SKCell/UI/SKToggle")]
     public class SKToggle : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IFadable
     {
         #region Fields

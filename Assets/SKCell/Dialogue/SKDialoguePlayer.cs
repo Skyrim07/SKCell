@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 namespace SKCell
 {
+    [AddComponentMenu("SKCell/Dialogue/SKDialoguePlayer")]
     public class SKDialoguePlayer : MonoBehaviour
     {
         public SKDialogueAsset asset;

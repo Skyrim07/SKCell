@@ -6,6 +6,7 @@ using SKCell;
 
 
 [RequireComponent(typeof(Animator))]
+[AddComponentMenu("SKCell/Effects/SKAnimationRandomizer")]
 public sealed class SKAnimationRandomizer : MonoBehaviour
 {
     private Animator anim;

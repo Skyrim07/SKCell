@@ -11,7 +11,7 @@ namespace SKCell
     /// A sticky field to drag into.
     /// </summary>
     [RequireComponent(typeof(Image))]
-    [AddComponentMenu("SKCell/SKDragSticker")]
+    [AddComponentMenu("SKCell/UI/SKDragSticker")]
     public class SKDragSticker : MonoBehaviour
     {
         public int stickerID = 0;

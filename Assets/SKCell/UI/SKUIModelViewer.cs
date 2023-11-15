@@ -9,6 +9,7 @@ using UnityEngine.UI;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/UI/SKUIModelViewer")]
     public class SKUIModelViewer : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
         [Range(0.1f, 1f)] public float resolution;

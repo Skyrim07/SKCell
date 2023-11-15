@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace SKCell
 {
-    [AddComponentMenu("SKCell/SKDragSpawner")]
+    [AddComponentMenu("SKCell/UI/SKDragSpawner")]
     public class SKDragSpawner : MonoBehaviour, IBeginDragHandler, IDragHandler
     {
         public int spawnerID = 0;

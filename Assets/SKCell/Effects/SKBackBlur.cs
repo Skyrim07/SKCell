@@ -3,7 +3,7 @@ using UnityEngine.UI;
 namespace SKCell
 {
     [ExecuteInEditMode]
-    [AddComponentMenu("SKCell/SKBackBlur")]
+    [AddComponentMenu("SKCell/Effects/SKBackBlur")]
     public class SKBackBlur : PostEffectsBase
     {
         #region Properties

@@ -8,10 +8,12 @@ using UnityEngine.UI;
 
 namespace SKCell
 {
+    [AddComponentMenu("SKCell/Console/SKConsole")]
     public class SKConsole : MonoSingleton<SKConsole>
     {
         [SKInspectorText("Please click on < Generate Structure > \nto start using SKConsole for the first time.")]
         [SerializeField] int descrip_text;
+        public bool activeOnAwake = false;
         public static bool IsOpen { get { return instance.gameObject.activeSelf; } }
         static SKConsoleCommand root = new SKConsoleCommand();
 
@@ -24,14 +26,19 @@ namespace SKCell
         private Stack<SKConsoleCommand> currentCommandStack = new Stack<SKConsoleCommand>();
         public Dictionary<string, SKConsoleCommand> commandLookup;
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
             inputField.onValueChanged.AddListener(OnInputValueChanged);
             inputField.onEndEdit.AddListener(OnInputComplete);
-            
+
             currentCommandStack.Push(root);
             commandLookup = new Dictionary<string, SKConsoleCommand>();
             PopulateCommandLookup(root);
+
+            gameObject.SetActive(activeOnAwake);
+            if (activeOnAwake)
+                Open();
         }
 
         #region Public Methods

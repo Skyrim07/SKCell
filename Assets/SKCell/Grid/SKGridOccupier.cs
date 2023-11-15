@@ -7,7 +7,7 @@ namespace SKCell
     //Object with this component occupies a certain amount of space in a grid.
     [RequireComponent(typeof(BoxCollider2D))]
     [ExecuteInEditMode]
-    [AddComponentMenu("SKCell/SKGridOccupier")]
+    [AddComponentMenu("SKCell/Grid/SKGridOccupier")]
     public class SKGridOccupier : MonoBehaviour
     {
         [Header("Settings")]

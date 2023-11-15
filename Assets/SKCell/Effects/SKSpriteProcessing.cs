@@ -4,7 +4,7 @@ namespace SKCell
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(SpriteRenderer))]
-    [AddComponentMenu("SKCell/SKSpriteProcessing")]
+    [AddComponentMenu("SKCell/Effects/SKSpriteProcessing")]
     public class SKSpriteProcessing : PostEffectsBase
     {
         #region Properties

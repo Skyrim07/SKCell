@@ -9,7 +9,7 @@ namespace SKCell
     /// <summary>
     /// Manages all the ui panels in the game
     /// </summary>
-    [AddComponentMenu("SKCell/SKUIPanelManager")]
+    [AddComponentMenu("SKCell/UI/SKUIPanelManager")]
     public class SKUIPanelManager : MonoSingleton<SKUIPanelManager>
     {
         public static string[] panelHierarcyName = { "UIRoot","UILowermost -- 1", "UILow -- 2", "UIMain -- 3", "UIHigh -- 4", "UIHigher -- 5", "UITopmost -- 6", "UIConstant -- 7" };

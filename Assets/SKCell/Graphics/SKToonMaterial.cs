@@ -8,6 +8,7 @@ namespace SKCell
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(MeshRenderer))]
+    [AddComponentMenu("SKCell/Effects/SKToonMaterial")]
     public class SKToonMaterial : PostEffectsBase
     {
         public bool updateOnPlay = true;

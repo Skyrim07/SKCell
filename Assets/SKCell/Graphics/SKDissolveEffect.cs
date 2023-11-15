@@ -7,6 +7,7 @@ using UnityEditor;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKDissolveEffect")]
     public class SKDissolveEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;

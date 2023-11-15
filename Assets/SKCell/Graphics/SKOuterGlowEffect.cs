@@ -8,6 +8,7 @@ namespace SKCell
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(MeshRenderer))]
+    [AddComponentMenu("SKCell/Effects/SKOuterGlowEffect")]
     public class SKOuterGlowEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;

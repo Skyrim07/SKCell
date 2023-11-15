@@ -7,6 +7,7 @@ using UnityEditor;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKWireframeEffect")]
     public class SKWireframeEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    [AddComponentMenu("SKCell/SKUIShadow", 14)]
+    [AddComponentMenu("SKCell/UI/SKUIShadow", 14)]
     public class SKUIShadow : BaseMeshEffect
     {
         [SerializeField]

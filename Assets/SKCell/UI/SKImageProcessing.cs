@@ -4,7 +4,7 @@ namespace SKCell
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(Image))]
-    [AddComponentMenu("SKCell/SKImageProcessing")]
+    [AddComponentMenu("SKCell/Effects/SKImageProcessing")]
     public class SKImageProcessing : PostEffectsBase
     {
         #region Properties

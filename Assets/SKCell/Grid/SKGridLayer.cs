@@ -14,7 +14,7 @@ namespace SKCell
     /// </summary>
     [ExecuteInEditMode]
     [RequireComponent(typeof(BoxCollider))]
-    [AddComponentMenu("SKCell/SKGridLayer")]
+    [AddComponentMenu("SKCell/Grid/SKGridLayer")]
     public class SKGridLayer : MonoBehaviour
     {
         #region Fields

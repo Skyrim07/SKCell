@@ -8,7 +8,7 @@ namespace SKCell
     /// <summary>
     /// A slider using image translation instead of image fill.
     /// </summary>
-    [AddComponentMenu("SKCell/SKTranslationalSlider")]
+    [AddComponentMenu("SKCell/UI/SKTranslationalSlider")]
     public class SKTranslationalSlider : MonoBehaviour
     {
         [SerializeField]

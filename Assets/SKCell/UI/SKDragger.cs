@@ -10,7 +10,7 @@ namespace SKCell
     /// <summary>
     /// Add drag behavior to game objects.
     /// </summary>
-    [AddComponentMenu("SKCell/SKDragger")]
+    [AddComponentMenu("SKCell/UI/SKDragger")]
     public class SKDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
         public int draggerID = 0;

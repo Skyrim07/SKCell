@@ -8,6 +8,7 @@ namespace SKCell
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(MeshRenderer))]
+    [AddComponentMenu("SKCell/Effects/SKCartoonGrass")]
     public class SKCartoonGrass : PostEffectsBase
     {
         public bool updateOnPlay = true;

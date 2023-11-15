@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    [AddComponentMenu("SKCell/SKCSVLoader")]
+    [AddComponentMenu("SKCell/CSV/SKCSVLoader")]
     public class SKCSVLoader : MonoSingleton<SKCSVLoader>
     {
         protected override void Awake()

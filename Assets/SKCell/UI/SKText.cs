@@ -12,7 +12,7 @@ namespace SKCell
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SKLocalization))]
     [RequireComponent(typeof(SKTextAnimator))]
-    [AddComponentMenu("SKCell/SKText")]
+    [AddComponentMenu("SKCell/UI/SKText")]
     public class SKText : TextMeshProUGUI
     {
         //Localization

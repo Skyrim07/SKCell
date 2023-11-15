@@ -12,7 +12,7 @@ namespace SKCell
     /// <summary>
     /// Mono class to label localized text components
     /// </summary>
-    [AddComponentMenu("SKCell/SKLocalization")]
+    [AddComponentMenu("SKCell/Localization/SKLocalization")]
     [ExecuteInEditMode]
     public class SKLocalization : MonoBehaviour
     {

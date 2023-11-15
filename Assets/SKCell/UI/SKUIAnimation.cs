@@ -7,7 +7,7 @@ namespace SKCell
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CanvasGroup))]
     [DisallowMultipleComponent]
-    [AddComponentMenu("SKCell/SKUIAnimation")]
+    [AddComponentMenu("SKCell/UI/SKUIAnimation")]
     public class SKUIAnimation : MonoBehaviour
     {
         public bool enterOnStart = false;

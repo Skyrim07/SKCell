@@ -13,7 +13,7 @@ using UnityEditor.Animations;
 namespace SKCell
 {
     [RequireComponent(typeof(CanvasGroup))]
-    [AddComponentMenu("SKCell/SKButton")]
+    [AddComponentMenu("SKCell/UI/SKButton")]
     public class SKButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IFadable
     {
         #region Fields

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 namespace SKCell
 {
     [DisallowMultipleComponent]
-    [AddComponentMenu("SKCell/SKToggleGroup")]
+    [AddComponentMenu("SKCell/UI/SKToggleGroup")]
     public class SKToggleGroup : MonoBehaviour
     {
         [HideInInspector] public List<SKToggle> toggles = new List<SKToggle>();

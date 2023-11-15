@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-	[AddComponentMenu("SKCell/SKPoolManager")]
+	[AddComponentMenu("SKCell/Misc/SKPoolManager")]
 	public class SKPoolManager : MonoSingleton<SKPoolManager>
 	{
 		public bool logStatus;

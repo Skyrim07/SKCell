@@ -7,6 +7,7 @@ using UnityEngine.UI;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKGlitchEffect")]
     public class SKGlitchEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;

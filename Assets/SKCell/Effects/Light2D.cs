@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
+[AddComponentMenu("SKCell/Effects/Light2D")]
 public sealed class Light2D : MonoBehaviour
 {
     public int rayCount = 10;

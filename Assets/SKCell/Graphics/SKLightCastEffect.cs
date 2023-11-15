@@ -7,6 +7,7 @@ using UnityEditor;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKLightCastEffect")]
     public class SKLightCastEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SKCell
 {
     [ExecuteInEditMode]
-    [AddComponentMenu("SKCell/SKCommonTimer")]
+    [AddComponentMenu("SKCell/Misc/SKCommonTimer")]
     public sealed class SKCommonTimer : MonoSingleton<SKCommonTimer>
     {
         private double scaledTimer = 0f;

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace SKCell
 {
-    [AddComponentMenu("SKCell/SKSceneManager")]
+    [AddComponentMenu("SKCell/Misc/SKSceneManager")]
 
     public class SKSceneManager : MonoSingleton<SKSceneManager>
     {

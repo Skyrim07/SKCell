@@ -3568,6 +3568,10 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
     - Added start on awake function to SKConsole
     - Fixed potential problem with SKUIModelViewer
     - Added SKHierarchyScene
+    <br>0.15.2
+    - Reorganized add component menus
+    - Fixed issues with SKHierarchy icon loading
+    - Fixed issues with SKHierarchy icon display
 
 <b>v0.14.x</b>								  
 2023.11

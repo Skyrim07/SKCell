@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 namespace SKCell {
-    [AddComponentMenu("SKCell/SKReferenceHolder")]
+    [AddComponentMenu("SKCell/Misc/SKReferenceHolder")]
     public class SKReferenceHolder : MonoBehaviour
     {
         [SKFolder("Basic")]

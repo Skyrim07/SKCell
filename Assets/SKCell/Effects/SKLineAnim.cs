@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKLineAnim")]
     public class SKLineAnim : PostEffectsBase
     {
         [SKFolder("Attributes")]

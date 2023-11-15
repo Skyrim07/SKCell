@@ -6,7 +6,7 @@ namespace SKCell
     [SelectionBase]
     [ExecuteInEditMode]
     [DisallowMultipleComponent]
-    [AddComponentMenu("SKCell/SKPathDesigner")]
+    [AddComponentMenu("SKCell/Movement/SKPathDesigner")]
     /// <summary>
     /// Translates this object along a path.
     /// </summary>

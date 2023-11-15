@@ -10,7 +10,7 @@ namespace SKCell
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SKUIAnimation))]
-    [AddComponentMenu("SKCell/SKUIPanel")]
+    [AddComponentMenu("SKCell/UI/SKUIPanel")]
     public class SKUIPanel : MonoBehaviour
     {
         [Header("General")]

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(CanvasRenderer), typeof(ParticleSystem))]
+[AddComponentMenu("SKCell/UI/UIParticleSystem")]
 public class UIParticleSystem : MaskableGraphic
 {
-    [Tooltip("勾上这个，会把粒子系统放在LateUpdate里运行")]
     public bool fixedTime = true;
     [Range(1, 60)]
     public int maxParticleCount = 15;
@@ -51,7 +51,6 @@ public class UIParticleSystem : MaskableGraphic
             }
 
             mainModule = pSystem.main;
-            //最大存活粒子数限制为15，不要太大，影响效率
             if (pSystem.main.maxParticles > maxParticleCount)
             {
                 mainModule.maxParticles = maxParticleCount;
@@ -65,14 +64,6 @@ public class UIParticleSystem : MaskableGraphic
             }
 
             currentMaterial = material;
-            //if (currentMaterial && currentMaterial.HasProperty("_MainTex"))
-            //{
-            //    currentTexture = currentMaterial.mainTexture;
-            //    if (currentTexture == null)
-            //        currentTexture = Texture2D.whiteTexture;
-            //}
-            //material = currentMaterial;
-            // automatically set scaling
             mainModule.scalingMode = ParticleSystemScalingMode.Hierarchy;
 
             particles = null;
@@ -82,7 +73,6 @@ public class UIParticleSystem : MaskableGraphic
 
         imageUV = new Vector4(0, 0, 1, 1);
 
-        // prepare texture sheet animation
         textureSheetAnimation = pSystem.textureSheetAnimation;
         textureSheetAnimationFrames = 0;
         textureSheetAnimationFrameSize = Vector2.zero;
@@ -100,7 +90,7 @@ public class UIParticleSystem : MaskableGraphic
         base.Awake();
         if (!Initialize())
             enabled = false;
-        //不需要响应事件
+
         raycastTarget = false;
     }
 
@@ -115,7 +105,7 @@ public class UIParticleSystem : MaskableGraphic
             }
         }
 #endif
-        // prepare vertices
+
         vh.Clear();
 
         if (!gameObject.activeInHierarchy)
@@ -133,18 +123,16 @@ public class UIParticleSystem : MaskableGraphic
         {
             ParticleSystem.Particle particle = particles[i];
 
-            // get particle properties
+
             Vector2 position = (mainModule.simulationSpace == ParticleSystemSimulationSpace.Local ? particle.position : _transform.InverseTransformPoint(particle.position));
             float rotation = -particle.rotation * Mathf.Deg2Rad;
             float rotation90 = rotation + Mathf.PI / 2;
             Color32 color = particle.GetCurrentColor(pSystem);
             float size = particle.GetCurrentSize(pSystem) * 0.5f;
 
-            // apply scale
             if (mainModule.scalingMode == ParticleSystemScalingMode.Shape)
                 position /= canvas.scaleFactor;
 
-            // apply texture sheet animation
             Vector4 particleUV = imageUV;
             if (textureSheetAnimation.enabled)
             {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SKCell {
     [RequireComponent(typeof(Collider2D))]
+    [AddComponentMenu("SKCell/Effects/ParticleEffector2D")]
     public sealed class ParticleEffector2D : MonoBehaviour
     {
         public ParticleEffector2DMode mode = ParticleEffector2DMode.SpawnRelease;

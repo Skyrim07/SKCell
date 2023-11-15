@@ -4,7 +4,7 @@ using System;
 
 namespace SKCell
 {
-    [AddComponentMenu("SKCell/SKAudioManager")]
+    [AddComponentMenu("SKCell/Misc/SKAudioManager")]
     public class SKAudioManager : MonoSingleton<SKAudioManager>
     {
         public AudioSource musicAudioSource;

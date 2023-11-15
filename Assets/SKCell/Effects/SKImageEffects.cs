@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace SKCell {
+    [AddComponentMenu("SKCell/Effects/SKImageEffects")]
     public class SKImageEffects : PostEffectsBase
     {
         [Tooltip("Do not enable this unless you want this to update dynamically.")]

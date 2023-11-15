@@ -11,7 +11,7 @@ namespace SKCell
     /// </summary>
     [RequireComponent(typeof(SKTextAnimation))]
     [DisallowMultipleComponent]
-
+    [AddComponentMenu("SKCell/Text Animator/SKTextAnimator")]
     public class SKTextAnimator : MonoBehaviour
     {
         [Header("Typewriter")]

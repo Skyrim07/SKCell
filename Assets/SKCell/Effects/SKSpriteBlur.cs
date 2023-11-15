@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace SKCell {
+    [AddComponentMenu("SKCell/Effects/SKSpriteBlur")]
     public class SKSpriteBlur : PostEffectsBase
     {
         [Tooltip("Do not enable this unless you want this to update dynamically.")]

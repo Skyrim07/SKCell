@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
+    [AddComponentMenu("SKCell/UI/SKSpriteButton")]
     public sealed class SKSpriteButton : MonoBehaviour
     {
         public bool allowPlayerActivation = true;

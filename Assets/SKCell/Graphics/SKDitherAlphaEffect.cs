@@ -7,6 +7,7 @@ using UnityEditor;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKDitherAlphaEffect")]
     public class SKDitherAlphaEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;

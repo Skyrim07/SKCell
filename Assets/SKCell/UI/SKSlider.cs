@@ -11,7 +11,7 @@ namespace SKCell
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(CanvasGroup))]
-    [AddComponentMenu("SKCell/SKSlider")]
+    [AddComponentMenu("SKCell/UI/SKSlider")]
     public class SKSlider : MonoBehaviour, IFadable
     {
         #region Fields

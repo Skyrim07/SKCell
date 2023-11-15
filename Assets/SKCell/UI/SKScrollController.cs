@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace SKCell
 {
+    [AddComponentMenu("SKCell/UI/SKScrollController")]
     public class SKScrollController : MonoBehaviour
     {
         public Scrollbar scrollBar;

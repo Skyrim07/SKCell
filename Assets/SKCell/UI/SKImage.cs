@@ -7,7 +7,7 @@ namespace SKCell
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SKLocalization))]
-    [AddComponentMenu("SKCell/SKImage")]
+    [AddComponentMenu("SKCell/UI/SKImage")]
     public class SKImage : Image
     {
         //Localization

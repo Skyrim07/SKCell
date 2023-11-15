@@ -7,6 +7,7 @@ using UnityEngine.UI;
 namespace SKCell
 {
     [ExecuteInEditMode]
+    [AddComponentMenu("SKCell/Effects/SKEdgeOutlineEffect")]
     public class SKEdgeOutlineEffect : PostEffectsBase
     {
         public bool updateOnPlay = true;
