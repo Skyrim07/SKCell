@@ -20,14 +20,17 @@ namespace SKCell
             {"Editor", new Color(0.3f, 0.65f,1.0f, 1f)},
             {"Prefabs", new Color(0.6f, 0.95f,1.0f, 1f)},
             {"Prefab", new Color(0.6f, 0.95f,1.0f, 1f)},
-            {"Resources", new Color(0.3f, 0.95f,0.4f, 1f)},
+            {"Resources", new Color(0.5f, 0.95f,0.55f, 1f)},
             {"Scenes", new Color(0.83f, 0.72f,0.61f, 1f)},
             {"TextMesh Pro", new Color(0.93f, 0.42f,0.41f, 1f)},
             {"StreamingAssets", new Color(0.92f, 0.63f,0.96f, 1f)},
-            {"Scripts", new Color(0.75f, 0.5f, 1.0f, 1f)},
-            {"GameLogic", new Color(0.75f, 0.5f, 1.0f, 1f)},
+            {"Scripts", new Color(0.92f, 0.7f, 0.44f, 1f)},
+            {"Script", new Color(0.92f, 0.7f, 0.44f, 1f)},
+            {"GameLogic", new Color(0.92f, 0.7f, 0.44f, 1f)},
             {"Anim", new Color(0.74f, 1.0f, 0.9f, 1f)},
             {"Animation", new Color(0.74f, 1.0f, 0.9f, 1f)},
+            {"UI", new Color(0.44f, 0.75f, 0.92f, 1f)},
+            {"GUI", new Color(0.44f, 0.75f, 0.92f, 1f)},
         };
         static SKFolderIconEditor()
         {

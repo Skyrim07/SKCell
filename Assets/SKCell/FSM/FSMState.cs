@@ -24,11 +24,6 @@ namespace SKCell
             fsm = fsmSystem;
         }
 
-        /// <summary>
-        /// 从本状态transit到另一个状态的transition连线
-        /// </summary>
-        /// <param name="targetState"></param>
-        /// <returns></returns>
         public FSMTransition<TS, TC> TransitionTo(TS targetState)
         {
             var from = fsm.State(stateID);

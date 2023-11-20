@@ -118,8 +118,8 @@ MonoBehaviour:
     uid: 12201
     rect:
       serializedVersion: 2
-      x: 1366.1111
-      y: 929.8889
+      x: 1417.2222
+      y: 958.3334
       width: 100
       height: 130
     oRect:
@@ -349,8 +349,8 @@ MonoBehaviour:
     uid: 658756
     rect:
       serializedVersion: 2
-      x: 1503.1112
-      y: 1128.8889
+      x: 1549.7778
+      y: 1142.2222
       width: 100
       height: 80
     oRect:

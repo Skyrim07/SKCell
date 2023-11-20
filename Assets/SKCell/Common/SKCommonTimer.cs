@@ -81,6 +81,8 @@ namespace SKCell
         }
         public void CancelInvokeAction(string id)
         {
+            if (!instance) return;
+
             if (crDict.ContainsKey(id))
             {
                 StopCoroutine(crDict[id]);

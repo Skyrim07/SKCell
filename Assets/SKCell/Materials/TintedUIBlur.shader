@@ -190,6 +190,7 @@ Shader "SKCell/TintedUIBlur" {
 										sum.b * _MultiplyColor.b + _AdditiveColor.b,
 										tex2D(_MainTex, i.uvmain).a);
 #endif
+					result.a *= _MultiplyColor.a;
 					return result;
 				}
 				ENDCG

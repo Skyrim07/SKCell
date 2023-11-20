@@ -1,6 +1,6 @@
 # SKCell
 
-v0.15.2 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.0.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -2549,6 +2549,10 @@ SKEnvironment.curLanguage = LanguageSupport.French;
 SKLocalizationManager.LocalizeAll();
 ```
 
+<br>
+<b>void LocalizeAllChildren(GameObject go)</b><br>
+<i>Localize all (recursive) children of a game object according to the language setting in <b>SKEnvironment</b>.</i>
+
 ### 10. Grid System
 SKCell offers a 2D grid system with pathfinding.
 
@@ -2871,9 +2875,6 @@ SKPathDesigner uses <a href="##_36-bezier-curve">Bezier Curves</a> to represent 
   <br>
   <b>On Point Threshold</b> 
   <br>How close should the object be from waypoints to be considered "arrived"?<br>
-  <br>
-  <b>Speaker Image</b> 
-  <br><a href="##_56-skimage">SKImage</a> component that displays speaker's avatar.<br>
   <br>
   <b>Start on Awake</b> 
   <br>Play the sequence on awake.<br>
@@ -3552,6 +3553,19 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 
 ## Dev Log
+
+<b>v1.0.0</b>
+-   Finally the first release! Available on the Unity Asset Store (in approx. 30 days).
+-   Adjusted project structure
+-   Added WorldGridXY and WorldGridXZ
+-   Added LocalizeAllChildren function to SKLocalizationManager
+-   Added new folder colors
+-   Removed SKModuleBase
+-   Removed ProjectWindowDetails
+-   Removed CSVProjectBuild
+-   Removed SKGridCellInfo
+-   Removed EventRef template
+-   Fixed issues with SKTextAnimator
 
 <b>v0.15.x</b>								  
 2023.11

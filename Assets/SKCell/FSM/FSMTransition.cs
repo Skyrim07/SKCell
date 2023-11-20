@@ -35,11 +35,6 @@ namespace SKCell
             return this;
         }
 
-        /// <summary>
-        /// transition的触发命令，可以有多个
-        /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
         public FSMTransition<TS, TC> On(TC command)
         {
             if (!commandConditions.ContainsKey(command))
@@ -49,17 +44,6 @@ namespace SKCell
             commandStack.Push(command);
             return this;
         }
-
-        /// <summary>
-        /// transition的条件
-        /// 支持全局条件和基于命令的条件
-        /// 命令条件必须On和If调用对称：On().If(), 否则就是transition的全局条件
-        /// 调用On都会压栈一个command，If取栈顶配对，每次调用If都会清空command的配对stack
-        /// 比如希望在A和B状态间连一条transition线，希望任意command下都需要满足条件C（全局条件），希望command1满足条件C1，command2满足条件C2（基于command的条件）,那么：
-        /// fsm.State(A).TransitionTo(B).On(command1).If(C1).On(command2).If(C2).If(C).
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <returns></returns>
         public FSMTransition<TS, TC> If(FSMCondition condition)
         {
             if (condition == null)

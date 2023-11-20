@@ -7,7 +7,7 @@ namespace SKCell
     /// <summary>
     /// Provides public localization functions
     /// </summary>
-    public class SKLocalizationManager : SKModuleBase
+    public class SKLocalizationManager
     {
         private static List<SKText> texts = new List<SKText>();
         private static List<SKImage> images = new List<SKImage>();
@@ -93,6 +93,22 @@ namespace SKCell
             }
         }
 
+        public static void LocalizeAllChildren(GameObject go)
+        {
+            List<Transform> children = go.transform.GetAllChildren();
+            List<SKText> texts = new List<SKText>();
+            foreach (Transform child in children)
+            {
+                SKText t;
+                if (child.TryGetComponent<SKText>(out t))
+                {
+                    texts.Add(t);
+                }
+            }
+            LocalizeObjects(LocalizationType.Text, texts);
+        }
+
+
         /// <summary>
         /// Find all objects that need to be localized in the scene
         /// </summary>
@@ -100,31 +116,6 @@ namespace SKCell
         {
             texts = new List<SKText>(GameObject.FindObjectsOfType<SKText>(true));
             images = new List<SKImage>(GameObject.FindObjectsOfType<SKImage>());
-        }
-
-        internal override void Start()
-        {
-            
-        }
-
-        internal override void Tick()
-        {
-           
-        }
-
-        internal override void FixedTick()
-        {
-
-        }
-
-        internal override void Dispose()
-        {
-            
-        }
-
-        internal override void Initialize()
-        {
-            
         }
     }
 }

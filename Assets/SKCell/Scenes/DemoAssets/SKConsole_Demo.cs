@@ -37,6 +37,14 @@ namespace SKCell.Test
                 });
             }
 
+            SKConsole.AddCommand("addhp", "Add HP to the current player.", (x) =>
+            {
+                print(x);
+            });
+            SKConsole.AddCommand("subhp", "Subtract HP to the current player.", (x) =>
+            {
+                print(x);
+            });
             SKConsole.Open();
         }
 

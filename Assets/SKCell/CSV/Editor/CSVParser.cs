@@ -25,7 +25,7 @@ namespace SKCell
 
         private static Regex _tableNameRegex = new Regex(@"\(([^>])+\)");
 
-        [MenuItem("SKCell/Build CSV Files")]
+        [MenuItem("SKCell/Tools/Build CSV Files")]
         public static void BuildCSVFile()
         {
             LoadConfig();
@@ -267,8 +267,6 @@ namespace SKCell
                 }
             }
         }
-
-        //
 
         private static readonly string _configPath = SourcePath + "CSVMaker.conf";
         private static List<KeyValuePair<string, string>> _replaceParamTableName;

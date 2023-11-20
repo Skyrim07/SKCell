@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+
 
 namespace SKCell
 {
     /// <summary>
-    /// Dispatches event. All in-game events have to be accessed here.
+    /// Dispatches event. All in-game events should be accessed here.
     /// </summary>
     public sealed class EventDispatcher : Singleton<EventDispatcher>
     {

@@ -157,7 +157,7 @@ namespace SKCell
             Color col = lineColor;
             EditorGUI.DrawRect(lineRect, col);
 
-            if (!isSeparator && (selectionRect.yMin / 16) % 2 == 0)
+            if (obj!=null && !isSeparator && (selectionRect.yMin / 16) % 2 == 0)
             {
                 selectionRect.width *= 2;
                 EditorGUI.DrawRect(selectionRect, backgroundColor);

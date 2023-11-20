@@ -1182,7 +1182,7 @@ namespace SKCell
             return cr;
         }
         /// <summary>
-        /// [Legacy] Starts a continuous procedure where a variable changes over time. Tweening.
+        /// [DEPRECATED] Starts a continuous procedure where a variable changes over time. Tweening.
         /// </summary>
         /// <param name="type">Type of the procedure.</param>
         /// <param name="startValue">Initial value of the variable.</param>
@@ -1326,7 +1326,8 @@ namespace SKCell
         /// <param name="cr"></param>
         public static void StopCoroutine(Coroutine cr)
         {
-            SKCommonTimer.instance.StopCoroutine(cr);
+            if(SKCommonTimer.instance) //Batch v0.15.3: fixed issue with SKTextAnimator errors when quitting game
+                 SKCommonTimer.instance.StopCoroutine(cr);
         }
 
         /// <summary>

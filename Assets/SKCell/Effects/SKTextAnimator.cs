@@ -18,6 +18,7 @@ namespace SKCell
         public bool useTypeWriter = false;
         public SKTextTypewriterType typewriterType;
         public float typeSpeed = 1.0f;
+
         [HideInInspector]
         public bool startOnEnable = true; //deprecated
 
@@ -56,8 +57,10 @@ namespace SKCell
                     ParseText();
                     ApplyParsedText();
                 }
+
                 CommonUtils.InvokeAction(0.1f, () =>
                 {
+                    SKTextUtils.StopAllRoutines(text);
                     if (startOnEnable)
                     {
                         PlayTypeWriterInternal();
@@ -68,6 +71,10 @@ namespace SKCell
                     }
                 });
             });
+        }
+        private void OnDestroy()
+        {
+            SKTextUtils.StopAllRoutines(text);
         }
         /// <summary>
         /// Replay the typewriter effect associated to this object.
