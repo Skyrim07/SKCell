@@ -43,7 +43,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./9.png" width="300" height="300" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./9.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -57,7 +57,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./1.png" width="420" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./1.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -71,7 +71,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./2.png" width="400" height="270" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./2.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -85,7 +85,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./6.png" width="400" height="160" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./6.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -100,7 +100,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./5.png" width="400" height="200" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./5.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -115,7 +115,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   
   <div class="column">
   <div align="center">
-        <img src="./4.png" width="400" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./4.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -130,7 +130,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   
   <div class="column">
   <div align="center">
-        <img src="./13.png" width="400" height="100" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./14.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -144,7 +144,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   </div>
   <div class="column">
   <div align="center">
-        <img src="./10.png" width="330" height="250" alt="Sample screenshot" alt="Go to website" width="500" />
+        <img src="./10.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
