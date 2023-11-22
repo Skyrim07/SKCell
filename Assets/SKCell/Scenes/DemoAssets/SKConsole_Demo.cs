@@ -2,11 +2,12 @@ using UnityEngine;
 
 namespace SKCell.Test
 {
-    public class SKConsole_Demo : MonoBehaviour
+    public class SKConsole_Dsemo : MonoBehaviour
     {
         void Start()
         {
-            SKConsoleCommand p = SKConsole.AddCommand("print", "Print a number", (x) =>
+            SKConsoleCommand p = 
+            SKConsole.AddCommand("print", "Print a number", (x) =>
             {
                 print(x);
             });

@@ -1,6 +1,6 @@
 # SKCell
 
-v1.0.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.0.1 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3566,6 +3566,10 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 -   Removed SKGridCellInfo
 -   Removed EventRef template
 -   Fixed issues with SKTextAnimator
+    <br>v1.0.1
+    - Fixed issues with saving assets in SKLocalizationCenter
+    - Removed templates in SKLocalizationCenter
+    - Removed some json-related functions in CommonUtils
 
 <b>v0.15.x</b>								  
 2023.11

@@ -15,6 +15,7 @@ namespace SKCell
     [ExecuteInEditMode]
     public class SKLocalizationControlWindow : EditorWindow
     {
+        public static string[] textSubpageTitles = { "General" };
 
         static bool initialized = false;
 
@@ -24,7 +25,7 @@ namespace SKCell
         static Vector2 scrollPos = Vector2.zero;
         static int subPage = 0;
         static List<LocalizedTextConfig> builtTextList = new List<LocalizedTextConfig>();
-        static string[] textSubpageTitles = { "General", "Scene Titles", "Consumables", "Characters", "Player", "Feathers", "Other Items", "Firefly Frontier", "Relics", "Restpoints" };
+     
 
         [MenuItem("SKCell/Localization Center")]
         public static void Initialize()

@@ -2328,8 +2328,13 @@ namespace SKCell
 
         public static void SKSaveObjectToJson(object obj, string fileName)
         {
-            string path = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath) + SKAssetLibrary.JSON_PATH_SUFFIX + fileName;
-            File.WriteAllText(path, JsonUtility.ToJson(obj, true));
+            string apath = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath);
+            if (!Directory.Exists(apath))
+                Directory.CreateDirectory(apath);
+            string path = apath + SKAssetLibrary.JSON_PATH_SUFFIX;
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            File.WriteAllText(path + fileName, JsonUtility.ToJson(obj, true));
             EditorLogNormal($"Save to json: {fileName}");
         }
         public static T SKLoadObjectFromJson<T>(string fileName)
@@ -2338,22 +2343,6 @@ namespace SKCell
             if (!File.Exists(path))
                 return default(T);
             return JsonUtility.FromJson<T>(File.ReadAllText(path));
-        }
-        public static void SaveObjectToJson(object obj, string fileName)
-        {
-            string path = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath) + SKAssetLibrary.JSON_PATH_SUFFIX + fileName;
-            File.WriteAllText(path, JsonUtility.ToJson(obj, true));
-            EditorLogNormal($"Save to json: {fileName}");
-        }
-        public static T LoadObjectFromJson<T>(string fileName)
-        {
-            string path = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath) + SKAssetLibrary.JSON_PATH_SUFFIX + fileName;
-            return JsonUtility.FromJson<T>(File.ReadAllText(path));
-        }
-        public static bool JsonFileExists(string fileName)
-        {
-            string path = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath) + SKAssetLibrary.JSON_PATH_SUFFIX + fileName;
-            return File.Exists(path);
         }
 
         #endregion
@@ -2950,6 +2939,9 @@ namespace SKCell
 
     #region CommonEnums
 
+    /// <summary>
+    /// [DEPRECATED]
+    /// </summary>
     public enum ProcedureType
     {
         Linear,
