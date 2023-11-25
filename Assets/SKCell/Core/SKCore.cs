@@ -20,7 +20,7 @@ namespace SKCell
     [AddComponentMenu("SKCell/Core/SKCore")]
     public sealed class SKCore : MonoSingleton<SKCore>
     {
-        public const string SKCELL_VERSION = "v1.0.1";
+        public const string SKCELL_VERSION = "v1.1.0";
 
         public static Action Awake000 = new Action(EmptyAction), Awake100 = new Action(EmptyAction),
                               Start000 = new Action(EmptyAction), Start100 = new Action(EmptyAction), Start200 = new Action(EmptyAction),
@@ -34,8 +34,14 @@ namespace SKCell
             {SKModule.CoreModule, null},
             {SKModule.LocalizationModule, typeof(SKLocalizationManager)},
         };
+
+        /// <summary>
+        /// Initialize SKCell modules
+        /// </summary>
         private void InitializeSKCell()
         {
+            SKInventory.Initialize();
+
             CommonUtils.EditorLogNormal("SKCell Initialized!");
         }
 

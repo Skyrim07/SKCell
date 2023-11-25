@@ -1,6 +1,6 @@
 # SKCell
 
-v1.0.1 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.1.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
@@ -3553,6 +3553,15 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 
 
 ## Dev Log
+
+<b>v1.1.0</b>
+-   The Inventory update! Introducing SKInventory: a powerful inventory system with an editor database and customizable UI panels.
+-   Added SKInventory, SKInventoryLayer, SKInventoryItem, SKInventoryItemFrame, SKInventoryControlCenter, SKInventoryAsset
+-   Added ISKInventoryItemFrame, SKInventoryDetailsPanel, SKInventoryCategoryTab
+-   Added SKInventoryScene
+-   Added common sprite pack (8 sprites)
+-   Fixed issues with SKLocalization
+
 
 <b>v1.0.0</b>
 -   Finally the first release! Available on the Unity Asset Store (in approx. 30 days).

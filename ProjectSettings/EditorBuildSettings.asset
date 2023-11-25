@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/SKCell/Scenes/SKRandomScene.unity
     guid: 2b2716dd996b35c45b2239ac193d0c19
   - enabled: 1
-    path: Assets/SKCell/Scenes/SKShaderScene.unity
+    path: Assets/SKCell/Scenes/SKEffectsScene.unity
     guid: ed2a1e1cad2feb149bbdf52cc31b0bdf
+  - enabled: 1
+    path: Assets/SKCell/Scenes/SKInventoryScene.unity
+    guid: 92077662aab6fd84a882fa81e8e8558f
   m_configObjects: {}

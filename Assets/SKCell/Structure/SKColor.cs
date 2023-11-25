@@ -82,7 +82,7 @@ namespace SKCell
                 return SKColorPalette_Pure.instance;
             }
         }
-        public static SKColorPalette_Standard stadard
+        public static SKColorPalette_Standard standard
         {
             get
             {

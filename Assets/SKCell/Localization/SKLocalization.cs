@@ -295,14 +295,33 @@ namespace SKCell
             }
         }
 
+        /// <summary>
+        /// Get localized text according to the current language.
+        /// </summary>
+        /// <param name="localID"></param>
+        /// <returns></returns>
         public static string GetLocalizationText(int localID)
+        {
+            return GetLocalizationText(localID, SKEnvironment.curLanguage);
+        }
+
+        /// <summary>
+        /// Get localized text according to the specified language.
+        /// </summary>
+        /// <param name="localID"></param>
+        /// <param name="language"></param>
+        /// <returns></returns>
+        public static string GetLocalizationText(int localID, LanguageSupport language)
         {
             if (!initialized)
             {
                 LoadConfigAsset();
                 InitializeAssetDictionary();
             }
-            string s = asset.textConfigDict[localID].localTexts[(int)SKEnvironment.curLanguage];
+            if (!asset.textConfigDict.ContainsKey(localID))
+                return "";
+
+            string s = asset.textConfigDict[localID].localTexts[(int)language];
             s = s.Replace(@"\r", "\r");
             s = s.Replace(@"\n", "\n");
             return s;

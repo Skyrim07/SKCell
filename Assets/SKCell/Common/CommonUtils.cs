@@ -1084,7 +1084,7 @@ namespace SKCell
                 EditorLogError("InvokeAction: <Action callback> is null.");
                 return;
             }
-
+            if (!SKCommonTimer.instance) return;
             SKCommonTimer.instance.InvokeAction(seconds, callback, repeatCount, repeatInterval, id, onFinish);
         }
 
@@ -2339,10 +2339,19 @@ namespace SKCell
         }
         public static T SKLoadObjectFromJson<T>(string fileName)
         {
-            string path = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath) + SKAssetLibrary.JSON_PATH_SUFFIX + fileName;
-            if (!File.Exists(path))
-                return default(T);
-            return JsonUtility.FromJson<T>(File.ReadAllText(path));
+            string apath = (Application.isMobilePlatform ? Application.persistentDataPath : Application.streamingAssetsPath);
+            if (!Directory.Exists(apath))
+                Directory.CreateDirectory(apath);
+            string path = apath + SKAssetLibrary.JSON_PATH_SUFFIX;
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            if (!File.Exists(path + fileName))
+            {
+                File.WriteAllText(path + fileName, "");
+                EditorLogNormal($"Created new object at: {path + fileName}");
+            }
+            return JsonUtility.FromJson<T>(File.ReadAllText(path+ fileName));
         }
 
         #endregion

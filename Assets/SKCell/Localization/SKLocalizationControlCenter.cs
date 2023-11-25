@@ -71,6 +71,7 @@ namespace SKCell
             }
             GUI.skin.label.fontSize = 18;
             GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+            GUI.skin.label.font = SKAssetLibrary.DefaultFont;
             if (page == CurrentPageSelection.MainPage)
             {
                 GUILayout.Label("Localization Control Center");
@@ -87,7 +88,7 @@ namespace SKCell
             {
                 GUILayout.Label("Localization Control Center - Image Localization");
             }
-            EditorGUI.DrawRect(new Rect(new Vector2(0, 35), new Vector2(1400, 7)), Color.gray);
+            EditorGUI.DrawRect(new Rect(new Vector2(0, 32), new Vector2(1400, 4)), Color.gray);
             EditorGUI.LabelField(new Rect(new Vector2(0, 45), new Vector2(1400, 14)), $"Current supported languages:  {supportedLangDescrip}");
         }
 

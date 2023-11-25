@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e8bc664a036de4baa63ee6658b491a, type: 3}
+  m_Name: SKInventoryAsset
+  m_EditorClassIdentifier: 
+  itemData:
+  - id: 1000
+    name_LocalID: -1
+    descrip_LocalID: -1
+    name: Bread
+    description: Description of bread
+    icon: {fileID: 2800000, guid: 508a6530f6631294997db00386d7756e, type: 3}
+    category: 0
+    slotSize: {x: 1, y: 1}
+    canUse: 1
+  - id: 1001
+    name_LocalID: -1
+    descrip_LocalID: -1
+    name: Potion
+    description: Description of potion
+    icon: {fileID: 2800000, guid: 451b9657f9380494db9870596e2ad21e, type: 3}
+    category: 0
+    slotSize: {x: 1, y: 1}
+    canUse: 0
+  categoryData:
+    categoryNames:
+    - General
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    categoryIsActive: 01000000000000000000000000000000000000000000000000
