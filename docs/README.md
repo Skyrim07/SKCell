@@ -3,7 +3,8 @@
 v1.1.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
-Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
+Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a><br>
+Latest release: <a href="https://github.com/Skyrim07/SKCell/releases">here</a>
 
 ## Features
 <div class="row">
@@ -18,6 +19,21 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
         <img src="./SKCell Cover.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
+
+<div class="row">
+  <div class="column">
+  <b>Better Editor Windows</b> 
+  <br><br>Improved Unity editor windows (hierarchy, transform, project) with more accessible utilities and a better feel.
+  <br>
+    <br>
+    See: <b><a href="##_16-editor-interfaces">Editor Windows</a></b> 
+  </div>
+  <div class="column">
+  <div align="center">
+        <img src="./10.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
 
 <div class="row">
   <div class="column">
@@ -44,6 +60,20 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
   <div class="column">
   <div align="center">
         <img src="./9.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
+<div class="row">
+  <div class="column">
+  <b>Inventory System</b> 
+  <br><br>Build your item database in Unity and have a fully-functional inventory UI ready in seconds.
+      <br>
+    <br>
+    See: <b><a href="##_15-inventory-system">Inventory System</a></b> 
+  </div>
+  <div class="column">
+  <div align="center">
+        <img src="./16.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div></div></div>
 
@@ -134,19 +164,7 @@ Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a>
     </a>
 </div></div></div>
 
-<div class="row">
-  <div class="column">
-  <b>Better Editor Windows</b> 
-  <br><br>Improved Unity editor windows (hierarchy, transform, project) with more accessible utilities and a better feel.
-  <br>
-    <br>
-    See: <b><a href="##_15-editor-interfaces">Editor Windows</a></b> 
-  </div>
-  <div class="column">
-  <div align="center">
-        <img src="./10.png" width="400" height="230" alt="Sample screenshot" alt="Go to website" width="500" />
-    </a>
-</div></div></div>
+
 
 ## Getting Started
 SKCell is compatible with <b>Unity 2017.x</b> and newer.
@@ -3191,7 +3209,7 @@ SKCell offers a powerful and fully extendable in-game console system.<br>
 <br>
 <br>
 
-#### 14.1 Gettig Started
+#### 14.1 Getting Started
 <div class="row">
   <div class="column">
   <b>To setup SKConsole for your project:</b><br>
@@ -3279,10 +3297,205 @@ We can then execute this sub-command by typing<br>
 <b>You can see more examples in the SKConsoleScene.</b><br>
 
 
-### 15. Editor Interfaces
+### 15. Inventory System
+SKCell offers an inventory system with an editor database and customizable UI panels.<br>
+
+#### 15.1 SK Inventory Center
+SK Inventory Center is a editor-based database where you can build the item data for your project.<br>
+To open the inventory center, select <b>SKCell/Inventory Center</b> from the editor menu dropdown.
+
+ <div align="center">
+        <img src="./Inventory/1.png" width="1200" height="430" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+
+There are three sections: <b>Inventory Items</b>, <b>Manage Categories</b>, and <b>Settings</b>.<br>
+<br>
+<b>Inventory Items</b> <br>
+This is the place to add, delete, and edit item data.<br>
+Each item belongs to a <b>category</b>, as shown on the left side. To <i>add an item</i> to the selected category, press the <b>Add new item...</b> button on the top of the section.<br>
+<br>
+Each inventory item has the following attributes:<br>
+    <b>ID: </b> The identifier of the item (used to index the item in a dictionary). Note that duplicate item IDs are not allowed: an error will be thrown for any duplicate item IDs.<br>
+    <b>Icon: </b> The icon (Texture2D) of the item.<br>
+    <b>Name Text: </b> The name of the item. <i>Use this if you DO NOT want to have localization for this text</i>.<br>
+    <b>Name Local ID: </b> The local ID of the item name. <i>Use this if you DO want to have localization for this text</i>.<br>
+    <b>Description Text: </b> The description of the item. <i>Use this if you DO NOT want to have localization for this text</i>.<br>
+    <b>Description Local ID: </b> The local ID of the item description. <i>Use this if you DO want to have localization for this text</i>.<br>
+<br>
+<br>
+<b>Categories</b> <br>
+This is the place to add, delete, and edit item categories.<br>
+<br>
+Each category has the following attributes:<br> 
+    <b>Is Active: </b> If true, the category will be displayed in the <b>Inventory Items</b> section.<br>
+    <b>Name Text: </b> The name of the category. <i>Use this if you DO NOT want to have localization for this text</i>.<br>
+    <b>Name Local ID: </b> The local ID of the category name. <i>Use this if you DO want to have localization for this text</i>.<br>
+<br>
+<br>
+<b>Settings</b> <br>
+This is the place to set preferences for the SK Inventory Center.<br>
+<br>
+
+#### 15.2 SKInventoryItemData
+SKInventoryItemData is the class holding the data for an inventory item. Its definition is as follows:<br>
+
+```csharp
+    public class SKInventoryItemData
+    {
+        public int id;
+
+        public int name_LocalID, descrip_LocalID;
+        public string name, description;
+
+        public Texture2D icon;
+        public int category;
+
+        public Vector2Int slotSize = Vector2Int.one;
+
+        public bool canUse;
+        public Action onUse;
+    }
+```
+<i>The canUse and onUse fields cannot be edited directly from the inventory center. For examples of their usage, please refer to section 15.5.</i>
+
+
+#### 15.3 SKInventoryItem
+SKInventoryItem is the class representing an item in an SKInventory. Its definition is simple:<br>
+
+```csharp
+    public class SKInventoryItem
+    {
+        public int id;
+        public int count;
+    }
+```
+
+#### 15.4 SKInventory
+SKInventory is the class representing one inventory. It also offers some useful static methods.<br>
+
+<h5>Public Methods</h5>
+<b>AddItem(int id, int count, bool stacking = true)</b><br>
+<i>Add an item to this inventory.</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>id</b>: Item id as specified in the SK Inventory Center.</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>count</b>: Item count.</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i><b>stacking</b>: If enabled, items with the same id will stack.</i><br>
+<br>
+<b>void RemoveItem(int id, int count)</b><br>
+<i>Remove a certain count of an item from this inventory.</i><br>
+<br>
+<b>void RemoveItemDirectly(int id)</b><br>
+<i>Remove an item from this inventory, regardless of its count.</i><br>
+<br>
+<b>bool ContainsItem(int id)</b><br>
+<i>Does this inventory contain the given item?</i><br>
+<br>
+<b>void RemoveItemDirectly(int id)</b><br>
+<i>Remove an item from this inventory, regardless of its count.</i><br>
+<br>
+<b>SKInventoryItem GetItem(int id)</b><br>
+<i>Get an item from this inventory.</i><br>
+<br>
+<b>void Clear()</b><br>
+<i>Remove all items from this inventory.</i><br>
+
+<h5>Static Methods</h5>
+<b>static SKInventoryItemData GetItemData(int id)</b><br>
+<i>Get item data (from the database) by its id.</i><br>
+
+
+<h5>Examples</h5>
+
+```csharp
+    //Create a new inventory
+    SKInventory inventory = new SKInventory();
+
+    //Add item to the inventory (id = 1000, count = 4)
+    inventory.AddItem(1000, 4);
+
+    //Add item to the inventory (id = 2001, count = 12)
+    inventory.AddItem(2001, 12);
+
+    //Remove all items (id=1000) in the inventory.
+    inventory.RemoveItemDirectly(1000);
+```
+
+#### 15.5 SKInventoryLayer
+SKInventoryLayer is the component that provides a fully-functional UI panel that displays an SKInventory.<br>
+Each SKInventoryLayer holds ONE SKInventory object to display.<br>
+
+ <div align="center">
+        <img src="./Inventory/3.png" width="750" height="430" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+
+  <b>Getting Started</b><br>
+  To setup an SKInventoryLayer:<br>
+1. Create a new game object and add the SKInventoryLayer component.<br>
+2. Click the <b>Generate Structure</b> button.<br>
+3. The SKInventoryLayer is set up!<br>
+
+<div class="row">
+  <div class="column">
+
+  <b>The Component</b><br>
+  - <b>References</b><br>
+    <i>These are references to some of the objects in the inventory structure. Do not edit these unless you fully understand how they work.</i><br>
+    <br>
+  - <b>Prefabs</b><br>
+    <i>SKInventoryLayer instantiates item frames and category tabs dynamically. Edit these if you want to have your own customized elements displayed instead of the default ones.</i><br>
+    <br>
+  </div>
+  <div class="column">
+  <div align="center">
+        <img src="./Inventory/2.png" width="360" height="310" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div></div></div>
+
+<h5>Properties</h5>
+<b>SKInventory Inventory</b><br>
+<i>The inventory object that this layer is displaying. </i><br>
+<br>
+<h5>Methods</h5>
+<b>void OpenInventoryPanel()</b><br>
+<i>Display the UI panel of this inventory layer.</i><br>
+<br>
+<b>void CloseInventoryPanel()</b><br>
+<i>Hide the UI panel of this inventory layer.</i><br>
+<br>
+<b>void ToggleInventoryPanel()</b><br>
+<i>Toggle the UI panel of this inventory layer.</i><br>
+<br>
+
+<h5>Examples</h5>
+
+```csharp
+ public class SKInventory_Demo : MonoBehaviour
+ {
+     public SKInventoryLayer inventoryLayer; //This is the component that displays inventory data as a UI panel.
+     void Start()
+     {
+         SKInventory inventory = inventoryLayer.Inventory; //Get the inventory data object of the layer.
+         inventory.AddItem(1000, 1); //Add item (id = 1000, count = 1)
+         inventory.AddItem(1001, 5);//Add item (id = 1001, count = 5)
+
+         SKInventory.GetItemData(1000).canUse = true; //Set item 1000 to be usable.
+         SKInventory.GetItemData(1000).onUse += () => { print("Use Item 1000"); }; // Add on use actions for item 1000
+
+         inventoryLayer.OpenInventoryPanel(); //Open the inventory UI panel.
+     }
+
+ }
+```
+
+#### 15.6 Example Scene
+<b>You can see example code and scene setup in the SKInventoryScene.</b><br>
+<br>
+
+### 16. Editor Interfaces
 SKCell brings a series of editor interface improvements to Unity.<br>
 
-#### 15.1 Hierarchy Window
+#### 16.1 Hierarchy Window
 <div class="row">
   <div class="column">
   <b>Features</b><br>
@@ -3311,7 +3524,7 @@ SKCell brings a series of editor interface improvements to Unity.<br>
 You can customize colors for the hierarchy window by selecting <b>SKCell/Hierarchy Style</b> from the menu bar.<br>
 Close the customization window to apply changes.<br>
 
-#### 15.2 Project Folder Features
+#### 16.2 Project Folder Features
 SKCell brings an upgrade to your project window. There will be an icon for each folder that indicates the <b>predominant file type </b> inside that folder.<br>
 The icon updates in real time.
  <div align="center">
@@ -3333,7 +3546,7 @@ The following code shows you the types and colors supported. (updated v0.13)
 ```
 
 
-#### 15.3 Inspector Attributes
+#### 16.3 Inspector Attributes
 SKCell offers a wide range of inspector attributes that allows you to make custom inspector for your scripts easily.
  <div align="center">
         <img src="./Editor/e5.png" width="400" height="300" alt="Sample screenshot" alt="Go to website" width="500" />
@@ -3435,7 +3648,7 @@ public float b;
 public float bounciness = 5.0f;
  ``` 
 
-#### 15.4 Transform Component
+#### 16.4 Transform Component
 Select <b>Show Transform Ext</b> to view extra info.
 <div class="row">
   <div class="column">
@@ -3454,7 +3667,7 @@ Select <b>Show Transform Ext</b> to view extra info.
     </a>
 </div></div></div>
 
-#### 15.5 File Details
+#### 16.5 File Details
 Select <b>SKCell/File Details...</b> from the menu bar to see file details in the project window.<br>
 File details are only visible when the project window has the <b>min display size</b>.<br>
  <div align="center">
@@ -3484,19 +3697,19 @@ File details are only visible when the project window has the <b>min display siz
     - <b>Texture Wrap Mode</b><br>
     <br>
 
-#### 15.6 Example Scene
+#### 16.6 Example Scene
 <b>You can see more examples in SKHierarchyScene and SKInspectorScene.</b><br>
 
-### 16. Editor Tools
+### 17. Editor Tools
 
-#### 16.1 Sprite Editor
+#### 17.1 Sprite Editor
 The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the Unity Editor.
  <div align="center">
         <img src="./Editor/e3.png" width="850" height="480" alt="Sample screenshot" alt="Go to website" width="500" />
     </a>
 </div>
 
-##### 16.1.1 File I/O
+##### 17.1.1 File I/O
   <b>Open the SK Sprite Editor</b><br>
   <br>
   Select <b>SKCell/Sprite Editor</b> from the Unity Editor toolbar to open the editor.<br>
@@ -3515,7 +3728,7 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
   You can also save the edited file to a new file by clicking the <b> Save As... </b> button on the left.
   <br> 
 
-##### 16.1.2 Sprite Editor Tools
+##### 17.1.2 Sprite Editor Tools
   The sprite editor inspector is located on the right of the screen. You can select tools, adjust image colors, and apply image effects to the texture. 
   <br>
   - The <b> Select </b> tool allows you to select a rectangular area on the texture. All later modifications will be restricted to this area.<br>
@@ -3539,12 +3752,12 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
 
 
 
-#### 16.2 Sprite Colorer
+#### 17.2 Sprite Colorer
 The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
 <br>
 Select <b>SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
 
-#### 16.3 Texture Utils
+#### 17.3 Texture Utils
 <i>*Deprecated from v0.14.3</i>
 <br>
 The texture utilities allows you to assign types, formats, and sizes for all the textures in your projects.
@@ -3561,7 +3774,8 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
 -   Added SKInventoryScene
 -   Added common sprite pack (8 sprites)
 -   Fixed issues with SKLocalization
-
+    <br>v1.1.1
+    - Added localization support for SKInventory categories
 
 <b>v1.0.0</b>
 -   Finally the first release! Available on the Unity Asset Store (in approx. 30 days).
