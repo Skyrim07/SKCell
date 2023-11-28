@@ -47,6 +47,7 @@ namespace SKCell
         #region Lifecycle
         protected override void Awake()
         {
+            monoBases.Clear();
             for (int i = 0; i < 10; i++)
             {
                 monoBases.Add((MonoPriority)i, new List<MonoBase>());

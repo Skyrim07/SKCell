@@ -17,16 +17,16 @@ MonoBehaviour:
     name_LocalID: -1
     descrip_LocalID: -1
     name: Bread
-    description: Description of bread
+    description: 
     icon: {fileID: 2800000, guid: 508a6530f6631294997db00386d7756e, type: 3}
     category: 0
     slotSize: {x: 1, y: 1}
-    canUse: 1
+    canUse: 0
   - id: 1001
     name_LocalID: -1
     descrip_LocalID: -1
     name: Potion
-    description: Description of potion
+    description: 
     icon: {fileID: 2800000, guid: 451b9657f9380494db9870596e2ad21e, type: 3}
     category: 0
     slotSize: {x: 1, y: 1}
@@ -58,4 +58,5 @@ MonoBehaviour:
     - 
     - 
     - 
+    categoryLocalIDs: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     categoryIsActive: 01000000000000000000000000000000000000000000000000

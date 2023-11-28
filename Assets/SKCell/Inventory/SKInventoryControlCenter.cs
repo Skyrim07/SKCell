@@ -121,7 +121,7 @@ namespace SKCell
             }
         }
 
-        static string[] rootMenuNames = new string[] { "Inventory Items", "Manage Categories", "Settings" };
+        static string[] rootMenuNames = new string[] { "Inventory Items", "Categories", "Settings" };
         private static void DrawRootMenu()
         {
             GUILayout.BeginArea(new Rect(new Vector2(0, TOP_BAR_HEIGHT), new Vector2(ROOT_MENU_WIDTH, 600)));
@@ -169,6 +169,8 @@ namespace SKCell
                         continue;
                     string cname = (asset.categoryData.categoryNames[i]!=null &&
                        asset.categoryData.categoryNames[i].Length>0) ? asset.categoryData.categoryNames[i]: $"Category {i+1}";
+                    if (asset.categoryData.categoryLocalIDs[i] >= 0)
+                        cname = SKLocalization.GetLocalizationText(asset.categoryData.categoryLocalIDs[i], previewLanguage);
                     if (item_selectedCategory == i)
                     {
                         blackButtonStyle.normal.background = selectedTexture;
@@ -314,7 +316,7 @@ new Color(1, 1, 1, .5f));
                     EditorGUILayout.EndHorizontal();
 
                     EditorGUILayout.Space();
-                    EditorGUILayout.LabelField("To enable localizaed texts, enter a non-negative local ID.");
+                    EditorGUILayout.LabelField("To enable localized texts, enter a non-negative local ID.");
                     EditorGUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField("Name Text: ", GUILayout.Width(150));
                     displayItem.name = EditorGUILayout.TextField(displayItem.name, GUILayout.Width(400));
@@ -367,12 +369,28 @@ new Color(1, 1, 1, .5f));
                      new Vector2(WINDOW_WIDTH - ROOT_MENU_WIDTH, 600)));
 
                 EditorGUILayout.BeginVertical();
+    
+                EditorGUILayout.LabelField("To enable localized texts, enter a non-negative local ID.");
+                EditorGUILayout.Space();
                 for (int i = 0; i < asset.categoryData.categoryNames.Length; i++)
                 {
                     EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField($"{i+1}: ",GUILayout.Width(50));
-                    asset.categoryData.categoryNames[i] = EditorGUILayout.TextField(asset.categoryData.categoryNames[i], GUILayout.Width(300));
+                    EditorGUILayout.LabelField($"{i + 1}: ", GUILayout.Width(50));
+                    if (asset.categoryData.categoryLocalIDs[i] >= 0)
+                    {
+                        GUI.enabled = false;
+                        EditorGUILayout.TextField(
+                        SKLocalization.GetLocalizationText(asset.categoryData.categoryLocalIDs[i], previewLanguage), GUILayout.Width(300));
+                        GUI.enabled = true;
+                    }
+                    else
+                    {
+                        asset.categoryData.categoryNames[i] = EditorGUILayout.TextField(asset.categoryData.categoryNames[i], GUILayout.Width(300));
+                    }
 
+
+                    EditorGUILayout.LabelField($"Local ID: ", GUILayout.Width(70));
+                    asset.categoryData.categoryLocalIDs[i] = EditorGUILayout.IntField(asset.categoryData.categoryLocalIDs[i], GUILayout.Width(100));
                     if (i == 0)
                         GUI.enabled = false;
                     EditorGUILayout.LabelField($"Is Active: ", GUILayout.Width(80));
@@ -480,10 +498,13 @@ new Color(1, 1, 1, .5f));
     public class SKInventoryCategoryData
     {
         public string[] categoryNames;
+        public int[] categoryLocalIDs;
         public bool[] categoryIsActive;
 
         public SKInventoryCategoryData()
         {
+            categoryLocalIDs = new int[25];
+            CommonUtils.FillArray(categoryLocalIDs, -1);
             categoryNames = new string[25];
             categoryNames[0] = "General";
 

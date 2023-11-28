@@ -45,6 +45,8 @@ namespace SKCell
         {
             UpdateDetailsPanel(-1); //close the details panel on awake
         }
+
+
         public void OpenInventoryPanel()
         {
             panel.SetState(true);
@@ -56,6 +58,13 @@ namespace SKCell
         public void CloseInventoryPanel()
         {
             panel.SetState(false);
+        }
+        public void ToggleInventoryPanel()
+        {
+            if (panel.active)
+                CloseInventoryPanel();
+            else
+                OpenInventoryPanel();
         }
 
         public void OnSelectItemFrame(ISKInventoryItemFrame itemFrame)

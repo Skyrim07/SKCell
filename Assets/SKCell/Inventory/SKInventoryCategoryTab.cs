@@ -28,8 +28,16 @@ namespace SKCell
             this.layer = layer;
             if (categoryID < 0) return;
 
-            string name = SKInventory.Asset.categoryData.categoryNames[categoryID];
-            nameText.UpdateTextDirectly(name.Length<1?$"Category {categoryID+1}": name);
+            if (SKInventory.Asset.categoryData.categoryLocalIDs[categoryID] >= 0)
+            {
+                nameText.UpdateLocalID(SKInventory.Asset.categoryData.categoryLocalIDs[categoryID]);
+            }
+            else
+            {
+                string name = SKInventory.Asset.categoryData.categoryNames[categoryID];
+                nameText.UpdateTextDirectly(name.Length < 1 ? $"Category {categoryID + 1}" : name);
+            }
+
 
         }
     }

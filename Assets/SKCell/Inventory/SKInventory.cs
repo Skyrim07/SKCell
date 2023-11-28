@@ -83,6 +83,14 @@ namespace SKCell
         }
 
         /// <summary>
+        /// Remove all items from this inventory.
+        /// </summary>
+        public void Clear()
+        {
+            itemDict.Clear();
+        }
+
+        /// <summary>
         /// Add an item to this inventory. (id as specified in the SK Inventory Center)
         /// </summary>
         /// <param name="id">Item id as specified in the SK Inventory Center.</param>
@@ -109,8 +117,9 @@ namespace SKCell
             }
         }
 
+
         /// <summary>
-        /// Remove an item from this inventory. (id as specified in the SK Inventory Center)
+        /// Remove a certain count of an item from this inventory. (id as specified in the SK Inventory Center)
         /// </summary>
         /// <param name="id">Item id as specified in the SK Inventory Center.</param>
         /// <param name="count">Item count to be removed.</param>
