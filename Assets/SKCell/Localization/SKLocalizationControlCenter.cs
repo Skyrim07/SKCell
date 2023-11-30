@@ -27,7 +27,7 @@ namespace SKCell
         static List<LocalizedTextConfig> builtTextList = new List<LocalizedTextConfig>();
      
 
-        [MenuItem("SKCell/Localization Center")]
+        [MenuItem("SKCell/Localization Center", priority = 3)]
         public static void Initialize()
         {
             SKLocalizationControlWindow window = GetWindow<SKLocalizationControlWindow>("Localization Center");

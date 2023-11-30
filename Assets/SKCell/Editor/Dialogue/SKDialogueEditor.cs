@@ -35,7 +35,7 @@ namespace SKCell {
         float panX = 0;
         float panY = 0;
 
-        [MenuItem("SKCell/Diagolue Editor")]
+        [MenuItem("SKCell/Diagolue Editor", priority = 2)]
         static void OpenWindow()
         {
             SKDialogueEditor editor = EditorWindow.GetWindow<SKDialogueEditor>("SK Dialogue Editor",typeof(UnityEditor.SceneView));

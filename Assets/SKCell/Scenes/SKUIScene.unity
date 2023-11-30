@@ -2018,6 +2018,7 @@ GameObject:
   - component: {fileID: 273070708}
   - component: {fileID: 273070707}
   - component: {fileID: 273070706}
+  - component: {fileID: 273070711}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -2198,6 +2199,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &273070711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273070704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Typewriter
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &282145510
 GameObject:
   m_ObjectHideFlags: 0
@@ -5186,6 +5204,7 @@ GameObject:
   - component: {fileID: 823909535}
   - component: {fileID: 823909534}
   - component: {fileID: 823909533}
+  - component: {fileID: 823909538}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -5368,6 +5387,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &823909538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823909531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Drag & Drop
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &838024229
 GameObject:
   m_ObjectHideFlags: 0
@@ -5902,6 +5938,7 @@ GameObject:
   - component: {fileID: 955932176}
   - component: {fileID: 955932175}
   - component: {fileID: 955932174}
+  - component: {fileID: 955932179}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -6082,6 +6119,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &955932179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955932172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Model Viewer
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &957815086
 GameObject:
   m_ObjectHideFlags: 0
@@ -7758,6 +7812,7 @@ GameObject:
   - component: {fileID: 1159084327}
   - component: {fileID: 1159084326}
   - component: {fileID: 1159084325}
+  - component: {fileID: 1159084330}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -7938,6 +7993,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &1159084330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159084323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Effects
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &1161409151
 GameObject:
   m_ObjectHideFlags: 0
@@ -8526,6 +8598,7 @@ GameObject:
   - component: {fileID: 1199022056}
   - component: {fileID: 1199022055}
   - component: {fileID: 1199022054}
+  - component: {fileID: 1199022059}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -8706,6 +8779,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &1199022059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199022052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Inline Text Effects
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9019608}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &1216079107
 GameObject:
   m_ObjectHideFlags: 0
@@ -12157,6 +12247,7 @@ GameObject:
   - component: {fileID: 1804581169}
   - component: {fileID: 1804581168}
   - component: {fileID: 1804581167}
+  - component: {fileID: 1804581172}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -12337,6 +12428,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &1804581172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804581165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Buttons & Sliders
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &1811408230
 GameObject:
   m_ObjectHideFlags: 0
@@ -13062,6 +13170,7 @@ GameObject:
   - component: {fileID: 1889017142}
   - component: {fileID: 1889017141}
   - component: {fileID: 1889017140}
+  - component: {fileID: 1889017145}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -13242,6 +13351,23 @@ MonoBehaviour:
     localText: 
     fontOverride: 0
     localImage: {fileID: 0}
+--- !u!114 &1889017145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889017138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b1801e20cedcd4bbbb4c72d82001f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: Toggles
+  mouseOffset: {x: 150, y: 50}
+  backgroundColor: {r: 1, g: 1, b: 1, a: 0.9}
+  textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+  fontSize: 36
 --- !u!1 &1933305620
 GameObject:
   m_ObjectHideFlags: 0

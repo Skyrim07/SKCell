@@ -48,18 +48,18 @@ namespace SKCell {
         private static Vector2 oBrushPos;
         private static EditMode oMode;
 
-        private static LinearBlur linearBlur;
+        private static LinearBlur linearBlur; 
 
         private Vector2Int newImageSize = new Vector2Int(128,128);
         private Color newImageColor;
 
-        [MenuItem("SKCell/Sprite Editor")]
+        [MenuItem("SKCell/Sprite Editor",priority =0)]
         static void Init()
         {
             window = GetWindow(typeof(SKSpriteEditor));
             window.maxSize = window.minSize = new Vector2(1280, 720);
-            window.Show();
-
+            window.Show(); 
+             
             //if(brush==null)
             brush = new Brush();
             linearBlur = new LinearBlur();
@@ -88,7 +88,6 @@ namespace SKCell {
 
         void DrawTopRow()
         {
-
             GUI.skin.label.fontSize = 18;
             GUI.skin.label.fontStyle = FontStyle.Bold;
             EditorGUI.DrawRect(new Rect(new Vector2(0, 0), new Vector2(1400, 30)), new Color(.15f, .15f, .15f));

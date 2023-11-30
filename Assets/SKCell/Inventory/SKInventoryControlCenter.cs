@@ -27,7 +27,7 @@ namespace SKCell
         public static GUIContent crossContent;
         public static Texture2D normalTexture, hoverTexture,selectedTexture, itemFrameTexture;
 
-        [MenuItem("SKCell/Inventory Center")]
+        [MenuItem("SKCell/Inventory Center", priority = 1)]
         public static void Initialize()
         {
             SKInventoryControlCenter window = GetWindow<SKInventoryControlCenter>("Inventory Center");
