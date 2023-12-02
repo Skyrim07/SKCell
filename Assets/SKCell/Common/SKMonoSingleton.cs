@@ -5,7 +5,7 @@ using UnityEngine;
 /// Mono singleton class
 /// </summary>
 namespace SKCell {
-    public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
+    public abstract class SKMonoSingleton<T> : MonoBehaviour where T : SKMonoSingleton<T>
     {
         private static T _inst = null;
 

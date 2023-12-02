@@ -55,7 +55,7 @@ namespace SKCell
             {
                 foreach(string s in CRids[text])
                 {
-                    CommonUtils.CancelInvoke(s);
+                    SKUtils.CancelInvoke(s);
                 }
                 CRids[text].Clear();
             }
@@ -63,7 +63,7 @@ namespace SKCell
             {
                 foreach (string s in PRids[text])
                 {
-                    CommonUtils.StopProcedure(s);
+                    SKUtils.StopProcedure(s);
                 }
                 PRids[text].Clear();
             }
@@ -71,7 +71,7 @@ namespace SKCell
             {
                 foreach (string s in ARids[text])
                 {
-                    CommonUtils.StopCoroutine(s);
+                    SKUtils.StopCoroutine(s);
                 }
                 ARids[text].Clear();
             }
@@ -93,7 +93,7 @@ namespace SKCell
 
             string crid = GetAndAddCRID(text);
             anim.animator.curTypewriterCRID = crid;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 Anim_Alpha(text, data, index, index, 0, timePerChar, SKTextAnimMode.OneWay, SKCurve.LinearOut, true, anim);
                 index++;
@@ -116,7 +116,7 @@ namespace SKCell
             string crid = GetAndAddCRID(text);
             anim.animator.curTypewriterCRID = crid;
 
-            CommonUtils.InvokeAction(0.05f, () =>
+            SKUtils.InvokeAction(0.05f, () =>
             {
     
                 for (int i = 0; i < effects.Length; i++)
@@ -145,7 +145,7 @@ namespace SKCell
             Set_Alpha(text, 0);
             int index = 0;
 
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 for(int i = 0; i < effects.Length; i++)
                 {
@@ -225,7 +225,7 @@ namespace SKCell
             end = m.clamp(end, start, data.charData.Length - 1);
             float time = (end-start+1) * timePerChar;
             int index = 0;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 if (start + index > end)
                     return;
@@ -237,10 +237,10 @@ namespace SKCell
         {
             end = m.clamp(end, start, data.charData.Length - 1);
             float time = (end - start) * timePerChar;
-            CommonUtils.InvokeActionUnlimited(0, () =>
+            SKUtils.InvokeActionUnlimited(0, () =>
             {
                 int index = 0;
-                CommonUtils.InvokeAction(0, () =>
+                SKUtils.InvokeAction(0, () =>
                 {
                     if (start + index > end)
                         return;
@@ -275,7 +275,7 @@ namespace SKCell
                 chars[i] = data.charData[start + i];
             }
             int index = 0;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 Anim_Shake_Char(text, chars[index++], amplitude, frequency, time, curve);
             }, len - 1, 0, GetAndAddCRID(text));
@@ -291,14 +291,14 @@ namespace SKCell
         {
             int count = m.floor(frequency * time);
             float interval = 1 / frequency;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
-                Vector3 r = CommonUtils.RandomVector2();
+                Vector3 r = SKUtils.RandomVector2();
                 Vector3 diff = r * amplitude * 10;
                 for (int i = 0; i < 4; i++)
                 {
                     int index = i;
-                    CommonUtils.StartProcedureUnscaled(curve, interval, (f) =>
+                    SKUtils.StartProcedureUnscaled(curve, interval, (f) =>
                     {
                         data.shake_translation = Vector3.Lerp(data.vertices[index], diff + data.oVertices[index], 0.2f) - data.oVertices[index];
                         UpdateCharVertexPos(data);
@@ -314,7 +314,7 @@ namespace SKCell
                 for (int i = 0; i < 4; i++)
                 {
                     int index = i;
-                    CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
+                    SKUtils.StartProcedureUnscaled(curve, time, (f) =>
                     {
                         data.shake_translation = Vector3.Lerp(data.translation, Vector3.zero, 0.2f);
                         UpdateCharVertexPos(data);
@@ -365,9 +365,9 @@ namespace SKCell
             float interval = 1 / frequency;
 
             //fade in
-            CommonUtils.InvokeActionUnlimited(0, () =>
+            SKUtils.InvokeActionUnlimited(0, () =>
             {
-                CommonUtils.StartProcedureUnscaled(curve, interval, (f) =>
+                SKUtils.StartProcedureUnscaled(curve, interval, (f) =>
                 {
                     for (int i = 0; i < 4; i++)
                     {
@@ -378,7 +378,7 @@ namespace SKCell
                 }, (f) =>
                 {
                     //fade in
-                    CommonUtils.StartProcedureUnscaled(curve, interval, (f) =>
+                    SKUtils.StartProcedureUnscaled(curve, interval, (f) =>
                     {
                         for (int i = 0; i < 4; i++)
                         {
@@ -413,7 +413,7 @@ namespace SKCell
             for (int i = 0; i < len; i++)
             {
                 chars[i] = data.charData[start + i];
-                CommonUtils.StartCoroutine(Anim_Rainbow_Char(text, chars[i], start, end, frequency, color, time, curve), true, GetAndAddARID(text));
+                SKUtils.StartCoroutine(Anim_Rainbow_Char(text, chars[i], start, end, frequency, color, time, curve), true, GetAndAddARID(text));
             }
         }
         /// <summary>
@@ -477,7 +477,7 @@ namespace SKCell
         private static void Anim_Rotation_Ping_Pong(TMP_Text text, SKTextData data, int start, int end, float angle, float time, SKCurve curve, Vector3 center)
         {
             Anim_Rotation_OneWay(text, data, start, end, angle, time / 2, curve, center);
-            CommonUtils.InvokeAction(time / 8, () =>
+            SKUtils.InvokeAction(time / 8, () =>
             {
                 Anim_Rotation_OneWay(text, data, start, end, angle, time / 2, curve.Reverse(), center);
             });
@@ -503,7 +503,7 @@ namespace SKCell
                 }
             }
             int index = 0;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 Anim_Rotation_Char(text, chars[index++], angle, singleTime, curve, center);
             }, len - 1, singleTime/3, GetAndAddCRID(text));
@@ -517,7 +517,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Rotation_Char(TMP_Text text, SKTextCharData data, float angle, float time, SKCurve curve, Vector3 center)
         {
-            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
+            SKUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 RotateCharVertices(data, angle * f, center);
                 UpdateCharData(data, text);
@@ -555,7 +555,7 @@ namespace SKCell
         private static void Anim_Translation_Ping_Pong(TMP_Text text, SKTextData data, int start, int end, Vector3 delta, float time, SKCurve curve)
         {
             Anim_Translation_OneWay(text, data, start, end, delta, time / 2, curve);
-            CommonUtils.InvokeAction(time / 2 * 1.3f, () =>
+            SKUtils.InvokeAction(time / 2 * 1.3f, () =>
             {
                 Anim_Translation_OneWay(text, data, start, end, delta, time / 2, curve.Reverse());
             }, 0, 1, GetAndAddCRID(text));
@@ -580,7 +580,7 @@ namespace SKCell
                 chars[i] = data.charData[start + i];
             }
             int index = 0;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 Anim_Translation_Char(text, chars[index++], delta, singleTime, curve);
             }, len - 1, singleTime, GetAndAddCRID(text));
@@ -594,7 +594,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Translation_Char(TMP_Text text, SKTextCharData data, Vector3 delta, float time, SKCurve curve)
         {
-            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
+            SKUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 TranslateCharVertices(data, delta * f);
                 UpdateCharData(data, text);
@@ -666,7 +666,7 @@ namespace SKCell
                 chars[i] = data.charData[start + i];
             }
             int index = 0;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 Anim_Color_Char(text, chars[index++], color, singleTime, curve, typewriter, anim, data);
             }, len - 1, singleTime, GetAndAddCRID(text));
@@ -674,7 +674,7 @@ namespace SKCell
         private static void Anim_Color_PingPong(TMP_Text text, SKTextData data, int start, int end, Color32 color, float time, SKCurve curve)
         {
             Anim_Color_OneWay(text, data, start, end, color, time / 2, curve);
-            CommonUtils.InvokeAction(time / 2 * 1.3f, () =>
+            SKUtils.InvokeAction(time / 2 * 1.3f, () =>
             {
                 Anim_Color_OneWay(text, data, start, end, color, time / 2, curve.Reverse());
             });
@@ -688,7 +688,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Color_Char(TMP_Text text, SKTextCharData data, Color32 color, float time, SKCurve curve, bool typewriter = false, SKTextAnimation anim=null, SKTextData textData=null)
         {
-            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
+            SKUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 AlphaCharVertices(data, Color32.Lerp(data.oColors32[0], color, f), typewriter);
                 UpdateCharData(data, text);
@@ -758,7 +758,7 @@ namespace SKCell
         private static void Anim_Scaling_Ping_Pong(TMP_Text text, SKTextData data, int start, int end, float scale, float time, SKCurve curve)
         {
             Anim_Scaling_OneWay(text, data, start, end, scale, time/2, curve);
-            CommonUtils.InvokeAction((time/5), () =>
+            SKUtils.InvokeAction((time/5), () =>
             {
                 Anim_Scaling_OneWay(text, data, start, end, scale, time / 2, curve.Reverse());
             });
@@ -784,7 +784,7 @@ namespace SKCell
                 chars[i] = data.charData[start+i];
             }
             int index = 0;
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                     Anim_Scaling_Char(text, chars[index++], scale, singleTime, curve);
             }, len-1, singleTime, GetAndAddCRID(text));
@@ -798,7 +798,7 @@ namespace SKCell
         /// <param name="speed"></param>
         private static void Anim_Scaling_Char(TMP_Text text, SKTextCharData data, float scale, float time, SKCurve curve)
         {
-            CommonUtils.StartProcedureUnscaled(curve, time, (f) =>
+            SKUtils.StartProcedureUnscaled(curve, time, (f) =>
             {
                 ScaleCharVertices(data, 1 + (scale - 1) * f);
                 UpdateCharData(data, text);

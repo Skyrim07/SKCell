@@ -1,9 +1,6 @@
 using System.IO;
-using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEditor;
-using static log4net.Appender.ColoredConsoleAppender;
-
 namespace SKCell {
     public class TexturePostProcessor : AssetPostprocessor
     {
@@ -53,7 +50,7 @@ namespace SKCell {
         private Vector2Int newImageSize = new Vector2Int(128,128);
         private Color newImageColor;
 
-        [MenuItem("SKCell/Sprite Editor",priority =0)]
+        [MenuItem("Tools/SKCell/Sprite Editor",priority =0)]
         static void Init()
         {
             window = GetWindow(typeof(SKSpriteEditor));
@@ -588,7 +585,8 @@ namespace SKCell {
                                 c = bc;
                                 c.a = 0;
                             }
-                            float alpha = Mathf.Pow(Mathf.SmoothStep(1,0,dist), brush.smoothness);
+                            float alpha = Mathf.SmoothStep(1,0,dist);
+                            alpha *= 1 / brush.smoothness;
                             Color diff = bc - c;
                             c += diff * Mathf.Clamp01(alpha);
                             c = c.Saturate();

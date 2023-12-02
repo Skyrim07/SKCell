@@ -7,7 +7,7 @@ namespace SKCell
     /// <summary>
     /// Control mono lifecycle flow.
     /// </summary>
-    public sealed class MonoCore : MonoSingleton<MonoCore>
+    public sealed class MonoCore : SKMonoSingleton<MonoCore>
     {
         private static Dictionary<MonoPriority, List<MonoBase>> monoBases = new Dictionary<MonoPriority, List<MonoBase>>();
 
@@ -23,7 +23,7 @@ namespace SKCell
         public static void RegisterMonoObject(MonoBase mb)
         {
             if (mb != null)
-                CommonUtils.InsertToList(monoBases[mb.priority], mb, true);
+                SKUtils.InsertToList(monoBases[mb.priority], mb, true);
         }
         /// <summary>
         /// Remove a mono object from list. Called by MonoBase.Dispose.
@@ -32,7 +32,7 @@ namespace SKCell
         public static void DisposeMonoObject(MonoBase mb)
         {
             if (mb != null)
-                CommonUtils.RemoveFromList(monoBases[mb.priority], mb);
+                SKUtils.RemoveFromList(monoBases[mb.priority], mb);
         }
 
         /// <summary>

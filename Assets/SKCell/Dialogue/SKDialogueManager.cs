@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    public class SKDialogueManager : Singleton<SKDialogueManager>
+    public class SKDialogueManager : SKSingleton<SKDialogueManager>
     {
         public static SKDialogueAsset curEditorAsset;
     }

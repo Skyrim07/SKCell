@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    public class SKPostProcessManager : Singleton<SKPostProcessManager>
+    public class SKPostProcessManager : SKSingleton<SKPostProcessManager>
     {
         public Camera cam;
         public List<SKPostProcessMask_Saturation> sat_masks = new List<SKPostProcessMask_Saturation>();

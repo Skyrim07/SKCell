@@ -10,7 +10,7 @@ namespace SKCell
     /// Manages all the ui panels in the game
     /// </summary>
     [AddComponentMenu("SKCell/UI/SKUIPanelManager")]
-    public class SKUIPanelManager : MonoSingleton<SKUIPanelManager>
+    public class SKUIPanelManager : SKMonoSingleton<SKUIPanelManager>
     {
         public static string[] panelHierarcyName = { "UIRoot","UILowermost -- 1", "UILow -- 2", "UIMain -- 3", "UIHigh -- 4", "UIHigher -- 5", "UITopmost -- 6", "UIConstant -- 7" };
         public static int[] panelHierarcyValue = { 0, 100,200,300,400,500,600,700};
@@ -40,7 +40,7 @@ namespace SKCell
                     files[i] = files[i].Replace(".prefab", "");
                     string suffix = files[i].Substring(files[i].IndexOf("_") + 1);
                     int panelID = int.Parse(suffix.TrimStart());
-                    CommonUtils.InsertOrUpdateKeyValueInDictionary(panelPrefabDict, panelID, Resources.Load(files[i].Substring(files[i].IndexOf("SKCell"))) as GameObject);
+                    SKUtils.InsertOrUpdateKeyValueInDictionary(panelPrefabDict, panelID, Resources.Load(files[i].Substring(files[i].IndexOf("SKCell"))) as GameObject);
                 }
             }
         }
@@ -49,18 +49,18 @@ namespace SKCell
             Transform rootTF = GameObject.Find(panelHierarcyName[0])?.transform;
             if (rootTF == null)
             {
-                CommonUtils.EditorLogWarning("UI Panel Hierarchy not Initialized!");
+                SKUtils.EditorLogWarning("UI Panel Hierarchy not Initialized!");
                 return;
             }
             for (int i =0; i < panelHierarcyName.Length-1; i++)
             {
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(panelHierDict, (SKUIPanelHierarchy)(i+1), rootTF.GetChild(i).gameObject);
+                SKUtils.InsertOrUpdateKeyValueInDictionary(panelHierDict, (SKUIPanelHierarchy)(i+1), rootTF.GetChild(i).gameObject);
             }
         }
         #region Public Methods
         public SKUIPanel GetPanelByID(int id)
         {
-            return CommonUtils.GetValueInDictionary(panelIDDict, id);
+            return SKUtils.GetValueInDictionary(panelIDDict, id);
         }
         public bool? IsActive(int panelID)
         {
@@ -84,7 +84,7 @@ namespace SKCell
             GameObject toInst = panelPrefabDict[panelID];
             if (toInst == null)
             {
-                CommonUtils.EditorLogError($"UI panel prefab with the given ID: {panelID} not found. Check Resources/SKCell/UI/Panels/xxx_{panelID} for the corresponding prefab.");
+                SKUtils.EditorLogError($"UI panel prefab with the given ID: {panelID} not found. Check Resources/SKCell/UI/Panels/xxx_{panelID} for the corresponding prefab.");
                 return;
             }
             if (predecessor < 0 && parent == null)
@@ -95,7 +95,7 @@ namespace SKCell
                 SKUIPanel pre = panelIDDict[predecessor];
                 if (pre == null)
                 {
-                    CommonUtils.EditorLogError($"UI panel with the given ID: {predecessor} not found when trying to instantiate a panel.");
+                    SKUtils.EditorLogError($"UI panel with the given ID: {predecessor} not found when trying to instantiate a panel.");
                     return;
                 }
                 Transform _parent =pre.transform.parent;
@@ -106,10 +106,10 @@ namespace SKCell
             {
                 panelGO.transform.SetParent(parent);
             }
-            SKUIPanel panel = CommonUtils.GetComponentNonAlloc<SKUIPanel>(panelGO);
+            SKUIPanel panel = SKUtils.GetComponentNonAlloc<SKUIPanel>(panelGO);
             if (panel == null)
             {
-                CommonUtils.EditorLogError($"UI panel with the given ID: {panelID} does not have the component SKUIPanel.");
+                SKUtils.EditorLogError($"UI panel with the given ID: {panelID} does not have the component SKUIPanel.");
                 return;
             }
             panel.SetState(state);
@@ -126,20 +126,20 @@ namespace SKCell
             GameObject toInst = panelPrefabDict[panelID];
             if (toInst == null)
             {
-                CommonUtils.EditorLogError($"UI panel prefab with the given ID: {panelID} not found. Check Resources/SKCell/UI/Panels/xxx_{panelID} for the corresponding prefab.");
+                SKUtils.EditorLogError($"UI panel prefab with the given ID: {panelID} not found. Check Resources/SKCell/UI/Panels/xxx_{panelID} for the corresponding prefab.");
                 return;
             }
             GameObject panelGO = SKPoolManager.SpawnObject(toInst);
             if (panelHierDict[hierarchy] == null)
             {
-                CommonUtils.EditorLogWarning("UI Panel Hierarchy not Initialized!");
+                SKUtils.EditorLogWarning("UI Panel Hierarchy not Initialized!");
                 return;
             }
             panelGO.transform.SetParent(panelHierDict[hierarchy].transform);
-            SKUIPanel panel = CommonUtils.GetComponentNonAlloc<SKUIPanel>(panelGO);
+            SKUIPanel panel = SKUtils.GetComponentNonAlloc<SKUIPanel>(panelGO);
             if (panel == null)
             {
-                CommonUtils.EditorLogError($"UI panel with the given ID: {panelID} does not have the component SKUIPanel.");
+                SKUtils.EditorLogError($"UI panel with the given ID: {panelID} does not have the component SKUIPanel.");
                 return;
             }
             panel.SetState(state);
@@ -153,12 +153,12 @@ namespace SKCell
         {
             if (!panelIDDict.ContainsKey(panelID))
             {
-                CommonUtils.EditorLogError($"UI panel with the given ID: {panelID} is not present in scene.");
+                SKUtils.EditorLogError($"UI panel with the given ID: {panelID} is not present in scene.");
                 return;
             }
-            CommonUtils.RemoveKeyInDictionary(panelIDDict,panelID);
-            CommonUtils.RemoveFromList(existingPanelList,GetPanelByID(panelID));
-            CommonUtils.SafeDestroy(GetPanelByID(panelID).gameObject);
+            SKUtils.RemoveKeyInDictionary(panelIDDict,panelID);
+            SKUtils.RemoveFromList(existingPanelList,GetPanelByID(panelID));
+            SKUtils.SafeDestroy(GetPanelByID(panelID).gameObject);
         }
         /// <summary>
         /// Activate an existing panel.
@@ -167,7 +167,7 @@ namespace SKCell
         {
             if (!existingPanelList.Contains(GetPanelByID(panelID)))
             {
-                CommonUtils.EditorLogWarning("Cannot activate an non-existing panel.");
+                SKUtils.EditorLogWarning("Cannot activate an non-existing panel.");
                 return;
             }
             GetPanelByID(panelID).SetState(SKUIPanelState.Active);
@@ -186,7 +186,7 @@ namespace SKCell
         {
             if (!existingPanelList.Contains(GetPanelByID(panelID)))
             {
-                CommonUtils.EditorLogWarning("Cannot deactivate an non-existing panel.");
+                SKUtils.EditorLogWarning("Cannot deactivate an non-existing panel.");
                 return;
             }
             GetPanelByID(panelID).SetState(SKUIPanelState.Inactive);

@@ -50,7 +50,7 @@ namespace SKCell
         }
         private void Start()
         {
-            CommonUtils.InvokeAction(0.1f, () =>
+            SKUtils.InvokeAction(0.1f, () =>
             {
                 if (useInlineEffects)
                 {
@@ -58,7 +58,7 @@ namespace SKCell
                     ApplyParsedText();
                 }
 
-                CommonUtils.InvokeAction(0.1f, () =>
+                SKUtils.InvokeAction(0.1f, () =>
                 {
                     SKTextUtils.StopAllRoutines(text);
                     if (startOnEnable)
@@ -143,11 +143,11 @@ namespace SKCell
 
             ParseText();
             SKTextUtils.StopAllRoutines(text);
-            CommonUtils.InvokeAction(0.05f, () =>
+            SKUtils.InvokeAction(0.05f, () =>
             {
                 ApplyParsedText();
                 skAnim.UpdateTextDataColor(oColor);
-                CommonUtils.InvokeAction(0f, () =>
+                SKUtils.InvokeAction(0f, () =>
                 {
                     text.alpha = oa;
                     if (useTypeWriter)
@@ -164,7 +164,7 @@ namespace SKCell
 
         public void TypewriterFastForward()
         {
-            CommonUtils.CancelInvoke(curTypewriterCRID);
+            SKUtils.CancelInvoke(curTypewriterCRID);
             skAnim.Alpha(10000000, 1, 0, 1000);
 
             typewriterPlaying = false;
@@ -179,7 +179,7 @@ namespace SKCell
         /// </summary>
         public void TypewriteFastForwardComplete(string content)
         {
-            CommonUtils.CancelInvoke(curTypewriterCRID);
+            SKUtils.CancelInvoke(curTypewriterCRID);
             int len = text.textInfo.meshInfo[0].colors32.Length;
             for (int i = 0; i < len; i++)
             {

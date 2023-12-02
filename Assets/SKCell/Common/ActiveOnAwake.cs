@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class ActiveOnAwake : MonoBehaviour
+namespace SKCell
 {
-    public GameObject target;
-    public bool active = false;
-    private void Awake()
+    public class ActiveOnAwake : MonoBehaviour
     {
-        target.SetActive(active);
-    }
+        public GameObject target;
+        public bool active = false;
+        private void Awake()
+        {
+            target.SetActive(active);
+        }
 
+    }
 }

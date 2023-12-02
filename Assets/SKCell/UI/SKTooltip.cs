@@ -34,7 +34,7 @@ namespace SKCell
             GameObject prefab = Resources.Load<GameObject>(SKAssetLibrary.RESOURCES_PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKTooltip Resource Error: prefab lost.");
+                SKUtils.EditorLogError("SKTooltip Resource Error: prefab lost.");
                 return;
             }
             GameObject tip = Instantiate(prefab);

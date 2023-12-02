@@ -4,7 +4,7 @@ namespace SKCell
 {
     public class SKHierarchyEditor : EditorWindow
     {
-        [MenuItem("SKCell/Tools/Hierarchy Style")]
+        [MenuItem("Tools/SKCell/Tools/Hierarchy Style")]
         public static void ShowWindow()
         {
             GetWindow<SKHierarchyEditor>("Hierarchy Style");

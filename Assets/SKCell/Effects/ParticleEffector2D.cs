@@ -30,7 +30,7 @@ namespace SKCell {
 
                 if (mode == ParticleEffector2DMode.SpawnRelease)
                 {
-                    GameObject go = CommonUtils.SpawnObject(fx_Prefab);
+                    GameObject go = SKUtils.SpawnObject(fx_Prefab);
                     if (go == null || collision == null)
                         return;
 
@@ -40,11 +40,11 @@ namespace SKCell {
                         go.transform.position = collision.transform.position + offset;
                     if (soundFileName.Length > 0)
                     {
-                        CommonUtils.PlaySound(soundFileName);
+                        SKUtils.PlaySound(soundFileName);
                     }
-                    CommonUtils.InvokeAction(releaseTime, () =>
+                    SKUtils.InvokeAction(releaseTime, () =>
                     {
-                        CommonUtils.ReleaseObject(go);
+                        SKUtils.ReleaseObject(go);
                     });
                 }
                 else if (mode == ParticleEffector2DMode.PlayStop)
@@ -75,18 +75,18 @@ namespace SKCell {
             {
                 if (mode == ParticleEffector2DMode.SpawnRelease)
                 {
-                    GameObject go = CommonUtils.SpawnObject(fx_Prefab);
+                    GameObject go = SKUtils.SpawnObject(fx_Prefab);
                     if (go == null || collision == null)
                         return;
 
                     go.transform.position = collision.transform.position + offset;
                     if (soundFileName.Length > 0)
                     {
-                        CommonUtils.PlaySound(soundFileName);
+                        SKUtils.PlaySound(soundFileName);
                     }
-                    CommonUtils.InvokeAction(releaseTime, () =>
+                    SKUtils.InvokeAction(releaseTime, () =>
                     {
-                        CommonUtils.ReleaseObject(go);
+                        SKUtils.ReleaseObject(go);
                     });
                 }
             }

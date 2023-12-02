@@ -17,7 +17,7 @@ namespace SKCell
         {
             if (capacity < 1)
             {
-                CommonUtils.EditorLogError("MinHeap: invalid capacity.");
+                SKUtils.EditorLogError("MinHeap: invalid capacity.");
             }
 
             if (heap == null)
@@ -81,7 +81,7 @@ namespace SKCell
             {
                 return (T)heap[0];
             }
-            CommonUtils.EditorLogWarning("MinHeap.GetTop: Heap is empty!");
+            SKUtils.EditorLogWarning("MinHeap.GetTop: Heap is empty!");
             return default;
         }
 

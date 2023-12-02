@@ -98,7 +98,7 @@ namespace SKCell
             _Material.SetFloat("_Contrast", contrast);
             _Material.SetFloat("_Hue", colorShift);
 
-            _Material.SetInt("_ShowOutline", CommonUtils.BoolToInt(active));
+            _Material.SetInt("_ShowOutline", SKUtils.BoolToInt(active));
             _Material.SetFloat("_EdgeAlphaThreshold", rimAlphaThreshold);
             _Material.SetFloat("_BaseAlphaThreshold", baseAlphaThreshold);
             _Material.SetFloat("_EdgeDampRate", dampRate);

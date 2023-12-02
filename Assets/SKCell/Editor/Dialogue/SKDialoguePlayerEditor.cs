@@ -41,7 +41,7 @@ namespace SKCell
                 GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
                 if (prefab == null)
                 {
-                    CommonUtils.EditorLogError("SKButton Resource Error: Button prefab lost.");
+                    SKUtils.EditorLogError("SKButton Resource Error: Button prefab lost.");
                     return;
                 }
                 GameObject button = Instantiate(prefab);

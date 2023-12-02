@@ -247,7 +247,7 @@ namespace SKCell
             Handles.Label(translator.transform.position+Vector3.down, $"wait {translator.selfWaitTime.ToString("f1")} s", normalguiStyle);
             Vector3 normPos = translator.GetNormalizedWPosition();
             if(SKTranslatorPreview.timePreview)
-                CommonUtils.SetActiveEfficiently(SKTranslatorPreview.timePreview, !hideTimePreview);
+                SKUtils.SetActiveEfficiently(SKTranslatorPreview.timePreview, !hideTimePreview);
             if (SKTranslatorPreview.timePreview)
             {
                 SKTranslatorPreview.timePreview.transform.position = normPos;

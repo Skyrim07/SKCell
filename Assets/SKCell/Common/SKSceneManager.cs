@@ -9,7 +9,7 @@ namespace SKCell
 {
     [AddComponentMenu("SKCell/Misc/SKSceneManager")]
 
-    public class SKSceneManager : MonoSingleton<SKSceneManager>
+    public class SKSceneManager : SKMonoSingleton<SKSceneManager>
     {
         private static AsyncOperation async = null;
         private static float actualAsyncProgress = 0;
@@ -135,7 +135,7 @@ namespace SKCell
         {
             if (async == null)
             {
-                CommonUtils.EditorLogWarning("GetLoadProcess can only be called under an async process.");
+                SKUtils.EditorLogWarning("GetLoadProcess can only be called under an async process.");
                 return 0;
             }
             if (async.isDone)

@@ -19,7 +19,7 @@ namespace SKCell
         }
         private void Initialize()
         {
-            skLocal = CommonUtils.GetComponentNonAlloc<SKLocalization>(gameObject);
+            skLocal = SKUtils.GetComponentNonAlloc<SKLocalization>(gameObject);
         }
 
         public void UpdateLocalID(int localID)

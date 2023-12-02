@@ -1,22 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-using SKCell;
-
-
-[RequireComponent(typeof(Animator))]
-[AddComponentMenu("SKCell/Effects/SKAnimationRandomizer")]
-public sealed class SKAnimationRandomizer : MonoBehaviour
+namespace SKCell
 {
-    private Animator anim;
-    private void Start()
+    [RequireComponent(typeof(Animator))]
+    [AddComponentMenu("SKCell/Effects/SKAnimationRandomizer")]
+    public sealed class SKAnimationRandomizer : MonoBehaviour
     {
-        CommonUtils.InvokeAction(0.2f, () =>
+        private Animator anim;
+        private void Start()
         {
-            anim = GetComponent<Animator>();
-            AnimatorClipInfo info = anim.GetCurrentAnimatorClipInfo(0)[0];
-            anim.Play(info.clip.name, 0, Random.Range(0f, 1f));
-        });
+            SKUtils.InvokeAction(0.2f, () =>
+            {
+                anim = GetComponent<Animator>();
+                AnimatorClipInfo info = anim.GetCurrentAnimatorClipInfo(0)[0];
+                anim.Play(info.clip.name, 0, Random.Range(0f, 1f));
+            });
+        }
     }
 }

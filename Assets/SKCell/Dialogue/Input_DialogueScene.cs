@@ -7,7 +7,7 @@ namespace SKCell.Test
         [SerializeField] SKDialoguePlayer player;
         void Start()
         {
-            CommonUtils.InvokeAction(.2f, () =>
+            SKUtils.InvokeAction(.2f, () =>
             {
                 player.Play();
             });

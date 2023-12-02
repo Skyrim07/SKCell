@@ -6,7 +6,7 @@ namespace SKCell
     /// <summary>
     /// Dispatches event. All in-game events should be accessed here.
     /// </summary>
-    public sealed class EventDispatcher : Singleton<EventDispatcher>
+    public sealed class EventDispatcher : SKSingleton<EventDispatcher>
     {
         //Event Handler Identifiers
         public const int EH_COMMON = 0;
@@ -45,7 +45,7 @@ namespace SKCell
         {
             if (handler == null)
             {
-                CommonUtils.EditorLogWarning("EventDispatcher.AddListener() --- event handler is null.");
+                SKUtils.EditorLogWarning("EventDispatcher.AddListener() --- event handler is null.");
                 return false;
             }
             handler.AddListener(id, t_event);
@@ -61,7 +61,7 @@ namespace SKCell
         {
             if (handler == null)
             {
-                CommonUtils.EditorLogWarning("EventDispatcher.RemoveListener() --- event handler is null.");
+                SKUtils.EditorLogWarning("EventDispatcher.RemoveListener() --- event handler is null.");
                 return false;
             }
             handler.RemoveListener(id, t_event);
@@ -73,7 +73,7 @@ namespace SKCell
         /// </summary>
         public static bool RegisterHandler(EventHandler handler, int id)
         {
-            return CommonUtils.InsertOrUpdateKeyValueInDictionary(handlerDict, id, handler);
+            return SKUtils.InsertOrUpdateKeyValueInDictionary(handlerDict, id, handler);
         }
 
         private static EventHandler m_GetHandler(int type)
@@ -83,7 +83,7 @@ namespace SKCell
                 RegisterHandler(new EventHandler(type), type);
             }
 
-            return CommonUtils.GetValueInDictionary(handlerDict, type);
+            return SKUtils.GetValueInDictionary(handlerDict, type);
         }
     }
 }

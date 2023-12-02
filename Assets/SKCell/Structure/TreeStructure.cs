@@ -29,7 +29,7 @@ namespace SKCell
         {
             if (node.Parent != null)
             {
-                CommonUtils.EditorLogError("Tree.SetHeadNode: node with parent cannot be set head node.");
+                SKUtils.EditorLogError("Tree.SetHeadNode: node with parent cannot be set head node.");
                 return;
             }
 

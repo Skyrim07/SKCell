@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SKCell
 {
 	[AddComponentMenu("SKCell/Misc/SKPoolManager")]
-	public class SKPoolManager : MonoSingleton<SKPoolManager>
+	public class SKPoolManager : SKMonoSingleton<SKPoolManager>
 	{
 		public bool logStatus;
 		public Transform root;
@@ -88,7 +88,7 @@ namespace SKCell
 			}
 			else
 			{
-                CommonUtils.EditorLogWarning("No pool contains the object: " + clone.name);
+                SKUtils.EditorLogWarning("No pool contains the object: " + clone.name);
 			}
 		}
 
@@ -104,7 +104,7 @@ namespace SKCell
 		{
 			foreach (KeyValuePair<GameObject, SKObjectPool<GameObject>> keyVal in prefabLookup)
 			{
-				CommonUtils.EditorLogWarning(string.Format("Object Pool for Prefab: {0} In Use: {1} Total {2}", keyVal.Key.name,
+				SKUtils.EditorLogWarning(string.Format("Object Pool for Prefab: {0} In Use: {1} Total {2}", keyVal.Key.name,
 					keyVal.Value.CountUsedItems, keyVal.Value.Count));
 			}
 		}

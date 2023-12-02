@@ -113,9 +113,9 @@ namespace SKCell
             buttonText.color = interactable ? textNormalColor : textDisabledColor;
 
             if (transitionMode == SKButtonTransitionMode.Animation)
-                anim = CommonUtils.GetComponentNonAlloc<Animator>(gameObject);
+                anim = SKUtils.GetComponentNonAlloc<Animator>(gameObject);
 
-            canvasGroup = CommonUtils.GetComponentNonAlloc<CanvasGroup>(gameObject);
+            canvasGroup = SKUtils.GetComponentNonAlloc<CanvasGroup>(gameObject);
 
             onStart.Invoke();
         }
@@ -127,7 +127,7 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKButton Resource Error: Button prefab lost.");
+                SKUtils.EditorLogError("SKButton Resource Error: Button prefab lost.");
                 initialized = false;
                 return;
             }
@@ -166,7 +166,7 @@ namespace SKCell
         {
             Animator anim=gameObject.AddComponent<Animator>();
             anim.runtimeAnimatorController = controller as RuntimeAnimatorController;
-            this.anim = CommonUtils.GetComponentNonAlloc<Animator>(gameObject);
+            this.anim = SKUtils.GetComponentNonAlloc<Animator>(gameObject);
             hasAnimator = true;
         }
         public void DetachController()
@@ -199,7 +199,7 @@ namespace SKCell
             {
                 if (anim == null)
                 {
-                    CommonUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
+                    SKUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
                     return;
                 }
                 anim.ResetTrigger("Normal");
@@ -224,7 +224,7 @@ namespace SKCell
             {
                 if (anim == null)
                 {
-                    CommonUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
+                    SKUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
                     return;
                 }
                 anim.ResetTrigger("Over");
@@ -249,7 +249,7 @@ namespace SKCell
             {
                 if (anim == null)
                 {
-                    CommonUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
+                    SKUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
                     return;
                 }
                 anim.ResetTrigger("Pressed");
@@ -272,7 +272,7 @@ namespace SKCell
             {
                 if (anim == null)
                 {
-                    CommonUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
+                    SKUtils.EditorLogWarning($"SKButton: Animator not initialized! Gameobject: {name}");
                     return;
                 }
                 anim.ResetTrigger("Disabled");
@@ -342,8 +342,8 @@ namespace SKCell
                 if (canClick)
                 {
                     onPress.Invoke();
-                    CommonUtils.CancelInvoke("ResetClickCD");
-                    CommonUtils.InvokeAction(spamCooldown, ResetClickCD, 0, 0, "ResetClickCD");
+                    SKUtils.CancelInvoke("ResetClickCD");
+                    SKUtils.InvokeAction(spamCooldown, ResetClickCD, 0, 0, "ResetClickCD");
                     canClick = false;
                 }
             }

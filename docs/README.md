@@ -1,6 +1,6 @@
 # SKCell
 
-v1.1.3 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.2.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a><br>
@@ -184,7 +184,7 @@ Include the <b>SKCell namespace</b> in your scripts to access SKCell classes. Tr
 ```csharp
 using SKCell;
 //...
-CommonUtils.EditorLogNormal("Hello SKCell!");
+SKUtils.EditorLogNormal("Hello SKCell!");
 ```
 Congratulations! You have now set up SKCell. Please check the documentation to see what it can do for you.
 
@@ -194,7 +194,7 @@ Congratulations! You have now set up SKCell. Please check the documentation to s
 
 
 ### 1. Common Utilities
-SKCell provides an abundency of useful utility functions, mostly in the static class <b>CommonUtils</b>.
+SKCell provides an abundency of useful utility functions, mostly in the static class <b>SKUtils</b>.
 #### 1.1 Logging
 There are 5 logging functions (like Debug.Log) corresponding to 5 critical levels:<br>
 <b>void EditorLogSafe(object message, bool detailed = false)</b><br>
@@ -207,7 +207,7 @@ There are 5 logging functions (like Debug.Log) corresponding to 5 critical level
 
 ```csharp
 //EXAMPLE
-CommonUtils.EditorLogError("Error message: item ID is -1!");
+SKUtils.EditorLogError("Error message: item ID is -1!");
 ```
 #### 1.2 Debugging 
 <b>void DebugDrawCircle(Vector3 center, float radius, Color color, float duration, int divisions)</b><br>
@@ -224,7 +224,7 @@ CommonUtils.EditorLogError("Error message: item ID is -1!");
 
 ```csharp
 //EXAMPLE
-CommonUtils.DebugDrawText($"Position: {pos}",pos, Color.Red, 25.0f, 10.0f);
+SKUtils.DebugDrawText($"Position: {pos}",pos, Color.Red, 25.0f, 10.0f);
 ```
 #### 1.3 Coroutines 
 
@@ -242,7 +242,7 @@ CommonUtils.DebugDrawText($"Position: {pos}",pos, Color.Red, 25.0f, 10.0f);
 
 ```csharp
 //Spawn Effect and Update UI after 3 seconds, then repeat 5 times every 1 second.
-CommonUtils.InvokeAction(3.0f, ()=>
+SKUtils.InvokeAction(3.0f, ()=>
 {
     SpawnEffect();
     UpdateUI();
@@ -252,10 +252,10 @@ Nested calls are also supported!
 
 ```csharp
 //Do something after 1 second, then do something after 2 seconds.
-CommonUtils.InvokeAction(1.0f, ()=>
+SKUtils.InvokeAction(1.0f, ()=>
 {
     //...
-    CommonUtils.InvokeAction(2.0f, ()=>
+    SKUtils.InvokeAction(2.0f, ()=>
     {
         //...
     });
@@ -267,12 +267,12 @@ CommonUtils.InvokeAction(1.0f, ()=>
 
 ```csharp
 //EXAMPLE
-CommonUtils.InvokeAction(3.0f, ()=>
+SKUtils.InvokeAction(3.0f, ()=>
 {
   //...
 },0,0,"action_07");
 //...
-CommonUtils.CancelInvoke("action_07");
+SKUtils.CancelInvoke("action_07");
 ```
 
 #### 1.4 Tweening 
@@ -289,21 +289,21 @@ Make animation tweening effects with just a few lines of code!
 
 ```csharp
 //Bounce a ball from left to right in 2 seconds.
-CommonUtils.StartProcedure(SKCurve.BounceIn, 2.0f, (t)=>
+SKUtils.StartProcedure(SKCurve.BounceIn, 2.0f, (t)=>
 {
     ball.position = Vector3.Lerp(left, right, t); // t moves from 0 to 1
 });
 ```
 ```csharp
 //Fade in a image, then after 5 seconds, fade out.
-CommonUtils.StartProcedure(SKCurve.LinearIn, 1.0f, (t)=> //fade in
+SKUtils.StartProcedure(SKCurve.LinearIn, 1.0f, (t)=> //fade in
 {
     image.SetAlpha(t); // t moves from 0 to 1
 },()=> //onFinish
 {
-    CommonUtils.InvokeAction(5.0f, ()=> //wait for 5 seconds
+    SKUtils.InvokeAction(5.0f, ()=> //wait for 5 seconds
     {
-        CommonUtils.StartProcedure(SKCurve.LinearOut, 1.0f, (t)=> //fade out
+        SKUtils.StartProcedure(SKCurve.LinearOut, 1.0f, (t)=> //fade out
         {
             image.SetAlpha(t);// t moves from 1 to 0 (because the curve is suffixed out)
         });
@@ -331,9 +331,9 @@ SKCell has a built-in object pool system. Be sure to have the <b>SKPoolManager</
 ```csharp
 //EXAMPLE
 GameObject fx_prefab;
-GameObject fx_instance = CommonUtils.SpawnObject(fx_prefab);
+GameObject fx_instance = SKUtils.SpawnObject(fx_prefab);
 //...
-CommonUtils.ReleaseObject(fx_instance);
+SKUtils.ReleaseObject(fx_instance);
 ```
 
 #### 1.6 Destroying & Disabling 
@@ -359,7 +359,7 @@ These functions require the <b>SKInput</b> component.
 //EXAMPLE
 void Start()
 {
-    CommonUtils.AddMouseDownAction(0,Jump);
+    SKUtils.AddMouseDownAction(0,Jump);
 }
 void Jump(){}
 
@@ -1505,7 +1505,7 @@ There are 7 preset panel hierarchies. They differ by their sorting order.<br>
 - UITopmost -- 6<br>
 - UIConstant -- 7<br>
 <br>
-To create a UI root and view those hierarchies, select <b>SKCell/UI/BulidPanelHeirarchy</b> in the menu bar.
+To create a UI root and view those hierarchies, select <b>Tools/SKCell/UI/BulidPanelHeirarchy</b> in the menu bar.
 
 <h5>Methods</h5>
 <b>void ActivatePanel(int panelID)</b><br>
@@ -1690,7 +1690,26 @@ Common usage include a translatable fill image inside a mask.<br>
  <br>Value of slider. (0-1)<br>
  <br>
 
-#### 5.15 Example Scene
+ #### 5.15 SKUIModelViewer
+SKUIModelViewer offers a template for displaying and interacting with 3D models in UI panels.<br>
+ <h5>Usage</h5>
+ To use SKUIModelViewer, <br>
+ 1. Create a new game object and add the SKUIModelViewer component. <br>
+ 2. Click the <b>Generate Structure</b> button. <br>
+ <br>
+ To customize the model, <br>
+ 1. Expand the generated game object. <br>
+ 2. Adjust the camera and the model to display you own scene. <br>
+
+<br>
+ <h5>Interaction</h5>
+ SKUIModelViewer comes with a gallery-like display where you can rotate the displayed model by dragging the viewer.<br>
+ To customize this behaviour, adjust the parameters under the <b>Gallery Behaviour</b> section. 
+ <br>
+ <br>
+
+
+#### 5.16 Example Scene
 <b>You can see more examples in the SKUIScene.</b><br>
 ### 6. Effects
 
@@ -1790,12 +1809,12 @@ Example to access this at runtime:
 const float BRIGHTNESS = 0.7f;
 SKImageProcessing ip = go.GetComponent<SKImageProcessing>();
 //Gradually increase go's brightness in 2 seconds
-CommonUtils.StartProcedure(SKCurve.LinearIn, 2.0f, (t)=>
+SKUtils.StartProcedure(SKCurve.LinearIn, 2.0f, (t)=>
 {
     ip.brightness = 1 + t * BRIGHTNESS;
 });
 ```
-Reference to <b>CommonUtils.StartProcedure</b>: <a href="#?id=_14-tweening">Tweening</a>.
+Reference to <b>SKUtils.StartProcedure</b>: <a href="#?id=_14-tweening">Tweening</a>.
 
 #### 6.2 SKSpriteProcessing
 This is a sprite version of <a href="#?id=_61-skimageprocessing">SKImageProcessing</a>. Functions are indentical.<br>
@@ -2134,7 +2153,7 @@ SKCell has a node editor system for creating and displaying dialogues. You do no
 - Then the dialogue can be displayed using the <b>SKDialoguePlayer</b>.<br>
 
 <h5>Opening the Dialogue Editor</h5>
-Select <b>SKCell/Dialogue Editor</b> from the menu bar.<br> You will be directed to the following window.
+Select <b>Tools/SKCell/Dialogue Editor</b> from the menu bar.<br> You will be directed to the following window.
 <br>.
   <div align="left">
         <img src="./Dialogue/e1.png" width="540" height="300" alt="Sample screenshot" alt="Go to website" width="500" />
@@ -2330,7 +2349,7 @@ You can make connections to previous parts of the dialogue. In this example, the
 #### 8.4 SK Dialogue Player
 SKDialoguePlayer is the component that actually plays the dialogue asset.<br>
 
-You can find a prefab of the structure required by SKDialoguePlayer in <b>SKCell/Resources/SKCell/Prefabs/SKDialogue</b>.
+You can find a prefab of the structure required by SKDialoguePlayer in <b>Tools/SKCell/Resources/SKCell/Prefabs/SKDialogue</b>.
 
 <h5>To Use SKDialoguePlayer</h5>
 1. Create a new game object.<br>
@@ -2443,7 +2462,7 @@ SKLocalization.GetLocalizationText(int localID);
 ```
 #### 9.2 Localization Control Center
 Localization Control Center is the place where you can manage and edit the localizaed content. <br>
-Open by selecting <b>SKCell/Localization Center</b> from the menu bar.<br>
+Open by selecting <b>Tools/SKCell/Localization Center</b> from the menu bar.<br>
 <br>
  <div align="center">
         <img src="./Local/l1.png" width="1400" height="500" alt="Sample screenshot" alt="Go to website" width="500" />
@@ -3302,7 +3321,7 @@ SKCell offers an inventory system with an editor database and customizable UI pa
 
 #### 15.1 SK Inventory Center
 SK Inventory Center is a editor-based database where you can build the item data for your project.<br>
-To open the inventory center, select <b>SKCell/Inventory Center</b> from the editor menu dropdown.
+To open the inventory center, select <b>Tools/SKCell/Inventory Center</b> from the editor menu dropdown.
 
  <div align="center">
         <img src="./Inventory/1.png" width="1200" height="430" alt="Sample screenshot" alt="Go to website" width="500" />
@@ -3521,7 +3540,7 @@ SKCell brings a series of editor interface improvements to Unity.<br>
 </div></div></div>
 
 <h5>Customizing Colors</h5>
-You can customize colors for the hierarchy window by selecting <b>SKCell/Hierarchy Style</b> from the menu bar.<br>
+You can customize colors for the hierarchy window by selecting <b>Tools/SKCell/Hierarchy Style</b> from the menu bar.<br>
 Close the customization window to apply changes.<br>
 
 #### 16.2 Project Folder Features
@@ -3667,37 +3686,8 @@ Select <b>Show Transform Ext</b> to view extra info.
     </a>
 </div></div></div>
 
-#### 16.5 File Details
-Select <b>SKCell/File Details...</b> from the menu bar to see file details in the project window.<br>
-File details are only visible when the project window has the <b>min display size</b>.<br>
- <div align="center">
-        <img src="./Editor/e2.png" width="800" height="240" alt="Sample screenshot" alt="Go to website" width="500" />
-    </a>
-</div>
-  <b>Properties available for display</b><br>
-  <br>
-  - <b>Animation Key Count</b><br>
-    <br>
-  - <b>Animation Length</b><br>
-    <br>
-    - <b>Asset Type</b><br>
-    <br>
-    - <b>File Size</b><br>
-    <br>
-    - <b>File Suffix</b><br>
-    <br>
-    - <b>GUID</b><br>
-    <br>
-    - <b>Path</b><br>
-    <br>
-    - <b>Texture Format</b><br>
-    <br>
-    - <b>Texture Size</b><br>
-    <br>
-    - <b>Texture Wrap Mode</b><br>
-    <br>
 
-#### 16.6 Example Scene
+#### 16.5 Example Scene
 <b>You can see more examples in SKHierarchyScene and SKInspectorScene.</b><br>
 
 ### 17. Editor Tools
@@ -3712,7 +3702,7 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
 ##### 17.1.1 File I/O
   <b>Open the SK Sprite Editor</b><br>
   <br>
-  Select <b>SKCell/Sprite Editor</b> from the Unity Editor toolbar to open the editor.<br>
+  Select <b>Tools/SKCell/Sprite Editor</b> from the Unity Editor toolbar to open the editor.<br>
   <br> 
   <b>Creating a new image</b><br>
   <br> 
@@ -3755,17 +3745,19 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
 #### 17.2 Sprite Colorer
 The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
 <br>
-Select <b>SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
-
-#### 17.3 Texture Utils
-<i>*Deprecated from v0.14.3</i>
-<br>
-The texture utilities allows you to assign types, formats, and sizes for all the textures in your projects.
-<br>
-Select <b>SKCell/Tools/Texture Utils</b> to open the window. 
+Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
 
 
 ## Dev Log
+
+<b>v1.2.0</b>
+-   Standardized all assets. (namespaces, menu paths, prefabs, file formats)
+-   Renamed CommonUtils to SKUtils (important!)
+-   Renamed MonoSingleton, Singleton to SKMonoSingleton, SKSingleton
+-   Brush smoothness is now correctly computed in SKSpriteEditor
+-   Fixed naming issues in some scripts
+-   Added new comments for some methods
+
 
 <b>v1.1.0</b>
 -   The Inventory update! Introducing SKInventory: a powerful inventory system with an editor database and customizable UI panels.
@@ -3798,7 +3790,7 @@ Select <b>SKCell/Tools/Texture Utils</b> to open the window.
     <br>v1.0.1
     - Fixed issues with saving assets in SKLocalizationCenter
     - Removed templates in SKLocalizationCenter
-    - Removed some json-related functions in CommonUtils
+    - Removed some json-related functions in SKUtils
 
 <b>v0.15.x</b>								  
 2023.11
@@ -3955,7 +3947,7 @@ SKSpriteBlur)
     <br>V0.7.1
     - Fixed editor namespace problems with SKGridLayer.
     - Fixed SKCore building errors.
-    - Optimized CommonUtils.StartProcedure method.
+    - Optimized SKUtils.StartProcedure method.
     <br>V0.7.2
     - Added AnimationRandomizer to effect module
     <br>V0.7.3
@@ -3976,7 +3968,7 @@ SKSpriteBlur)
     <br>V0.6.3
     - Added ITreeNode, TreeNode, ITree, TreeStructure to structure module.
     <br>V0.6.4
-    - Added sorting utilities to CommonUtils.
+    - Added sorting utilities to SKUtils.
 
 <b>v0.5.x</b>										  
 2021.7

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace SKCell
 {
     [AddComponentMenu("SKCell/Console/SKConsole")]
-    public class SKConsole : MonoSingleton<SKConsole>
+    public class SKConsole : SKMonoSingleton<SKConsole>
     {
         [SKInspectorText("Please click on < Generate Structure > \nto start using SKConsole for the first time.")]
         [SerializeField] int descrip_text;
@@ -282,7 +282,7 @@ namespace SKCell
             }
             else
             {
-                CommonUtils.EditorLogWarning($"Command not found: {text}");
+                SKUtils.EditorLogWarning($"Command not found: {text}");
             }
         }
 
@@ -320,7 +320,7 @@ namespace SKCell
         {
             if (command == null)
             {
-                CommonUtils.EditorLogWarning("Command is null.");
+                SKUtils.EditorLogWarning("Command is null.");
                 return;
             }
 
@@ -338,7 +338,7 @@ namespace SKCell
                 }
                 else
                 {
-                    CommonUtils.EditorLogWarning("Invalid argument for command. Expected a float.");
+                    SKUtils.EditorLogWarning("Invalid argument for command. Expected a float.");
                 }
             }
             else if (command.argCount == 2 && expectedArgCount == 2)
@@ -351,7 +351,7 @@ namespace SKCell
                 }
                 else
                 {
-                    CommonUtils.EditorLogWarning("Invalid arguments for command. Expected two floats.");
+                    SKUtils.EditorLogWarning("Invalid arguments for command. Expected two floats.");
                 }
             }
             else if (command.argCount == 3 && expectedArgCount == 3)
@@ -365,7 +365,7 @@ namespace SKCell
                 }
                 else
                 {
-                    CommonUtils.EditorLogWarning("Invalid arguments for command. Expected two floats.");
+                    SKUtils.EditorLogWarning("Invalid arguments for command. Expected two floats.");
                 }
             }
         }
@@ -395,7 +395,7 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKConsole Resource Error: prefab lost.");
+                SKUtils.EditorLogError("SKConsole Resource Error: prefab lost.");
                 return;
             }
             GameObject console = Instantiate(prefab);

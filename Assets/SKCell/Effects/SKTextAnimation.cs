@@ -106,7 +106,7 @@ namespace SKCell
         {
             speed /= 2;
             ScaleUp(speed*8, startIndex, endIndex);
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
              {
                  Shake(startIndex, endIndex);
              });
@@ -115,10 +115,10 @@ namespace SKCell
         {
             speed /= 2;
             ScaleUp(speed * 8, startIndex, endIndex);
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 ShakeTimed(time + (0.003f / speed) * (endIndex - startIndex + 1), startIndex, endIndex);
-                CommonUtils.InvokeAction(time, () =>
+                SKUtils.InvokeAction(time, () =>
                 {
                     ScaleIndentity(speed * 4, startIndex, endIndex);
                 });
@@ -129,7 +129,7 @@ namespace SKCell
             speed /= 2;
             ScaleUp(speed * 8, startIndex, endIndex);
             Color(speed*8, color, startIndex, endIndex);
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 Shake(startIndex, endIndex);
             });
@@ -139,13 +139,13 @@ namespace SKCell
             speed /= 2;
             ScaleUp(speed * 8, startIndex, endIndex);
             Color(speed * 8, color, startIndex, endIndex);
-            CommonUtils.InvokeAction(0, () =>
+            SKUtils.InvokeAction(0, () =>
             {
                 ShakeTimed(time + (0.003f / speed) * (endIndex - startIndex + 1), startIndex, endIndex);
-                CommonUtils.InvokeAction(time, () =>
+                SKUtils.InvokeAction(time, () =>
                 {
                     ScaleIndentity(speed * 4, startIndex, endIndex);
-                    CommonUtils.InvokeAction((0.007f / speed) * (endIndex - startIndex + 1), () =>
+                    SKUtils.InvokeAction((0.007f / speed) * (endIndex - startIndex + 1), () =>
                     {
                         SKTextUtils.Set_Original_Color(text, textData);
                     });

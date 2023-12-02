@@ -81,7 +81,7 @@ namespace SKCell
 			}
 			else
 			{
-				CommonUtils.EditorLogWarning("This object pool does not contain the item provided: " + item);
+				SKUtils.EditorLogWarning("This object pool does not contain the item provided: " + item);
 			}
 		}
 

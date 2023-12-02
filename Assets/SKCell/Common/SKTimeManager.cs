@@ -4,7 +4,7 @@ using UnityEngine.Assertions;
 
 namespace SKCell
 {
-    public class SKTimeManager : MonoSingleton<SKTimeManager>
+    public class SKTimeManager : SKMonoSingleton<SKTimeManager>
     {
         public static bool locked = false;
         private float _fixedDeltaTime;

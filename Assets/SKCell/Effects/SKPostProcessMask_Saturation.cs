@@ -23,7 +23,7 @@ namespace SKCell
 
         private void SendToManager()
         {
-            CommonUtils.InsertToList(SKPostProcessManager.instance.sat_masks, this, false);
+            SKUtils.InsertToList(SKPostProcessManager.instance.sat_masks, this, false);
         }
     }
 }

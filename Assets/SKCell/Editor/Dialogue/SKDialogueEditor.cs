@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.Events;
 
-namespace SKCell {
+namespace SKCell 
+{
     public class SKDialogueEditor : EditorWindow
     {
         static Color COL_BACKGROUND = new Color(.1f, .1f, .1f);
@@ -35,7 +34,7 @@ namespace SKCell {
         float panX = 0;
         float panY = 0;
 
-        [MenuItem("SKCell/Diagolue Editor", priority = 2)]
+        [MenuItem("Tools/SKCell/Diagolue Editor", priority = 2)]
         static void OpenWindow()
         {
             SKDialogueEditor editor = EditorWindow.GetWindow<SKDialogueEditor>("SK Dialogue Editor",typeof(UnityEditor.SceneView));
@@ -576,11 +575,11 @@ namespace SKCell {
         {
             foreach(var from in node.linkedFromNodes)
             {
-                CommonUtils.RemoveFromList(from.linkedNodesID, node.uid);
+                SKUtils.RemoveFromList(from.linkedNodesID, node.uid);
             }
             foreach (var to in node.linkedNodes)
             {
-                CommonUtils.RemoveFromList(to.linkedFromNodesID, node.uid);
+                SKUtils.RemoveFromList(to.linkedFromNodesID, node.uid);
             }
             nodes.Remove(node);
         }
@@ -721,13 +720,13 @@ namespace SKCell {
 
         void UnlinkNodes(SKDialogueEditorNode from, SKDialogueEditorNode to)
         {
-            CommonUtils.RemoveFromList(from.linkedNodesID, to.uid);
-            CommonUtils.RemoveFromList(to.linkedFromNodesID, from.uid);
+            SKUtils.RemoveFromList(from.linkedNodesID, to.uid);
+            SKUtils.RemoveFromList(to.linkedFromNodesID, from.uid);
         }
         void LinkNodes(SKDialogueEditorNode from, SKDialogueEditorNode to)
         {
-            CommonUtils.InsertToList(from.linkedNodesID, to.uid,false);
-            CommonUtils.InsertToList(to.linkedFromNodesID, from.uid,false);
+            SKUtils.InsertToList(from.linkedNodesID, to.uid,false);
+            SKUtils.InsertToList(to.linkedFromNodesID, from.uid,false);
         }
         SKDialogueEditorNode GetMouseOverNode()
         {

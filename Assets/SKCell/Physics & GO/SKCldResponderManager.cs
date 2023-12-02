@@ -7,7 +7,7 @@ namespace SKCell
     /// <summary>
     /// Manages SKColliderResponder instances. 
     /// </summary>
-    public class SKCldResponderManager : Singleton<SKCldResponderManager>
+    public class SKCldResponderManager : SKSingleton<SKCldResponderManager>
     {
         public static Dictionary<string, SKColliderResponder> responderDict = new Dictionary<string, SKColliderResponder>();
 
@@ -20,7 +20,7 @@ namespace SKCell
         /// <returns></returns>
         public static SKColliderResponder GetResponder(string uid)
         {
-            return CommonUtils.GetValueInDictionary(responderDict, uid);
+            return SKUtils.GetValueInDictionary(responderDict, uid);
         }
 
         /// <summary>
@@ -34,12 +34,12 @@ namespace SKCell
 
         public static void AddResponder(SKColliderResponder responder)
         {
-            CommonUtils.InsertOrUpdateKeyValueInDictionary(responderDict, responder.uid, responder);
+            SKUtils.InsertOrUpdateKeyValueInDictionary(responderDict, responder.uid, responder);
         }
 
         public static void UpdateResponderUID(SKColliderResponder responder, string formerUID, string newUID)
         {
-            CommonUtils.RemoveKeyInDictionary(responderDict, formerUID);
+            SKUtils.RemoveKeyInDictionary(responderDict, formerUID);
             responder.uid = newUID;
             AddResponder(responder);
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    public class SKInput : MonoSingleton<SKInput>
+    public class SKInput : SKMonoSingleton<SKInput>
     {
         private List<KeyCode> activeKeycodes = new List<KeyCode>();
         private Dictionary<KeyCode, List<Action>> keyDownActionDict = new Dictionary<KeyCode, List<Action>>();
@@ -32,7 +32,7 @@ namespace SKCell
             {
                 if (Input.GetKeyDown(item))
                 {
-                    CommonUtils.InsertToList(activeKeycodes, item, false);
+                    SKUtils.InsertToList(activeKeycodes, item, false);
 
                     if (keyDownActionDict.ContainsKey(item))
                     {
@@ -44,7 +44,7 @@ namespace SKCell
                 }
                 if (Input.GetKeyUp(item))
                 {
-                    CommonUtils.RemoveFromList(activeKeycodes, item);
+                    SKUtils.RemoveFromList(activeKeycodes, item);
 
                     if (keyUpActionDict.ContainsKey(item))
                     {
@@ -151,7 +151,7 @@ namespace SKCell
         {
             if (mouseID != 0 && mouseID != 1)
             {
-                CommonUtils.EditorLogWarning("SKInput.RegisterMouseDownAction: unidentified mouse id.");
+                SKUtils.EditorLogWarning("SKInput.RegisterMouseDownAction: unidentified mouse id.");
                 return;
             }
 
@@ -173,7 +173,7 @@ namespace SKCell
         {
             if (mouseID != 0 && mouseID != 1)
             {
-                CommonUtils.EditorLogWarning("SKInput.RegisterMouseUpAction: unidentified mouse id.");
+                SKUtils.EditorLogWarning("SKInput.RegisterMouseUpAction: unidentified mouse id.");
                 return;
             }
 

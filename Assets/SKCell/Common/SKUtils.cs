@@ -22,7 +22,7 @@ namespace SKCell
     /// <summary>
     /// Common Utilities Class.
     /// </summary>
-    public static class CommonUtils
+    public static class SKUtils
     {
         #region Fields & Attributes
         public static Camera mainCam;

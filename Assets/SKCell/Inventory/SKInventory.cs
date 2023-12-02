@@ -36,7 +36,7 @@ namespace SKCell
                 SKInventoryItemData data = Asset.itemData[i];
                 if (itemDataDict.ContainsKey(data.id))
                 {
-                    CommonUtils.EditorLogWarning($"SKInventory: Duplicate item ID at id = {data.id}");
+                    SKUtils.EditorLogWarning($"SKInventory: Duplicate item ID at id = {data.id}");
                     continue;
                 }
                 itemDataDict.Add(data.id, data);
@@ -71,12 +71,12 @@ namespace SKCell
         {
             if (id <= 0)
             {
-                CommonUtils.EditorLogWarning($"SKInventory.GetItem: Item id must be positive. (item id = {id})");
+                SKUtils.EditorLogWarning($"SKInventory.GetItem: Item id must be positive. (item id = {id})");
                 return null;
             }
             if (!itemDict.ContainsKey(id))
             {
-                CommonUtils.EditorLogWarning($"SKInventory.GetItem: Item not present. (item id = {id})");
+                SKUtils.EditorLogWarning($"SKInventory.GetItem: Item not present. (item id = {id})");
                 return null;
             }
             return itemDict[id];
@@ -100,7 +100,7 @@ namespace SKCell
         {
             if (id <= 0 || count <= 0)
             {
-                CommonUtils.EditorLogWarning($"SKInventory.RemoveItem: Item id and count must be positive. (item id = {id}, count = {count})");
+                SKUtils.EditorLogWarning($"SKInventory.RemoveItem: Item id and count must be positive. (item id = {id}, count = {count})");
                 return;
             }
             if (stacking && itemDict.ContainsKey(id))
@@ -127,7 +127,7 @@ namespace SKCell
         {
             if (id <= 0 || count <= 0)
             {
-                CommonUtils.EditorLogWarning($"SKInventory.RemoveItem: Item id and count must be positive. (item id = {id}, count = {count})");
+                SKUtils.EditorLogWarning($"SKInventory.RemoveItem: Item id and count must be positive. (item id = {id}, count = {count})");
                 return;
             }
 
@@ -143,12 +143,12 @@ namespace SKCell
                 }
                 else
                 {
-                    CommonUtils.EditorLogWarning($"SKInventory.RemoveItem: Trying to remove more items than available. (item id = {id}, available count = {itemDict[id].count}, requested count = {count})");
+                    SKUtils.EditorLogWarning($"SKInventory.RemoveItem: Trying to remove more items than available. (item id = {id}, available count = {itemDict[id].count}, requested count = {count})");
                 }
             }
             else
             {
-                CommonUtils.EditorLogWarning($"SKInventory.RemoveItem: Item not found in inventory. (item id = {id})");
+                SKUtils.EditorLogWarning($"SKInventory.RemoveItem: Item not found in inventory. (item id = {id})");
             }
         }
 
@@ -160,12 +160,12 @@ namespace SKCell
         {
             if (id <= 0 )
             {
-                CommonUtils.EditorLogWarning($"SKInventory.RemoveItemDirectly: Item id must be positive. (item id = {id})");
+                SKUtils.EditorLogWarning($"SKInventory.RemoveItemDirectly: Item id must be positive. (item id = {id})");
                 return;
             }
             if (!itemDict.ContainsKey(id))
             {
-                CommonUtils.EditorLogWarning($"SKInventory.RemoveItemDirectly: Item not present. (item id = {id})");
+                SKUtils.EditorLogWarning($"SKInventory.RemoveItemDirectly: Item not present. (item id = {id})");
                 return;
             }
 

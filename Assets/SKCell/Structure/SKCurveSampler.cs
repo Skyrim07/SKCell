@@ -9,7 +9,7 @@ namespace SKCell
     /// </summary>
     public static class SKCurveSampler
     {
-    public static readonly Dictionary<CurveType, Func<float, float>> curveFuncs = new Dictionary<CurveType, Func<float, float>>()
+        public static readonly Dictionary<CurveType, Func<float, float>> curveFuncs = new Dictionary<CurveType, Func<float, float>>()
     {
         { CurveType.Linear, (x)=>{ return x; } },
         { CurveType.Quadratic, (x)=>{ return 1 - (1-x)*(1-x); } },
@@ -169,35 +169,36 @@ namespace SKCell
             }
         }
     }
-}
 
-public enum CurveType
-{
-    Linear,
-    Quadratic,
-    Cubic,
-    Quartic,
-    Quintic,
-    QuadraticDouble,
-    CubicDouble,
-    QuarticDouble,
-    QuinticDouble,
-    Sine,
-    SineDouble,
-    Expo,
-    ExpoDouble,
-    Elastic,
-    ElasticDouble,
-    Circ,
-    CircDouble,
-    Back,
-    BackDouble,
-    Bounce,
-    BounceDouble
-}
 
-public enum CurveDir
-{
-    In,
-    Out,
+    public enum CurveType
+    {
+        Linear,
+        Quadratic,
+        Cubic,
+        Quartic,
+        Quintic,
+        QuadraticDouble,
+        CubicDouble,
+        QuarticDouble,
+        QuinticDouble,
+        Sine,
+        SineDouble,
+        Expo,
+        ExpoDouble,
+        Elastic,
+        ElasticDouble,
+        Circ,
+        CircDouble,
+        Back,
+        BackDouble,
+        Bounce,
+        BounceDouble
+    }
+
+    public enum CurveDir
+    {
+        In,
+        Out,
+    }
 }

@@ -61,7 +61,7 @@ namespace SKCell
 
         private void ApplyInertia(Vector3 formerRotAngle)
         {
-            CommonUtils.StartCoroutine(InertiaCR(formerRotAngle));
+            SKUtils.StartCoroutine(InertiaCR(formerRotAngle));
         }
         IEnumerator InertiaCR(Vector3 formerRotAngle)
         {

@@ -61,7 +61,7 @@ namespace SKCell
                 curChoices.Clear(); 
             if (curNode.type!= SKDialogueEditorNodeType.Start)
             {
-                CommonUtils.EditorLogError("SKDialoguePlayer: First node is not start. Please make sure there is a start node to begin with.");
+                SKUtils.EditorLogError("SKDialoguePlayer: First node is not start. Please make sure there is a start node to begin with.");
             }
             panel.SetState(SKUIPanelState.Active);
             StartPlay();
@@ -270,10 +270,10 @@ namespace SKCell
             curChoices = choices;
             choicePanel.SetState(choices.Count==0?SKUIPanelState.Inactive:SKUIPanelState.Active);
             foreach (var go in choiceObjects)
-                CommonUtils.SetActiveEfficiently(go, false);
+                SKUtils.SetActiveEfficiently(go, false);
             for (int i = 0; i < choices.Count; i++)
             {
-                CommonUtils.SetActiveEfficiently(choiceObjects[i], true);
+                SKUtils.SetActiveEfficiently(choiceObjects[i], true);
                 if(choices[i].textType == SKDialogueEditorNodeTextType.Text)
                 {
                     choiceTexts[i].UpdateTextDirectly(choices[i].info.content);

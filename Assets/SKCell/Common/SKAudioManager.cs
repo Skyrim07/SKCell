@@ -5,7 +5,7 @@ using System;
 namespace SKCell
 {
     [AddComponentMenu("SKCell/Misc/SKAudioManager")]
-    public class SKAudioManager : MonoSingleton<SKAudioManager>
+    public class SKAudioManager : SKMonoSingleton<SKAudioManager>
     {
         public AudioSource musicAudioSource;
 
@@ -62,7 +62,7 @@ namespace SKCell
             musicAudioSource.clip.LoadAudioData();
             musicAudioSource.loop = loop;
             musicAudioSource.Play();
-            CommonUtils.StartProcedure(SKCurve.LinearIn, 0.5f, (f) =>
+            SKUtils.StartProcedure(SKCurve.LinearIn, 0.5f, (f) =>
             {
                 musicAudioSource.volume = f * musicVolume;
             });
@@ -71,7 +71,7 @@ namespace SKCell
         public AudioSource StopMusic()
         {
             float oVolume = musicAudioSource.volume;
-            CommonUtils.StartProcedure(SKCurve.LinearIn, 0.5f, (f) =>
+            SKUtils.StartProcedure(SKCurve.LinearIn, 0.5f, (f) =>
             {
                 musicAudioSource.volume = oVolume * (1 - f);
             });
@@ -106,7 +106,7 @@ namespace SKCell
                 audioSource.pitch = pitch;
             audioSource.velocityUpdateMode = AudioVelocityUpdateMode.Dynamic;
             if(damp > 0f)
-                CommonUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
+                SKUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
                 {
                     audioSource.volume = f * soundVolume * volume;
                 });
@@ -136,7 +136,7 @@ namespace SKCell
             audioSource.clip.LoadAudioData();
             audioSource.loop = loop;
             audioSource.volume = soundVolume * volume;
-            CommonUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
+            SKUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
             {
                 audioSource.volume = f * soundVolume * volume;
             });
@@ -155,7 +155,7 @@ namespace SKCell
 
         public void StopSound()
         {
-            CommonUtils.EditorLogNormal(audioSource.GetInstanceID());
+            SKUtils.EditorLogNormal(audioSource.GetInstanceID());
 
             if (audioSource != null)
             {
@@ -186,7 +186,7 @@ namespace SKCell
 
                 if (ac == null)
                 {
-                    CommonUtils.EditorLogError(path + id + "Load audio clip failed!");
+                    SKUtils.EditorLogError(path + id + "Load audio clip failed!");
                 }
                 audioClipDict.Add(id, ac);
             }
@@ -251,7 +251,7 @@ namespace SKCell
             GameObject go = new GameObject("AudioAgent");
             go.transform.SetParent(transform);
             AudioSource audioSource = go.AddComponent<AudioSource>();
-            CommonUtils.InsertOrUpdateKeyValueInDictionary(audioSourceDict, id, audioSource);
+            SKUtils.InsertOrUpdateKeyValueInDictionary(audioSourceDict, id, audioSource);
 
             return audioSource;
         }
@@ -261,13 +261,13 @@ namespace SKCell
             if (!audioSourceDict.ContainsKey(id))
                 return;
             AudioSource audioSource = audioSourceDict[id];
-            CommonUtils.RemoveKeyInDictionary(audioSourceDict, id);
+            SKUtils.RemoveKeyInDictionary(audioSourceDict, id);
 
             if (audioSource == null)
                 return;
 
             float oVolume = audioSource.volume;
-            CommonUtils.StartProcedure(SKCurve.LinearIn, dampenTime, (f) =>
+            SKUtils.StartProcedure(SKCurve.LinearIn, dampenTime, (f) =>
             {
                 audioSource.volume = oVolume * (1 - f);
             }, (f) =>

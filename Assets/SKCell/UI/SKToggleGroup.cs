@@ -29,7 +29,7 @@ namespace SKCell
         {
             if (maxActiveToggleCount < minActiveToggleCount)
             {
-                CommonUtils.EditorLogWarning($"SKToggleGroup: Max count cannot be smaller than min count! Gamobject:{name}");
+                SKUtils.EditorLogWarning($"SKToggleGroup: Max count cannot be smaller than min count! Gamobject:{name}");
             }
             Invoke("ApplyInitialConstraint", 0.2f);
         }

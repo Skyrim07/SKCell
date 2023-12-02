@@ -27,7 +27,7 @@ namespace SKCell
         public static GUIContent crossContent;
         public static Texture2D normalTexture, hoverTexture,selectedTexture, itemFrameTexture;
 
-        [MenuItem("SKCell/Inventory Center", priority = 1)]
+        [MenuItem("Tools/SKCell/Inventory Center", priority = 1)]
         public static void Initialize()
         {
             SKInventoryControlCenter window = GetWindow<SKInventoryControlCenter>("Inventory Center");
@@ -504,7 +504,7 @@ new Color(1, 1, 1, .5f));
         public SKInventoryCategoryData()
         {
             categoryLocalIDs = new int[25];
-            CommonUtils.FillArray(categoryLocalIDs, -1);
+            SKUtils.FillArray(categoryLocalIDs, -1);
             categoryNames = new string[25];
             categoryNames[0] = "General";
 

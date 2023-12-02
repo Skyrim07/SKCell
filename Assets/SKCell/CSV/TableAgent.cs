@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace SKCell
 {
-    public class SKCSVReader : Singleton<SKCSVReader>
+    public class SKCSVReader : SKSingleton<SKCSVReader>
     {
         private Dictionary<string, Dictionary<TableKey, string>> _tableAgent;
 

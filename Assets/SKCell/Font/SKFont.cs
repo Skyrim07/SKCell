@@ -16,7 +16,7 @@ namespace SKCell
 
         public static SKFontAsset asset;
 
-        [MenuItem("SKCell/Font/FontChart")]
+        [MenuItem("Tools/SKCell/Font/FontChart")]
         public static void Initialize()
         {
             SKFontWindow window = GetWindow<SKFontWindow>("FontChart");
@@ -107,12 +107,12 @@ namespace SKCell
                 j_asset.fontIDs[i] =item.name;
                 i++;
             }
-            CommonUtils.SKSaveObjectToJson(j_asset, "SKFontAsset.txt");
+            SKUtils.SKSaveObjectToJson(j_asset, "SKFontAsset.txt");
         }
 
         private static void LoadAsset()
         {
-            SKFontAssetJson j_asset = CommonUtils.SKLoadObjectFromJson<SKFontAssetJson>("SKFontAsset.txt");
+            SKFontAssetJson j_asset = SKUtils.SKLoadObjectFromJson<SKFontAssetJson>("SKFontAsset.txt");
             asset.fontList.Clear();
             for (int i = 0; i < j_asset.fontIDs.Length; i++)
             {

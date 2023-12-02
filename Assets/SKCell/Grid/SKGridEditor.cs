@@ -23,8 +23,8 @@ namespace SKCell
         private static Color highColor = new Color(1, 0.2f, 0.2f, 0.7f);
         private static Color lowColor = new Color(0.2f, 1f, 0.2f, 0.7f);
 
-        private static Color fullColor = new Color(1, 1,1, 0.7f);
-        private static Color emptyColor = new Color(0,0,0, 0.7f);
+        private static Color fullColor = new Color(1, 1, 1, 0.7f);
+        private static Color emptyColor = new Color(0, 0, 0, 0.7f);
 
         private static string sceneViewStr = "Scene";
         private static string hierViewStr = "UnityEditor.SceneHierarchyWindow,UnityEditor.dll";
@@ -116,7 +116,7 @@ namespace SKCell
 
             }
             EditorGUILayout.EndHorizontal();
-          //  GUI.skin.button.alignment = TextAnchor.UpperLeft;
+            //  GUI.skin.button.alignment = TextAnchor.UpperLeft;
         }
 
         private static void DrawViewMenu()
@@ -162,7 +162,7 @@ namespace SKCell
                 }
             }
             float diff = maxVal - minVal;
-            
+
             for (int i = 0; i < layer.grid.width; i++)
             {
                 for (int j = 0; j < layer.grid.height; j++)
@@ -172,7 +172,7 @@ namespace SKCell
                         layer.SetCellColor(i, j, Color.gray, false);
                         continue;
                     }
-                    layer.SetCellColor(i, j, Color.Lerp(lowColor, highColor, (layer.grid.GetCellValue(i, j) - minVal) / diff),false);
+                    layer.SetCellColor(i, j, Color.Lerp(lowColor, highColor, (layer.grid.GetCellValue(i, j) - minVal) / diff), false);
                 }
             }
             layer.rt.Apply();
@@ -183,7 +183,7 @@ namespace SKCell
             {
                 for (int j = 0; j < layer.grid.height; j++)
                 {
-                    layer.SetCellColor(i, j, layer.grid.pf_CellCost[i,j]==0?fullColor : emptyColor, false);
+                    layer.SetCellColor(i, j, layer.grid.pf_CellCost[i, j] == 0 ? fullColor : emptyColor, false);
                 }
             }
             layer.rt.Apply();
@@ -194,7 +194,7 @@ namespace SKCell
             {
                 for (int j = 0; j < layer.grid.height; j++)
                 {
-                    layer.SetCellColor(i, j, layer.grid.occupied[i, j]  ? emptyColor : fullColor, false);
+                    layer.SetCellColor(i, j, layer.grid.occupied[i, j] ? emptyColor : fullColor, false);
                 }
             }
             layer.rt.Apply();
@@ -238,7 +238,7 @@ namespace SKCell
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Occupied:");
                 if (layer.grid != null && layer.grid.occupied != null)
-                    layer.grid.occupied[selectedCell.x, selectedCell.y] = CommonUtils.IntToBool(EditorGUILayout.IntField(CommonUtils.BoolToInt(layer.grid.occupied[selectedCell.x, selectedCell.y])));
+                    layer.grid.occupied[selectedCell.x, selectedCell.y] = SKUtils.IntToBool(EditorGUILayout.IntField(SKUtils.BoolToInt(layer.grid.occupied[selectedCell.x, selectedCell.y])));
                 EditorGUILayout.EndHorizontal();
             }
             else
@@ -275,7 +275,7 @@ namespace SKCell
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField("Occupied:");
                 if (layer.grid != null && layer.grid.occupied != null)
-                    layer.grid.occupied[activeCell.x, activeCell.y] = CommonUtils.IntToBool(EditorGUILayout.IntField(CommonUtils.BoolToInt(layer.grid.occupied[activeCell.x, activeCell.y])));
+                    layer.grid.occupied[activeCell.x, activeCell.y] = SKUtils.IntToBool(EditorGUILayout.IntField(SKUtils.BoolToInt(layer.grid.occupied[activeCell.x, activeCell.y])));
                 EditorGUILayout.EndHorizontal();
             }
             else
@@ -298,7 +298,7 @@ namespace SKCell
         {
             EraseGridView();
             layer.isEditing = false;
-            CommonUtils.RefreshSelection(layer.gameObject);
+            SKUtils.RefreshSelection(layer.gameObject);
             SceneView.duringSceneGui -= OnSceneView;
 
             layer.SaveGridToAssets(layer.saveAsset);
@@ -358,13 +358,14 @@ namespace SKCell
 
         }
     }
-}
 
-public enum SKGridEditorView
-{
-    None,
-    CellValue,
-    CellCost,
-    Occupancy
-}
+
+    public enum SKGridEditorView
+    {
+        None,
+        CellValue,
+        CellCost,
+        Occupancy
+    }
 #endif
+}

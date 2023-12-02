@@ -74,7 +74,7 @@ namespace SKCell
                     localizationAsset = AssetDatabase.LoadAssetAtPath<SKLocalizationAsset>(LOCAL_ASSET_PATH);
 #endif
                 if (localizationAsset == null)
-                    localizationAsset = new SKLocalizationAsset(CommonUtils.SKLoadObjectFromJson<SKLocalizationAssetJson>("SKLocalizationAsset.json"));
+                    localizationAsset = new SKLocalizationAsset(SKUtils.SKLoadObjectFromJson<SKLocalizationAssetJson>("SKLocalizationAsset.json"));
 
                 return localizationAsset;
             }

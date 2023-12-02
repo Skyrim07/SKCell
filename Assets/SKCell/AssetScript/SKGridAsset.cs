@@ -31,9 +31,9 @@ namespace SKCell
             this.filterMode = filterMode;
             this.defaultColor = defaultColor;
 
-            cellValues_se = CommonUtils.Serialize2DArray(grid.cellValues);
-            cellCosts_se = CommonUtils.Serialize2DArray(grid.pf_CellCost);
-            cellOccupied_se = CommonUtils.Serialize2DArray(grid.occupied);
+            cellValues_se = SKUtils.Serialize2DArray(grid.cellValues);
+            cellCosts_se = SKUtils.Serialize2DArray(grid.pf_CellCost);
+            cellOccupied_se = SKUtils.Serialize2DArray(grid.occupied);
         }
     }
 }

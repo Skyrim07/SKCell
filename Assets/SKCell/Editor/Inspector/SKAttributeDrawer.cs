@@ -1,46 +1,47 @@
-using SKCell;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof(SKConditionalFieldAttribute))]
-public class ConditionalHidePropertyDrawer : PropertyDrawer
+namespace SKCell
 {
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+    [CustomPropertyDrawer(typeof(SKConditionalFieldAttribute))]
+    public class ConditionalHidePropertyDrawer : PropertyDrawer
     {
-        if (ShouldHide(property))
-            return 0;
-
-        return EditorGUI.GetPropertyHeight(property);
-    }
-
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-        if (!ShouldHide(property))
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            EditorGUI.PropertyField(position, property, label, true);
+            if (ShouldHide(property))
+                return 0;
+
+            return EditorGUI.GetPropertyHeight(property);
         }
-    }
 
-    private bool ShouldHide(SerializedProperty property)
-    {
-        SKConditionalFieldAttribute hideAttribute = (SKConditionalFieldAttribute)attribute;
-        string propertyName = hideAttribute.ConditionalField;
-        SerializedProperty sourcePropertyValue = property.serializedObject.FindProperty(propertyName);
-
-        if (sourcePropertyValue == null)
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            Debug.LogWarning($"Cannot find property named {propertyName}");
+            if (!ShouldHide(property))
+            {
+                EditorGUI.PropertyField(position, property, label, true);
+            }
+        }
+
+        private bool ShouldHide(SerializedProperty property)
+        {
+            SKConditionalFieldAttribute hideAttribute = (SKConditionalFieldAttribute)attribute;
+            string propertyName = hideAttribute.ConditionalField;
+            SerializedProperty sourcePropertyValue = property.serializedObject.FindProperty(propertyName);
+
+            if (sourcePropertyValue == null)
+            {
+                Debug.LogWarning($"Cannot find property named {propertyName}");
+                return false;
+            }
+
+            if (sourcePropertyValue.propertyType == SerializedPropertyType.Boolean)
+            {
+                return sourcePropertyValue.boolValue != (bool)hideAttribute.ConditionalValue;
+            }
             return false;
         }
-
-        if (sourcePropertyValue.propertyType == SerializedPropertyType.Boolean)
-        {
-            return sourcePropertyValue.boolValue != (bool)hideAttribute.ConditionalValue;
-        }
-        return false;
     }
-}
 
     [CustomPropertyDrawer(typeof(SKResettableAttribute))]
     public class ResettablePropertyDrawer : PropertyDrawer
@@ -56,11 +57,11 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
 
             float buttonWidth = 14f;
             Rect propertyRect = new Rect(position.x, position.y, position.width - buttonWidth - 4, position.height);
-            Rect buttonRect = new Rect(position.x + position.width - buttonWidth -2, position.y + 2, buttonWidth, position.height);
+            Rect buttonRect = new Rect(position.x + position.width - buttonWidth - 2, position.y + 2, buttonWidth, position.height);
 
             EditorGUI.PropertyField(propertyRect, property, label);
 
-            if (GUI.Button(buttonRect,SKHierarchy.resetContent, SKHierarchy.transparentButtonStyle))
+            if (GUI.Button(buttonRect, SKHierarchy.resetContent, SKHierarchy.transparentButtonStyle))
             {
                 ResetProperty(property);
             }
@@ -119,7 +120,7 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
             SKFieldAliasAttribute textAttribute = (SKFieldAliasAttribute)attribute;
 
             EditorGUI.LabelField(position, textAttribute.Message);
-            EditorGUI.PropertyField(position, property,true);
+            EditorGUI.PropertyField(position, property, true);
         }
     }
 
@@ -131,7 +132,7 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
             SKInspectorTextAttribute textAttribute = (SKInspectorTextAttribute)attribute;
 
             position.height = GetPropertyHeight(property, label) * 2;
-            EditorGUI.LabelField(position,textAttribute.Message);
+            EditorGUI.LabelField(position, textAttribute.Message);
             EditorGUILayout.Space(GetPropertyHeight(property, label));
         }
 
@@ -140,3 +141,4 @@ public class ConditionalHidePropertyDrawer : PropertyDrawer
             return base.GetPropertyHeight(property, label);
         }
     }
+}

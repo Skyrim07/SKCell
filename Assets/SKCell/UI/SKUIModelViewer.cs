@@ -100,7 +100,7 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKUIModelViewer Resource Error: UIModelViewer prefab lost.");
+                SKUtils.EditorLogError("SKUIModelViewer Resource Error: UIModelViewer prefab lost.");
                 initialized = false;
                 return;
             }
@@ -137,7 +137,7 @@ namespace SKCell
         }
         private void ApplyInertia(Vector3 formerRotAngle)
         {
-            CommonUtils.StartCoroutine(InertiaCR(formerRotAngle));
+            SKUtils.StartCoroutine(InertiaCR(formerRotAngle));
         }
         IEnumerator InertiaCR(Vector3 formerRotAngle)
         {

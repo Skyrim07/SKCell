@@ -17,9 +17,9 @@ namespace SKCell
     [RequireComponent(typeof(SKCommonTimer))]
     [RequireComponent(typeof(SKPoolManager))]
     [AddComponentMenu("SKCell/Core/SKCore")]
-    public sealed class SKCore : MonoSingleton<SKCore>
+    public sealed class SKCore : SKMonoSingleton<SKCore>
     {
-        public const string SKCELL_VERSION = "v1.1.3";
+        public const string SKCELL_VERSION = "v1.2.0";
 
         public static Action Awake000 = new Action(EmptyAction), Awake100 = new Action(EmptyAction),
                               Start000 = new Action(EmptyAction), Start100 = new Action(EmptyAction), Start200 = new Action(EmptyAction),
@@ -41,7 +41,7 @@ namespace SKCell
         {
             SKInventory.Initialize();
 
-            CommonUtils.EditorLogNormal("SKCell Initialized!");
+            SKUtils.EditorLogNormal("SKCell Initialized!");
         }
 
         #region Unity Lifecycle
@@ -49,7 +49,7 @@ namespace SKCell
         protected override void Awake()
         {
             base.Awake();
-            CommonUtils.ClearAllCustomMeshes();
+            SKUtils.ClearAllCustomMeshes();
 
             Awake000();
             Awake100();

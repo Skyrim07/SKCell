@@ -22,7 +22,7 @@ namespace SKCell
                 {
                     gridLayer.preview = true;
                     SKGridEditor.Initialize(gridLayer);
-                    CommonUtils.RefreshSelection(gridLayer.gameObject);
+                    SKUtils.RefreshSelection(gridLayer.gameObject);
                 }
             }
             else
@@ -30,7 +30,7 @@ namespace SKCell
                 if (GUILayout.Button("<Finish Edit>"))
                 {
                     SKGridEditor.FinishEdit(gridLayer);
-                    CommonUtils.RefreshSelection(gridLayer.gameObject);
+                    SKUtils.RefreshSelection(gridLayer.gameObject);
                 }
             }
             GUI.contentColor = Color.white;
@@ -39,7 +39,7 @@ namespace SKCell
                 if (GUILayout.Button("<Preview>"))
                 {
                     gridLayer.preview = true;
-                    CommonUtils.RefreshSelection(gridLayer.gameObject);
+                    SKUtils.RefreshSelection(gridLayer.gameObject);
                 }
             }
             else
@@ -47,7 +47,7 @@ namespace SKCell
                 if (GUILayout.Button("<End Preview>"))
                 {
                     gridLayer.preview = false;
-                    CommonUtils.RefreshSelection(gridLayer.gameObject);
+                    SKUtils.RefreshSelection(gridLayer.gameObject);
                 }
             }
             GUILayout.Space(15);
@@ -60,7 +60,7 @@ namespace SKCell
                 if (GUILayout.Button("<Apply Changes>"))
                 {
                     gridLayer.ApplyChanges();
-                    CommonUtils.EditorLogNormal($"Grid Changes Applied");
+                    SKUtils.EditorLogNormal($"Grid Changes Applied");
                 }
             
             GUILayout.Space(15);
@@ -68,12 +68,12 @@ namespace SKCell
             if (GUILayout.Button("<Save Grid>"))
             {
                 gridLayer.SaveGridToAssets(gridLayer.saveAsset);
-                CommonUtils.EditorLogNormal($"Saved Grid: {gridLayer.saveAsset.name}");
+                SKUtils.EditorLogNormal($"Saved Grid: {gridLayer.saveAsset.name}");
             }
             if (GUILayout.Button("<Load Grid>"))
             {
                 gridLayer.LoadGridFromAssets(gridLayer.saveAsset);
-                CommonUtils.EditorLogNormal($"Loaded Grid: {gridLayer.saveAsset.name}");
+                SKUtils.EditorLogNormal($"Loaded Grid: {gridLayer.saveAsset.name}");
             }
             EditorGUILayout.BeginHorizontal();
             gridLayer.saveAsset = EditorGUILayout.ObjectField(gridLayer.saveAsset, typeof(SKGridAsset), false) as SKGridAsset;

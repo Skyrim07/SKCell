@@ -45,7 +45,7 @@ namespace SKCell
             SKDragger drag = inst.GetComponentInChildren<SKDragger>();
             if (drag == null)
             {
-                CommonUtils.EditorLogError("SKDragSpawner: spawnObject must have SKDragger component on itself or its children.");
+                SKUtils.EditorLogError("SKDragSpawner: spawnObject must have SKDragger component on itself or its children.");
                 Destroy(inst);
                 return;
             }

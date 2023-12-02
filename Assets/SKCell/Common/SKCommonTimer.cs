@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SKCell
 {
     [AddComponentMenu("SKCell/Misc/SKCommonTimer")]
-    public sealed class SKCommonTimer : MonoSingleton<SKCommonTimer>
+    public sealed class SKCommonTimer : SKMonoSingleton<SKCommonTimer>
     {
         private double scaledTimer = 0f;
         private double fixedTimer = 0f;
@@ -17,7 +17,7 @@ namespace SKCell
         protected override void Awake()
         {
             base.Awake();
-            CommonUtils.mainCam = Camera.main;
+            SKUtils.mainCam = Camera.main;
         }
         private void Start()
         {
@@ -43,22 +43,22 @@ namespace SKCell
         public void CreateTimer(string name, float startTime=0, bool isScaled=true)
         {
             if(isScaled)
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(timerDict, name, (scaledTimer-startTime,isScaled));
+                SKUtils.InsertOrUpdateKeyValueInDictionary(timerDict, name, (scaledTimer-startTime,isScaled));
             else
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(timerDict, name, (fixedTimer-startTime, isScaled));
+                SKUtils.InsertOrUpdateKeyValueInDictionary(timerDict, name, (fixedTimer-startTime, isScaled));
         }
         public void DisposeTimer(string name)
         {
-            CommonUtils.RemoveKeyInDictionary(timerDict, name);
+            SKUtils.RemoveKeyInDictionary(timerDict, name);
         }
         public double GetTimerValue(string name)
         {
-            (double, bool) info = CommonUtils.GetValueInDictionary(timerDict, name);
+            (double, bool) info = SKUtils.GetValueInDictionary(timerDict, name);
             return info.Item2 ? scaledTimer - info.Item1 : fixedTimer - info.Item1;
         }
         public double GetTimerValue(string name, out (double, bool) timerInfo)
         {
-            (double, bool) info=CommonUtils.GetValueInDictionary(timerDict, name);
+            (double, bool) info=SKUtils.GetValueInDictionary(timerDict, name);
             timerInfo = info;
             return info.Item2 ? scaledTimer - info.Item1 : fixedTimer - info.Item1;
         }
@@ -75,7 +75,7 @@ namespace SKCell
            Coroutine cr= StartCoroutine(SimpleActionCoroutine(seconds, callback, repeatCount, repeatInterval, false, onFinish));
             if (id.Length > 0)
             {
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(crDict, id, cr);
+                SKUtils.InsertOrUpdateKeyValueInDictionary(crDict, id, cr);
             }
         }
         public void CancelInvokeAction(string id)
@@ -108,7 +108,7 @@ namespace SKCell
             Coroutine cr = StartCoroutine(SimpleActionCoroutine(seconds, callback, 10, repeatInterval, true));
             if (id.Length > 0)
             {
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(crDict, id, cr);
+                SKUtils.InsertOrUpdateKeyValueInDictionary(crDict, id, cr);
             }
         }
     }

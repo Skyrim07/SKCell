@@ -77,19 +77,19 @@ namespace SKCell
         public static void Localize(GameObject go)
         {
             LanguageSupport language = SKEnvironment.curLanguage;
-            SKText text = CommonUtils.GetComponentNonAlloc<SKText>(go);
+            SKText text = SKUtils.GetComponentNonAlloc<SKText>(go);
             if (text != null)
             {
                 text.ApplyLocalization(language);
             }
-            SKImage image = CommonUtils.GetComponentNonAlloc<SKImage>(go);
+            SKImage image = SKUtils.GetComponentNonAlloc<SKImage>(go);
             if (image != null)
             {
                 image.ApplyLocalization(language);
             }
             if (text == null && image == null)
             {
-                CommonUtils.EditorLogWarning($"Localization Error: Not a localizable object. Gameobject: {go.name}");
+                SKUtils.EditorLogWarning($"Localization Error: Not a localizable object. Gameobject: {go.name}");
             }
         }
 

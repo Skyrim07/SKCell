@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -11,7 +10,7 @@ namespace SKCell
         private static Texture2D texture;
         private static string texturePath;
 
-        [MenuItem("SKCell/Tools/Sprite Colorer")]
+        [MenuItem("Tools/SKCell/Tools/Sprite Colorer")]
         public static void Initialize()
         {
             GetWindow<SKSpriteTools>("Sprite Colorer");

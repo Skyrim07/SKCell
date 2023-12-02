@@ -137,7 +137,7 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKInventory Resource Error: prefab lost.");
+                SKUtils.EditorLogError("SKInventory Resource Error: prefab lost.");
                 return;
             }
             GameObject inv = Instantiate(prefab);

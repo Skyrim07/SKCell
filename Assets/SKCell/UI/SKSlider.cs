@@ -95,11 +95,11 @@ namespace SKCell
         {
             if (enableDelayedFill && delayedFillLerpSpeed <= lerpSpeed)
             {
-                CommonUtils.EditorLogWarning($"SKSlider: A latentLerpSpeed smaller than lerpSpeed is meaningless. Gameobject: {name}");
+                SKUtils.EditorLogWarning($"SKSlider: A latentLerpSpeed smaller than lerpSpeed is meaningless. Gameobject: {name}");
             }
             SetValueRaw(initialValue);
 
-            canvasGroup = CommonUtils.GetComponentNonAlloc<CanvasGroup>(gameObject);
+            canvasGroup = SKUtils.GetComponentNonAlloc<CanvasGroup>(gameObject);
 
             onStart.Invoke();
         }
@@ -111,7 +111,7 @@ namespace SKCell
         {
             if (!initialized)
             {
-                CommonUtils.EditorLogError("SKSlider not initialized!");
+                SKUtils.EditorLogError("SKSlider not initialized!");
                 return;
             }
             bool isUp = value > this.value;
@@ -122,13 +122,13 @@ namespace SKCell
                 if (enableDelayedFill)
                 {
                     delayedFill.color = isUp ? delayedFillColorUp : delayedFillColorDown;
-                    CommonUtils.SetActiveEfficiently(delayedFill.gameObject, true);
+                    SKUtils.SetActiveEfficiently(delayedFill.gameObject, true);
                     StartCoroutine(LerpLatentFill(isUp ? delayedFillLerpSpeed : lerpSpeed, threshold));
                     StartCoroutine(LerpFill(isUp ? lerpSpeed : delayedFillLerpSpeed, threshold));
                 }
                 else
                 {
-                    CommonUtils.SetActiveEfficiently(delayedFill.gameObject, false);
+                    SKUtils.SetActiveEfficiently(delayedFill.gameObject, false);
                     StartCoroutine(LerpFill(lerpSpeed, threshold));
                 }
             }
@@ -344,7 +344,7 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKSlider Resource Error: Slider prefab lost.");
+                SKUtils.EditorLogError("SKSlider Resource Error: Slider prefab lost.");
                 initialized = false;
                 return;
             }
@@ -381,7 +381,7 @@ namespace SKCell
                 fill.fillAmount = value;
                 if (showProgressText)
                 {
-                    CommonUtils.SetActiveEfficiently(progressText.gameObject, true);
+                    SKUtils.SetActiveEfficiently(progressText.gameObject, true);
                     if (progressTextType == ProgressTextType.Percentage)
                         progressText.UpdateTextDirectly(value.ToString($"p{percentagePrecision}"));
                     else
@@ -390,7 +390,7 @@ namespace SKCell
                 }
                 else
                 {
-                    CommonUtils.SetActiveEfficiently(progressText.gameObject, false);
+                    SKUtils.SetActiveEfficiently(progressText.gameObject, false);
                 }
             }
             if (style == SliderStyle.Linear)

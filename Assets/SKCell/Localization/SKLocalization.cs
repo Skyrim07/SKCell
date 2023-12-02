@@ -54,20 +54,20 @@ namespace SKCell
             switch (type)
             {
                 case LocalizationType.Image:
-                    SKImage image = CommonUtils.GetComponentNonAlloc<SKImage>(gameObject);
+                    SKImage image = SKUtils.GetComponentNonAlloc<SKImage>(gameObject);
                     if (image == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (info.localImage != null)
                         image.sprite = Sprite.Create(info.localImage, new Rect(0, 0, info.localImage.width, info.localImage.height), new Vector2(0.5f, 0.5f));
                     break;
                 case LocalizationType.Text:
-                    SKText text = CommonUtils.GetComponentNonAlloc<SKText>(gameObject);
+                    SKText text = SKUtils.GetComponentNonAlloc<SKText>(gameObject);
                     if (text == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (!info.localText.Equals(string.Empty))
@@ -109,20 +109,20 @@ namespace SKCell
             switch (type)
             {
                 case LocalizationType.Image:
-                    SKImage image = CommonUtils.GetComponentNonAlloc<SKImage>(gameObject);
+                    SKImage image = SKUtils.GetComponentNonAlloc<SKImage>(gameObject);
                     if (image == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (info.localImage != null)
                         image.sprite = Sprite.Create(info.localImage, new Rect(0, 0, info.localImage.width, info.localImage.height), new Vector2(0.5f, 0.5f));
                     break;
                 case LocalizationType.Text:
-                    SKText text = CommonUtils.GetComponentNonAlloc<SKText>(gameObject);
+                    SKText text = SKUtils.GetComponentNonAlloc<SKText>(gameObject);
                     if (text == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (!info.localText.Equals(string.Empty))
@@ -156,20 +156,20 @@ namespace SKCell
             switch (type)
             {
                 case LocalizationType.Image:
-                    SKImage image = CommonUtils.GetComponentNonAlloc<SKImage>(gameObject);
+                    SKImage image = SKUtils.GetComponentNonAlloc<SKImage>(gameObject);
                     if (image == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (info.localImage != null)
                         image.sprite = Sprite.Create(info.localImage, new Rect(0, 0, info.localImage.width, info.localImage.height), new Vector2(0.5f, 0.5f));
                     break;
                 case LocalizationType.Text:
-                    SKText text = CommonUtils.GetComponentNonAlloc<SKText>(gameObject);
+                    SKText text = SKUtils.GetComponentNonAlloc<SKText>(gameObject);
                     if (text == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (!info.localText.Equals(string.Empty))
@@ -203,20 +203,20 @@ namespace SKCell
             switch (type)
             {
                 case LocalizationType.Image:
-                    SKImage image = CommonUtils.GetComponentNonAlloc<SKImage>(gameObject);
+                    SKImage image = SKUtils.GetComponentNonAlloc<SKImage>(gameObject);
                     if (image == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKImage> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (info.localImage != null)
                         image.sprite = Sprite.Create(info.localImage, new Rect(0, 0, info.localImage.width, info.localImage.height), new Vector2(0.5f, 0.5f));
                     break;
                 case LocalizationType.Text:
-                    SKText text = CommonUtils.GetComponentNonAlloc<SKText>(gameObject);
+                    SKText text = SKUtils.GetComponentNonAlloc<SKText>(gameObject);
                     if (text == null)
                     {
-                        CommonUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
+                        SKUtils.EditorLogError($"Localization error: Component <SKText> does not exist. Gameobject: {name}");
                         return;
                     }
                     if (!info.localText.Equals(string.Empty))
@@ -264,7 +264,7 @@ namespace SKCell
             {
                 if (!asset.imageConfigDict.ContainsKey(_localID))
                 {
-                    CommonUtils.EditorLogError($"Localization Error: ID not configured. Gameobject: {name}, LocalID: {_localID}");
+                    SKUtils.EditorLogError($"Localization Error: ID not configured. Gameobject: {name}, LocalID: {_localID}");
                 }
                 LocalizedImageConfig config = asset.imageConfigDict[_localID];
                 info.UpdateInfo(lang, method, type, null, config);
@@ -276,7 +276,7 @@ namespace SKCell
         {
             if (asset == null)
             {
-                asset = new SKLocalizationAsset(CommonUtils.SKLoadObjectFromJson<SKLocalizationAssetJson>("SKLocalizationAsset.json"));
+                asset = new SKLocalizationAsset(SKUtils.SKLoadObjectFromJson<SKLocalizationAssetJson>("SKLocalizationAsset.json"));
             }
         }
 
@@ -287,11 +287,11 @@ namespace SKCell
         {
             foreach (var item in asset.textConfigs)
             {
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(asset.textConfigDict, item.id, item);
+                SKUtils.InsertOrUpdateKeyValueInDictionary(asset.textConfigDict, item.id, item);
             }
             foreach (var item in asset.imageConfigs)
             {
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(asset.imageConfigDict, item.id, item);
+                SKUtils.InsertOrUpdateKeyValueInDictionary(asset.imageConfigDict, item.id, item);
             }
         }
 
@@ -331,14 +331,14 @@ namespace SKCell
         {
             if (!asset.languageSupports.Contains(lang))
             {
-                CommonUtils.EditorLogError($"Localization Error: Language not supported. Gameobject: {name}, LocalID: {_localID}, Language: {lang}");
+                SKUtils.EditorLogError($"Localization Error: Language not supported. Gameobject: {name}, LocalID: {_localID}, Language: {lang}");
                 return false;
             }
             if (type == LocalizationType.Text)
             {
                 if (!asset.textConfigDict.ContainsKey(_localID))
                 {
-                    CommonUtils.EditorLogError($"Localization Error: ID not configured. Gameobject: {name}, LocalID: {_localID}");
+                    SKUtils.EditorLogError($"Localization Error: ID not configured. Gameobject: {name}, LocalID: {_localID}");
                     return false;
                 }
             }
@@ -346,7 +346,7 @@ namespace SKCell
             {
                 if (!asset.imageConfigDict.ContainsKey(_localID))
                 {
-                    CommonUtils.EditorLogError($"Localization Error: ID not configured. Gameobject: {name}, LocalID: {_localID}");
+                    SKUtils.EditorLogError($"Localization Error: ID not configured. Gameobject: {name}, LocalID: {_localID}");
                     return false;
                 }
             }

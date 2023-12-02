@@ -94,10 +94,10 @@ namespace SKCell
         {
 #if UNITY_EDITOR
             LoadGridFromAssets(saveAsset);
-                if (grid == null)
-                {
-                    GenerateStructure();
-                }
+            if (grid == null)
+            {
+                GenerateStructure();
+            }
 #endif
         }
         private void Update()
@@ -133,7 +133,7 @@ namespace SKCell
         }
         public Vector3 WorldPosFromCell(int x, int y)
         {
-            return grid.CellToPosition(new Vector2Int(x,y));
+            return grid.CellToPosition(new Vector2Int(x, y));
         }
         public List<Vector2Int> CellsFromWorldPos(Vector3 pos1, Vector3 pos2)
         {
@@ -177,13 +177,13 @@ namespace SKCell
                     switch (op)
                     {
                         case CellOperator.Set:
-                            SetCellColor(i, j, CommonUtils.MixColor(c1, c2, (float)dist / radius), false);
+                            SetCellColor(i, j, SKUtils.MixColor(c1, c2, (float)dist / radius), false);
                             break;
                         case CellOperator.Add:
-                            AddCellColor(i, j, CommonUtils.MixColor(c1, c2, (float)dist / radius), false);
+                            AddCellColor(i, j, SKUtils.MixColor(c1, c2, (float)dist / radius), false);
                             break;
                         case CellOperator.Multiply:
-                            MultiplyCellColor(i, j, CommonUtils.MixColor(c1, c2, (float)dist / radius), false);
+                            MultiplyCellColor(i, j, SKUtils.MixColor(c1, c2, (float)dist / radius), false);
                             break;
                         default:
                             break;
@@ -212,13 +212,13 @@ namespace SKCell
                     switch (op)
                     {
                         case CellOperator.Set:
-                            SetCellColor(i, j, CommonUtils.MixColor(c1, c2, (float)dist / radius), false);
+                            SetCellColor(i, j, SKUtils.MixColor(c1, c2, (float)dist / radius), false);
                             break;
                         case CellOperator.Add:
-                            AddCellColor(i, j, CommonUtils.MixColor(c1, c2, (float)dist / radius), false);
+                            AddCellColor(i, j, SKUtils.MixColor(c1, c2, (float)dist / radius), false);
                             break;
                         case CellOperator.Multiply:
-                            MultiplyCellColor(i, j, CommonUtils.MixColor(c1, c2, (float)dist / radius), false);
+                            MultiplyCellColor(i, j, SKUtils.MixColor(c1, c2, (float)dist / radius), false);
                             break;
                         default:
                             break;
@@ -266,12 +266,12 @@ namespace SKCell
         {
             if (grid == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
                 return;
             }
             if (rt == null || rtCanvas == null || rtGO == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
                 return;
             }
             if (!CheckCellValidity(x, y))
@@ -296,12 +296,12 @@ namespace SKCell
         {
             if (grid == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
                 return;
             }
             if (rt == null || rtCanvas == null || rtGO == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
                 return;
             }
             float iCellSize = 1;
@@ -322,12 +322,12 @@ namespace SKCell
         {
             if (grid == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
                 return;
             }
             if (rt == null || rtCanvas == null || rtGO == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
                 return;
             }
             float iCellSize = 1;
@@ -339,12 +339,12 @@ namespace SKCell
         {
             if (grid == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- grid is NULL.");
                 return;
             }
             if (rt == null || rtCanvas == null || rtGO == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
+                SKUtils.EditorLogError("SKGridLayer.SetCellColor -- Structure Incomplete. Invoke GenerateStructure to solve this problem.");
                 return;
             }
             float iCellSize = 1;
@@ -514,7 +514,7 @@ namespace SKCell
         {
             if (!PathfindingCheckInitialize() || !CheckCellValidity(x, y))
                 return;
-            if(grid!=null && grid.pf_CellCost != null)
+            if (grid != null && grid.pf_CellCost != null)
             {
                 cost01 = (int)Mathf.Clamp01(cost01);
                 grid.pf_CellCost[x, y] = cost01;
@@ -531,7 +531,7 @@ namespace SKCell
         {
             if (grid == null)
             {
-                CommonUtils.EditorLogError("SKGridLayer.Pathfinding Module -- grid is NULL.");
+                SKUtils.EditorLogError("SKGridLayer.Pathfinding Module -- grid is NULL.");
                 return false;
             }
             if (!grid.pf_Initialized)
@@ -569,9 +569,9 @@ namespace SKCell
             grid.width = width;
             grid.height = height;
             grid.cellSize = cellSize;
-            grid.cellValues = CommonUtils.Modify2DArray(grid.cellValues, width, height);
-            grid.pf_CellCost = CommonUtils.Modify2DArray(grid.pf_CellCost, width, height);
-            grid.occupied = CommonUtils.Modify2DArray(grid.occupied, width, height);
+            grid.cellValues = SKUtils.Modify2DArray(grid.cellValues, width, height);
+            grid.pf_CellCost = SKUtils.Modify2DArray(grid.pf_CellCost, width, height);
+            grid.occupied = SKUtils.Modify2DArray(grid.occupied, width, height);
 #if UNITY_EDITOR
             GenerateStructure(false);
             SaveGridToAssets(saveAsset);
@@ -594,7 +594,7 @@ namespace SKCell
 
         public void GenerateStructure(bool createNewGrid = true)
         {
-            if (gameObject==null)
+            if (gameObject == null)
                 return;
 
             initialized = true;
@@ -612,13 +612,13 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKButton Resource Error: Button prefab lost.");
+                SKUtils.EditorLogError("SKButton Resource Error: Button prefab lost.");
                 return;
             }
             if (rtCanvas != null)
             {
-                if(gameObject)
-                transform.ClearChildren();
+                if (gameObject)
+                    transform.ClearChildren();
             }
             GameObject canvas = Instantiate(prefab);
             canvas.transform.SetParent(transform);
@@ -656,11 +656,11 @@ namespace SKCell
                     if (i == grid.width - 1)
                         Debug.DrawLine(pos + new Vector3(grid.cellSize, 0, 0), pos + new Vector3(grid.cellSize, grid.cellSize, 0), isEditing ? editColor : clearGrey);
                     if (drawText)
-                        CommonUtils.DebugDrawText($"{i},{j}", pos, new Color(1, 1, 1, 0.7f), grid.cellSize * 0.3f, 0);
+                        SKUtils.DebugDrawText($"{i},{j}", pos, new Color(1, 1, 1, 0.7f), grid.cellSize * 0.3f, 0);
 
                     if (Application.isPlaying && drawText)
                     {
-                        CommonUtils.DebugDrawText(grid.GetCellValue(i, j).ToString("f1"), grid.GetCellCenterPos(i, j), new Color(1, 0.7f, 0.7f, 0.7f), grid.cellSize * 0.2f, 0);
+                        SKUtils.DebugDrawText(grid.GetCellValue(i, j).ToString("f1"), grid.GetCellCenterPos(i, j), new Color(1, 0.7f, 0.7f, 0.7f), grid.cellSize * 0.2f, 0);
                     }
                 }
             }
@@ -681,9 +681,9 @@ namespace SKCell
             asset.resolution = resolution;
 
 
-            asset.cellValues_se = CommonUtils.Serialize2DArray(grid.cellValues);
-            asset.cellCosts_se = CommonUtils.Serialize2DArray(grid.pf_CellCost);
-            asset.cellOccupied_se = CommonUtils.Serialize2DArray(grid.occupied);
+            asset.cellValues_se = SKUtils.Serialize2DArray(grid.cellValues);
+            asset.cellCosts_se = SKUtils.Serialize2DArray(grid.pf_CellCost);
+            asset.cellOccupied_se = SKUtils.Serialize2DArray(grid.occupied);
 #if UNITY_EDITOR
             EditorUtility.SetDirty(asset);
 #endif
@@ -706,16 +706,17 @@ namespace SKCell
             resolution = asset.resolution;
 
 
-            grid.cellValues = CommonUtils.Deserialize2DArray(asset.cellValues_se, grid.width,grid.height);
-            grid.pf_CellCost = CommonUtils.Deserialize2DArray(asset.cellCosts_se, grid.width,grid.height);
-            grid.occupied = CommonUtils.Deserialize2DArray(asset.cellOccupied_se, grid.width,grid.height);
+            grid.cellValues = SKUtils.Deserialize2DArray(asset.cellValues_se, grid.width, grid.height);
+            grid.pf_CellCost = SKUtils.Deserialize2DArray(asset.cellCosts_se, grid.width, grid.height);
+            grid.occupied = SKUtils.Deserialize2DArray(asset.cellOccupied_se, grid.width, grid.height);
 
 #if UNITY_EDITOR
-            if(!Application.isPlaying && generateStructure)
-            CommonUtils.InvokeActionEditor(0.1f, () =>{
-                if(!Application.isPlaying)
-                GenerateStructure(false);
-            });
+            if (!Application.isPlaying && generateStructure)
+                SKUtils.InvokeActionEditor(0.1f, () =>
+                {
+                    if (!Application.isPlaying)
+                        GenerateStructure(false);
+                });
 #endif
         }
 
@@ -735,22 +736,23 @@ namespace SKCell
         #endregion
 
     }
-}
 
-public enum CellOperator
-{
-    Set,
-    Add,
-    Multiply
-}
-public enum PathfindingAlgorithm
-{
-    AStar,
-    BStar,
-    BreadthFirst
-}
-public enum PathfindingDirection
-{
-    FourDirections,
-    EightDirections
+
+    public enum CellOperator
+    {
+        Set,
+        Add,
+        Multiply
+    }
+    public enum PathfindingAlgorithm
+    {
+        AStar,
+        BStar,
+        BreadthFirst
+    }
+    public enum PathfindingDirection
+    {
+        FourDirections,
+        EightDirections
+    }
 }

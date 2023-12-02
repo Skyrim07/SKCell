@@ -48,7 +48,7 @@ namespace SKCell
         {
             if (condition == null)
             {
-                CommonUtils.EditorLogError("null condition");
+                SKUtils.EditorLogError("null condition");
                 return this;
             }
             
@@ -134,7 +134,7 @@ namespace SKCell
 
         public override int GetHashCode()
         {
-            return CommonUtils.HashCombine(fromState.GetStateID().GetHashCode(), toState.GetStateID().GetHashCode());
+            return SKUtils.HashCombine(fromState.GetStateID().GetHashCode(), toState.GetStateID().GetHashCode());
         }
 
         public override bool Equals(object obj)

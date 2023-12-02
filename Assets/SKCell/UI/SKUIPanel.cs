@@ -35,7 +35,7 @@ namespace SKCell
         private void Awake()
         {
             onStateChanged += (b) => { };
-            anim = CommonUtils.GetComponentNonAlloc<SKUIAnimation>(gameObject);
+            anim = SKUtils.GetComponentNonAlloc<SKUIAnimation>(gameObject);
             if (rootPanel != null)
             {
                 rootPanel.leafPanels.Add(this);
@@ -115,10 +115,10 @@ namespace SKCell
             //Build leaf dictionary
             foreach(var item in leafPanels)
             {
-                CommonUtils.InsertOrUpdateKeyValueInDictionary(leafPanelDict, item.panelID, item);
+                SKUtils.InsertOrUpdateKeyValueInDictionary(leafPanelDict, item.panelID, item);
             }
             //Build master dictionary
-            CommonUtils.InsertOrUpdateKeyValueInDictionary(SKUIPanelManager.panelIDDict, panelID, this);
+            SKUtils.InsertOrUpdateKeyValueInDictionary(SKUIPanelManager.panelIDDict, panelID, this);
             SKUIPanelManager.existingPanelList.Add(this);
         }
         private void InitializeState()

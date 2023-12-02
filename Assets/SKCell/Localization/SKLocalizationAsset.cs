@@ -37,7 +37,7 @@ namespace SKCell
             languageSupports = new List<LanguageSupport>() { LanguageSupport.English };
             textConfigDict = new Dictionary<int, LocalizedTextConfig>();
             imageConfigDict = new Dictionary<int, LocalizedImageConfig>();
-            CommonUtils.FillArray(languageFonts, -1);
+            SKUtils.FillArray(languageFonts, -1);
         }
         public void UpdateInfo(SKLocalizationAssetJson data)
         {

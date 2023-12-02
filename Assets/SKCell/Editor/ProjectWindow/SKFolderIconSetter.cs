@@ -197,7 +197,7 @@ namespace SKCell
             fileTypeCounts[fileType]++;
         }
 
-        [MenuItem("SKCell/Tools/Update Folder Icons Cache")]
+        [MenuItem("Tools/SKCell/Tools/Update Folder Icons Cache")]
         public static void UpdateFolderCache() 
         { 
             int count=0;

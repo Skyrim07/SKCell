@@ -27,7 +27,7 @@ namespace SKCell
         static List<LocalizedTextConfig> builtTextList = new List<LocalizedTextConfig>();
      
 
-        [MenuItem("SKCell/Localization Center", priority = 3)]
+        [MenuItem("Tools/SKCell/Localization Center", priority = 3)]
         public static void Initialize()
         {
             SKLocalizationControlWindow window = GetWindow<SKLocalizationControlWindow>("Localization Center");
@@ -345,12 +345,12 @@ namespace SKCell
 
         private static void SaveJsonAsset()
         {
-            CommonUtils.SKSaveObjectToJson(new SKLocalizationAssetJson(asset), "SKLocalizationAsset.json");
+            SKUtils.SKSaveObjectToJson(new SKLocalizationAssetJson(asset), "SKLocalizationAsset.json");
         }
 
         private static void LoadJsonAsset()
         {
-            asset.UpdateInfo(CommonUtils.SKLoadObjectFromJson<SKLocalizationAssetJson>("SKLocalizationAsset.json"));
+            asset.UpdateInfo(SKUtils.SKLoadObjectFromJson<SKLocalizationAssetJson>("SKLocalizationAsset.json"));
             UpdateSupportedLangDescrip();
         }
         #region Minor Utilities
@@ -423,7 +423,7 @@ namespace SKCell
         {
             if (asset == null)
             {
-                CommonUtils.EditorLogWarning("No localization asset found!");
+                SKUtils.EditorLogWarning("No localization asset found!");
                 return;
             }
             string s = "";
@@ -586,7 +586,7 @@ namespace SKCell
         {
             if (textConfig == null && imageConfig == null)
             {
-                CommonUtils.EditorLogError("LocalizedInfo Initialization Error: All configs are null.");
+                SKUtils.EditorLogError("LocalizedInfo Initialization Error: All configs are null.");
                 return;
             }
             curLanguage = language;
@@ -608,7 +608,7 @@ namespace SKCell
         {
             if (textConfig == null && imageConfig == null)
             {
-                CommonUtils.EditorLogError("LocalizedInfo Initialization Error: All configs are null.");
+                SKUtils.EditorLogError("LocalizedInfo Initialization Error: All configs are null.");
                 return;
             }
             curLanguage = language;

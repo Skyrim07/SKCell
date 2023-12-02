@@ -2,24 +2,27 @@ using UnityEngine;
 using UnityEditor;
 using System.Diagnostics;
 
-[InitializeOnLoad] 
-public static class EditorDeltaTime
+namespace SKCell
 {
-    private static Stopwatch stopwatch;
-    private static float lastTime;
-
-    static EditorDeltaTime()
+    [InitializeOnLoad]
+    public static class EditorDeltaTime
     {
-        stopwatch = new Stopwatch();
-        EditorApplication.update += Update;
-        stopwatch.Start();
-    }
+        private static Stopwatch stopwatch;
+        private static float lastTime;
 
-    public static float DeltaTime => lastTime;
+        static EditorDeltaTime()
+        {
+            stopwatch = new Stopwatch();
+            EditorApplication.update += Update;
+            stopwatch.Start();
+        }
 
-    private static void Update()
-    {
-        lastTime = (float)stopwatch.Elapsed.TotalSeconds;
-        stopwatch.Restart();
+        public static float DeltaTime => lastTime;
+
+        private static void Update()
+        {
+            lastTime = (float)stopwatch.Elapsed.TotalSeconds;
+            stopwatch.Restart();
+        }
     }
 }

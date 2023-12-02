@@ -76,7 +76,7 @@ namespace SKCell
             }
             else
             {
-                CommonUtils.EditorLogWarning($"EventHandler.RemoveListener() --- target event id not found.");
+                SKUtils.EditorLogWarning($"EventHandler.RemoveListener() --- target event id not found.");
                 return false;
             }
         }
@@ -89,7 +89,7 @@ namespace SKCell
         /// <returns></returns>
         public bool RegisterEvent(SKEvent t_event, int id)
         {
-            return CommonUtils.InsertOrUpdateKeyValueInDictionary(dict, id, t_event);
+            return SKUtils.InsertOrUpdateKeyValueInDictionary(dict, id, t_event);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace SKCell
 
         public bool RemoveEvent(int id)
         {
-            return CommonUtils.RemoveKeyInDictionary(dict, id);
+            return SKUtils.RemoveKeyInDictionary(dict, id);
         }
     }
 }

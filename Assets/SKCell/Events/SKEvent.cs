@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-
-public class SKEvent
+namespace SKCell
 {
-    public Action action;
-    public float param;
-
-    public SKEvent() { }
-    public SKEvent(Action action)
+    public class SKEvent
     {
-        this.action = action;
+        public Action action;
+        public float param;
+
+        public SKEvent() { }
+        public SKEvent(Action action)
+        {
+            this.action = action;
+        }
     }
 }

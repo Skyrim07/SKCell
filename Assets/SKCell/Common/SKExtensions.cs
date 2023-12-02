@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SKCell
 {
-    public static class Extensions
+    public static class SKExtensions
     {
         #region TransformExt
         /// <summary>
@@ -137,7 +137,7 @@ namespace SKCell
             for (int i = 0; i < tf.childCount; i++)
             {
                 if(tf.GetChild(i))
-                CommonUtils.Destroy(tf.GetChild(i).gameObject);
+                SKUtils.Destroy(tf.GetChild(i).gameObject);
             }
         }
         public static void ClearChildrenImmediate(this Transform tf)
@@ -204,7 +204,7 @@ namespace SKCell
         {
             if (selfTf.parent != otherTf.parent)
             {
-                CommonUtils.EditorLogWarning("Trying to swap sibling order with transform under a different object!");
+                SKUtils.EditorLogWarning("Trying to swap sibling order with transform under a different object!");
                 return;
             }
             int o1 = selfTf.GetSiblingIndex();

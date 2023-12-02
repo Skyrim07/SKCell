@@ -8,7 +8,7 @@ using UnityEditor;
 namespace SKCell {
     public class SKUIPanelEditor
     {
-        [MenuItem("SKCell/UI/BuildPanelHierarchy")]
+        [MenuItem("Tools/SKCell/UI/BuildPanelHierarchy")]
         public static void BuildPanelHierarchy()
         {
             Transform rootPanel = (new GameObject()).transform;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SKCell
 {
     [AddComponentMenu("SKCell/CSV/SKCSVLoader")]
-    public class SKCSVLoader : MonoSingleton<SKCSVLoader>
+    public class SKCSVLoader : SKMonoSingleton<SKCSVLoader>
     {
         protected override void Awake()
         {
@@ -29,7 +29,7 @@ namespace SKCell
                     }
                 }
             }
-            CommonUtils.EditorLogNormal("CSV Table count:" + tableList.Count);
+            SKUtils.EditorLogNormal("CSV Table count:" + tableList.Count);
             SKCSVReader.instance.Add(tableList);
         }
     }

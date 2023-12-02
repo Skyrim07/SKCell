@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class DontDestroyOnLoad : MonoBehaviour
+namespace SKCell
 {
-    static DontDestroyOnLoad inst = null;
-    void Awake()
+    public class DontDestroyOnLoad : MonoBehaviour
     {
-        DontDestroyOnLoad(gameObject);
-        SceneManager.sceneLoaded += OnLevelLoaded;
+        static DontDestroyOnLoad inst = null;
+        void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnLevelLoaded;
+
+        }
+        private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (inst == null)
+                inst = this;
+            if (inst != this)
+                Destroy(gameObject);
+        }
 
     }
-    private void OnLevelLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (inst == null)
-            inst = this;
-        if (inst != this)
-            Destroy(gameObject);
-    }
-
 }

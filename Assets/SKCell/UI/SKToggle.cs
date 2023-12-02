@@ -59,7 +59,7 @@ namespace SKCell
         {
             if (!initialized)
             {
-                CommonUtils.EditorLogError("SKToggle not initialized!");
+                SKUtils.EditorLogError("SKToggle not initialized!");
                 return;
             }
 
@@ -81,13 +81,13 @@ namespace SKCell
 
             if (transitionMode == SKToggleTransitionMode.Animation)
             {
-                anim = CommonUtils.GetComponentNonAlloc<Animator>(gameObject);
+                anim = SKUtils.GetComponentNonAlloc<Animator>(gameObject);
                 anim.SetBool("isOn", isOn);
                 if (!interactable)
                     anim.SetTrigger("Disabled");
             }
 
-            canvasGroup = CommonUtils.GetComponentNonAlloc<CanvasGroup>(gameObject);
+            canvasGroup = SKUtils.GetComponentNonAlloc<CanvasGroup>(gameObject);
 
             onStart.Invoke();
         }
@@ -99,7 +99,7 @@ namespace SKCell
             GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(SKAssetLibrary.PREFAB_PATH + pathSuffix);
             if (prefab == null)
             {
-                CommonUtils.EditorLogError("SKToggle Resource Error: Toggle prefab lost.");
+                SKUtils.EditorLogError("SKToggle Resource Error: Toggle prefab lost.");
                 initialized = false;
                 return;
             }
@@ -131,7 +131,7 @@ namespace SKCell
         {
             Animator anim = gameObject.AddComponent<Animator>();
             anim.runtimeAnimatorController = controller as RuntimeAnimatorController;
-            this.anim = CommonUtils.GetComponentNonAlloc<Animator>(gameObject);
+            this.anim = SKUtils.GetComponentNonAlloc<Animator>(gameObject);
             hasAnimator = true;
         }
         public void DetachController()

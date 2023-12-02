@@ -92,7 +92,7 @@ namespace SKCell
 
             _Material.SetTexture("_AlphaMask", alphaMask);
 
-            _Material.SetInt("_ShowOutline", CommonUtils.BoolToInt(active));
+            _Material.SetInt("_ShowOutline", SKUtils.BoolToInt(active));
             _Material.SetFloat("_EdgeAlphaThreshold", rimAlphaThreshold);
             _Material.SetFloat("_BaseAlphaThreshold", baseAlphaThreshold);
             _Material.SetFloat("_EdgeDampRate", dampRate);

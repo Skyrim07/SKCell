@@ -6,9 +6,9 @@ using UnityEngine;
 /// </summary>
 namespace SKCell
 {
-    public class Singleton<T> where T : class, new()
+    public class SKSingleton<T> where T : class, new()
     {
-        protected Singleton() {}
+        protected SKSingleton() {}
 
         private static T _inst = null;
 

@@ -54,7 +54,7 @@ namespace SKCell
 
         private void ApplyInertia(Vector3 translateVector)
         {
-            CommonUtils.StartCoroutine(InertiaCR(translateVector));
+            SKUtils.StartCoroutine(InertiaCR(translateVector));
         }
         IEnumerator InertiaCR(Vector3 translateVector)
         {
