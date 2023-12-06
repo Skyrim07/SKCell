@@ -1,10 +1,12 @@
 # SKCell
 
-v1.2.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.2.2 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
-SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.
+SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.<br>
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a><br>
-Latest release: <a href="https://github.com/Skyrim07/SKCell/releases">here</a>
+Latest release: <a href="https://github.com/Skyrim07/SKCell/releases">here</a><br>
+<br>
+<i>Dev log is at the end of the document.</i><br>
 
 ## Features
 <div class="row">
@@ -190,7 +192,7 @@ Congratulations! You have now set up SKCell. Please check the documentation to s
 
 ## Documentation
 
-(This documentation is up to date for v1.1.2)
+(This documentation is up to date for v1.2.2)
 
 
 ### 1. Common Utilities
@@ -2356,7 +2358,7 @@ You can find a prefab of the structure required by SKDialoguePlayer in <b>Tools/
 2. Add the SKDialoguePlayer component.<br>
 3. Click <b>Generate Structure</b>.<br>
 4. Assign the dialogue asset.<br>
-5. Play!<br>
+5. Play! (either by selecting <b>Play on start</b> or calling <b>Play()</b>)<br>
 
 <h5>Structure</h5>
 <div class="row">
@@ -2409,7 +2411,9 @@ You can find a prefab of the structure required by SKDialoguePlayer in <b>Tools/
 <b>void Play(SKDialogueAsset asset)</b><br>
 <i>Play a dialogue asset.</i><br>
 <br>
-
+<b>void SentenceNextStep()</b><br>
+<i>Continue the dialogue flow by one step. (e.g. clicking on the sentence text -> fast forward / go to next sentence)</i><br>
+<br>
 <b>void AddListenerToEvent(string eventName, System.Action<float,float> callback)</b><br>
 <i>Register to one of the events in the dialogue.</i><br>
 <i>eventName: the name you specify in the dialogue editor.</i><br>
@@ -3739,10 +3743,23 @@ The SK Sprite Editor allows you to <b>draw, erase, and modify images</b> in the 
   * Due to CPU limitations, this operation might take a long time for high-resolution textures.
 
 
+#### 17.2 Asset Referencer
+The asset referencer helps you to find (if any) all references of a certain asset.
+<br>
+<div align="center">
+        <img src="./Editor/e6.png" width="500" height="900" alt="Sample screenshot" alt="Go to website" width="500" />
+    </a>
+</div>
+To use the Asset Referencer, you can either:<br>
+1. Right-click on an asset<br>
+2. Select <b>SKAssetReferencer</b> to do the reference-check<br>
+<br>
+or:<br>
+1. Select <b>Tools/SKCell/Tools/Asset Referencer</b><br>
+2. Drag in your asset to do the reference-check<br>
+<br>
 
-
-
-#### 17.2 Sprite Colorer
+#### 17.3 Sprite Colorer
 The sprite colorer allows you to assign a single color to a sprite. (will affect all non-transparent pixels)
 <br>
 Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed instructions are written there.
@@ -3757,7 +3774,13 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
 -   Brush smoothness is now correctly computed in SKSpriteEditor
 -   Fixed naming issues in some scripts
 -   Added new comments for some methods
-
+    <br>v1.2.1
+    - Added blend mode adjustments for SKImageProcessing
+    - Fixed issues with *update on play* for SKImageProcessing
+    <br>v1.2.2
+    - Aded SKAssetReferencer: find all references of an asset! Available at right clicking any asset -> SKAssetReferencer
+    - Added *play on start* function to SKDialoguePlayer
+    - Added *SentenceNextStep()* method to SKDialoguePlayer
 
 <b>v1.1.0</b>
 -   The Inventory update! Introducing SKInventory: a powerful inventory system with an editor database and customizable UI panels.

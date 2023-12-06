@@ -30,7 +30,7 @@ Shader "SKCell/ImageProcessing"
 	SubShader
 	{
 		Tags { "RenderType"="Transparent" "Queue"="Transparent"}
-		Blend SrcAlpha OneMinusSrcAlpha
+		Blend [_SrcBlendMode] [_DstBlendMode]
 		ZWrite Off
 		Cull Off
 		Pass

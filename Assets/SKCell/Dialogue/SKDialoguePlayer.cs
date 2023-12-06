@@ -10,7 +10,7 @@ namespace SKCell
     public class SKDialoguePlayer : MonoBehaviour
     {
         public SKDialogueAsset asset;
-
+        public bool playOnStart = false;
         [Header("Scene Components")]
         public SKUIPanel panel;
         public SKText contentText;
@@ -32,12 +32,13 @@ namespace SKCell
         private List<SKDialogueEditorNode> curChoices;
         private bool typewriterFinishExecuted = false, curSentenceLinkExecuted=false;
 
-        #region Public Methods
         private void Start()
         {
             textAnimator = contentText.GetComponent<SKTextAnimator>();
             textAnimator.onTypeWriterFinished += OnTypewriterFinished;
             contentButton.onClick.AddListener(OnContentButtonPressed);
+            if (playOnStart)
+                Play();
         }
         private void OnApplicationQuit()
         {
@@ -45,8 +46,11 @@ namespace SKCell
             {
                 asset.event_properties = new List<SKDE_EventProperty>();
                 asset.int_properties = new List<SKDE_IntProperty> { };
-            }   
+            }
         }
+
+        #region Public Methods
+
         /// <summary>
         /// Play the current dialogue asset.
         /// </summary>
@@ -73,6 +77,14 @@ namespace SKCell
         {
             this.asset = asset;
             Play();
+        }
+
+        /// <summary>
+        /// Continue the dialogue flow by one step. (e.g. clicking on the sentence text -> fast forward / go to next sentence)
+        /// </summary>
+        public void SentenceNextStep()
+        {
+            OnContentButtonPressed();
         }
 
         /// <summary>
