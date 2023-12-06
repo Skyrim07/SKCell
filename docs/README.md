@@ -3778,7 +3778,7 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
     - Added blend mode adjustments for SKImageProcessing
     - Fixed issues with *update on play* for SKImageProcessing
     <br>v1.2.2
-    - Aded SKAssetReferencer: find all references of an asset! Available at right clicking any asset -> SKAssetReferencer
+    - Added SKAssetReferencer: find all references of an asset! Available by right-clicking any asset -> SKAssetReferencer
     - Added *play on start* function to SKDialoguePlayer
     - Added *SentenceNextStep()* method to SKDialoguePlayer
 
