@@ -36,7 +36,7 @@ namespace SKCell
             if (selfBound == null)
                 selfBound = GetComponent<RectTransform>();
 
-            cld = gameObject.AddComponent<BoxCollider2D>();
+            cld = gameObject.GetOrAddComponent<BoxCollider2D>();
             cld.size = new Vector2(selfBound.rect.width, selfBound.rect.height);
             cld.isTrigger = true;
         }
