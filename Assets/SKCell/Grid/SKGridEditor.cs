@@ -367,5 +367,6 @@ namespace SKCell
         CellCost,
         Occupancy
     }
-#endif
 }
+#endif
+
