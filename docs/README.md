@@ -1,6 +1,6 @@
 # SKCell
 
-v1.2.2 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.2.3 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.<br>
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a><br>
@@ -3781,6 +3781,9 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
     - Added SKAssetReferencer: find all references of any asset! Available by right-clicking on an asset -> SKAssetReferencer
     - Added *play on start* function to SKDialoguePlayer
     - Added *SentenceNextStep()* method to SKDialoguePlayer
+    <br>v1.2.3
+    - Fixed issues with build errors
+    - Minor bug fixes
 
 <b>v1.1.0</b>
 -   The Inventory update! Introducing SKInventory: a powerful inventory system with an editor database and customizable UI panels.
