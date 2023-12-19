@@ -3785,6 +3785,7 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
     - Fixed issues with build errors
     - Minor bug fixes
     <br>v1.2.4
+    - Included offline pdf documentation
     - Updated version requirement to Unity 2021.x and newer
     - Fixed issues with SKConsole_Demo.cs
     - Added more 9-sliced sprites
