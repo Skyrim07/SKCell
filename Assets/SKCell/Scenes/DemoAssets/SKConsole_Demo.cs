@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SKCell.Test
 {
-    public class SKConsole_Dsemo : MonoBehaviour
+    public class SKConsole_Demo : MonoBehaviour
     {
         void Start()
         {

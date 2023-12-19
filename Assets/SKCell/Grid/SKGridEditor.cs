@@ -368,5 +368,6 @@ namespace SKCell
         Occupancy
     }
 }
+
 #endif
 

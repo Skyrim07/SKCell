@@ -597,6 +597,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1279398492516084372, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279398492516084372, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279398492516084372, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1279398492516084372, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1591564878438120920, guid: 736ce5558e22e094ca19104c82dc3be2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -652,10 +672,50 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3842579215429399975, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842579215429399975, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842579215429399975, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842579215429399975, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4780880456239523547, guid: 736ce5558e22e094ca19104c82dc3be2,
         type: 3}
       propertyPath: m_Name
       value: SKDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103175813266734539, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103175813266734539, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103175813266734539, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6103175813266734539, guid: 736ce5558e22e094ca19104c82dc3be2,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

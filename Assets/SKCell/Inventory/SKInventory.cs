@@ -17,7 +17,7 @@ namespace SKCell
                 return asset;
             }
         }
-        private static bool initialized = false;
+        //private static bool initialized = false;
         private static Dictionary<int, SKInventoryItemData> itemDataDict = new Dictionary<int, SKInventoryItemData>();
 
         /// <summary>
@@ -41,7 +41,6 @@ namespace SKCell
                 }
                 itemDataDict.Add(data.id, data);
             }
-            initialized = true;
         }
 
 

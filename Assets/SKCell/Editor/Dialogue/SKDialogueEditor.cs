@@ -30,7 +30,7 @@ namespace SKCell
         private GameObject prevSelection;
         private SKDialogueAsset f_asset;
 
-        float zoom = 1.0f;
+
         float panX = 0;
         float panY = 0;
 

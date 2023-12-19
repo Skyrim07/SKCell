@@ -30,7 +30,6 @@ namespace SKCell
 
 
 
-        private bool initialized;
         [HideInInspector]
         public RectTransform rectTransform;
 
@@ -101,7 +100,6 @@ namespace SKCell
             if (prefab == null)
             {
                 SKUtils.EditorLogError("SKUIModelViewer Resource Error: UIModelViewer prefab lost.");
-                initialized = false;
                 return;
             }
             GameObject viewer = Instantiate(prefab);
@@ -109,7 +107,6 @@ namespace SKCell
             viewer.transform.SetParent(transform.parent);
             viewer.transform.CopyFrom(transform);
             viewer.transform.SetSiblingIndex(transform.GetSiblingIndex());
-            viewer.GetComponent<SKUIModelViewer>().initialized = true;
             viewer.GetComponent<SKUIModelViewer>().Initialize();
             Selection.activeGameObject = viewer;
             DestroyImmediate(this.gameObject);
