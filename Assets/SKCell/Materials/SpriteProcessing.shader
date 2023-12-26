@@ -65,6 +65,7 @@
 			float _AlphaRX;
 			float _AlphaTY;
 			float _AlphaBY;
+			float _AlphaMultiplier;
 
 			float _Hue;
 			float _Brightness;
@@ -199,6 +200,7 @@
 				fixed4 resColor= col * _TintColor;
 				resColor.a *= _Color.a;
 
+				resColor.a*=_AlphaMultiplier;
 				return resColor;
 			}
 			ENDCG

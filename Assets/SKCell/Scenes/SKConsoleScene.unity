@@ -749,6 +749,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateOnPlay: 1
+  srcBlend: 5
+  dstBlend: 10
   leftX: 0
   rightX: 0
   topY: 0.611
@@ -1767,6 +1769,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateOnPlay: 1
+  srcBlend: 5
+  dstBlend: 10
   leftX: 0
   rightX: 0
   topY: 0.611

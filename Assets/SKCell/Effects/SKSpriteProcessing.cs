@@ -29,6 +29,9 @@ namespace SKCell
         [Range(-2, 0)]
         public float alphaSmooth = 0;
 
+        [Range(0, 3)]
+        public float alphaMultiplier = 1;
+
         [SKFolder("Color Properties")]
         [Range(0, 1)]
         public float colorShift = 1;
@@ -97,6 +100,7 @@ namespace SKCell
             _Material.SetFloat("_Saturation", saturation);
             _Material.SetFloat("_Contrast", contrast);
             _Material.SetFloat("_Hue", colorShift);
+            _Material.SetFloat("_AlphaMultiplier", alphaMultiplier);
 
             _Material.SetInt("_ShowOutline", SKUtils.BoolToInt(active));
             _Material.SetFloat("_EdgeAlphaThreshold", rimAlphaThreshold);
@@ -107,7 +111,7 @@ namespace SKCell
 
         void Update()
         {
-            if (!updateOnPlay)
+            if (Application.isPlaying && !updateOnPlay)
             {
                 return;
             }

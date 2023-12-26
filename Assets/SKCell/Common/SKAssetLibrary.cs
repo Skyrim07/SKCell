@@ -121,6 +121,7 @@ namespace SKCell
                     fontAsset = AssetDatabase.LoadAssetAtPath<SKFontAsset>(FONT_ASSET_PATH);
                 return fontAsset;
 #endif
+                return null;
             }
         }
         private static Font defaultFont;

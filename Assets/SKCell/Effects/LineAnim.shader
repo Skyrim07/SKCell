@@ -12,11 +12,13 @@ Shader "SKCell/Curve"
         _Amplitude("Amplitude", float) = 0.2
         _Frequency("Frequency", float) = 15
         _Length("Length", float) = 1
+        _FixPoint("Fix Points", int) = 1
     }
     SubShader
     {
         Tags { "RenderType"="Transparent" "Queue" = "Transparent"}
         ZWrite Off
+        Cull Off
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
 
@@ -46,6 +48,7 @@ Shader "SKCell/Curve"
             float _Speed, _Amplitude, _Frequency, _Thickness, _Phase, _Length;
 
             fixed4 _BaseColor, _TipColor, _Color;
+            int _FixPoint;
 
             v2f vert (appdata v)
             {
@@ -63,11 +66,15 @@ Shader "SKCell/Curve"
                 i.uv.y -= 0.5;
                 i.uv.y /= _Thickness;
                 i.uv.y += 0.5;
-
-                i.uv.y = lerp(ouvy, i.uv.y, i.uv.x);
+                if(_FixPoint == 1)
+                    i.uv.y = lerp(ouvy, i.uv.y, i.uv.x);
+                if(_FixPoint == 2){
+                    i.uv.y = lerp(ouvy, i.uv.y, i.uv.x);
+                    i.uv.y = lerp(ouvy, i.uv.y, 1-i.uv.x);
+                }
 
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col *=lerp( _BaseColor, _TipColor, i.uv.x - 0.0);
+                col *=lerp( _BaseColor, _TipColor, i.uv.x);
 
                 col.a *= smoothstep(_Length, _Length - 0.1, i.uv.x);
 
