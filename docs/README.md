@@ -1,6 +1,6 @@
 # SKCell
 
-v1.2.5 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.2.6 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.<br>
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a><br>
@@ -3794,6 +3794,10 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
     - Added alpha multiplier to SKSpriteProcessing
     - Added fix point parameter to SKLineAnim
     - Fixed issues with SKAssetLibrary
+    <br>v1.2.6
+    - Removed default damping for SKAudioManager
+    - Fixed issues with SKImageEffects
+    - Fixed issues with Animator.Pop()
 
 <b>v1.1.0</b>
 -   The Inventory update! Introducing SKInventory: a powerful inventory system with an editor database and customizable UI panels.

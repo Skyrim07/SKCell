@@ -256,6 +256,7 @@ namespace SKCell
         }
         public static void Pop(this Animator anim)
         {
+            anim.ResetTrigger("Pop");
             anim.SetTrigger("Pop");
         }
 

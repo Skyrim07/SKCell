@@ -96,7 +96,7 @@ namespace SKCell
             }
         }
 
-        public AudioSource PlaySound(string id, Action action = null, bool loop = false, float volume = 1f, float pitch = 1f, float damp =0.5f)
+        public AudioSource PlaySound(string id, Action action = null, bool loop = false, float volume = 1f, float pitch = 1f, float damp =0f)
         {
                 AddAudioSource();
                 audioSource = UnusedToUsed();
