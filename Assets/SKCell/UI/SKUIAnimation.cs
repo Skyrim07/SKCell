@@ -52,6 +52,7 @@ namespace SKCell
             ScaleUp,
             ScaleDown,
             AlphaFadeSlow,
+            AlphaFadeVerySlow,
             InstantInFadeOut,
             Shine
         }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace SKCell {
     [AddComponentMenu("SKCell/Effects/SKImageEffects")]
+    [ExecuteInEditMode]
     public class SKImageEffects : PostEffectsBase
     {
         [Tooltip("Do not enable this unless you want this to update dynamically.")]
@@ -17,7 +18,9 @@ namespace SKCell {
         [SKFolder("Dissolve")]
         public Texture dissolve_NoiseTex;
         public Vector4 dissolve_st = new Vector4(1,1,0,0);
-
+        public bool inverseColor;
+        public bool useSpeed;
+        public Vector2 zwSpeed = Vector2.zero;
         private Image image;
         private SpriteRenderer sr;
         private Shader alphaShader;
@@ -51,6 +54,12 @@ namespace SKCell {
         }
         void Update()
         {
+            if (useSpeed)
+            {
+                dissolve_st = new Vector4(dissolve_st.x, dissolve_st.y, dissolve_st.z + zwSpeed.x * Time.unscaledDeltaTime, dissolve_st.w + zwSpeed.y * Time.unscaledDeltaTime);
+                _materal.SetVector("_NoiseTex_ST", dissolve_st);
+            }
+
             if (Application.isPlaying)
             {
                 if (!updateOnPlay)
@@ -70,6 +79,7 @@ namespace SKCell {
             {
                 _materal.SetTexture("_NoiseTex", dissolve_NoiseTex);
                 _materal.SetVector("_NoiseTex_ST", dissolve_st);
+                _materal.SetInt("_InverseColor", inverseColor?1:0);
             }
         }
     }

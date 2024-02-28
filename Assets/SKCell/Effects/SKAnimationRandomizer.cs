@@ -12,6 +12,7 @@ namespace SKCell
             SKUtils.InvokeAction(0.2f, () =>
             {
                 anim = GetComponent<Animator>();
+                if (anim.GetCurrentAnimatorClipInfo(0).Length == 0) return;
                 AnimatorClipInfo info = anim.GetCurrentAnimatorClipInfo(0)[0];
                 anim.Play(info.clip.name, 0, Random.Range(0f, 1f));
             });

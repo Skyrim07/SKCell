@@ -44,6 +44,8 @@ Shader "SKCell/ImageEffects"
             fixed _Value;
             fixed4 _Color;
 
+            int _InverseColor;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -69,6 +71,7 @@ Shader "SKCell/ImageEffects"
                 float r = 0.5 * (_Value);
                 col.rgb+=smoothstep(r-.1,r+.1,ncol.r)  *.2;
 
+                col.a = _InverseColor==1? 1-col.a:col.a;
                 return col;
             }
             ENDCG

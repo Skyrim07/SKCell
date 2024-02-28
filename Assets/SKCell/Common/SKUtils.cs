@@ -1640,17 +1640,32 @@ namespace SKCell
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <param name="item"></param>
-        /// <param name="allowMultiple">If not, multiple items will not be inserted.</param>
-        public static void InsertToList<T>(List<T> list, T item, bool allowMultiple)
+        /// <param name="allowDuplicates">If not, duplicate items will not be inserted.</param>
+        public static void InsertToList<T>(List<T> list, T item, bool allowDuplicates = false)
         {
-            if (!allowMultiple)
+            if (!allowDuplicates)
             {
                 if (list.Contains(item))
                     return;
             }
             list.Add(item);
         }
-
+        /// <summary>
+        /// Insert an item into a list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="item"></param>
+        /// <param name="allowDuplicates">If not, duplicate items will not be inserted.</param>
+        public static void InsertToList<T>(List<T> list, T item, int index, bool allowDuplicates = false)
+        {
+            if (!allowDuplicates)
+            {
+                if (list.Contains(item))
+                    return;
+            }
+            list.Insert(index, item);
+        }
         /// <summary>
         /// Remove an item from a list only if the item exists.
         /// </summary>
