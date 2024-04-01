@@ -98,12 +98,13 @@ namespace SKCell
 
         public AudioSource PlaySound(string id, Action action = null, bool loop = false, float volume = 1f, float pitch = 1f, float damp =0f)
         {
-                AddAudioSource();
-                audioSource = UnusedToUsed();
-                audioSource.clip = GetAudioClip(id, 1);
-                audioSource.clip.LoadAudioData();
-                audioSource.loop = loop;
-                audioSource.pitch = pitch;
+            AudioSource audioSource = new GameObject("Audio").AddComponent<AudioSource>();
+            //AddAudioSource();
+            //audioSource = UnusedToUsed();
+            audioSource.clip = GetAudioClip(id, 1);
+            audioSource.clip.LoadAudioData();
+            audioSource.loop = loop;
+            audioSource.pitch = pitch;
             audioSource.velocityUpdateMode = AudioVelocityUpdateMode.Dynamic;
             if(damp > 0f)
                 SKUtils.StartProcedureUnscaled(SKCurve.LinearIn, damp, (f) =>
@@ -116,6 +117,8 @@ namespace SKCell
             float oTimeScale = Time.timeScale;
             Time.timeScale = 1;
             audioSource.Play();
+            if (!loop)
+                SKUtils.InvokeAction(audioSource.clip.length, () => { Destroy(audioSource.gameObject); });
             Time.timeScale = oTimeScale;
             return audioSource;
         }

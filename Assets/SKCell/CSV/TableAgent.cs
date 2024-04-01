@@ -86,7 +86,16 @@ namespace SKCell
         /// <returns></returns>
         public float GetFloat(string name, string key1, string key2)
         {
-            return float.Parse(_tableAgent[name][new TableKey(key1, key2)]);
+            try
+            {
+                return float.Parse(_tableAgent[name][new TableKey(key1, key2)]);
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+  
         }
         /// <summary>
         /// Get floats separated by '|'
