@@ -40,7 +40,7 @@ namespace SKCell {
                         go.transform.position = collision.transform.position + offset;
                     if (soundFileName.Length > 0)
                     {
-                        SKUtils.PlaySound(soundFileName);
+                        SKAudioManager.instance.PlaySound(soundFileName);
                     }
                     SKUtils.InvokeAction(releaseTime, () =>
                     {
@@ -82,7 +82,7 @@ namespace SKCell {
                     go.transform.position = collision.transform.position + offset;
                     if (soundFileName.Length > 0)
                     {
-                        SKUtils.PlaySound(soundFileName);
+                        SKAudioManager.instance.PlaySound(soundFileName);
                     }
                     SKUtils.InvokeAction(releaseTime, () =>
                     {

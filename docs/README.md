@@ -3802,6 +3802,11 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
     - Added AlphaFadeVerySlow preset to SKUIAnimation
     - Added inverseColor option to SKImageEffects
     - Multiple fixes and improvements
+    <br>v1.2.9
+    - Rewrote SKAudioManager. Standardized audio managing logic.
+    - Removed audio utilities from SKUtils
+    - Added unscaled time option to SKRotateAnim
+
 
 <b>v1.1.0</b>
 -   The Inventory update! Introducing SKInventory: a powerful inventory system with an editor database and customizable UI panels.

@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
-
 namespace SKCell
 {
     /// <summary>
@@ -26,6 +24,7 @@ namespace SKCell
 
         public bool DispatchEvent(int id)
         {
+           // SKCommonTimer.print("event count: " + dict.Keys.Count);
             if (dict.ContainsKey(id))
             {
                 if(dict[id].action!=null)

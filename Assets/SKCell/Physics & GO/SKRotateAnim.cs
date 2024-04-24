@@ -11,6 +11,7 @@ namespace SKCell
 
         [Header("Settings")]
         public float speed = 1;
+        public bool unscaledTime = false;
         public RotationOrientation orientation = RotationOrientation.Clockwise;
         public RotationMode mode = RotationMode.Linear;
         public bool xAxis = false, yAxis = false, zAxis = true;
@@ -36,7 +37,7 @@ namespace SKCell
         }
         private void FixedUpdate()
         {
-            if (!active)
+            if (unscaledTime || !active)
             {
                 return;
             }
@@ -48,6 +49,27 @@ namespace SKCell
                 if (Mathf.Abs(accSpeed) >= 180)
                 {
                     speed = -speed;
+                }
+            }
+        }
+
+        private void Update()
+        {
+            if (unscaledTime)
+            {
+                if (!active)
+                {
+                    return;
+                }
+
+                accSpeed += speed;
+                transform.Rotate(new Vector3(xAxis ? speed : 0, yAxis ? speed : 0, zAxis ? speed : 0));
+                if (mode == RotationMode.Pingpong)
+                {
+                    if (Mathf.Abs(accSpeed) >= 180)
+                    {
+                        speed = -speed;
+                    }
                 }
             }
         }
