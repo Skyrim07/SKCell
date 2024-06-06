@@ -1,6 +1,6 @@
 # SKCell
 
-v1.2.9 by <a href="https://www.alexliugames.com/">Alex Liu</a>
+v1.3.0 by <a href="https://www.alexliugames.com/">Alex Liu</a>
 
 SKCell is a powerful, comprehensive utility package for Unity that can greatly enhance your development experience.<br>
 Webpage: <a href="https://skyrim07.github.io/SKCell/#/">here</a><br>
@@ -3766,6 +3766,9 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
 
 
 ## Dev Log
+<b>v1.3.0</b>
+-   Added SKObjectNameComment! Now you can add colorful comments to game objects in the hierarchy.
+-   Various bug fixes.
 
 <b>v1.2.0</b>
 -   Standardized all assets. (namespaces, menu paths, prefabs, file formats)
