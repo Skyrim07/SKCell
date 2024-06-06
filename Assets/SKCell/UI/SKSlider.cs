@@ -191,7 +191,7 @@ namespace SKCell
 
                 }
                 UpdateFillColor();
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSecondsRealtime(.02f);
             }
             fill.fillAmount = value;
             if (showProgressText)
@@ -207,7 +207,7 @@ namespace SKCell
             while (Mathf.Abs(delayedFill.fillAmount - value) > threshold)
             {
                 delayedFill.fillAmount = Mathf.Lerp(delayedFill.fillAmount, value, lerpSpeed);
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSecondsRealtime(.02f);
             }
             delayedFill.fillAmount = value;
         }
@@ -216,7 +216,7 @@ namespace SKCell
             while (Mathf.Abs((progressText.color- targetColor).maxColorComponent) > threshold)
             {
                 progressText.color = Color.Lerp(progressText.color, targetColor, lerpSpeed);
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSecondsRealtime(.02f);
             }
             progressText.color = targetColor;
         }
@@ -225,7 +225,7 @@ namespace SKCell
             while (Mathf.Abs((fill.color - targetColor).maxColorComponent) > threshold)
             {
                 fill.color = Color.Lerp(fill.color, targetColor, lerpSpeed);
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSecondsRealtime(.02f);
             }
             fill.color = targetColor;
         }

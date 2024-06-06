@@ -188,6 +188,7 @@ namespace SKCell
             float oVolume = audioSource.volume;
             SKUtils.StartProcedureUnscaled(SKCurve.LinearIn, dampTime, (f) =>
             {
+                if(audioSource)
                 audioSource.volume = oVolume * (1 - f) * musicVolume;
             }, (f) =>
             {

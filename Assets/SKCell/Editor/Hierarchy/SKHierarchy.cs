@@ -19,6 +19,8 @@ namespace SKCell
         private static GUIStyle rename_Style;
         public static GUIStyle transparentButtonStyle, blackButtonStyle;
         private static readonly Vector2 OFFSET = Vector2.right * 18;
+        private static readonly Vector2 COMMENT_OFFSET = Vector2.left * 18;
+        private static readonly Vector2 COMMENT_OFFSET_SEPARATOR = Vector2.left * 2;
 
         public static GUIContent srContent, cldContent;
         public static GUIContent crossContent, resetContent;
@@ -108,7 +110,6 @@ namespace SKCell
                 EditorGUI.LabelField(offsetRect, obj.name, new GUIStyle()
                 {
                     normal = new GUIStyleState() { textColor = Color.white * (obj.activeSelf ? .9f : .5f) },
-                   // fontStyle = FontStyle.Bold,
                     font = SKAssetLibrary.DefaultFont,
                     fontSize = 12,
                     alignment = TextAnchor.MiddleCenter,
@@ -159,8 +160,9 @@ namespace SKCell
 
             if (obj!=null && !isSeparator && (selectionRect.yMin / 16) % 2 == 0)
             {
-                selectionRect.width *= 2;
-                EditorGUI.DrawRect(selectionRect, backgroundColor);
+                Rect bgRect = new Rect(selectionRect);
+                bgRect.width *= 2;
+                EditorGUI.DrawRect(bgRect, backgroundColor);
             }
 
 
@@ -196,6 +198,18 @@ namespace SKCell
                     EditorGUI.DrawRect(iconRect, col);
                     GUI.DrawTexture(iconRect, folderTexture);
                 }
+               if(obj.TryGetComponent<SKObjectNameComment>(out var nameComment))
+                {
+                    Rect offsetRect = new Rect(selectionRect.position + (isSeparator ? COMMENT_OFFSET_SEPARATOR : COMMENT_OFFSET), selectionRect.size);
+                    EditorGUI.LabelField(offsetRect, nameComment.comment, new GUIStyle()
+                    {
+                        normal = new GUIStyleState() { textColor = nameComment.color * (obj.activeSelf ? .9f : .5f) },
+                        font = SKAssetLibrary.DefaultFont,
+                        fontSize = 12,
+                        alignment = TextAnchor.MiddleRight,
+                    });
+                }
+  
             }
           
         }
