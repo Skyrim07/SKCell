@@ -31,10 +31,19 @@ namespace SKCell
     {
         public string name;
         public bool onTop = true;
-        public SKInspectorButtonAttribute(string name, bool onTop=true)
+        public readonly Color color = Color.white;
+
+        public SKInspectorButtonAttribute(string name, bool onTop = true)
         {
             this.name = name;
             this.onTop = onTop;
+        }
+
+        public SKInspectorButtonAttribute(string name, float r, float g, float b, bool onTop = true)
+        {
+            this.name = name;
+            this.onTop = onTop;
+            this.color = new Color(r, g, b);
         }
     }
 

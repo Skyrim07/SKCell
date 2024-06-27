@@ -42,10 +42,13 @@ namespace SKCell
                 {
                     hasButton = true;
                     var btn = buttons[0] as SKInspectorButtonAttribute;
-                    if (GUILayout.Button($"< {btn.name} >", boldButtonStyle))
+                    Color originalColor = GUI.color;
+                    GUI.color = btn.color;
+                    if (GUILayout.Button(btn.name, boldButtonStyle))
                     {
                         method.Invoke(mono, null);
                     }
+                    GUI.color = originalColor;
                 }
             }
             if (hasButton) {
@@ -158,7 +161,6 @@ namespace SKCell
             boldFoldoutStyle.onNormal.textColor = c;
 
             boldButtonStyle = new GUIStyle(EditorStyles.miniButtonMid);
-            boldButtonStyle.fontStyle = FontStyle.Bold;
             boldButtonStyle.normal.textColor = c;
         }
     }

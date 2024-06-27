@@ -3,7 +3,6 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using System.Reflection;
 using System;
 
 namespace SKCell
@@ -37,7 +36,6 @@ namespace SKCell
             EditorApplication.projectWindowItemOnGUI += OnProjectWindowItemGUI;
             UpdateFolderCache();
         }
-
         private static void OnProjectWindowItemGUI(string guid, Rect selectionRect)
         {
             string path = AssetDatabase.GUIDToAssetPath(guid);
@@ -47,11 +45,9 @@ namespace SKCell
                 return;
             bool isSelected = Selection.assetGUIDs.Contains(guid);
             Rect folderRect = new Rect(selectionRect);
-
-            int fileCount = 0;
             if (!folderTypeCache.TryGetValue(path, out string dominantType))
             {
-                dominantType = DetermineDominantFileType(path, out fileCount);
+                dominantType = DetermineDominantFileType(path, out _);
                 folderTypeCache[path] = dominantType;
             }
 
@@ -104,8 +100,6 @@ namespace SKCell
 
                 GUI.DrawTexture(iconRect, iconTexture);
             }
-
-
         }
 
         private static string DetermineDominantFileType(string folderPath, out int fileCount)

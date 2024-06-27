@@ -17,6 +17,7 @@ namespace SKCell
         public const string LOCAL_ASSET_PATH = "Assets/SKCell/Resources/SKCell/SKLocalizationConfigAsset.asset";
         public const string FONT_ASSET_PATH = "Assets/SKCell/Resources/SKCell/SKFontAsset.asset";
         public const string TEXTURE_ASSET_PATH = "Assets/SKCell/Sprites/";
+        public const string SPRITE_ASSET_PATH = "Assets/SKCell/Resources/SKCell/Sprites/";
         public const string DEFAULT_FONT_PATH = "Assets/SKCell/Font/SK_Default_Font.ttf";
         public const string ENV_ASSET_PATH = "Assets/SKCell/Resources/SKCell/SKEnvironmentAsset.asset";
         public const string UI_ANIM_DIR_PATH = "Assets/SKCell/Resources/SKCell/Animations";
@@ -297,6 +298,62 @@ namespace SKCell
             }
         }
 
+        private static Sprite squareSprite;
+        public static Sprite SquareSprite
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (squareSprite == null)
+                    squareSprite = AssetDatabase.LoadAssetAtPath<Sprite>(SPRITE_ASSET_PATH + "sq.png");
+#endif
+                if (squareSprite == null)
+                    squareSprite = Resources.Load<Sprite>(RES_SPRITE_PATH + "sq");
+                return squareSprite;
+            }
+        }
+        private static Sprite gradientOneSidedSprite;
+        public static Sprite GradientOneSidedSprite
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (gradientOneSidedSprite == null)
+                    gradientOneSidedSprite = AssetDatabase.LoadAssetAtPath<Sprite>(SPRITE_ASSET_PATH + "gradient_0.png");
+#endif
+                if (gradientOneSidedSprite == null)
+                    gradientOneSidedSprite = Resources.Load<Sprite>(RES_SPRITE_PATH + "gradient_0");
+                return gradientOneSidedSprite;
+            }
+        }
+        private static Sprite gradientTwoSidedSprite;
+        public static Sprite GradientTwoSidedSprite
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (gradientTwoSidedSprite == null)
+                    gradientTwoSidedSprite = AssetDatabase.LoadAssetAtPath<Sprite>(SPRITE_ASSET_PATH + "gradient_1.png");
+#endif
+                if (gradientTwoSidedSprite == null)
+                    gradientTwoSidedSprite = Resources.Load<Sprite>(RES_SPRITE_PATH + "gradient_1");
+                return gradientTwoSidedSprite;
+            }
+        }
+        private static Sprite gradientCircleSprite;
+        public static Sprite GradientCircleSprite
+        {
+            get
+            {
+#if UNITY_EDITOR
+                if (gradientCircleSprite == null)
+                    gradientCircleSprite = AssetDatabase.LoadAssetAtPath<Sprite>(SPRITE_ASSET_PATH + "gradient_2.png");
+#endif
+                if (gradientCircleSprite == null)
+                    gradientCircleSprite = Resources.Load<Sprite>(RES_SPRITE_PATH + "gradient_2");
+                return gradientCircleSprite;
+            }
+        }
         public static void Initialize()
         {
            // localizationAsset = null;

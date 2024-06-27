@@ -336,6 +336,14 @@ namespace SKCell
         #endregion
 
         #region BaseExt
+        public static Vector3 XZ(this Vector2 v)
+        {
+            return new Vector3(v.x, 0, v.y);
+        }
+        public static float MagnitudeXZ(this Vector3 v)
+        {
+            return (new Vector3(v.x, 0, v.z)).magnitude;
+        }
         public static Vector2Int ToVector2Int(this Vector2 v)
         {
             return new Vector2Int(Mathf.RoundToInt(v.x), Mathf.RoundToInt(v.y));

@@ -3766,9 +3766,15 @@ Select <b>Tools/SKCell/Tools/Sprite Colorer</b> to open the window. Detailed ins
 
 
 ## Dev Log
+<b>v1.4.0</b>
+-   The Shaping update! Introducing SKVolumeEditor: edit polygon shapes, edit their heights, view their volumes... with a 
+
 <b>v1.3.0</b>
 -   Added SKObjectNameComment! Now you can add colorful comments to game objects in the hierarchy.
 -   Various bug fixes.
+    <br>v1.3.1
+    - Added SKComment, you can now add comments in the inspector with this component.
+    - SKInspectorButton can now have custom colors!
 
 <b>v1.2.0</b>
 -   Standardized all assets. (namespaces, menu paths, prefabs, file formats)
